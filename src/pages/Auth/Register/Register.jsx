@@ -1,14 +1,17 @@
 import toast from "daisyui/components/toast";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { FcGoogle } from "react-icons/fc";
+
 import useAuth from "../../../hooks/useAuth";
+import { Link } from "react-router";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 
 const Register = () => {
    const [show, setShow] = useState(false);
    const {register, handleSubmit, formState: {errors}} = useForm();
    const {registerUser} = useAuth();
+   
 
    const  handleRegister = (data) => {
     console.log(data);
@@ -115,21 +118,14 @@ const Register = () => {
           </button>
         </form>
 
-        {/* Divider */}
-        <div className="divider">OR</div>
-
-        {/* Google Login */}
-        <button className="btn btn-outline w-full flex items-center gap-2">
-          <FcGoogle size={20} />
-          Continue with Google
-        </button>
+        <SocialLogin></SocialLogin>
 
         {/* Login Link */}
         <p className="text-center mt-4 text-sm">
           Already have an account?{" "}
-          <a href="/login" className="link link-primary font-semibold">
+          <Link to="/login" className="link link-primary font-semibold">
             Login
-          </a>
+          </Link>
         </p>
       </div>
     </div>

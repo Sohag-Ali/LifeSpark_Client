@@ -1,6 +1,19 @@
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
+import useAuth from "../../../hooks/useAuth";
 
 const Navbar = () => {
+
+  const { user, logoutUser } = useAuth();
+  const handleLogout = () => {
+    logoutUser()
+      .then(() => {
+        console.log("User logged out successfully");
+      })
+      .catch(error => {
+        console.error("Logout failed:", error);
+      });
+  };
+
   const links = (
     <>
       <li>
@@ -8,8 +21,21 @@ const Navbar = () => {
       </li>
 
       <li>
-        <NavLink to="/item3">Item 3</NavLink>
+        <NavLink to="/item3">Add Lesson</NavLink>
       </li>
+
+      <li>
+        <NavLink to="/item4">My Lessons</NavLink>
+      </li>
+
+      <li>
+        <NavLink to="/item5">Public Lessons</NavLink>
+      </li>
+      
+      <li>
+        <NavLink to="/item5">pricing</NavLink>
+      </li>
+      
     </>
   );
 
@@ -49,7 +75,59 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+         {/* IF USER LOGGED IN */}
+        {user ? (
+          <div className="dropdown dropdown-end">
+
+            {/* Avatar */}
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle avatar"
+            >
+              <div className="w-10 rounded-full">
+                <img
+                  src={user.photoURL || "https://i.ibb.co/4pDNDk1/avatar.png"}
+                  alt="user"
+                />
+              </div>
+            </div>
+
+            {/* Dropdown */}
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <li className="font-semibold px-2 py-1">
+                {user.displayName || "User"}
+              </li>
+
+              <li>
+                <Link to="/profile">Profile</Link>
+              </li>
+
+              <li>
+                <Link to="/dashboard">Dashboard</Link>
+              </li>
+
+              <li>
+                <button onClick={handleLogout} className="text-red-500">
+                  Logout
+                </button>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          /* IF NOT LOGGED IN */
+          <div className="flex gap-2">
+            <Link to="/login" className="btn btn-outline">
+              Login
+            </Link>
+            <Link to="/register" className="btn btn-primary">
+              Signup
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

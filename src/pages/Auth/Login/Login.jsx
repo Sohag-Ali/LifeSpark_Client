@@ -1,7 +1,27 @@
-import { FcGoogle } from "react-icons/fc";
+import { useForm } from "react-hook-form";
+import useAuth from "../../../hooks/useAuth";
+import toast from "daisyui/components/toast";
+import { Link } from "react-router";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 
 const Login = () => {
+const {register, handleSubmit, formState: {errors}} = useForm();
+const {loginUser} = useAuth();
+const  handleLogin = (data) => {
+  console.log(data);
+  loginUser(data.email, data.password)
+  .then(result => {
+    const user = result.user;
+    console.log(user);
+    toast.success("Login successful!");
+  })
+  .catch(error => {
+    console.error(error);
+    toast.error("Login failed. Please check your credentials and try again.");
+  });
+}
+
          return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
 
@@ -11,7 +31,7 @@ const Login = () => {
           Welcome Back 👋
         </h2>
 
-        <form className="space-y-4">
+        <form className="space-y-4" onSubmit={handleSubmit(handleLogin)}>
 
           {/* Email */}
           <div className="form-control">
@@ -20,10 +40,14 @@ const Login = () => {
             </label>
             <input
               type="email"
+              {...register("email", {required: true})}
               placeholder="Enter your email"
               className="input input-bordered focus:input-primary w-full"
               required
             />
+            {errors.email?.type === "required" && (
+              <p className="text-red-500 text-sm">Email is required</p>
+            )}
           </div>
 
           {/* Password */}
@@ -33,10 +57,21 @@ const Login = () => {
             </label>
             <input
               type="password"
+              {...register("password", {required: true,
+                minLength: {value: 6,
+                message: "Password must be at least 6 characters"
+              }})
+              }
               placeholder="Enter your password"
               className="input input-bordered focus:input-primary w-full"
               required
             />
+            {errors.password?.type === "required" && (
+              <p className="text-red-500 text-sm">Password is required</p>
+            )}
+            {errors.password?.type === "minLength" && (
+              <p className="text-red-500 text-sm">Password must be at least 6 characters</p>
+            )}
             <label className="label">
               <a href="#" className="label-text-alt link link-hover">
                 Forgot password?
@@ -50,21 +85,14 @@ const Login = () => {
           </button>
         </form>
 
-        {/* Divider */}
-        <div className="divider">OR</div>
-
-        {/* Google Login */}
-        <button className="btn btn-outline w-full flex items-center gap-2">
-          <FcGoogle size={20} />
-          Continue with Google
-        </button>
+        <SocialLogin></SocialLogin>
 
         {/* Register Link */}
         <p className="text-center mt-4 text-sm">
           Don’t have an account?{" "}
-          <a href="/register" className="link link-primary font-semibold">
+          <Link to="/register" className="link link-primary font-semibold">
             Register
-          </a>
+          </Link>
         </p>
       </div>
     </div>
