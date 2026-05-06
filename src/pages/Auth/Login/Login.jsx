@@ -3,7 +3,7 @@ import useAuth from "../../../hooks/useAuth";
 import toast from "daisyui/components/toast";
 import { Link, useLocation, useNavigate } from "react-router";
 import SocialLogin from "../SocialLogin/SocialLogin";
-import { use } from "react";
+
 
 
 const Login = () => {

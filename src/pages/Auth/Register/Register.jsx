@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
 import { Link, useLocation, useNavigate } from "react-router";
 import SocialLogin from "../SocialLogin/SocialLogin";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 
 const Register = () => {
@@ -14,6 +15,7 @@ const Register = () => {
 
    const location = useLocation();
    const navigate = useNavigate();
+   const axiosSecure = useAxiosSecure();
    
 
    const  handleRegister = (data) => {
@@ -26,6 +28,22 @@ const Register = () => {
       updateUserProfile(data.name, data.photoUrl)
       .then(() => {
         console.log("Profile updated successfully");
+        const userInfo = {
+          name: data.name,
+          email: data.email,
+          photo: data.photoUrl
+        };
+        axiosSecure.post('/users', userInfo)
+        .then(res => {
+          console.log("User info saved to database:", res.data);
+        })
+        .catch(error => {
+          console.error("Error saving user info to database:", error);
+        });
+
+        
+
+
         navigate(location?.state || "/"); // Redirect to the page they were trying to access or the home page
       })
       .catch(error => {
