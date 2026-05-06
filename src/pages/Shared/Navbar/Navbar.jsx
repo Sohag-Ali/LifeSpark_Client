@@ -19,13 +19,13 @@ const Navbar = () => {
         <NavLink to="/">Home</NavLink>
       </li>
 
-      <li>
+      {/* <li>
         <NavLink to="/item3">Add Lesson</NavLink>
       </li>
 
       <li>
         <NavLink to="/item4">My Lessons</NavLink>
-      </li>
+      </li> */}
 
       <li>
         <NavLink to="/public-lessons">Public Lessons</NavLink>
@@ -34,6 +34,18 @@ const Navbar = () => {
       <li>
         <NavLink to="/pricing">Pricing</NavLink>
       </li>
+
+      {user && (
+        <>
+          <li>
+            <NavLink to="/dashboard/add-lesson">Add Lesson</NavLink>
+          </li>
+
+          <li>
+            <NavLink to="/dashboard/my-lessons">My Lessons</NavLink>
+          </li>
+        </>
+      )}
     </>
   );
 

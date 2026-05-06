@@ -7,6 +7,11 @@ import Register from "../pages/Auth/Register/Register";
 import PublicLessons from "../pages/PublicLessons/PublicLessons";
 import Pricing from "../pages/Pricing/pricing";
 import PrivateRoute from "./PrivateRoute";
+import DashboardLayout from "../layouts/DashboardLayout";
+import MyLessons from "../pages/Dashboard/MyLesson/MyLessons";
+import AddLesson from "../pages/Dashboard/AddLesson/AddLesson";
+import Favorites from "../pages/Dashboard/Favorites/Favorites";
+import Profile from "../pages/Dashboard/Profile/Profile";
 
 
 
@@ -50,5 +55,34 @@ export const router = createBrowserRouter([
       }
     ]
   },
+
+  {
+    path: 'dashboard',
+    element: <PrivateRoute>
+      <DashboardLayout></DashboardLayout>
+    </PrivateRoute>,
+      children: [
+        // {
+        //   index: true,
+        //   element: <div>Dashboard Home</div>
+        // },
+        {
+          path: 'my-lessons',
+          element: <MyLessons></MyLessons>
+        },
+        {
+          path: 'add-lesson',
+          element: <AddLesson></AddLesson>
+        },
+        {
+          path: 'favorites',
+          element: <Favorites></Favorites>
+        },
+        {
+          path: 'profile',
+          element: <Profile></Profile>
+        }
+      ]
+  }
 
 ]);
