@@ -1,14 +1,18 @@
 
 import { FcGoogle } from 'react-icons/fc';
 import useAuth from '../../../hooks/useAuth';
+import { useLocation, useNavigate } from 'react-router';
 
 const SocialLogin = () => {
     const {signInWithGoogle} = useAuth();
+    const location = useLocation();
+    const navigate = useNavigate();
 
     const handleGoogleLogin = () => {
         signInWithGoogle()
         .then(result => {
             console.log(result);
+            navigate(location?.state || "/"); // Redirect to the page they were trying to access or the home page
         })
         .catch(error => {
             console.error(error);

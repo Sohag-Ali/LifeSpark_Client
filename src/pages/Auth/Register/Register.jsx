@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import useAuth from "../../../hooks/useAuth";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import SocialLogin from "../SocialLogin/SocialLogin";
 
 
@@ -11,6 +11,9 @@ const Register = () => {
    const [show, setShow] = useState(false);
    const {register, handleSubmit, formState: {errors}} = useForm();
    const {registerUser, updateUserProfile} = useAuth();
+
+   const location = useLocation();
+   const navigate = useNavigate();
    
 
    const  handleRegister = (data) => {
@@ -23,6 +26,7 @@ const Register = () => {
       updateUserProfile(data.name, data.photoUrl)
       .then(() => {
         console.log("Profile updated successfully");
+        navigate(location?.state || "/"); // Redirect to the page they were trying to access or the home page
       })
       .catch(error => {
         console.error("Error updating profile:", error);
@@ -132,7 +136,9 @@ const Register = () => {
         {/* Login Link */}
         <p className="text-center mt-4 text-sm">
           Already have an account?{" "}
-          <Link to="/login" className="link link-primary font-semibold">
+          <Link 
+          state={location.state}
+          to="/login" className="link link-primary font-semibold">
             Login
           </Link>
         </p>

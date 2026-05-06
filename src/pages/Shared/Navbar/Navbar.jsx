@@ -28,11 +28,11 @@ const Navbar = () => {
       </li>
 
       <li>
-        <NavLink to="/item5">Public Lessons</NavLink>
+        <NavLink to="/public-lessons">Public Lessons</NavLink>
       </li>
 
       <li>
-        <NavLink to="/item5">pricing</NavLink>
+        <NavLink to="/pricing">Pricing</NavLink>
       </li>
     </>
   );

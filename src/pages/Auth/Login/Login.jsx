@@ -1,13 +1,16 @@
 import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
 import toast from "daisyui/components/toast";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import SocialLogin from "../SocialLogin/SocialLogin";
+import { use } from "react";
 
 
 const Login = () => {
 const {register, handleSubmit, formState: {errors}} = useForm();
 const {loginUser} = useAuth();
+const location = useLocation();
+const navigate = useNavigate();
 const  handleLogin = (data) => {
   console.log(data);
   loginUser(data.email, data.password)
@@ -15,6 +18,7 @@ const  handleLogin = (data) => {
     const user = result.user;
     console.log(user);
     toast.success("Login successful!");
+    navigate(location?.state || "/"); // Redirect to the page they were trying to access or the home page
   })
   .catch(error => {
     console.error(error);
@@ -90,7 +94,9 @@ const  handleLogin = (data) => {
         {/* Register Link */}
         <p className="text-center mt-4 text-sm">
           Don’t have an account?{" "}
-          <Link to="/register" className="link link-primary font-semibold">
+          <Link
+           state={location.state}
+           to="/register" className="link link-primary font-semibold">
             Register
           </Link>
         </p>
