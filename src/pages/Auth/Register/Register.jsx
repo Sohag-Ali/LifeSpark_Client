@@ -10,7 +10,7 @@ import SocialLogin from "../SocialLogin/SocialLogin";
 const Register = () => {
    const [show, setShow] = useState(false);
    const {register, handleSubmit, formState: {errors}} = useForm();
-   const {registerUser} = useAuth();
+   const {registerUser, updateUserProfile} = useAuth();
    
 
    const  handleRegister = (data) => {
@@ -19,6 +19,15 @@ const Register = () => {
     .then(result => {
       const user = result.user;
       console.log(user);
+
+      updateUserProfile(data.name, data.photoUrl)
+      .then(() => {
+        console.log("Profile updated successfully");
+      })
+      .catch(error => {
+        console.error("Error updating profile:", error);
+      });
+
       toast.success("Registration successful!");
     })
     .catch(error => {

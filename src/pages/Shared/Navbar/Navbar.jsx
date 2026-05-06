@@ -2,14 +2,13 @@ import { Link, NavLink } from "react-router";
 import useAuth from "../../../hooks/useAuth";
 
 const Navbar = () => {
-
   const { user, logoutUser } = useAuth();
   const handleLogout = () => {
     logoutUser()
       .then(() => {
         console.log("User logged out successfully");
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Logout failed:", error);
       });
   };
@@ -31,11 +30,10 @@ const Navbar = () => {
       <li>
         <NavLink to="/item5">Public Lessons</NavLink>
       </li>
-      
+
       <li>
         <NavLink to="/item5">pricing</NavLink>
       </li>
-      
     </>
   );
 
@@ -70,15 +68,12 @@ const Navbar = () => {
         <a className="btn btn-ghost text-xl">daisyUI</a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          {links}
-        </ul>
+        <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-         {/* IF USER LOGGED IN */}
+        {/* IF USER LOGGED IN */}
         {user ? (
           <div className="dropdown dropdown-end">
-
             {/* Avatar */}
             <div
               tabIndex={0}
@@ -87,8 +82,13 @@ const Navbar = () => {
             >
               <div className="w-10 rounded-full">
                 <img
-                  src={user.photoURL || "https://i.ibb.co/4pDNDk1/avatar.png"}
+                  src={
+                    user?.photoURL
+                      ? user.photoURL
+                      : "https://i.ibb.co/4pDNDk1/avatar.png"
+                  }
                   alt="user"
+                  referrerPolicy="no-referrer"
                 />
               </div>
             </div>
