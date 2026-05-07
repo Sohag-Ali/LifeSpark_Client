@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useUser from "../../../hooks/useUser";
+import { Link } from "react-router";
 
 
 const Profile = () => {
@@ -159,9 +160,11 @@ const Profile = () => {
 
                            <div className="card-actions justify-end">
 
-                              <button className="btn btn-primary btn-sm">
+                              <Link
+                               to={`/lesson-details/${lesson._id}`}
+                              className="btn btn-primary btn-sm">
                                  Details
-                              </button>
+                              </Link>
 
                            </div>
 
