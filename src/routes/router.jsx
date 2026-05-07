@@ -19,6 +19,10 @@ import LessonDetails from "../pages/DetailsPage/LessonDetails";
 import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
 import DashboardRedirect from "../pages/Dashboard/DashboardRedirect/DashboardRedirect";
 import AdminHome from "../pages/Dashboard/Admin/AdminHome/AdminHome";
+import ManageUsers from "../pages/Dashboard/Admin/ManageUsers/ManageUsers";
+import ManageLessons from "../pages/Dashboard/Admin/ManageLessons/ManageLessons";
+import ReportedLessons from "../pages/Dashboard/Admin/ReportedLessons/ReportedLessons";
+import AdminProfile from "../pages/Dashboard/Admin/AdminProfile/AdminProfile";
 
 
 
@@ -91,11 +95,6 @@ export const router = createBrowserRouter([
           element: <DashboardHome></DashboardHome>
         },
         {
-          path: 'admin-home',
-          element: <AdminHome></AdminHome>
-        },
-        
-        {
           path: 'my-lessons',
           element: <MyLessons></MyLessons>
         },
@@ -113,9 +112,29 @@ export const router = createBrowserRouter([
           path: 'favorites',
           element: <Favorites></Favorites>
         },
+         {
+          path: 'admin-home',
+          element: <AdminHome></AdminHome>
+        },
+        {
+          path:'admin/manage-users',
+          element: <ManageUsers></ManageUsers>
+        },
+        {
+          path:'admin/manage-lessons',
+          element: <ManageLessons></ManageLessons>
+        },
+         {
+          path:'admin/reported-lessons',
+          element: <ReportedLessons></ReportedLessons>
+        },
         {
           path: 'profile',
           element: <Profile></Profile>
+        },
+        {
+          path: 'admin/admin-profile',
+          element: <AdminProfile></AdminProfile>
         }
       ]
   }

@@ -112,6 +112,8 @@ const InteractionButton = ({ lesson, refetch }) => {
 
          lessonId: lesson._id,
 
+         lessonTitle: lesson.title,
+
          reportedUserEmail:
          user.email,
 
