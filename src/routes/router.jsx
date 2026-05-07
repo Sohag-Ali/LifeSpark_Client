@@ -17,6 +17,8 @@ import PaymentCancel from "../pages/Pricing/PaymentCancel";
 import UpdateLesson from "../pages/Dashboard/MyLesson/UpdateLesson";
 import LessonDetails from "../pages/DetailsPage/LessonDetails";
 import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
+import DashboardRedirect from "../pages/Dashboard/DashboardRedirect/DashboardRedirect";
+import AdminHome from "../pages/Dashboard/Admin/AdminHome/AdminHome";
 
 
 
@@ -82,8 +84,17 @@ export const router = createBrowserRouter([
       children: [
         {
           index: true,
+          element: <DashboardRedirect></DashboardRedirect>
+        },
+        {
+          path: 'user-home',
           element: <DashboardHome></DashboardHome>
         },
+        {
+          path: 'admin-home',
+          element: <AdminHome></AdminHome>
+        },
+        
         {
           path: 'my-lessons',
           element: <MyLessons></MyLessons>
