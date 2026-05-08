@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import {  Bookmark, BookOpen, PlusCircle } from "lucide-react";
+import {  ArrowUpRight, Bookmark, BookOpen, PlusCircle, Sparkles } from "lucide-react";
 import { Link } from "react-router";
 import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
@@ -64,228 +64,412 @@ const DashboardHome = () => {
 
    return (
 
-      <div className="p-6 md:p-10">
+    <div className="px-4 md:px-8 py-10">
 
-         {/* heading */}
-         <div className="mb-10">
+      {/* heading */}
+      <div className="mb-12">
 
-            <h1 className="text-4xl font-black">
+        <div className="flex items-center gap-4">
 
-               Dashboard Overview
+          <div
+            className="
+              w-16
+              h-16
+              rounded-2xl
+              bg-primary/10
+              border
+              border-primary/20
+              flex
+              items-center
+              justify-center
+            "
+          >
 
+            <Sparkles className="text-primary" size={30} />
+
+          </div>
+
+          <div>
+
+            <h1 className="text-4xl md:text-5xl font-black text-white">
+              Dashboard Overview
             </h1>
 
-            <p className="text-gray-500 mt-3">
-
-               Welcome back,
-               {" "}
-               {user?.displayName}
-
+            <p className="text-gray-400 text-lg mt-3">
+              Welcome back, {user?.displayName}
             </p>
 
-         </div>
+          </div>
 
-         {/* stats cards */}
-         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-            {/* total lessons */}
-            <div className="bg-base-100 rounded-[30px] shadow-xl p-8">
-
-               <div className="flex justify-between items-center">
-
-                  <div>
-
-                     <p className="text-gray-500">
-
-                        Total Lessons
-
-                     </p>
-
-                     <h2 className="text-5xl font-black mt-4">
-
-                        {
-                           stats.totalLessons || 0
-                        }
-
-                     </h2>
-
-                  </div>
-
-                  <div className="bg-primary/10 p-5 rounded-full">
-
-                     <BookOpen
-                        className="text-primary"
-                        size={40}
-                     />
-
-                  </div>
-
-               </div>
-
-            </div>
-
-            {/* favorites */}
-            <div className="bg-base-100 rounded-[30px] shadow-xl p-8">
-
-               <div className="flex justify-between items-center">
-
-                  <div>
-
-                     <p className="text-gray-500">
-
-                        Saved Lessons
-
-                     </p>
-
-                     <h2 className="text-5xl font-black mt-4">
-
-                        {
-                           stats.totalFavorites || 0
-                        }
-
-                     </h2>
-
-                  </div>
-
-                  <div className="bg-warning/10 p-5 rounded-full">
-
-                     <Bookmark
-                        className="text-warning"
-                        size={40}
-                     />
-
-                  </div>
-
-               </div>
-
-            </div>
-
-            {/* shortcuts */}
-            <div className="bg-base-100 rounded-[30px] shadow-xl p-8">
-
-               <h2 className="text-2xl font-black mb-6">
-
-                  Quick Actions
-
-               </h2>
-
-               <div className="space-y-4">
-
-                  <Link
-                     to="/dashboard/add-lesson"
-                     className="btn btn-primary w-full rounded-full"
-                  >
-
-                     <PlusCircle size={20} />
-
-                     Add Lesson
-
-                  </Link>
-
-                  <Link
-                     to="/dashboard/my-lessons"
-                     className="btn btn-outline w-full rounded-full"
-                  >
-
-                     My Lessons
-
-                  </Link>
-
-               </div>
-
-            </div>
-
-         </div>
-
-         {/* recent lessons */}
-         <div className="bg-base-100 rounded-[30px] shadow-xl p-8 mt-12">
-
-            <h2 className="text-3xl font-black mb-8">
-
-               Recently Added Lessons
-
-            </h2>
-
-            <div className="space-y-5">
-
-               {
-                  stats.recentLessons?.map(lesson => (
-
-                     <div
-                        key={lesson._id}
-                        className="flex items-center justify-between border-b border-base-300 pb-4"
-                     >
-
-                        <div>
-
-                           <h3 className="font-bold text-lg">
-
-                              {lesson.title}
-
-                           </h3>
-
-                           <p className="text-gray-500 text-sm">
-
-                              {lesson.category}
-
-                           </p>
-
-                        </div>
-
-                        <Link
-                           to={`/lesson-details/${lesson._id}`}
-                           className="btn btn-sm btn-primary rounded-full"
-                        >
-                           View
-                        </Link>
-
-                     </div>
-                  ))
-               }
-
-            </div>
-
-         </div>
-
-         {/* analytics chart */}
-         <div className="bg-base-100 rounded-[30px] shadow-xl p-8 mt-12">
-
-            <h2 className="text-3xl font-black mb-8">
-
-               Monthly Contributions
-
-            </h2>
-
-            <div className="h-[350px]">
-
-               <ResponsiveContainer
-                  width="100%"
-                  height="100%"
-               >
-
-                  <BarChart data={chartData}>
-
-                     <XAxis dataKey="month" />
-
-                     <YAxis />
-
-                     <Tooltip />
-
-                     <Bar
-                        dataKey="lessons"
-                        radius={[10, 10, 0, 0]}
-                     />
-
-                  </BarChart>
-
-               </ResponsiveContainer>
-
-            </div>
-
-         </div>
+        </div>
 
       </div>
-   );
+
+      {/* stats cards */}
+      <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
+
+        {/* total lessons */}
+        <div
+          className="
+            relative
+            overflow-hidden
+            bg-gradient-to-br
+            from-[#111827]
+            to-[#0F172A]
+            border
+            border-white/10
+            rounded-[30px]
+            shadow-2xl
+            p-8
+            hover:-translate-y-1
+            hover:border-primary/30
+            transition-all
+            duration-300
+          "
+        >
+
+          <div className="absolute top-0 right-0 w-40 h-40 bg-indigo-500/10 blur-3xl rounded-full"></div>
+
+          <div className="relative z-10 flex justify-between items-center">
+
+            <div>
+
+              <p className="text-gray-400">
+                Total Lessons
+              </p>
+
+              <h2 className="text-5xl font-black text-white mt-5">
+                {stats.totalLessons || 0}
+              </h2>
+
+            </div>
+
+            <div
+              className="
+                w-20
+                h-20
+                rounded-3xl
+                bg-indigo-500/10
+                border
+                border-indigo-500/20
+                flex
+                items-center
+                justify-center
+              "
+            >
+
+              <BookOpen
+                className="text-indigo-300"
+                size={40}
+              />
+
+            </div>
+
+          </div>
+
+        </div>
+
+        {/* favorites */}
+        <div
+          className="
+            relative
+            overflow-hidden
+            bg-gradient-to-br
+            from-[#111827]
+            to-[#0F172A]
+            border
+            border-white/10
+            rounded-[30px]
+            shadow-2xl
+            p-8
+            hover:-translate-y-1
+            hover:border-primary/30
+            transition-all
+            duration-300
+          "
+        >
+
+          <div className="absolute top-0 right-0 w-40 h-40 bg-pink-500/10 blur-3xl rounded-full"></div>
+
+          <div className="relative z-10 flex justify-between items-center">
+
+            <div>
+
+              <p className="text-gray-400">
+                Saved Lessons
+              </p>
+
+              <h2 className="text-5xl font-black text-white mt-5">
+                {stats.totalFavorites || 0}
+              </h2>
+
+            </div>
+
+            <div
+              className="
+                w-20
+                h-20
+                rounded-3xl
+                bg-pink-500/10
+                border
+                border-pink-500/20
+                flex
+                items-center
+                justify-center
+              "
+            >
+
+              <Bookmark
+                className="text-pink-300"
+                size={40}
+              />
+
+            </div>
+
+          </div>
+
+        </div>
+
+        {/* quick actions */}
+        <div
+          className="
+            bg-gradient-to-br
+            from-[#111827]
+            to-[#0F172A]
+            border
+            border-white/10
+            rounded-[30px]
+            shadow-2xl
+            p-8
+          "
+        >
+
+          <h2 className="text-2xl font-black text-white mb-8">
+            Quick Actions
+          </h2>
+
+          <div className="space-y-5">
+
+            {/* add lesson */}
+            <Link
+              to="/dashboard/add-lesson"
+              className="
+                flex
+                items-center
+                justify-between
+                w-full
+                rounded-2xl
+                bg-gradient-to-r
+                from-[#6366F1]
+                to-[#A855F7]
+                px-5
+                py-4
+                text-white
+                font-semibold
+                hover:shadow-xl
+                hover:shadow-purple-500/20
+                transition-all
+                duration-300
+              "
+            >
+
+              <div className="flex items-center gap-3">
+
+                <PlusCircle size={22} />
+
+                Add Lesson
+
+              </div>
+
+              <ArrowUpRight size={20} />
+
+            </Link>
+
+            {/* my lessons */}
+            <Link
+              to="/dashboard/my-lessons"
+              className="
+                flex
+                items-center
+                justify-between
+                w-full
+                rounded-2xl
+                bg-white/[0.03]
+                border
+                border-white/10
+                px-5
+                py-4
+                text-[#EEF2FF]
+                font-semibold
+                hover:border-primary/30
+                hover:bg-primary/5
+                transition-all
+                duration-300
+              "
+            >
+
+              <div className="flex items-center gap-3">
+
+                <BookOpen size={22} />
+
+                My Lessons
+
+              </div>
+
+              <ArrowUpRight size={20} />
+
+            </Link>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      {/* recent lessons */}
+      <div
+        className="
+          bg-gradient-to-br
+          from-[#111827]
+          to-[#0F172A]
+          border
+          border-white/10
+          rounded-[32px]
+          shadow-2xl
+          p-8
+          mt-12
+        "
+      >
+
+        <h2 className="text-3xl font-black text-white mb-10">
+          Recently Added Lessons
+        </h2>
+
+        <div className="space-y-5">
+
+          {
+            stats.recentLessons?.map((lesson) => (
+
+              <div
+                key={lesson._id}
+                className="
+                  flex
+                  items-center
+                  justify-between
+                  bg-white/[0.03]
+                  border
+                  border-white/5
+                  rounded-2xl
+                  p-5
+                  hover:border-primary/20
+                  transition-all
+                  duration-300
+                "
+              >
+
+                <div>
+
+                  <h3 className="font-bold text-lg text-white">
+                    {lesson.title}
+                  </h3>
+
+                  <p className="text-gray-400 mt-2">
+                    {lesson.category}
+                  </p>
+
+                </div>
+
+                <Link
+                  to={`/lesson-details/${lesson._id}`}
+                  className="
+                    px-5
+                    py-3
+                    rounded-2xl
+                    bg-gradient-to-r
+                    from-[#6366F1]
+                    to-[#A855F7]
+                    text-white
+                    text-sm
+                    font-semibold
+                    hover:shadow-xl
+                    hover:shadow-purple-500/20
+                    transition-all
+                    duration-300
+                  "
+                >
+                  View
+                </Link>
+
+              </div>
+            ))
+          }
+
+        </div>
+
+      </div>
+
+      {/* analytics */}
+      <div
+        className="
+          bg-gradient-to-br
+          from-[#111827]
+          to-[#0F172A]
+          border
+          border-white/10
+          rounded-[32px]
+          shadow-2xl
+          p-8
+          mt-12
+        "
+      >
+
+        <div className="mb-10">
+
+          <h2 className="text-3xl font-black text-white">
+            Monthly Contributions
+          </h2>
+
+          <p className="text-gray-400 mt-3">
+            Your lesson activity overview
+          </p>
+
+        </div>
+
+        <div className="h-[350px]">
+
+          <ResponsiveContainer
+            width="100%"
+            height="100%"
+          >
+
+            <BarChart data={chartData}>
+
+              <XAxis
+                dataKey="month"
+                stroke="#94A3B8"
+              />
+
+              <YAxis stroke="#94A3B8" />
+
+              <Tooltip />
+
+              <Bar
+                dataKey="lessons"
+                radius={[12, 12, 0, 0]}
+                fill="#7C3AED"
+              />
+
+            </BarChart>
+
+          </ResponsiveContainer>
+
+        </div>
+
+      </div>
+
+    </div>
+  );
 };
+
 
 export default DashboardHome;

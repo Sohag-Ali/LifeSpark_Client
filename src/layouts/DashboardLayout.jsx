@@ -1,4 +1,4 @@
-import { Link, NavLink, Outlet } from "react-router";
+import {  NavLink, Outlet } from "react-router";
 import useUser from "../hooks/useUser";
 import Container from "../coponents/Container/Container";
 import { BiAddToQueue } from "react-icons/bi";
@@ -58,8 +58,8 @@ const DashboardLayout = () => {
               <path d="M14 10l2 2l-2 2"></path>
             </svg>
           </label>
-          <div className="px-4 text-xl font-bold text-white">
-            Life Spark Dashboard
+          <div className="px-4 text-xl font-bold bg-gradient-to-r from-violet-300 to-indigo-400 bg-clip-text text-transparent">
+            Dashboard
           </div>
         </nav>
         {/* Page content here */}

@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
-import { Shield, Trash2 } from "lucide-react";
+import { Crown, Shield, Sparkles, Trash2, Users } from "lucide-react";
 
 
 const ManageUsers = () => {
@@ -96,189 +96,422 @@ const ManageUsers = () => {
 
    return (
 
-      <div className="p-6 md:p-10">
+    <div className="px-4 md:px-8 py-10">
 
-         {/* heading */}
-         <div className="mb-10">
+      {/* heading */}
+      <div className="mb-14">
 
-            <h1 className="text-5xl font-black">
+        <div className="flex items-center gap-5">
 
-               Manage Users 👥
+          <div
+            className="
+              w-16
+              h-16
+              rounded-2xl
+              bg-primary/10
+              border
+              border-primary/20
+              flex
+              items-center
+              justify-center
+            "
+          >
 
+            <Sparkles
+              size={30}
+              className="text-primary"
+            />
+
+          </div>
+
+          <div>
+
+            <h1 className="text-4xl md:text-5xl font-black text-white">
+              Manage Users 👥
             </h1>
 
-            <p className="text-gray-500 mt-3">
-
-               Manage all registered users
-
+            <p className="text-gray-400 text-lg mt-3">
+              Manage all registered users
             </p>
 
-         </div>
+          </div>
 
-         {/* table */}
-         <div className="overflow-x-auto bg-base-100 rounded-[30px] shadow-xl">
-
-            <table className="table">
-
-               <thead>
-
-                  <tr>
-
-                     <th>#</th>
-
-                     <th>User</th>
-
-                     <th>Role</th>
-
-                     <th>Total Lessons</th>
-
-                     <th>Actions</th>
-
-                  </tr>
-
-               </thead>
-
-               <tbody>
-
-                  {
-                     users.map((user, index) => (
-
-                        <tr key={user._id}>
-
-                           {/* serial */}
-                           <td>
-
-                              {index + 1}
-
-                           </td>
-
-                           {/* user */}
-                           <td>
-
-                              <div className="flex items-center gap-4">
-
-                                 <img
-                                    src={
-                                       user.photoURL
-                                       ||
-                                       "https://i.ibb.co/4pDNDk1/avatar.png"
-                                    }
-                                    className="w-14 h-14 rounded-full object-cover"
-                                 />
-
-                                 <div>
-
-                                    <h2 className="font-bold">
-
-                                       {user.name}
-
-                                    </h2>
-
-                                    <p className="text-sm text-gray-500">
-
-                                       {user.email}
-
-                                    </p>
-
-                                 </div>
-
-                              </div>
-
-                           </td>
-
-                           {/* role */}
-                           <td>
-
-                              {
-                                 user.role === "admin"
-                                 ?
-                                 (
-                                    <div className="badge badge-error p-4">
-
-                                       Admin
-
-                                    </div>
-                                 )
-                                 :
-                                 (
-                                    <div className="badge badge-primary p-4">
-
-                                       User
-
-                                    </div>
-                                 )
-                              }
-
-                           </td>
-
-                           {/* lessons */}
-                           <td>
-
-                              <h2 className="font-bold">
-
-                                 {user.totalLessons}
-
-                              </h2>
-
-                           </td>
-
-                           {/* actions */}
-                           <td>
-
-                              <div className="flex gap-3">
-
-                                 {/* make admin */}
-                                 {
-                                    user.role !== "admin" &&
-                                    (
-                                       <button
-                                          onClick={() =>
-                                             handleMakeAdmin(
-                                                user._id
-                                             )
-                                          }
-                                          className="btn btn-primary btn-sm rounded-full"
-                                       >
-
-                                          <Shield size={18} />
-
-                                          Make Admin
-
-                                       </button>
-                                    )
-                                 }
-
-                                 {/* delete */}
-                                 <button
-                                    onClick={() =>
-                                       handleDelete(
-                                          user._id
-                                       )
-                                    }
-                                    className="btn btn-error btn-sm rounded-full"
-                                 >
-
-                                    <Trash2 size={18} />
-
-                                 </button>
-
-                              </div>
-
-                           </td>
-
-                        </tr>
-                     ))
-                  }
-
-               </tbody>
-
-            </table>
-
-         </div>
+        </div>
 
       </div>
-   );
+
+      {/* stats */}
+      <div className="grid md:grid-cols-3 gap-8 mb-12">
+
+        {/* total users */}
+        <div
+          className="
+            bg-gradient-to-br
+            from-[#111827]
+            to-[#0F172A]
+            border
+            border-white/10
+            rounded-[30px]
+            p-8
+            shadow-2xl
+          "
+        >
+
+          <h2 className="text-5xl font-black text-indigo-300">
+            {users.length}
+          </h2>
+
+          <p className="text-gray-400 mt-4">
+            Total Users
+          </p>
+
+        </div>
+
+        {/* admins */}
+        <div
+          className="
+            bg-gradient-to-br
+            from-[#111827]
+            to-[#0F172A]
+            border
+            border-white/10
+            rounded-[30px]
+            p-8
+            shadow-2xl
+          "
+        >
+
+          <h2 className="text-5xl font-black text-amber-300">
+            {
+              users.filter(
+                user => user.role === "admin"
+              ).length
+            }
+          </h2>
+
+          <p className="text-gray-400 mt-4">
+            Total Admins
+          </p>
+
+        </div>
+
+        {/* creators */}
+        <div
+          className="
+            bg-gradient-to-br
+            from-[#111827]
+            to-[#0F172A]
+            border
+            border-white/10
+            rounded-[30px]
+            p-8
+            shadow-2xl
+          "
+        >
+
+          <h2 className="text-5xl font-black text-emerald-300">
+            {
+              users.filter(
+                user => user.totalLessons > 0
+              ).length
+            }
+          </h2>
+
+          <p className="text-gray-400 mt-4">
+            Active Creators
+          </p>
+
+        </div>
+
+      </div>
+
+      {/* table */}
+      <div
+        className="
+          overflow-x-auto
+          bg-gradient-to-br
+          from-[#111827]
+          to-[#0F172A]
+          border
+          border-white/10
+          rounded-[32px]
+          shadow-2xl
+        "
+      >
+
+        <table className="table text-white">
+
+          <thead>
+
+            <tr className="border-b border-white/10 text-gray-300">
+
+              <th className="py-6">
+                #
+              </th>
+
+              <th>
+                User
+              </th>
+
+              <th>
+                Role
+              </th>
+
+              <th>
+                Lessons
+              </th>
+
+              <th>
+                Actions
+              </th>
+
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            {
+              users.map((user, index) => (
+
+                <tr
+                  key={user._id}
+                  className="
+                    border-b
+                    border-white/5
+                    hover:bg-white/[0.03]
+                    transition-all
+                    duration-300
+                  "
+                >
+
+                  {/* serial */}
+                  <td className="font-semibold text-gray-400">
+
+                    {index + 1}
+
+                  </td>
+
+                  {/* user */}
+                  <td className="py-5">
+
+                    <div className="flex items-center gap-5">
+
+                      {/* image */}
+                      <div className="relative">
+
+                        <div className="absolute inset-0 rounded-full bg-primary blur-lg opacity-20"></div>
+
+                        <img
+                          src={
+                            user.photoURL
+                            ||
+                            "https://i.ibb.co/4pDNDk1/avatar.png"
+                          }
+                          className="
+                            relative
+                            w-16
+                            h-16
+                            rounded-full
+                            object-cover
+                            border
+                            border-white/10
+                          "
+                        />
+
+                      </div>
+
+                      {/* content */}
+                      <div>
+
+                        <h2 className="font-bold text-lg text-white">
+                          {user.name}
+                        </h2>
+
+                        <p className="text-sm text-gray-400 mt-1">
+                          {user.email}
+                        </p>
+
+                      </div>
+
+                    </div>
+
+                  </td>
+
+                  {/* role */}
+                  <td>
+
+                    {
+                      user.role === "admin"
+                      ?
+                      (
+                        <span
+                          className="
+                            inline-flex
+                            items-center
+                            gap-2
+                            px-4
+                            py-2
+                            rounded-full
+                            bg-amber-500/10
+                            text-amber-200
+                            border
+                            border-amber-500/20
+                            text-xs
+                            font-semibold
+                          "
+                        >
+
+                          <Crown size={14} />
+
+                          Admin
+
+                        </span>
+                      )
+                      :
+                      (
+                        <span
+                          className="
+                            inline-flex
+                            items-center
+                            gap-2
+                            px-4
+                            py-2
+                            rounded-full
+                            bg-indigo-500/10
+                            text-indigo-200
+                            border
+                            border-indigo-500/20
+                            text-xs
+                            font-semibold
+                          "
+                        >
+
+                          <Users size={14} />
+
+                          User
+
+                        </span>
+                      )
+                    }
+
+                  </td>
+
+                  {/* lessons */}
+                  <td>
+
+                    <div
+                      className="
+                        inline-flex
+                        items-center
+                        gap-2
+                        px-4
+                        py-2
+                        rounded-full
+                        bg-emerald-500/10
+                        text-emerald-200
+                        border
+                        border-emerald-500/20
+                        text-sm
+                        font-semibold
+                      "
+                    >
+
+                      {user.totalLessons}
+
+                    </div>
+
+                  </td>
+
+                  {/* actions */}
+                  <td>
+
+                    <div className="flex items-center gap-3">
+
+                      {/* make admin */}
+                      {
+                        user.role !== "admin" &&
+                        (
+                          <button
+                            onClick={() =>
+                              handleMakeAdmin(
+                                user._id
+                              )
+                            }
+                            className="
+                              px-5
+                              py-3
+                              rounded-2xl
+                              bg-indigo-500/10
+                              text-indigo-200
+                              border
+                              border-indigo-500/20
+                              flex
+                              items-center
+                              gap-2
+                              font-semibold
+                              hover:bg-indigo-500
+                              hover:text-white
+                              transition-all
+                              duration-300
+                            "
+                          >
+
+                            <Shield size={18} />
+
+                            Make Admin
+
+                          </button>
+                        )
+                      }
+
+                      {/* delete */}
+                      <button
+                        onClick={() =>
+                          handleDelete(
+                            user._id
+                          )
+                        }
+                        className="
+                          w-12
+                          h-12
+                          rounded-2xl
+                          bg-rose-500/10
+                          text-rose-300
+                          border
+                          border-rose-500/20
+                          flex
+                          items-center
+                          justify-center
+                          hover:bg-rose-500
+                          hover:text-white
+                          transition-all
+                          duration-300
+                        "
+                      >
+
+                        <Trash2 size={18} />
+
+                      </button>
+
+                    </div>
+
+                  </td>
+
+                </tr>
+              ))
+            }
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+  );
 };
+
 
 
 export default ManageUsers;

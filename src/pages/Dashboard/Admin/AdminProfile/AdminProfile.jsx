@@ -1,10 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../../hooks/useAuth";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
-import useUser from "../../../../hooks/useUser";
+// import useUser from "../../../../hooks/useUser";
 // import { useState } from "react";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
+import { BookOpen, Crown, Flag, Sparkles, Users } from "lucide-react";
+import { Activity } from "react";
 
 
 const AdminProfile = () => {
@@ -162,280 +164,489 @@ const handleUpdatePhoto = async() => {
    }
 });
 
-   return (
+    return (
 
-      <div className="p-6">
+    <div className="px-4 md:px-8 py-10">
 
-         {/* profile card */}
-         <div className="bg-base-100 shadow-xl rounded-2xl p-8">
+      {/* profile card */}
+      <div
+        className="
+          relative
+          overflow-hidden
+          bg-gradient-to-br
+          from-[#111827]
+          to-[#0F172A]
+          border
+          border-white/10
+          rounded-[32px]
+          shadow-2xl
+          p-8 md:p-10
+        "
+      >
 
-            <div className="flex flex-col md:flex-row gap-8 items-center">
+        {/* glow */}
+        <div className="absolute top-0 right-0 w-72 h-72 bg-purple-500/10 blur-3xl rounded-full"></div>
 
-               {/* image */}
-               <div className="relative">
+        <div className="relative z-10 flex flex-col xl:flex-row gap-10 xl:items-center">
 
-                  <img
-                     src={
-                        user?.photoURL
-                        ||
-                        "https://i.ibb.co/4pDNDk1/avatar.png"
-                     }
-                     alt=""
-                     className="w-40 h-40 rounded-full object-cover border-4 border-error"
-                  />
+          {/* image */}
+          <div className="relative w-fit mx-auto xl:mx-0">
 
-                  {/* admin badge */}
-                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2">
+            <div className="absolute inset-0 rounded-full bg-primary blur-2xl opacity-30"></div>
 
-                     <div className="badge badge-error p-4 text-white font-semibold">
+            <img
+              src={
+                user?.photoURL
+                ||
+                "https://i.ibb.co/4pDNDk1/avatar.png"
+              }
+              className="
+                relative
+                w-44
+                h-44
+                rounded-full
+                object-cover
+                border-4
+                border-primary/30
+                shadow-2xl
+              "
+            />
 
-                        Admin 👑
+            {/* badge */}
+            <div className="absolute -bottom-3 left-1/2 -translate-x-1/2">
 
-                     </div>
+              <div
+                className="
+                  inline-flex
+                  items-center
+                  gap-2
+                  px-5
+                  py-3
+                  rounded-2xl
+                  bg-amber-500/10
+                  text-amber-200
+                  border
+                  border-amber-500/20
+                  font-semibold
+                  backdrop-blur-xl
+                "
+              >
 
-                  </div>
+                <Crown size={18} />
 
-               </div>
+                Admin
 
-               {/* info */}
-               <div className="space-y-4 text-center md:text-left">
-
-                  <h1 className="text-4xl font-bold">
-
-                     {user?.displayName}
-
-                  </h1>
-
-                  <p className="text-gray-500 text-lg">
-
-                     {user?.email}
-
-                  </p>
-
-                  <p className="text-gray-500 leading-7 max-w-2xl">
-
-                     Platform administrator responsible for
-                     monitoring lessons, managing users,
-                     reviewing reports, and maintaining
-                     overall community quality.
-
-                  </p>
-
-                  {/* update buttons */}
-                  <div className="flex flex-wrap gap-4 pt-2 justify-center md:justify-start">
-
-                   <button
-   onClick={handleUpdateName}
-   className="btn btn-primary rounded-full"
->
-
-   Update Name
-
-</button>
-
-                     <button
-   onClick={handleUpdatePhoto}
-   className="btn btn-outline rounded-full"
->
-
-   Update Photo
-
-</button>
-
-                  </div>
-
-               </div>
+              </div>
 
             </div>
 
-         </div>
+          </div>
 
-         {/* activity summary */}
-         <div className="mt-12">
+          {/* info */}
+          <div className="flex-1 text-center xl:text-left">
 
-            <h2 className="text-3xl font-bold mb-6">
+            <h1 className="text-4xl md:text-5xl font-black text-white">
+              {user?.displayName}
+            </h1>
 
-               Activity Summary 📊
+            <p className="text-gray-400 text-lg mt-4">
+              {user?.email}
+            </p>
 
+            <p className="text-gray-400 leading-8 mt-6 max-w-3xl">
+              Platform administrator responsible for monitoring lessons,
+              managing users, reviewing reports, and maintaining overall
+              community quality.
+            </p>
+
+            {/* buttons */}
+            <div className="flex flex-wrap gap-4 mt-8 justify-center xl:justify-start">
+
+              {/* update name */}
+              <button
+                onClick={handleUpdateName}
+                className="
+                  px-6
+                  py-4
+                  rounded-2xl
+                  bg-gradient-to-r
+                  from-[#6366F1]
+                  to-[#A855F7]
+                  text-white
+                  font-semibold
+                  hover:shadow-xl
+                  hover:shadow-purple-500/20
+                  transition-all
+                  duration-300
+                "
+              >
+
+                Update Name
+
+              </button>
+
+              {/* update photo */}
+              <button
+                onClick={handleUpdatePhoto}
+                className="
+                  px-6
+                  py-4
+                  rounded-2xl
+                  bg-white/[0.03]
+                  border
+                  border-white/10
+                  text-[#EEF2FF]
+                  font-semibold
+                  hover:border-primary/30
+                  hover:bg-primary/5
+                  transition-all
+                  duration-300
+                "
+              >
+
+                Update Photo
+
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      {/* activity summary */}
+      <div className="mt-16">
+
+        <div className="flex items-center gap-4 mb-10">
+
+          <div
+            className="
+              w-14
+              h-14
+              rounded-2xl
+              bg-primary/10
+              border
+              border-primary/20
+              flex
+              items-center
+              justify-center
+            "
+          >
+
+            <Sparkles className="text-primary" />
+
+          </div>
+
+          <div>
+
+            <h2 className="text-3xl md:text-4xl font-black text-white">
+              Activity Summary 📊
             </h2>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <p className="text-gray-400 mt-2">
+              Platform analytics overview
+            </p>
 
-               {/* users */}
-               <div className="bg-base-100 shadow-xl rounded-2xl p-6 text-center">
+          </div>
 
-                  <h2 className="text-5xl font-black text-primary">
+        </div>
 
-                     {stats.totalUsers || 0}
+        <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
 
-                  </h2>
+          {/* users */}
+          <div
+            className="
+              bg-gradient-to-br
+              from-[#111827]
+              to-[#0F172A]
+              border
+              border-white/10
+              rounded-[30px]
+              p-8
+              shadow-2xl
+            "
+          >
 
-                  <p className="mt-3 text-gray-500">
+            <div className="flex justify-between items-center">
 
-                     Total Users
+              <div>
 
-                  </p>
+                <p className="text-gray-400">
+                  Total Users
+                </p>
 
-               </div>
+                <h2 className="text-5xl font-black text-indigo-300 mt-5">
+                  {stats.totalUsers || 0}
+                </h2>
 
-               {/* lessons */}
-               <div className="bg-base-100 shadow-xl rounded-2xl p-6 text-center">
+              </div>
 
-                  <h2 className="text-5xl font-black text-success">
-
-                     {stats.totalLessons || 0}
-
-                  </h2>
-
-                  <p className="mt-3 text-gray-500">
-
-                     Public Lessons
-
-                  </p>
-
-               </div>
-
-               {/* reports */}
-               <div className="bg-base-100 shadow-xl rounded-2xl p-6 text-center">
-
-                  <h2 className="text-5xl font-black text-error">
-
-                     {stats.totalReports || 0}
-
-                  </h2>
-
-                  <p className="mt-3 text-gray-500">
-
-                     Reports Reviewed
-
-                  </p>
-
-               </div>
-
-               {/* today lessons */}
-               <div className="bg-base-100 shadow-xl rounded-2xl p-6 text-center">
-
-                  <h2 className="text-5xl font-black text-warning">
-
-                     {stats.todaysLessons || 0}
-
-                  </h2>
-
-                  <p className="mt-3 text-gray-500">
-
-                     Today's Lessons
-
-                  </p>
-
-               </div>
+              <Users
+                size={45}
+                className="text-indigo-300"
+              />
 
             </div>
 
-         </div>
+          </div>
 
-        
+          {/* lessons */}
+          <div
+            className="
+              bg-gradient-to-br
+              from-[#111827]
+              to-[#0F172A]
+              border
+              border-white/10
+              rounded-[30px]
+              p-8
+              shadow-2xl
+            "
+          >
 
-         {/* activity summary */}
-<div className="mt-14">
+            <div className="flex justify-between items-center">
 
-   <h2 className="text-3xl font-black mb-8">
+              <div>
 
-       Quick Admin Actions ⚡
+                <p className="text-gray-400">
+                  Public Lessons
+                </p>
 
-   </h2>
+                <h2 className="text-5xl font-black text-emerald-300 mt-5">
+                  {stats.totalLessons || 0}
+                </h2>
 
-   <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+              </div>
 
-      {/* total */}
-      <div className="bg-base-100 shadow-xl rounded-2xl p-6 text-center">
+              <BookOpen
+                size={45}
+                className="text-emerald-300"
+              />
 
-         <h2 className="text-5xl font-black text-primary">
+            </div>
 
-            {activity.totalActions || 0}
+          </div>
 
-         </h2>
+          {/* reports */}
+          <div
+            className="
+              bg-gradient-to-br
+              from-[#111827]
+              to-[#0F172A]
+              border
+              border-white/10
+              rounded-[30px]
+              p-8
+              shadow-2xl
+            "
+          >
 
-         <p className="mt-3 text-gray-500">
+            <div className="flex justify-between items-center">
 
-            Total Actions
+              <div>
 
-         </p>
+                <p className="text-gray-400">
+                  Reports Reviewed
+                </p>
+
+                <h2 className="text-5xl font-black text-rose-300 mt-5">
+                  {stats.totalReports || 0}
+                </h2>
+
+              </div>
+
+              <Flag
+                size={45}
+                className="text-rose-300"
+              />
+
+            </div>
+
+          </div>
+
+          {/* today */}
+          <div
+            className="
+              bg-gradient-to-br
+              from-[#111827]
+              to-[#0F172A]
+              border
+              border-white/10
+              rounded-[30px]
+              p-8
+              shadow-2xl
+            "
+          >
+
+            <div className="flex justify-between items-center">
+
+              <div>
+
+                <p className="text-gray-400">
+                  Today's Lessons
+                </p>
+
+                <h2 className="text-5xl font-black text-amber-300 mt-5">
+                  {stats.todaysLessons || 0}
+                </h2>
+
+              </div>
+
+              <Activity
+                size={45}
+                className="text-amber-300"
+              />
+
+            </div>
+
+          </div>
+
+        </div>
 
       </div>
 
-      {/* deleted */}
-      <div className="bg-base-100 shadow-xl rounded-2xl p-6 text-center">
+      {/* quick actions */}
+      <div className="mt-16">
 
-         <h2 className="text-5xl font-black text-error">
+        <h2 className="text-3xl md:text-4xl font-black text-white mb-10">
+          Quick Admin Actions ⚡
+        </h2>
 
-            {activity.deletedLessons || 0}
+        <div className="grid md:grid-cols-2 xl:grid-cols-5 gap-8">
 
-         </h2>
+          {/* total */}
+          <div
+            className="
+              bg-gradient-to-br
+              from-[#111827]
+              to-[#0F172A]
+              border
+              border-white/10
+              rounded-[30px]
+              p-8
+              text-center
+              shadow-2xl
+            "
+          >
 
-         <p className="mt-3 text-gray-500">
+            <h2 className="text-5xl font-black text-primary">
+              {activity.totalActions || 0}
+            </h2>
 
-            Deleted Lessons
+            <p className="text-gray-400 mt-4">
+              Total Actions
+            </p>
 
-         </p>
+          </div>
+
+          {/* deleted */}
+          <div
+            className="
+              bg-gradient-to-br
+              from-[#111827]
+              to-[#0F172A]
+              border
+              border-white/10
+              rounded-[30px]
+              p-8
+              text-center
+              shadow-2xl
+            "
+          >
+
+            <h2 className="text-5xl font-black text-rose-300">
+              {activity.deletedLessons || 0}
+            </h2>
+
+            <p className="text-gray-400 mt-4">
+              Deleted Lessons
+            </p>
+
+          </div>
+
+          {/* featured */}
+          <div
+            className="
+              bg-gradient-to-br
+              from-[#111827]
+              to-[#0F172A]
+              border
+              border-white/10
+              rounded-[30px]
+              p-8
+              text-center
+              shadow-2xl
+            "
+          >
+
+            <h2 className="text-5xl font-black text-purple-300">
+              {activity.featuredLessons || 0}
+            </h2>
+
+            <p className="text-gray-400 mt-4">
+              Featured Lessons
+            </p>
+
+          </div>
+
+          {/* reviewed */}
+          <div
+            className="
+              bg-gradient-to-br
+              from-[#111827]
+              to-[#0F172A]
+              border
+              border-white/10
+              rounded-[30px]
+              p-8
+              text-center
+              shadow-2xl
+            "
+          >
+
+            <h2 className="text-5xl font-black text-emerald-300">
+              {activity.reviewedLessons || 0}
+            </h2>
+
+            <p className="text-gray-400 mt-4">
+              Reviewed Lessons
+            </p>
+
+          </div>
+
+          {/* ignored */}
+          <div
+            className="
+              bg-gradient-to-br
+              from-[#111827]
+              to-[#0F172A]
+              border
+              border-white/10
+              rounded-[30px]
+              p-8
+              text-center
+              shadow-2xl
+            "
+          >
+
+            <h2 className="text-5xl font-black text-cyan-300">
+              {activity.ignoredReports || 0}
+            </h2>
+
+            <p className="text-gray-400 mt-4">
+              Ignored Reports
+            </p>
+
+          </div>
+
+        </div>
 
       </div>
 
-      {/* featured */}
-      <div className="bg-base-100 shadow-xl rounded-2xl p-6 text-center">
-
-         <h2 className="text-5xl font-black text-warning">
-
-            {activity.featuredLessons || 0}
-
-         </h2>
-
-         <p className="mt-3 text-gray-500">
-
-            Featured Lessons
-
-         </p>
-
-      </div>
-
-      {/* reviewed */}
-      <div className="bg-base-100 shadow-xl rounded-2xl p-6 text-center">
-
-         <h2 className="text-5xl font-black text-success">
-
-            {activity.reviewedLessons || 0}
-
-         </h2>
-
-         <p className="mt-3 text-gray-500">
-
-            Reviewed Lessons
-
-         </p>
-
-      </div>
-
-      {/* ignored */}
-      <div className="bg-base-100 shadow-xl rounded-2xl p-6 text-center">
-
-         <h2 className="text-5xl font-black text-secondary">
-
-            {activity.ignoredReports || 0}
-
-         </h2>
-
-         <p className="mt-3 text-gray-500">
-
-            Ignored Reports
-
-         </p>
-
-      </div>
-
-   </div>
-
-</div>
-
-      </div>
-   );
+    </div>
+  );
 };
+
 export default AdminProfile;
