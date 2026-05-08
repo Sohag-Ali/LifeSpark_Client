@@ -4,52 +4,78 @@ import useAuth from "../../../hooks/useAuth";
 import { Link, useLocation, useNavigate } from "react-router";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import Swal from "sweetalert2";
-import loginImg from "../../../assets/loginImage.jpeg"
-
-
+import loginImg from "../../../assets/loginImage.jpeg";
 
 const Login = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const { loginUser } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
 
-const {register, handleSubmit, formState: {errors}} = useForm();
-const {loginUser} = useAuth();
-const location = useLocation();
-const navigate = useNavigate();
+  // Handle Login
+  const handleLogin = (data) => {
+    console.log(data);
+    loginUser(data.email, data.password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        Swal.fire({
+          title: "Login successful!",
+          icon: "success",
+          background: "rgba(255,255,255,0.08)",
+          backdrop: `rgba(0,0,0,0.4)`,
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+          customClass: {
+            popup:
+              "rounded-3xl border border-white/10 backdrop-blur-xl shadow-2xl",
+            title: "text-white",
+            htmlContainer: "text-gray-300",
+          },
+        });
+        navigate(location?.state || "/"); // Redirect to the page they were trying to access or the home page
+      })
+      .catch((error) => {
+        console.error(error);
+        Swal.fire({
+          title: "Login Failed!",
+          text: "Please check your email and password.",
+          icon: "error",
 
-const  handleLogin = (data) => {
+          background: "rgba(15, 23, 42, 0.75)",
+          color: "#ffffff",
 
-  console.log(data);
-  loginUser(data.email, data.password)
-  .then(result => {
-    const user = result.user;
-    console.log(user);
-    Swal.fire({
-    title: "Login successful!",
-    icon: "success",
-    draggable: true
+          backdrop: `
+    rgba(0,0,0,0.5)
+    blur(10px)
+  `,
+
+          showConfirmButton: true,
+          confirmButtonText: "Try Again",
+          confirmButtonColor: "#7C3AED",
+
+          customClass: {
+            popup:
+              "rounded-3xl border border-white/10 backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.45)]",
+            title: "!text-white",
+            htmlContainer: "!text-gray-300",
+            confirmButton: "rounded-xl px-6 py-3 font-semibold",
+          },
+        });
       });
-    // toast.success("Login successful!");
-    navigate(location?.state || "/"); // Redirect to the page they were trying to access or the home page
-  })
-  .catch(error => {
-    console.error(error);
-    Swal.fire({
-      title: "Login failed!",
-      icon: "error",
-      draggable: true
-    });
-    // toast.error("Login failed. Please check your credentials and try again.");
-  });
-}
+  };
 
-        return (
+  return (
     <div className="min-h-screen bg-gradient-to-br from-[#0F172A] via-[#312E81] to-[#7C3AED] flex items-center justify-center px-4 py-10">
-
       {/* Main Container */}
       <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 overflow-hidden rounded-3xl shadow-2xl bg-white/10 backdrop-blur-lg border border-white/20">
-
         {/* LEFT SIDE - LOGIN FORM */}
         <div className="bg-white/10 backdrop-blur-xl border-r border-white/10 p-8 md:p-14 flex flex-col justify-center">
-
           <div className="mb-8">
             <h2 className="text-4xl font-bold text-white/70">
               Sign In To Your Journey ✨
@@ -61,7 +87,6 @@ const  handleLogin = (data) => {
           </div>
 
           <form className="space-y-5" onSubmit={handleSubmit(handleLogin)}>
-
             {/* Email */}
             <div>
               <label className="block mb-2 font-medium text-gray-200">
@@ -76,9 +101,7 @@ const  handleLogin = (data) => {
               />
 
               {errors.email?.type === "required" && (
-                <p className="text-red-500 text-sm mt-1">
-                  Email is required
-                </p>
+                <p className="text-red-500 text-sm mt-1">Email is required</p>
               )}
             </div>
 
@@ -149,7 +172,6 @@ const  handleLogin = (data) => {
 
         {/* RIGHT SIDE - IMAGE SECTION */}
         <div className="hidden lg:flex relative items-center justify-center overflow-hidden">
-
           {/* Background Image */}
           <img
             src={loginImg}
@@ -162,19 +184,17 @@ const  handleLogin = (data) => {
 
           {/* Content */}
           <div className="relative z-10 text-white px-10 text-center">
-
             <h1 className="text-4xl xl:text-5xl font-bold leading-tight mb-6">
               Your Journey <br /> Your Lessons
             </h1>
 
             <p className="text-lg text-gray-200 leading-relaxed">
-              Preserve your memories, reflections and life experiences
-              in one meaningful digital space.
+              Preserve your memories, reflections and life experiences in one
+              meaningful digital space.
             </p>
 
             {/* Small Badge */}
             <div className="mt-8 flex items-center justify-center gap-4 flex-wrap">
-
               <div className="bg-white/10 backdrop-blur-md px-5 py-3 rounded-full border border-white/20">
                 📖 12K+ Lessons
               </div>
@@ -182,7 +202,6 @@ const  handleLogin = (data) => {
               <div className="bg-white/10 backdrop-blur-md px-5 py-3 rounded-full border border-white/20">
                 ⭐ Premium Wisdom
               </div>
-
             </div>
           </div>
         </div>
