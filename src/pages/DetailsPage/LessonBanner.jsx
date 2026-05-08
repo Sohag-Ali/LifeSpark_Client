@@ -4,6 +4,7 @@ import InteractionButton from "./InteractionButton";
 import LessonMetadata from "./LessonMetadata";
 
 
+
 const LessonBanner = ({ lesson, refetch }) => {
    return (
     <div
@@ -193,6 +194,10 @@ const LessonBanner = ({ lesson, refetch }) => {
         <div>
          <AuthorSection lesson={lesson}></AuthorSection>
         </div>
+
+        {/* <div>
+          <SimilarLesson lesson={lesson}></SimilarLesson>
+        </div> */}
 
 
       </div>

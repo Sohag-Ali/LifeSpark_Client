@@ -63,7 +63,7 @@ export const router = createBrowserRouter([
         Component: PaymentCancel
       },
       {
-        path: "comment-section",
+        path: "/comment-section/:id",
         Component:CommentSection
       }
     ]

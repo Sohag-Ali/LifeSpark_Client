@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 import useAuth from "../../hooks/useAuth";
-import { Bookmark, Flag, Heart,  Share2 } from "lucide-react";
+import { Bookmark, Flag, Heart,  MessageCircle,  Share2 } from "lucide-react";
 import {
   FacebookIcon,
   FacebookShareButton,
@@ -8,6 +8,8 @@ import {
   WhatsappShareButton,
 } from "react-share";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { Link } from "react-router";
+
 ;
 
 const InteractionButton = ({ lesson, refetch }) => {
@@ -262,8 +264,8 @@ const InteractionButton = ({ lesson, refetch }) => {
 </button>
 
               {/* COMMENT BUTTON */}
-              {/* <Link
-                to="/comment-section"
+              <Link
+                to={`/comment-section/${lesson._id}`}
                 state={{ lesson }}
                 className="
     group
@@ -289,7 +291,7 @@ const InteractionButton = ({ lesson, refetch }) => {
                 />
 
                 <span className="font-semibold">Comments</span>
-              </Link> */}
+              </Link>
             </div>
 
             {/* SHARE */}

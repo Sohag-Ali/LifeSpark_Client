@@ -1,20 +1,28 @@
 import { Link, useParams } from "react-router";
-import AuthorSection from "./AuthorSection";
-import CommentSection from "./CommentSection";
-import EngagementSection from "./EngagementSection";
+
 import LessonBanner from "./LessonBanner";
-import LessonMetadata from "./LessonMetadata";
+
 import SimilarLesson from "./SimilarLesson";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import useUser from "../../hooks/useUser";
-import InteractionButton from "./InteractionButton";
+import { useEffect } from "react";
 
 
 const LessonDetails = () => {
 
     const { id } = useParams();
     const [userData] = useUser();
+    useEffect(() => {
+
+  window.scrollTo({
+
+    top: 0,
+
+    behavior: "smooth",
+  });
+
+}, [id]);
 
    const axiosSecure = useAxiosSecure();
 
@@ -82,7 +90,7 @@ const LessonDetails = () => {
             {/* <EngagementSection lesson={lesson} /> */}
             {/* <InteractionButton lesson={lesson} refetch={refetch} /> */}
 
-            <CommentSection lesson={lesson} />
+            {/* <CommentSection lesson={lesson} /> */}
 
             <SimilarLesson lesson={lesson} />
 

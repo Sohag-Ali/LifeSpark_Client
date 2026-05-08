@@ -3,12 +3,29 @@ import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import toast from "daisyui/components/toast";
 import { MessageCircle } from "lucide-react";
+import { useParams } from "react-router";
 
 
-const CommentSection = ({ lesson }) => {
+const CommentSection = () => {
      const { user } = useAuth();
 
    const axiosSecure = useAxiosSecure();
+   const { id } = useParams();
+
+   const { data: lesson = {} } = useQuery({
+
+  queryKey: ["lesson", id],
+
+  queryFn: async () => {
+
+    const res =
+    await axiosSecure.get(
+      `/lessons/${id}`
+    );
+
+    return res.data;
+  },
+});
 
    // fetch comments
    const {
