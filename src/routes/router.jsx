@@ -23,6 +23,7 @@ import ManageUsers from "../pages/Dashboard/Admin/ManageUsers/ManageUsers";
 import ManageLessons from "../pages/Dashboard/Admin/ManageLessons/ManageLessons";
 import ReportedLessons from "../pages/Dashboard/Admin/ReportedLessons/ReportedLessons";
 import AdminProfile from "../pages/Dashboard/Admin/AdminProfile/AdminProfile";
+import CommentSection from "../pages/DetailsPage/CommentSection";
 
 
 
@@ -60,6 +61,10 @@ export const router = createBrowserRouter([
       {
         path: "payment-cancel",
         Component: PaymentCancel
+      },
+      {
+        path: "comment-section",
+        Component:CommentSection
       }
     ]
   },

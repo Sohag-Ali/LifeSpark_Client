@@ -4,12 +4,13 @@ import { Carousel } from 'react-responsive-carousel';
 import bannerImg1 from '../../../assets/ban1.jpeg';
 import bannerImg2 from '../../../assets/ban2.jpeg';
 import bannerImg3 from '../../../assets/ban3.jpeg';
+import { NavLink } from "react-router";
 const HeroBanner = () => {
- const slides = [
+const slides = [
     {
       img: bannerImg1,
       title: "Learn From Real Life Experiences",
-      desc: "Explore powerful life lessons shared by real people and grow from their journeys.",
+      desc: "Explore powerful life lessons shared by real people and grow from their journeys.  ",
     },
     {
       img: bannerImg2,
@@ -52,9 +53,9 @@ const HeroBanner = () => {
               </p>
 
               {/* CTA Button */}
-              <button className="mt-6 btn btn-primary">
+              <NavLink to="/public-lessons" className="mt-6 inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-violet-500 to-indigo-600 text-white font-semibold shadow-lg shadow-indigo-500/20 hover:from-violet-600 hover:to-indigo-700 hover:shadow-2xl hover:shadow-violet-500/30 hover:-translate-y-1 transition-all duration-300">
                 Explore Lessons
-              </button>
+              </NavLink>
             </div>
           </div>
         ))}

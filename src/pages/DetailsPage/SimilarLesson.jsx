@@ -1,240 +1,401 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { Link } from "react-router";
-
-
+import { Bookmark, Heart, Sparkles } from "lucide-react";
 
 const SimilarLesson = ({ lesson }) => {
-    const axiosSecure = useAxiosSecure();
+  const axiosSecure = useAxiosSecure();
 
-   const { data: lessons = [] } = useQuery({
+  const { data: lessons = [] } = useQuery({
+    queryKey: ["similar-lessons", lesson._id],
 
-      queryKey: [
-         'similar-lessons',
-         lesson._id
-      ],
+    enabled: !!lesson._id,
 
-      enabled: !!lesson._id,
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/similar-lessons/${lesson._id}`);
 
-      queryFn: async() => {
+      return res.data;
+    },
+  });
 
-         const res =
-         await axiosSecure.get(
+  return (
+    <section className="mt-20">
+      {/* HEADING */}
+      <div className="text-center mb-14">
+        <div
+          className="
+            inline-flex
+            items-center
+            gap-3
+            px-5
+            py-3
+            rounded-full
+            bg-primary/10
+            border
+            border-primary/20
+            text-primary
+            font-semibold
+            mb-6
+          "
+        >
+          <Sparkles size={18} />
+          Similar & Recommended For You
+        </div>
 
-            `/similar-lessons/${lesson._id}`
-         );
+        {/* <h2
+          className="
+            text-4xl
+            md:text-5xl
+            font-black
+            text-white
+          "
+        >
+          Similar & Recommended Lessons
+        </h2> */}
 
-         return res.data;
-      }
-   });
+        <p
+          className="
+            text-gray-400
+            mt-5
+            text-lg
+            max-w-2xl
+            mx-auto
+            leading-8
+          "
+        >
+          Explore more inspiring lessons based on similar categories and
+          emotional experiences.
+        </p>
+      </div>
 
-   return (
+      {/* NO LESSON */}
+      {lessons.length === 0 ? (
+        <div
+          className="
+              max-w-3xl
+              mx-auto
+              text-center
+              bg-gradient-to-br
+              from-[#111827]
+              to-[#0F172A]
+              border
+              border-white/10
+              rounded-[32px]
+              shadow-2xl
+              p-14
+            "
+        >
+          <div className="text-7xl mb-8">📚</div>
 
-      <section className="mt-20">
+          <h2
+            className="
+                text-3xl
+                md:text-4xl
+                font-black
+                text-white
+              "
+          >
+            No Similar Lessons Found
+          </h2>
 
-         {/* section heading */}
-         <div className="text-center mb-12">
+          <p
+            className="
+                text-gray-400
+                mt-6
+                text-lg
+                leading-9
+                max-w-xl
+                mx-auto
+              "
+          >
+            There are currently no related lessons available based on this
+            category or emotional tone.
+          </p>
+        </div>
+      ) : (
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
+          {lessons.map((item) => (
+            <div
+              key={item._id}
+              className="
+                    group
+    relative
+    overflow-hidden
+    bg-gradient-to-br
+    from-[#111827]
+    to-[#0F172A]
+    border
+    border-white/10
+    rounded-[32px]
+    shadow-2xl
+    hover:-translate-y-2
+    hover:border-primary/30
+    transition-all
+    duration-300
 
-            <h2 className="text-4xl md:text-5xl font-black">
+    flex
+    flex-col
+    h-full
+                  "
+            >
+              {/* IMAGE */}
+              <div className="relative overflow-hidden">
+                <img
+                  src={item.image}
+                  alt=""
+                  className="
+                        w-full
+                        h-72
+                        object-cover
+                        group-hover:scale-110
+                        transition-all
+                        duration-700
+                      "
+                />
 
-               Similar & Recommended Lessons
+                {/* overlay */}
+                <div
+                  className="
+                        absolute
+                        inset-0
+                        bg-gradient-to-t
+                        from-[#0F172A]
+                        via-black/30
+                        to-transparent
+                      "
+                ></div>
 
-            </h2>
+                {/* badges */}
+                <div
+                  className="
+                        absolute
+                        top-5
+                        left-5
+                        flex
+                        flex-wrap
+                        gap-2
+                      "
+                >
+                  {/* category */}
+                  <span
+                    className="
+                          px-4
+                          py-2
+                          rounded-full
+                          bg-violet-500/10
+                          backdrop-blur-xl
+                          border
+                          border-violet-500/20
+                          text-violet-200
+                          text-xs
+                          font-semibold
+                        "
+                  >
+                    {item.category}
+                  </span>
 
-            <p className="text-gray-500 mt-4 text-lg">
+                  {/* tone */}
+                  <span
+                    className="
+                          px-4
+                          py-2
+                          rounded-full
+                          bg-pink-500/10
+                          backdrop-blur-xl
+                          border
+                          border-pink-500/20
+                          text-pink-200
+                          text-xs
+                          font-semibold
+                        "
+                  >
+                    {item.emotionalTone}
+                  </span>
+                </div>
 
-               Explore more life lessons related to this topic
+                {/* access */}
+              </div>
 
-            </p>
+              {/* CONTENT */}
+              <div className="p-7">
+                {/* title */}
+                <h2
+                  className="
+                        text-2xl
+    font-black
+    text-white
+    line-clamp-2
+    leading-snug
+    min-h-[72px]
+                      "
+                >
+                  {item.title}
+                </h2>
 
-         </div>
+                {/* description */}
+                <p
+                  className="
+                        mt-5
+    text-gray-400
+    leading-8
+    line-clamp-3
+    min-h-[96px]
+                      "
+                >
+                  {item.description}
+                </p>
 
-         {/* no lessons */}
-         {
-            lessons.length === 0
-            ?
-            (
-               <div className="bg-base-100 rounded-[30px] shadow-2xl p-14 text-center max-w-3xl mx-auto">
+                {/* AUTHOR */}
+                <div
+                  className="
+                        flex
+                        items-center
+                        gap-4
+                        mt-8
+                      "
+                >
+                  <img
+                    src={
+                      item.creatorPhoto || "https://i.ibb.co/4pDNDk1/avatar.png"
+                    }
+                    alt=""
+                    className="
+                          w-14
+                          h-14
+                          rounded-full
+                          object-cover
+                          border-2
+                          border-primary/30
+                        "
+                  />
 
-                  <div className="text-7xl mb-6">
+                  <div>
+                    <h3
+                      className="
+                            font-bold
+                            text-white
+                          "
+                    >
+                      {item.creatorName}
+                    </h3>
 
-                     📚
+                    <p
+                      className="
+                            text-sm
+                            text-gray-500
+                            mt-1
+                          "
+                    >
+                      Life Lesson Creator
+                    </p>
+                  </div>
+                </div>
 
+                {/* STATS */}
+                <div
+                  className="
+    flex
+    items-center
+    justify-between
+    mt-8
+    pt-6
+    border-t
+    border-white/10
+  "
+                >
+                  {/* LEFT */}
+                  <div className="flex items-center gap-5">
+                    {/* likes */}
+                    <div
+                      className="
+        flex
+        items-center
+        gap-2
+        text-rose-300
+        text-sm
+        font-medium
+      "
+                    >
+                      <Heart size={16} />
+
+                      {item.likesCount || 0}
+                    </div>
+
+                    {/* saves */}
+                    <div
+                      className="
+        flex
+        items-center
+        gap-2
+        text-amber-300
+        text-sm
+        font-medium
+      "
+                    >
+                      <Bookmark size={16} />
+
+                      {item.favoritesCount || 0}
+                    </div>
                   </div>
 
-                  <h2 className="text-3xl font-black">
+                  {/* RIGHT */}
+                  <span
+                    className={`
+      px-4
+      py-2
+      rounded-full
+      text-xs
+      font-semibold
+      border
 
-                     No Similar Lessons Found
+      ${
+        item.accessLevel === "Premium"
+          ? "bg-amber-500/10 text-amber-200 border-amber-500/20"
+          : "bg-emerald-500/10 text-emerald-200 border-emerald-500/20"
+      }
+    `}
+                  >
+                    {item.accessLevel === "Premium" ? "Premium ⭐" : "Free"}
+                  </span>
+                </div>
 
-                  </h2>
-
-                  <p className="text-gray-500 mt-5 text-lg leading-8">
-
-                     There are currently no related lessons
-                     based on this category or emotional tone.
-
-                  </p>
-
-               </div>
-            )
-            :
-            (
-               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-
-                  {
-                     lessons.map(item => (
-
-                        <div
-                           key={item._id}
-                           className="group bg-base-100 rounded-[30px] overflow-hidden shadow-xl hover:shadow-2xl duration-300 border border-base-300"
-                        >
-
-                           {/* image */}
-                           <div className="overflow-hidden relative">
-
-                              <img
-                                 src={item.image}
-                                 alt=""
-                                 className="w-full h-64 object-cover group-hover:scale-110 duration-500"
-                              />
-
-                              {/* overlay */}
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-
-                              {/* badges */}
-                              <div className="absolute top-5 left-5 flex flex-wrap gap-2">
-
-                                 <div className="badge badge-primary badge-lg text-white">
-
-                                    {item.category}
-
-                                 </div>
-
-                                 <div className="badge badge-secondary badge-lg text-white">
-
-                                    {item.emotionalTone}
-
-                                 </div>
-
-                              </div>
-
-                           </div>
-
-                           {/* content */}
-                           <div className="p-7">
-
-                              {/* title */}
-                              <h2 className="text-2xl font-black line-clamp-2 leading-snug">
-
-                                 {item.title}
-
-                              </h2>
-
-                              {/* description */}
-                              <p className="mt-4 text-gray-500 leading-8 line-clamp-3">
-
-                                 {item.description}
-
-                              </p>
-
-                              {/* author */}
-                              <div className="flex items-center gap-4 mt-8">
-
-                                 <img
-                                    src={
-                                       item.creatorPhoto
-                                       ||
-                                       "https://i.ibb.co/4pDNDk1/avatar.png"
-                                    }
-                                    alt=""
-                                    className="w-14 h-14 rounded-full object-cover border-2 border-primary"
-                                 />
-
-                                 <div>
-
-                                    <h3 className="font-bold text-lg">
-
-                                       {item.creatorName}
-
-                                    </h3>
-
-                                    <p className="text-sm text-gray-500">
-
-                                       Life Lesson Creator
-
-                                    </p>
-
-                                 </div>
-
-                              </div>
-
-                              {/* stats */}
-                              <div className="flex items-center justify-between mt-8">
-
-                                 <div className="flex items-center gap-4 text-sm text-gray-500">
-
-                                    <span>
-                                       ❤️ {item.likesCount || 0}
-                                    </span>
-
-                                    <span>
-                                       🔖 {item.favoritesCount || 0}
-                                    </span>
-
-                                 </div>
-
-                                 <div>
-
-                                    <span
-                                       className={`badge badge-lg ${
-                                          item.accessLevel === "Premium"
-                                          ?
-                                          "badge-warning"
-                                          :
-                                          "badge-success"
-                                       }`}
-                                    >
-
-                                       {
-                                          item.accessLevel === "Premium"
-                                          ?
-                                          "Premium ⭐"
-                                          :
-                                          "Free"
-                                       }
-
-                                    </span>
-
-                                 </div>
-
-                              </div>
-
-                              {/* button */}
-                              <div className="mt-8">
-
-                                 <Link
-                                    to={`/lesson-details/${item._id}`}
-                                    className="btn btn-primary w-full rounded-full btn-lg"
-                                 >
-                                    See Details
-                                 </Link>
-
-                              </div>
-
-                           </div>
-
-                        </div>
-                     ))
-                  }
-
-               </div>
-            )
-         }
-
-      </section>
-   );
+                {/* BUTTON */}
+                <div className="mt-8">
+                  <Link
+                    to={`/lesson-details/${item._id}`}
+                    className="
+                          w-full
+                          inline-flex
+                          items-center
+                          justify-center
+                          px-6
+                          py-4
+                          rounded-2xl
+                          bg-gradient-to-r
+                          from-violet-500
+                          to-indigo-600
+                          text-white
+                          font-semibold
+                          shadow-lg
+                          shadow-indigo-500/20
+                          hover:from-violet-600
+                          hover:to-indigo-700
+                          hover:shadow-2xl
+                          hover:shadow-violet-500/30
+                          transition-all
+                          duration-300
+                        "
+                  >
+                    See Details
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </section>
+  );
 };
-
-
 
 export default SimilarLesson;

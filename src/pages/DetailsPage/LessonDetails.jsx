@@ -73,14 +73,14 @@ const LessonDetails = () => {
 
             {/* LESSON CONTENT */}
 
-            <LessonBanner lesson={lesson} />
+            <LessonBanner lesson={lesson} refetch={refetch} />
 
-            <LessonMetadata lesson={lesson} />
+            {/* <LessonMetadata lesson={lesson} /> */}
 
-            <AuthorSection lesson={lesson} />
+            {/* <AuthorSection lesson={lesson} /> */}
 
-            <EngagementSection lesson={lesson} />
-            <InteractionButton lesson={lesson} refetch={refetch} />
+            {/* <EngagementSection lesson={lesson} /> */}
+            {/* <InteractionButton lesson={lesson} refetch={refetch} /> */}
 
             <CommentSection lesson={lesson} />
 

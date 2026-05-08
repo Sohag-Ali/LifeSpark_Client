@@ -7,96 +7,155 @@ const LessonMetadata = ({ lesson }) => {
    const readingTime =
    Math.ceil(words / 200);
 
-   return (
+  return (
 
-      <section className="mt-10">
+  <section className="">
 
-         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
 
-            {/* created date */}
-            <div className="bg-base-100 shadow-xl rounded-2xl p-6 border border-base-300">
+      {/* created date */}
+      <div
+        className="
+          p-5
+          md:p-6
+        "
+      >
 
-               <h3 className="text-gray-500 font-semibold">
+        <h3 className="text-gray-400 font-medium text-sm md:text-base">
 
-                  Created Date
+          Created Date
 
-               </h3>
+        </h3>
 
-               <p className="text-2xl font-bold mt-3">
+        <p
+          className="
+            text-xl
+            md:text-2xl
+            font-bold
+            text-white
+            mt-3
+            break-words
+          "
+        >
 
-                  {
-                     new Date(
-                        lesson.createdAt
-                     ).toLocaleDateString()
-                  }
+          {
+            new Date(
+              lesson.createdAt
+            ).toLocaleDateString()
+          }
 
-               </p>
+        </p>
 
-            </div>
+      </div>
 
-            {/* updated date */}
-            <div className="bg-base-100 shadow-xl rounded-2xl p-6 border border-base-300">
+      {/* updated date */}
+      <div
+        className="
+          
+          
+          p-5
+          md:p-6
+        "
+      >
 
-               <h3 className="text-gray-500 font-semibold">
+        <h3 className="text-gray-400 font-medium text-sm md:text-base">
 
-                  Last Updated
+          Last Updated
 
-               </h3>
+        </h3>
 
-               <p className="text-2xl font-bold mt-3">
+        <p
+          className="
+            text-xl
+            md:text-2xl
+            font-bold
+            text-white
+            mt-3
+            break-words
+          "
+        >
 
-                  {
-                     lesson.updatedAt
-                     ?
-                     new Date(
-                        lesson.updatedAt
-                     ).toLocaleDateString()
-                     :
-                     "Not Updated"
-                  }
+          {
+            lesson.updatedAt
+            ?
+            new Date(
+              lesson.updatedAt
+            ).toLocaleDateString()
+            :
+            "Not Updated"
+          }
 
-               </p>
+        </p>
 
-            </div>
+      </div>
 
-            {/* visibility */}
-            <div className="bg-base-100 shadow-xl rounded-2xl p-6 border border-base-300">
+      {/* visibility */}
+      <div
+        className="
+           p-5
+          md:p-6
+          
+        "
+      >
 
-               <h3 className="text-gray-500 font-semibold">
+        <h3 className="text-gray-400 font-medium text-sm md:text-base">
 
-                  Visibility
+          Visibility
 
-               </h3>
+        </h3>
 
-               <p className="text-2xl font-bold mt-3">
+        <p
+          className="
+            text-xl
+            md:text-2xl
+            font-bold
+            text-white
+            mt-3
+          "
+        >
 
-                  {lesson.privacy}
+          {lesson.privacy}
 
-               </p>
+        </p>
 
-            </div>
+      </div>
 
-            {/* reading time */}
-            <div className="bg-base-100 shadow-xl rounded-2xl p-6 border border-base-300">
+      {/* reading time */}
+      <div
+        className="
+          
+        
+          p-5
+          md:p-6
+        "
+      >
 
-               <h3 className="text-gray-500 font-semibold">
+        <h3 className="text-gray-400 font-medium text-sm md:text-base">
 
-                  Reading Time
+          Reading Time
 
-               </h3>
+        </h3>
 
-               <p className="text-2xl font-bold mt-3">
+        <p
+          className="
+            text-xl
+            md:text-2xl
+            font-bold
+            text-white
+            mt-3
+          "
+        >
 
-                  {readingTime} min
+          {readingTime} min
 
-               </p>
+        </p>
 
-            </div>
+      </div>
 
-         </div>
+    </div>
 
-      </section>
-   );
+  </section>
+);
 };
 
 
