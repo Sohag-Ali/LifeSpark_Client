@@ -1,4 +1,6 @@
 import { FiTarget, FiTrendingUp, FiUsers } from "react-icons/fi";
+import { BsGraphUpArrow } from "react-icons/bs";
+
 
 
 const WhyLearning = () => {
@@ -7,7 +9,7 @@ const WhyLearning = () => {
       id: 1,
       title: "Personal Growth",
       desc: "Expand your mindset and gain valuable insights from real-life experiences.",
-      icon: FiTarget,
+      icon:  BsGraphUpArrow,
     },
     {
       id: 2,
@@ -30,44 +32,97 @@ const WhyLearning = () => {
   ];
 
   return (
-    <section className="py-12 md:py-16 lg:py-20 bg-base-100">
-      <div className="max-w-7xl mx-auto px-4">
+    <section className="py-8 md:py-14 bg-[#0F172A] relative overflow-hidden">
+      
+      {/* background glow */}
+      <div className="absolute top-0 left-0 w-72 h-72 bg-purple-500/10 blur-3xl rounded-full"></div>
 
-        {/* Title */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900">
+      <div className="absolute bottom-0 right-0 w-72 h-72 bg-indigo-500/10 blur-3xl rounded-full"></div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* heading */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          
+          <span className="text-primary font-semibold tracking-widest uppercase">
+            Why Choose Us
+          </span>
+
+          <h2 className="mt-4 text-4xl md:text-5xl font-black text-white leading-tight">
             Why Learning From Life Matters
           </h2>
-          <p className="text-gray-500 mt-4 max-w-2xl mx-auto">
-            Real experiences teach lessons no textbook can. Discover how learning from life can transform your journey.
+
+          <p className="mt-6 text-lg text-gray-400 leading-relaxed">
+            Real experiences teach lessons no textbook can. Discover how learning from life can transform your journey and inspire meaningful growth.
           </p>
+
         </div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
+        {/* cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8">
+          
           {benefits.map((item) => {
             const Icon = item.icon;
 
             return (
               <div
                 key={item.id}
-                className="group bg-white border border-gray-200 rounded-xl p-6 text-center hover:shadow-xl transition duration-300"
+                className="
+                  group
+                  relative
+                  bg-white/5
+                  backdrop-blur-xl
+                  border border-white/10
+                  rounded-3xl
+                  p-8
+                  hover:-translate-y-2
+                  hover:border-primary/40
+                  hover:shadow-purple-500/20
+                  hover:shadow-2xl
+                  transition-all
+                  duration-300
+                "
               >
-                {/* Icon */}
-                <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center rounded-full bg-primary/10 group-hover:bg-primary transition">
-                  <Icon className="text-primary group-hover:text-white text-2xl" />
+                
+                {/* icon */}
+                <div
+                  className="
+                    w-20
+                    h-20
+                    rounded-2xl
+                    bg-gradient-to-br
+                    from-indigo-500
+                    to-purple-600
+                    flex
+                    items-center
+                    justify-center
+                    mx-auto
+                    shadow-lg
+                    shadow-purple-500/20
+                    group-hover:scale-110
+                    transition
+                    duration-300
+                  "
+                >
+                  <Icon className="text-white text-3xl" />
                 </div>
 
-                {/* Title */}
-                <h3 className="text-lg font-semibold text-gray-800">
-                  {item.title}
-                </h3>
+                {/* content */}
+                <div className="text-center mt-8">
+                  
+                  <h3 className="text-2xl font-bold text-white min-h-[64px]">
+                    {item.title}
+                  </h3>
 
-                {/* Description */}
-                <p className="text-gray-500 mt-3 text-sm leading-relaxed">
-                  {item.desc}
-                </p>
+                  <p className="text-gray-400 mt-4 leading-8 min-h-[96px]">
+                    {item.desc}
+                  </p>
+
+                </div>
+
+                {/* glow border */}
+                <div className="absolute inset-0 rounded-3xl border border-transparent group-hover:border-primary/20 pointer-events-none"></div>
+
               </div>
             );
           })}
