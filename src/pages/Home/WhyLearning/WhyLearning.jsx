@@ -48,7 +48,12 @@ const WhyLearning = () => {
             Why Choose Us
           </span>
 
-          <h2 className="mt-4 text-4xl md:text-5xl font-black text-white leading-tight">
+          <h2 className="mt-4 text-4xl md:text-5xl font-black  bg-gradient-to-r
+    from-fuchsia-500
+    via-purple-600
+    to-indigo-600
+    bg-clip-text
+    text-transparent leading-tight">
             Why Learning From Life Matters
           </h2>
 
@@ -90,9 +95,10 @@ const WhyLearning = () => {
                     w-20
                     h-20
                     rounded-2xl
-                    bg-gradient-to-br
-                    from-indigo-500
-                    to-purple-600
+                    bg-gradient-to-r
+    from-fuchsia-500
+    via-purple-600
+    to-indigo-600
                     flex
                     items-center
                     justify-center
@@ -110,7 +116,12 @@ const WhyLearning = () => {
                 {/* content */}
                 <div className="text-center mt-8">
                   
-                  <h3 className="text-2xl font-bold text-white min-h-[64px]">
+                  <h3 className="text-2xl font-bold bg-gradient-to-r
+  from-[#D8B4FE]
+  via-[#A78BFA]
+  to-[#818CF8]
+  bg-clip-text
+  text-transparent min-h-[64px]">
                     {item.title}
                   </h3>
 

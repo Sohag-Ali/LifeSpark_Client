@@ -3,8 +3,9 @@ import { Link } from "react-router";
 import { Lock } from "lucide-react";
 import useUser from "../../hooks/useUser";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-import { FiArrowRight } from "react-icons/fi";
+
 import { useState } from "react";
+import { FaArrowRight } from "react-icons/fa";
 
 const PublicLessons = () => {
   const axiosSecure = useAxiosSecure();
@@ -39,8 +40,8 @@ const PublicLessons = () => {
             Explore Lessons
           </span>
 
-          <h1 className="text-4xl md:text-5xl font-black text-white mt-4">
-            Public Life Lessons 🌎
+          <h1 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent mt-4">
+            Public Life Lessons 
           </h1>
 
           <p className="mt-6 text-lg text-gray-400 leading-relaxed">
@@ -55,30 +56,14 @@ const PublicLessons = () => {
               placeholder="Search lessons..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="
-      input
-      input-bordered
-      bg-[#111827]
-      border-white/10
-      text-white
-      w-full
-      md:w-72
-    "
+              className=" input input-bordered bg-[#111827] border-white/10 text-white w-full md:w-72"
             />
 
             {/* category */}
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className="
-      select
-      select-bordered
-      bg-[#111827]
-      border-white/10
-      text-white
-      w-full
-      md:w-60
-    "
+              className=" select select-bordered bg-[#111827] border-white/10 text-gray-300 w-full md:w-60"
             >
               <option value="">All Categories</option>
 
@@ -98,15 +83,7 @@ const PublicLessons = () => {
             <select
               value={emotionalTone}
               onChange={(e) => setEmotionalTone(e.target.value)}
-              className="
-      select
-      select-bordered
-      bg-[#111827]
-      border-white/10
-      text-white
-      w-full
-      md:w-60
-    "
+              className=" select select-bordered bg-[#111827] border-white/10 text-gray-300 w-full md:w-60"
             >
               <option value="">All Emotions</option>
 
@@ -120,7 +97,17 @@ const PublicLessons = () => {
               <option value="Happy">Happy</option>
             </select>
           </div>
+
+          
         </div>
+
+        <h2 className=" text-1xl md:text-3xl font-semibold  bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent mb-10">Public Lessons<span className=" text-primary ml-3">
+
+    ({lessons.length})
+
+  </span>
+
+</h2>
 
          {/* cards */}
         {
@@ -147,7 +134,7 @@ const PublicLessons = () => {
                 😔
               </div>
 
-              <h2 className="text-3xl md:text-4xl font-black text-white">
+              <h2 className="text-3xl md:text-4xl font-black bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent">
                 No Lessons Found
               </h2>
 
@@ -171,24 +158,7 @@ const PublicLessons = () => {
 
                   <div
                     key={lesson._id}
-                    className="
-                      relative
-                      group
-                      overflow-hidden
-                      rounded-[32px]
-                      border
-                      border-white/10
-                      bg-[#111827]
-                      shadow-xl
-                      hover:-translate-y-2
-                      hover:shadow-purple-500/20
-                      hover:shadow-2xl
-                      transition-all
-                      duration-500
-                      flex
-                      flex-col
-                      h-full
-                    "
+                    className=" relative group overflow-hidden rounded-[32px] border border-white/10 bg-[#111827] shadow-xl hover:-translate-y-2 hover:shadow-purple-500/20 hover:shadow-2xl transition-all duration-500 flex flex-col h-full"
                   >
 
                     {/* premium overlay */}
@@ -212,19 +182,7 @@ const PublicLessons = () => {
 
                         <Link
                           to="/pricing"
-                          className="
-                            mt-5
-                            px-6
-                            py-3
-                            rounded-full
-                            bg-gradient-to-r
-                            from-warning
-                            to-orange-500
-                            text-black
-                            font-semibold
-                            hover:scale-105
-                            transition
-                          "
+                          className=" mt-5 px-6 py-3 rounded-full bg-gradient-to-r from-warning to-orange-500 text-black font-semibold hover:scale-105 transition"
                         >
                           Upgrade Now ⭐
                         </Link>
@@ -238,26 +196,29 @@ const PublicLessons = () => {
                       <img
                         src={lesson.image}
                         alt={lesson.title}
-                        className="
-                          w-full
-                          h-full
-                          object-cover
-                          group-hover:scale-110
-                          transition
-                          duration-700
-                        "
+                        className=" w-full h-full object-cover group-hover:scale-110 transition duration-700"
                       />
 
                       {/* overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                      {/* lesson length */}
+                    <div className=" absolute top-4 right-4 px-4 py-2 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-white text-sm font-semibold shadow-lg">
 
+                {
+                     Math.ceil(
+                         lesson.description?.split(" ").length / 200
+                                 )
+                      }
+                                  {" "}min read
+
+                          </div>
                     </div>
 
                     {/* body */}
                     <div className="p-7 flex flex-col flex-grow">
 
                       {/* title */}
-                      <h2 className="text-2xl font-bold text-white line-clamp-2 min-h-[64px]">
+                      <h2 className="text-2xl font-bold bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent line-clamp-2 min-h-[64px]">
                         {lesson.title}
                       </h2>
 
@@ -285,19 +246,12 @@ const PublicLessons = () => {
                         <img
                           src={lesson.creatorPhoto}
                           alt={lesson.creatorName}
-                          className="
-                            w-12
-                            h-12
-                            rounded-full
-                            object-cover
-                            border
-                            border-primary/40
-                          "
+                          className=" w-12 h-12 rounded-full object-cover border border-primary/40"
                         />
 
                         <div>
 
-                          <h3 className="font-semibold text-white">
+                          <h3 className="font-semibold bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
                             {lesson.creatorName}
                           </h3>
 
@@ -338,24 +292,12 @@ const PublicLessons = () => {
 
                         <Link
                           to={`/lesson-details/${lesson._id}`}
-                          className="
-                            group/btn
-                            btn
-                            border-0
-                            bg-gradient-to-r
-                            from-indigo-500
-                            to-purple-600
-                            hover:from-purple-600
-                            hover:to-indigo-500
-                            text-white
-                            w-full
-                            rounded-full
-                          "
+                          className=" group/btn btn border-0 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-purple-600 hover:to-indigo-500 text-white w-full rounded-full"
                         >
 
                           See Details
 
-                          <FiArrowRight className="group-hover/btn:translate-x-1 transition duration-300" />
+                          <FaArrowRight className="group-hover/btn:translate-x-1 transition duration-300" />
 
                         </Link>
 
@@ -372,6 +314,7 @@ const PublicLessons = () => {
         }
 
       </div>
+      
     </div>
   );
 };

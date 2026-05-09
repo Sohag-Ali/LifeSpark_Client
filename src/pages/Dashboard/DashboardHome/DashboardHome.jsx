@@ -91,12 +91,12 @@ const DashboardHome = () => {
 
           <div>
 
-            <h1 className="text-4xl md:text-5xl font-black text-white">
+            <h1 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
               Dashboard Overview
             </h1>
 
             <p className="text-gray-400 text-lg mt-3">
-              Welcome back, {user?.displayName}
+              Welcome back, <span className="font-semibold bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent "> {user?.displayName}</span>
             </p>
 
           </div>
@@ -138,7 +138,7 @@ const DashboardHome = () => {
                 Total Lessons
               </p>
 
-              <h2 className="text-5xl font-black text-white mt-5">
+              <h2 className="text-5xl font-black text-green-400 mt-5">
                 {stats.totalLessons || 0}
               </h2>
 
@@ -199,7 +199,7 @@ const DashboardHome = () => {
                 Saved Lessons
               </p>
 
-              <h2 className="text-5xl font-black text-white mt-5">
+              <h2 className="text-5xl font-black text-amber-400 mt-5">
                 {stats.totalFavorites || 0}
               </h2>
 
@@ -210,9 +210,9 @@ const DashboardHome = () => {
                 w-20
                 h-20
                 rounded-3xl
-                bg-pink-500/10
+                bg-amber-500/10
                 border
-                border-pink-500/20
+                border-amber-500/20
                 flex
                 items-center
                 justify-center
@@ -220,7 +220,7 @@ const DashboardHome = () => {
             >
 
               <Bookmark
-                className="text-pink-300"
+                className="text-amber-300"
                 size={40}
               />
 
@@ -244,7 +244,7 @@ const DashboardHome = () => {
           "
         >
 
-          <h2 className="text-2xl font-black text-white mb-8">
+          <h2 className="text-2xl font-black bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent  mb-8">
             Quick Actions
           </h2>
 
@@ -264,7 +264,7 @@ const DashboardHome = () => {
                 to-[#A855F7]
                 px-5
                 py-4
-                text-white
+                text-gray-200
                 font-semibold
                 hover:shadow-xl
                 hover:shadow-purple-500/20
@@ -299,7 +299,7 @@ const DashboardHome = () => {
                 border-white/10
                 px-5
                 py-4
-                text-[#EEF2FF]
+                text-[#9aaadd]
                 font-semibold
                 hover:border-primary/30
                 hover:bg-primary/5
@@ -341,7 +341,7 @@ const DashboardHome = () => {
         "
       >
 
-        <h2 className="text-3xl font-black text-white mb-10">
+        <h2 className="text-3xl font-black bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent  mb-10">
           Recently Added Lessons
         </h2>
 
@@ -367,15 +367,30 @@ const DashboardHome = () => {
                 "
               >
 
-                <div>
-
-                  <h3 className="font-bold text-lg text-white">
+                <div className="flex items-center gap-5">
+                  <div>
+                    <img
+                            src={lesson.image}
+                            className="
+                              w-20
+                              h-20
+                              rounded-2xl
+                              object-cover
+                              border
+                              border-white/10
+                            "
+                          />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg text-gray-200">
                     {lesson.title}
                   </h3>
 
-                  <p className="text-gray-400 mt-2">
+                  <p className="text-cyan-400 mt-2">
                     {lesson.category}
                   </p>
+                  </div>
+                 
 
                 </div>
 
@@ -425,7 +440,7 @@ const DashboardHome = () => {
 
         <div className="mb-10">
 
-          <h2 className="text-3xl font-black text-white">
+          <h2 className="text-3xl font-black bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent ">
             Monthly Contributions
           </h2>
 

@@ -45,10 +45,20 @@ const slides = [
 
             {/* Overlay */}
             <div className="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-center px-4">
-              <h1 className="text-white text-2xl md:text-4xl lg:text-5xl font-bold">
+              <h1 className="bg-gradient-to-r
+    from-fuchsia-500
+    via-purple-600
+    to-indigo-600
+    bg-clip-text
+    text-transparent text-2xl md:text-4xl lg:text-5xl font-bold ">
                 {slide.title}
               </h1>
-              <p className="text-gray-200 mt-4 max-w-xl text-sm md:text-lg">
+              <p className="bg-gradient-to-r
+  from-[#D8B4FE]
+  via-[#A78BFA]
+  to-[#818CF8]
+  bg-clip-text
+  text-transparent mt-4 max-w-xl text-sm md:text-lg">
                 {slide.desc}
               </p>
 

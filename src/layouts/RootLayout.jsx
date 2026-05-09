@@ -30,9 +30,9 @@ const RootLayout = () => {
 
 
       <footer className="w-full bg-gradient-to-r from-slate-900 to-gray-900 text-gray-200">
-        {/* <Container> */}
+        <Container>
           <Footer />
-        {/* </Container> */}
+        </Container>
       </footer>
 
     </div>

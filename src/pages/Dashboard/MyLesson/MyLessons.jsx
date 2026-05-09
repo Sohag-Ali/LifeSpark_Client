@@ -4,6 +4,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useUser from "../../../hooks/useUser";
 import { toast } from "react-toastify";
 import { Link } from "react-router";
+import Swal from "sweetalert2";
 
 const MyLessons = () => {
   const { user } = useAuth();
@@ -30,25 +31,68 @@ const MyLessons = () => {
 
   // delete lesson
   const handleDelete = async (id) => {
-    const proceed = window.confirm(
-      "Are you sure you want to delete this lesson?",
-    );
+    Swal.fire({
+      title: "Delete Lesson?",
 
-    if (proceed) {
-      try {
-        const res = await axiosSecure.delete(`/lessons/${id}`);
+      text: "This lesson will be permanently removed.",
 
-        if (res.data.deletedCount > 0) {
-          toast.success("Lesson deleted successfully!");
+      icon: "warning",
 
-          refetch();
+      background: "#111827",
+
+      color: "#fff",
+
+      showCancelButton: true,
+
+      confirmButtonColor: "#EF4444",
+
+      cancelButtonColor: "#374151",
+
+      confirmButtonText: "Yes, Delete",
+
+      cancelButtonText: "Cancel",
+
+      reverseButtons: true,
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const res = await axiosSecure.delete(`/lessons/${id}`);
+
+          if (res.data.deletedCount > 0) {
+            Swal.fire({
+              title: "🗑️ Lesson Deleted",
+
+              text: "Your lesson has been removed successfully.",
+
+              icon: "success",
+
+              background: "#111827",
+
+              color: "#fff",
+
+              confirmButtonColor: "#8B5CF6",
+
+              timer: 2000,
+
+              showConfirmButton: false,
+            });
+
+            refetch();
+          }
+        } catch (error) {
+          console.log(error);
+
+          Swal.fire({
+            title: "Error",
+            text: "Failed to delete lesson",
+            icon: "error",
+            background: "#111827",
+            color: "#fff",
+            confirmButtonColor: "#8B5CF6",
+          });
         }
-      } catch (error) {
-        console.log(error);
-
-        toast.error("Failed to delete lesson");
       }
-    }
+    });
   };
 
   // toggle privacy
@@ -107,7 +151,10 @@ const MyLessons = () => {
       {/* heading */}
       <div className="mb-8">
         <h1 className="text-4xl md:text-5xl font-black text-white">
-          My Lessons 📚
+          <span className="bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
+            My Lessons
+          </span>{" "}
+          📚
         </h1>
 
         <p className="text-gray-400 text-lg mt-3">
@@ -146,7 +193,9 @@ const MyLessons = () => {
                 key={lesson._id}
                 className=" border-b border-white/5 hover:bg-[#1A2335] transition-all duration-300 hover:scale-[1.002]"
               >
-                <td className="">{index + 1}</td>
+                <td className="bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent font-semibold">
+                  {index + 1}
+                </td>
 
                 <td className=" ">{lesson.title}</td>
 

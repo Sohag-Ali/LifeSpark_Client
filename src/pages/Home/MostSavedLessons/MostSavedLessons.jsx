@@ -1,7 +1,8 @@
 import { Link } from "react-router";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
-import { FiArrowRight, FiBookmark } from "react-icons/fi";
+import {  FiBookmark } from "react-icons/fi";
+import { FaArrowRight } from "react-icons/fa";
 
 
 const MostSavedLessons = () => {
@@ -39,7 +40,7 @@ const MostSavedLessons = () => {
             Community Favorites
           </span>
 
-          <h2 className="text-4xl md:text-5xl font-black text-white mt-4">
+          <h2 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent mt-4">
             Most Saved Lessons
           </h2>
 
@@ -56,25 +57,7 @@ const MostSavedLessons = () => {
 
             <div
               key={lesson._id}
-              className="
-                group
-                relative
-                bg-white/5
-                backdrop-blur-xl
-                border
-                border-white/10
-                rounded-[32px]
-                overflow-hidden
-                hover:-translate-y-2
-                hover:border-primary/40
-                hover:shadow-purple-500/20
-                hover:shadow-2xl
-                transition-all
-                duration-300
-                flex
-                flex-col
-                h-full
-              "
+              className=" group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-[32px] overflow-hidden hover:-translate-y-2 hover:border-primary/40 hover:shadow-purple-500/20 hover:shadow-2xl transition-all duration-300 flex flex-col h-full"
             >
 
               {/* image */}
@@ -83,14 +66,7 @@ const MostSavedLessons = () => {
                 <img
                   src={lesson.image}
                   alt={lesson.title}
-                  className="
-                    w-full
-                    h-full
-                    object-cover
-                    group-hover:scale-110
-                    transition
-                    duration-700
-                  "
+                  className=" w-full h-full object-cover group-hover:scale-110 transition duration-700"
                 />
 
                 {/* overlay */}
@@ -99,20 +75,31 @@ const MostSavedLessons = () => {
                 {/* badge */}
                 <div className="absolute top-5 left-5">
 
-                  <span className="badge badge-primary badge-lg px-4 py-3 text-white font-medium">
+                  <span className="px-4 py-2 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent text-sm font-semibold shadow-lg shadow-black/20">
                     {lesson.category}
                   </span>
+
+                </div>
+                {/* lesson length */}
+                <div className=" absolute bottom-2 left-5 px-4 py-2 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-white text-sm font-semibold shadow-lg ">
+
+  {
+    Math.ceil(
+      lesson.description?.split(" ").length / 200
+    )
+  }
+  {" "}min read
 
                 </div>
 
                 {/* saved count */}
                 <div className="absolute top-5 right-5">
 
-                  <div className="flex items-center gap-2 bg-black/40 backdrop-blur-md border border-white/10 px-4 py-2 rounded-full">
+                  <div className="flex items-center gap-2  bg-amber-800/10 backdrop-blur-md border  border-amber-500/20 px-4 py-2 rounded-full  shadow-lg shadow-amber-500/10">
 
-                    <FiBookmark className="text-primary" />
+                    <FiBookmark className="text-amber-300 "  />
 
-                    <span className="text-white font-semibold">
+                    <span className="text-amber-200 font-bold">
                       {lesson.favoritesCount || 0}
                     </span>
 
@@ -126,7 +113,7 @@ const MostSavedLessons = () => {
               <div className="p-7 flex flex-col flex-grow">
 
                 {/* title */}
-                <h2 className="text-2xl font-bold text-white line-clamp-2 min-h-[64px]">
+                <h2 className="text-2xl font-bold bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent line-clamp-2 min-h-[64px]">
                   {lesson.title}
                 </h2>
 
@@ -140,25 +127,11 @@ const MostSavedLessons = () => {
 
                   <Link
                     to={`/lesson-details/${lesson._id}`}
-                    className="
-                      group/btn
-                      btn
-                      border-0
-                      bg-gradient-to-r
-                      from-indigo-500
-                      to-purple-600
-                      hover:from-purple-600
-                      hover:to-indigo-500
-                      text-white
-                      w-full
-                      rounded-full
-                      text-base
-                    "
+                    className=" group/btn btn border-0 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-purple-600 hover:to-indigo-500 text-white w-full rounded-full text-base "
                   >
 
                     View Details
-
-                    <FiArrowRight className="group-hover/btn:translate-x-1 transition duration-300" />
+                    <FaArrowRight className="group-hover/btn:translate-x-1 transition duration-300" />
 
                   </Link>
 

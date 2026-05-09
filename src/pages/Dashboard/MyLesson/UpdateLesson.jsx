@@ -3,7 +3,8 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useUser from "../../../hooks/useUser";
 import { useForm } from "react-hook-form";
 import { useQuery } from "@tanstack/react-query";
-import { toast } from "react-toastify";
+
+import Swal from "sweetalert2";
 
 
 const UpdateLesson = () => {
@@ -65,16 +66,32 @@ const UpdateLesson = () => {
 
          if(res.data.modifiedCount > 0){
 
-            alert(
-               "Lesson updated successfully!"
-            );
+            // alert(
+            //    "Lesson updated successfully!"
+            // );
+            Swal.fire({
+
+               title: "✅ Lesson Updated",
+                text: "Your lesson has been updated successfully.",
+                icon: "success",
+                background: "#111827",
+                color: "#fff",
+                confirmButtonColor: "#8B5CF6",
+            });
          }
 
       } catch(error){
 
          console.log(error);
 
-         toast.error("Failed to update lesson");
+         Swal.fire({
+            title: "Error",
+            text: "Failed to update lesson",
+            icon: "error",
+            background: "#111827",
+            color: "#fff",
+            confirmButtonColor: "#8B5CF6",
+         });
       }
    };
 
@@ -92,8 +109,8 @@ const UpdateLesson = () => {
         {/* heading */}
         <div className="relative z-10 mb-10">
 
-          <h1 className="text-4xl md:text-5xl font-black text-white mb-3">
-            Update Lesson ✏️
+          <h1 className="text-4xl md:text-5xl  text-white mb-3">
+            <span className="bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent font-bold">Update Lesson</span> ✏️
           </h1>
 
           <p className="text-gray-400 text-lg">

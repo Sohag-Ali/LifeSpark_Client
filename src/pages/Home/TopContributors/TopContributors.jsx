@@ -35,7 +35,12 @@ const TopContributors = () => {
             Community Leaders
           </span>
 
-          <h2 className="text-4xl md:text-5xl font-black text-white mt-4">
+          <h2 className="text-4xl md:text-5xl font-black  bg-gradient-to-r
+    from-fuchsia-500
+    via-purple-600
+    to-indigo-600
+    bg-clip-text
+    text-transparent mt-4">
             Top Contributors of the Week
           </h2>
 
@@ -106,7 +111,15 @@ const TopContributors = () => {
                 {/* badge */}
                 <div className="absolute top-6 right-6">
 
-                  <div className="badge badge-primary badge-outline gap-2 py-4 px-4">
+                  <div className="badge
+    gap-2
+    py-4
+    px-4
+   
+    border
+    bg-cyan-500/10
+text-cyan-200
+border-cyan-500/20">
                     <FiAward />
                     #{index + 1}
                   </div>
@@ -141,11 +154,16 @@ const TopContributors = () => {
                 {/* content */}
                 <div className="text-center mt-8">
 
-                  <h2 className="text-2xl font-bold text-white">
+                  <h2 className="text-2xl font-bold  bg-gradient-to-r
+    from-fuchsia-500
+    via-purple-600
+    to-indigo-600
+    bg-clip-text
+    text-transparent">
                     {user.creatorName}
                   </h2>
 
-                  <p className="text-primary mt-2 font-medium">
+                  <p className="text-gray-200 mt-2 font-medium">
                     Top Lesson Creator
                   </p>
 

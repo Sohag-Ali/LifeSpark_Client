@@ -4,6 +4,16 @@ import useUser from "../../../hooks/useUser";
 import { HiUser } from "react-icons/hi2";
 import { CgLogOut } from "react-icons/cg";
 
+const navLinkClass = ({ isActive }) =>
+      `
+      pb-1 border-b-2 transition-all duration-300 ${
+              isActive
+                ? "bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent font-extrabold "
+                : "text-gray-200 font-semibold border-transparent hover:text-violet-300 hover:border-violet-300"
+      }
+    `
+    ;
+
 const Navbar = () => {
   const { user, logoutUser } = useAuth();
   const [userData] = useUser();
@@ -24,13 +34,7 @@ const Navbar = () => {
       <li>
         <NavLink
           to="/"
-          className={({ isActive }) =>
-            `pb-1 border-b-2  font-medium transition-all duration-300 ${
-              isActive
-                ? "text-violet-400 border-violet-400"
-                : "text-gray-200 border-transparent hover:text-violet-300 hover:border-violet-300"
-            }`
-          }
+          className={navLinkClass}
         >
           Home
         </NavLink>
@@ -38,13 +42,7 @@ const Navbar = () => {
       <li>
         <NavLink
           to="/public-lessons"
-          className={({ isActive }) =>
-            `pb-1 border-b-2  font-medium transition-all duration-300 ${
-              isActive
-                ? "text-violet-400 border-violet-400"
-                : "text-gray-200 border-transparent hover:text-violet-300 hover:border-violet-300"
-            }`
-          }
+          className={navLinkClass}
         >
           Public Lessons
         </NavLink>
@@ -55,19 +53,12 @@ const Navbar = () => {
         <li>
           <NavLink
             to="/pricing"
-            className={({ isActive }) =>
-              `pb-1 border-b-2  font-medium transition-all duration-300 ${
-                isActive
-                  ? "text-violet-400 border-violet-400"
-                  : "text-gray-200 border-transparent hover:text-violet-300 hover:border-violet-300"
-              }`
-            }
+            className={navLinkClass}
           >
             Pricing
           </NavLink>
         </li>
       )}
-
       {/* premium badge */}
       {userData?.isPremium && (
         <li>
@@ -80,13 +71,7 @@ const Navbar = () => {
           <li>
             <NavLink
               to="/dashboard/add-lesson"
-              className={({ isActive }) =>
-                `pb-1 border-b-2  font-medium transition-all duration-300 ${
-                  isActive
-                    ? "text-violet-400 border-violet-400"
-                    : "text-gray-200 border-transparent hover:text-violet-300 hover:border-violet-300"
-                }`
-              }
+              className={navLinkClass}
             >
               Add Lesson
             </NavLink>
@@ -95,13 +80,7 @@ const Navbar = () => {
           <li>
             <NavLink
               to="/dashboard/my-lessons"
-              className={({ isActive }) =>
-                `pb-1 border-b-2  font-medium transition-all duration-300 ${
-                  isActive
-                    ? "text-violet-400 border-violet-400"
-                    : "text-gray-200 border-transparent hover:text-violet-300 hover:border-violet-300"
-                }`
-              }
+              className={navLinkClass}
             >
               My Lessons
             </NavLink>
