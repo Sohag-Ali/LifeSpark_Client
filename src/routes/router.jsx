@@ -24,6 +24,7 @@ import ManageLessons from "../pages/Dashboard/Admin/ManageLessons/ManageLessons"
 import ReportedLessons from "../pages/Dashboard/Admin/ReportedLessons/ReportedLessons";
 import AdminProfile from "../pages/Dashboard/Admin/AdminProfile/AdminProfile";
 import CommentSection from "../pages/DetailsPage/CommentSection";
+import BannedPage from "../coponents/BannedPage/BannedPage";
 
 
 
@@ -64,7 +65,13 @@ export const router = createBrowserRouter([
       },
       {
         path: "/comment-section/:id",
-        Component:CommentSection
+        element: <PrivateRoute>
+          <CommentSection></CommentSection>
+        </PrivateRoute>
+      },
+      {
+        path: "/banned",
+        Component: BannedPage
       }
     ]
   },
@@ -105,7 +112,9 @@ export const router = createBrowserRouter([
         },
         {
           path: 'add-lesson',
-          element: <AddLesson></AddLesson>
+          element: <PrivateRoute>
+            <AddLesson></AddLesson>
+          </PrivateRoute>
         },
         {
           path: 'update-lesson/:id',

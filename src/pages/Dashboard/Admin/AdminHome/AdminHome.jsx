@@ -89,7 +89,7 @@ const AdminHome = () => {
 
           <div>
 
-            <h1 className="text-4xl md:text-5xl font-black text-white">
+            <h1 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
               Admin Dashboard 👑
             </h1>
 
@@ -132,11 +132,11 @@ const AdminHome = () => {
 
             <div>
 
-              <p className="text-gray-400">
+              <p className="bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent ">
                 Total Users
               </p>
 
-              <h2 className="text-5xl font-black text-white mt-5">
+              <h2 className="text-5xl font-black text-[#218bc0] mt-5">
                 {stats.totalUsers || 0}
               </h2>
 
@@ -193,11 +193,11 @@ const AdminHome = () => {
 
             <div>
 
-              <p className="text-gray-400">
+              <p className="bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent ">
                 Public Lessons
               </p>
 
-              <h2 className="text-5xl font-black text-white mt-5">
+              <h2 className="text-5xl font-black text-[#20be8a] mt-5">
                 {stats.totalLessons || 0}
               </h2>
 
@@ -254,11 +254,11 @@ const AdminHome = () => {
 
             <div>
 
-              <p className="text-gray-400">
+              <p className="bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent ">
                 Reports
               </p>
 
-              <h2 className="text-5xl font-black text-white mt-5">
+              <h2 className="text-5xl font-black text-[#a42e51d5] mt-5">
                 {stats.totalReports || 0}
               </h2>
 
@@ -315,11 +315,11 @@ const AdminHome = () => {
 
             <div>
 
-              <p className="text-gray-400">
+              <p className="bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent ">
                 Today's Lessons
               </p>
 
-              <h2 className="text-5xl font-black text-white mt-5">
+              <h2 className="text-5xl font-black text-[#a4962e] mt-5">
                 {stats.todaysLessons || 0}
               </h2>
 
@@ -373,7 +373,7 @@ const AdminHome = () => {
 
             <TrendingUp className="text-primary" />
 
-            <h2 className="text-3xl font-black text-white">
+            <h2 className="text-3xl font-black bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent ">
               Lesson Growth
             </h2>
 
@@ -429,7 +429,7 @@ const AdminHome = () => {
 
             <Users className="text-primary" />
 
-            <h2 className="text-3xl font-black text-white">
+            <h2 className="text-3xl font-black bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent ">
               User Growth
             </h2>
 
@@ -485,7 +485,7 @@ const AdminHome = () => {
         "
       >
 
-        <h2 className="text-3xl font-black text-white mb-10">
+        <h2 className="text-3xl font-black bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent  mb-10">
           Most Active Contributors 🔥
         </h2>
 
@@ -534,7 +534,7 @@ const AdminHome = () => {
 
                 </div>
 
-                <h2 className="text-xl font-bold text-white mt-5">
+                <h2 className="text-xl font-bold bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent mt-5">
                   {user.creatorName}
                 </h2>
 

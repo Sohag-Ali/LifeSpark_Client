@@ -3,7 +3,7 @@ import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useUser from "../../../hooks/useUser";
 import { Link } from "react-router";
-import { Bookmark, BookOpen, Crown, Sparkles } from "lucide-react";
+import { Bookmark, BookOpen, Crown, Flag, Sparkles } from "lucide-react";
 
 
 const Profile = () => {
@@ -14,21 +14,21 @@ const Profile = () => {
    const [userData] = useUser();
 
    // all lessons count
-   const { data: lessons = [] } = useQuery({
+  //  const { data: lessons = [] } = useQuery({
 
-      queryKey: ['my-lessons', user?.email],
+  //     queryKey: ['my-lessons', user?.email],
 
-      enabled: !!user?.email,
+  //     enabled: !!user?.email,
 
-      queryFn: async() => {
+  //     queryFn: async() => {
 
-         const res = await axiosSecure.get(
-            `/lessons?email=${user.email}`
-         );
+  //        const res = await axiosSecure.get(
+  //           `/lessons?email=${user.email}`
+  //        );
 
-         return res.data;
-      }
-   });
+  //        return res.data;
+  //     }
+  //  });
 
    // public lessons
    const { data: publicLessons = [] } = useQuery({
@@ -156,7 +156,7 @@ const Profile = () => {
             }
 
             {/* stats */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mt-8">
+            <div className="grid grid-cols-1 sm:grid-cols-4 gap-5 mt-8">
 
               {/* total lessons */}
               <div
@@ -177,7 +177,7 @@ const Profile = () => {
                   <div>
 
                     <h2 className="text-4xl font-black text-blue-300">
-                      {lessons.length}
+                      {stats.totalLessons || 0}
                     </h2>
 
                     <p className="text-gray-400 mt-2">
@@ -273,7 +273,7 @@ const Profile = () => {
                   <div>
 
                     <h2 className="text-4xl font-black text-white">
-                      {publicLessons.length}
+                      {stats.publicLessons|| 0}
                     </h2>
 
                     <p className="text-gray-400 mt-2">
@@ -302,6 +302,58 @@ const Profile = () => {
 
               </div>
 
+              {/* reports */}
+<div
+  className="
+    bg-white/[0.03]
+    border
+    border-white/10
+    rounded-2xl
+    p-6
+    hover:border-primary/30
+    transition-all
+    duration-300
+  "
+>
+
+  <div className="flex items-center justify-between">
+
+    <div>
+
+      <h2 className="text-4xl font-black text-rose-300">
+
+        {stats.totalReports || 0}
+
+      </h2>
+
+      <p className="text-gray-400 mt-2">
+
+        Total Reports
+
+      </p>
+
+    </div>
+
+    <div
+      className="
+        w-14
+        h-14
+        rounded-2xl
+        bg-rose-500/10
+        flex
+        items-center
+        justify-center
+      "
+    >
+
+      <Flag className="text-rose-300" />
+
+    </div>
+
+  </div>
+
+</div>
+
             </div>
 
           </div>
@@ -328,7 +380,7 @@ const Profile = () => {
 
         {/* no lessons */}
         {
-          publicLessons.length === 0
+          (!stats.publicLessons || stats.publicLessons.length === 0)
           ?
           (
             <div

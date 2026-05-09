@@ -13,9 +13,24 @@ const SocialLogin = () => {
   // Handle Google Login
   const handleGoogleLogin = () => {
     signInWithGoogle()
-      .then((result) => {
-        console.log(result);
-        const user = result.user;
+      .then(async(result) => {
+
+  console.log(result);
+
+  const user = result.user;
+
+  // check banned user
+  const checkUser =
+  await axiosSecure.get(
+
+    `/users/email/${user.email}`
+  );
+
+  // banned user
+  if(checkUser.data?.isBanned){
+
+    return navigate('/banned');
+  }
         const userInfo = {
           name: user.displayName,
           email: user.email,

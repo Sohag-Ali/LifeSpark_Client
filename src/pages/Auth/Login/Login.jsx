@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import Swal from "sweetalert2";
 import loginImg from "../../../assets/loginImage.jpeg";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const Login = () => {
   const {
@@ -15,14 +16,31 @@ const Login = () => {
   const { loginUser } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
+  const axiosSecure = useAxiosSecure();
 
   // Handle Login
   const handleLogin = (data) => {
     console.log(data);
     loginUser(data.email, data.password)
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
+      .then(async(result) => {
+
+  const user = result.user;
+
+  console.log(user);
+
+  // check banned user
+  const res =
+  await axiosSecure.get(
+
+    `/users/email/${user.email}`
+  );
+
+  // banned check
+  if(res.data?.isBanned){
+
+    return navigate('/banned');
+  }
+
         Swal.fire({
           title: "Login successful!",
           icon: "success",

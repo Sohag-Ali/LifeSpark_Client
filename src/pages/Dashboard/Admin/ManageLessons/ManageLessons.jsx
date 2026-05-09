@@ -1,8 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import { ShieldCheck, Sparkles, Star, Trash2 } from "lucide-react";
+import { BookOpen, ShieldCheck, Sparkles, Star, Trash2 } from "lucide-react";
+import { MdReportGmailerrorred } from "react-icons/md";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { AiOutlineFileProtect } from "react-icons/ai";
 import Swal from "sweetalert2";
+import { MdOutlineShield } from "react-icons/md";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 
 
@@ -20,7 +23,7 @@ const ManageLessons = () => {
    useState("");
 
    // stats
-   const { data: stats = {} } = useQuery({
+   const { data: stats = {}, } = useQuery({
 
       queryKey: ['lesson-stats'],
 
@@ -59,6 +62,7 @@ const ManageLessons = () => {
 
          return res.data;
       }
+      
    });
 
    // delete
@@ -112,13 +116,12 @@ const ManageLessons = () => {
 
       if(res.data.modifiedCount){
 
-         toast.success(
-            featured
-            ?
-            "Removed from featured"
-            :
-            "Lesson featured"
-         );
+         Swal.fire({
+            title: featured
+            ? "Lesson Unfeatured"
+            : "Lesson Featured",
+            icon: "success"
+         });
 
          refetch();
       }
@@ -135,9 +138,12 @@ const ManageLessons = () => {
 
       if(res.data.modifiedCount){
 
-         toast.success(
-            "Lesson reviewed"
-         );
+         Swal.fire({
+
+            title: "Lesson Marked as Reviewed",
+            icon: "success"
+         });
+
 
          refetch();
       }
@@ -176,7 +182,7 @@ const ManageLessons = () => {
           <div>
 
             <h1 className="text-4xl md:text-5xl font-black text-white">
-              Manage Lessons 📚
+              <span className="bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent">Manage Lessons</span> 📚
             </h1>
 
             <p className="text-gray-400 text-lg mt-3">
@@ -203,16 +209,42 @@ const ManageLessons = () => {
             rounded-[30px]
             p-8
             shadow-2xl
+            flex
+            items-center
+            justify-between
           "
         >
 
-          <h2 className="text-5xl font-black text-emerald-300">
+         <div>
+           <h2 className="text-5xl font-black text-emerald-300">
             {stats.publicLessons || 0}
           </h2>
 
           <p className="text-gray-400 mt-4">
             Public Lessons
           </p>
+         </div>
+
+          <div
+              className="
+                w-20
+                h-20
+                rounded-3xl
+                bg-emerald-500/10
+                border
+                border-emerald-500/20
+                flex
+                items-center
+                justify-center
+              "
+            >
+
+              <BookOpen
+                size={40}
+                className="text-emerald-300"
+              />
+
+            </div>
 
         </div>
 
@@ -227,16 +259,42 @@ const ManageLessons = () => {
             rounded-[30px]
             p-8
             shadow-2xl
+            flex
+            items-center
+            justify-between
           "
         >
 
-          <h2 className="text-5xl font-black text-amber-300">
+          <div>
+            <h2 className="text-5xl font-black text-amber-300">
             {stats.privateLessons || 0}
           </h2>
 
           <p className="text-gray-400 mt-4">
             Private Lessons
           </p>
+          </div>
+
+           <div
+              className="
+                w-20
+                h-20
+                rounded-3xl
+                bg-amber-500/10
+                border
+                border-amber-500/20
+                flex
+                items-center
+                justify-center
+              "
+            >
+
+              <AiOutlineFileProtect
+                size={40}
+                className="text-amber-300"
+              />
+
+            </div>
 
         </div>
 
@@ -251,16 +309,42 @@ const ManageLessons = () => {
             rounded-[30px]
             p-8
             shadow-2xl
+            flex
+            items-center
+            justify-between
           "
         >
 
-          <h2 className="text-5xl font-black text-rose-300">
+         <div>
+           <h2 className="text-5xl font-black text-rose-300">
             {stats.flaggedLessons || 0}
           </h2>
 
           <p className="text-gray-400 mt-4">
             Flagged Lessons
           </p>
+         </div>
+
+           <div
+              className="
+                w-20
+                h-20
+                rounded-3xl
+                bg-rose-500/10
+                border
+                border-rose-500/20
+                flex
+                items-center
+                justify-center
+              "
+            >
+
+              <MdReportGmailerrorred
+                size={40}
+                className="text-rose-300"
+              />
+
+            </div>
 
         </div>
 
@@ -399,11 +483,11 @@ const ManageLessons = () => {
         "
       >
 
-        <table className="table text-white">
+        <table className="table">
 
           <thead>
 
-            <tr className="border-b border-white/10 text-gray-300">
+            <tr className="border-b text-center border-white/10 text-gray-300">
 
               <th className="py-6">
                 Lesson
@@ -464,11 +548,11 @@ const ManageLessons = () => {
 
                       <div>
 
-                        <h2 className="font-bold text-lg text-white">
+                        <h2 className="font-bold text-lg bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent ">
                           {lesson.title}
                         </h2>
 
-                        <p className="text-sm text-gray-400 mt-2">
+                        <p className="text-sm bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent mt-2">
                           {lesson.creatorName}
                         </p>
 
@@ -530,7 +614,7 @@ const ManageLessons = () => {
                   {/* status */}
                   <td>
 
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex  gap-2">
 
                       {
                         lesson.isFeatured &&
@@ -635,7 +719,13 @@ const ManageLessons = () => {
                         "
                       >
 
-                        <Star size={18} />
+                        <Star size={18}  className={
+    lesson.isFeatured
+    ?
+    "fill-purple-300"
+    :
+    ""
+  } />
 
                       </button>
 
@@ -663,7 +753,16 @@ const ManageLessons = () => {
                         "
                       >
 
-                        <ShieldCheck size={18} />
+                       
+
+    {
+      lesson.isReviewed
+      ?
+      <ShieldCheck size={18}/>
+      :
+      <MdOutlineShield size={18}/>
+    }
+  
 
                       </button>
 
@@ -685,6 +784,7 @@ const ManageLessons = () => {
                           flex
                           items-center
                           justify-center
+                          hover:bg-red-800
                           hover:scale-105
                           transition-all
                           duration-300
