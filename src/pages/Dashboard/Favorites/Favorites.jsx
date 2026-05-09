@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import { Link } from "react-router";
 import { Heart, Trash2 } from "lucide-react";
+import Swal from "sweetalert2";
 
 
 const Favorites = () => {
@@ -50,13 +51,32 @@ const Favorites = () => {
    // remove favorite
    const handleRemove = async(id) => {
 
-      const confirmDelete =
-      window.confirm(
+      Swal.fire({
 
-         "Remove from favorites?"
-      );
+    title: "Remove Favorite?",
 
-      if(!confirmDelete) return;
+    text: "This lesson will be removed from your favorites.",
+
+    icon: "warning",
+
+    background: "#111827",
+
+    color: "#fff",
+
+    showCancelButton: true,
+
+    confirmButtonColor: "#F59E0B",
+
+    cancelButtonColor: "#374151",
+
+    confirmButtonText: "Yes, Remove",
+
+    cancelButtonText: "Cancel",
+
+    reverseButtons: true,
+  }).then(async(result) => {
+
+      if(result.isConfirmed){
 
       try {
 
@@ -65,9 +85,24 @@ const Favorites = () => {
             `/favorites/${id}/${user.email}`
          );
 
-         toast.success(
-            "Removed from favorites"
-         );
+         Swal.fire({
+
+          title: "⭐ Removed!",
+
+          text: "Lesson removed from favorites successfully.",
+
+          icon: "success",
+
+          background: "#111827",
+
+          color: "#fff",
+
+          confirmButtonColor: "#8B5CF6",
+
+          timer: 2000,
+
+          showConfirmButton: false,
+        });
 
          refetch();
 
@@ -76,6 +111,8 @@ const Favorites = () => {
          console.log(error);
          toast.error("Failed to remove from favorites");
       }
+      }
+  });
    };
 
    return (
@@ -106,7 +143,7 @@ const Favorites = () => {
 
           <div>
 
-            <h1 className="text-4xl md:text-5xl font-black text-white">
+            <h1 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
               My Favorite Lessons
             </h1>
 

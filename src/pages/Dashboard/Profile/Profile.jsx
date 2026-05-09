@@ -47,6 +47,28 @@ const Profile = () => {
       }
    });
 
+     // fetch stats
+   const { data: stats = {} } = useQuery({
+
+      queryKey: [
+         'dashboard-stats',
+         user?.email
+      ],
+
+      enabled: !!user?.email,
+
+      queryFn: async() => {
+
+         const res =
+         await axiosSecure.get(
+
+            `/dashboard-stats/${user.email}`
+         );
+
+         return res.data;
+      }
+   });
+
    return (
     <div className="px-4 md:px-8 py-10">
 
@@ -96,7 +118,7 @@ const Profile = () => {
           {/* info */}
           <div className="flex-1">
 
-            <h1 className="text-4xl md:text-5xl font-black text-white">
+            <h1 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
               {user?.displayName}
             </h1>
 
@@ -154,7 +176,7 @@ const Profile = () => {
 
                   <div>
 
-                    <h2 className="text-4xl font-black text-white">
+                    <h2 className="text-4xl font-black text-blue-300">
                       {lessons.length}
                     </h2>
 
@@ -202,8 +224,8 @@ const Profile = () => {
 
                   <div>
 
-                    <h2 className="text-4xl font-black text-white">
-                      {userData?.savedLessons || 0}
+                    <h2 className="text-4xl font-black text-amber-300">
+                      {stats.totalFavorites || 0}
                     </h2>
 
                     <p className="text-gray-400 mt-2">
@@ -224,7 +246,7 @@ const Profile = () => {
                     "
                   >
 
-                    <Bookmark className="text-pink-300" />
+                    <Bookmark className="text-amber-300" />
 
                   </div>
 
@@ -294,8 +316,8 @@ const Profile = () => {
         {/* heading */}
         <div className="mb-10">
 
-          <h2 className="text-4xl font-black text-white">
-            My Public Lessons 📚
+          <h2 className="text-4xl  text-white">
+             <span className="bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent font-bold">My Public Lessons</span> 📚
           </h2>
 
           <p className="text-gray-400 mt-3 text-lg">
@@ -423,13 +445,24 @@ const Profile = () => {
                         </span>
 
                       </div>
+                      {/* lesson length */}
+                  <div className=" absolute top-4 right-4 px-4 py-2 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-white text-sm font-semibold shadow-lg">
+
+  {
+    Math.ceil(
+      lesson.description?.split(" ").length / 200
+    )
+  }
+  {" "}min read
+
+                  </div>
 
                     </div>
 
                     {/* content */}
                     <div className="p-7">
 
-                      <h2 className="text-2xl font-bold text-white line-clamp-2">
+                      <h2 className="text-2xl font-bold bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent  line-clamp-2">
                         {lesson.title}
                       </h2>
 
