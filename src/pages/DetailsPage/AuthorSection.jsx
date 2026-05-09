@@ -102,7 +102,7 @@ const AuthorSection = ({ lesson }) => {
                 text-3xl
                 md:text-4xl
                 font-black
-                text-white
+                bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent
                 mt-8
               "
             >
@@ -178,7 +178,7 @@ const AuthorSection = ({ lesson }) => {
                   text-3xl
                   md:text-5xl
                   font-black
-                  text-white
+                 bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent 
                 "
               >
 

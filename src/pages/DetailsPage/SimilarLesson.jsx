@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { Link } from "react-router";
 import { Bookmark, Heart, Sparkles } from "lucide-react";
+import { FaArrowRight } from "react-icons/fa";
 
 const SimilarLesson = ({ lesson }) => {
   const axiosSecure = useAxiosSecure();
@@ -186,7 +187,7 @@ const SimilarLesson = ({ lesson }) => {
                           backdrop-blur-xl
                           border
                           border-violet-500/20
-                          text-violet-200
+                          bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent 
                           text-xs
                           font-semibold
                         "
@@ -204,13 +205,25 @@ const SimilarLesson = ({ lesson }) => {
                           backdrop-blur-xl
                           border
                           border-pink-500/20
-                          text-pink-200
+                          bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent
                           text-xs
                           font-semibold
                         "
                   >
                     {item.emotionalTone}
                   </span>
+                </div>
+
+                {/* lesson length */}
+                <div className=" absolute bottom-2 right-3 px-4 py-2 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-white text-sm font-semibold shadow-lg ">
+
+  {
+    Math.ceil(
+      lesson.description?.split(" ").length / 200
+    )
+  }
+  {" "}min read
+
                 </div>
 
                 {/* access */}
@@ -307,32 +320,18 @@ const SimilarLesson = ({ lesson }) => {
                   <div className="flex items-center gap-5">
                     {/* likes */}
                     <div
-                      className="
-        flex
-        items-center
-        gap-2
-        text-rose-300
-        text-sm
-        font-medium
-      "
+                      className=" flex items-center gap-2 text-rose-400  text-sm font-medium"
                     >
-                      <Heart size={16} />
+                      <Heart size={16} className="fill-rose-400" />
 
                       {item.likesCount || 0}
                     </div>
 
                     {/* saves */}
                     <div
-                      className="
-        flex
-        items-center
-        gap-2
-        text-amber-300
-        text-sm
-        font-medium
-      "
+                      className="flex items-center gap-2 text-amber-300 fill-amber-300 text-sm font-medium "
                     >
-                      <Bookmark size={16} />
+                      <Bookmark size={16} className="fill-amber-400" />
 
                       {item.favoritesCount || 0}
                     </div>
@@ -364,29 +363,10 @@ const SimilarLesson = ({ lesson }) => {
                   <Link
                     to={`/lesson-details/${item._id}`}
                     className="
-                          w-full
-                          inline-flex
-                          items-center
-                          justify-center
-                          px-6
-                          py-4
-                          rounded-2xl
-                          bg-gradient-to-r
-                          from-violet-500
-                          to-indigo-600
-                          text-white
-                          font-semibold
-                          shadow-lg
-                          shadow-indigo-500/20
-                          hover:from-violet-600
-                          hover:to-indigo-700
-                          hover:shadow-2xl
-                          hover:shadow-violet-500/30
-                          transition-all
-                          duration-300
+                         group/btn btn border-0 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-purple-600 hover:to-indigo-500 text-white w-full rounded-full text-base
                         "
                   >
-                    See Details
+                    See Details <FaArrowRight className="group-hover/btn:translate-x-1 transition duration-300" />
                   </Link>
                 </div>
               </div>

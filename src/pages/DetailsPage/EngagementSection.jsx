@@ -81,7 +81,7 @@ const EngagementSection = ({ lesson }) => {
             >
 
               <Heart
-                className="text-rose-300"
+                className="text-rose-500 fill-rose-500"
                 size={38}
               />
 

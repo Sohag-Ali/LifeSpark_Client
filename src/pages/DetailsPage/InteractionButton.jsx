@@ -9,6 +9,7 @@ import {
 } from "react-share";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { Link } from "react-router";
+import Swal from "sweetalert2";
 
 ;
 
@@ -74,14 +75,48 @@ const InteractionButton = ({ lesson, refetch }) => {
     e.preventDefault();
 
     if (!user) {
-      return toast.error("Please login first");
+      return Swal.fire({
+
+        icon: "error",
+        title: "Not Logged In",
+        text: "Please log in to report this lesson",
+        confirmButtonColor: "#EF4444",
+      });
+      
     }
 
     const reason = e.target.reason.value;
 
-    const confirmReport = window.confirm("Are you sure?");
+     const result =
+  await Swal.fire({
 
-    if (!confirmReport) return;
+    title: "Report Lesson?",
+
+    text: "Are you sure you want to report this lesson?",
+
+    icon: "warning",
+
+    background: "#111827",
+
+    color: "#fff",
+
+    showCancelButton: true,
+
+    confirmButtonColor: "#EF4444",
+
+    cancelButtonColor: "#374151",
+
+    confirmButtonText: "Yes, Report",
+
+    cancelButtonText: "Cancel",
+
+    reverseButtons: true,
+  });
+
+
+   
+
+    if (!result.isConfirmed) return;
 
     const reportData = {
       lessonId: lesson._id,
@@ -98,7 +133,24 @@ const InteractionButton = ({ lesson, refetch }) => {
     const res = await axiosSecure.post("/reports", reportData);
 
     if (res.data.insertedId) {
-      toast.success("Lesson reported");
+      Swal.fire({
+
+        title: "🚨 Lesson Reported",
+
+        text: "Thank you for helping keep the community safe.",
+
+        icon: "success",
+
+        background: "#111827",
+
+        color: "#fff",
+
+        confirmButtonColor: "#8B5CF6",
+
+        timer: 2200,
+
+        showConfirmButton: false,
+      });
 
       e.target.reset();
     }

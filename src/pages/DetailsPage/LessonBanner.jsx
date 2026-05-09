@@ -146,7 +146,7 @@ const LessonBanner = ({ lesson, refetch }) => {
             md:text-5xl
             font-black
             leading-tight
-            text-white
+            bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent 
           "
         >
           {lesson.title}
@@ -159,7 +159,7 @@ const LessonBanner = ({ lesson, refetch }) => {
             className="
               text-2xl
               font-bold
-              text-white
+              text-cyan-400
               mb-5
             "
           >

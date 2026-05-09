@@ -32,7 +32,8 @@ const LessonMetadata = ({ lesson }) => {
             text-xl
             md:text-2xl
             font-bold
-            text-white
+            
+            text-[#5a9d7e97]
             mt-3
             break-words
           "
@@ -69,7 +70,7 @@ const LessonMetadata = ({ lesson }) => {
             text-xl
             md:text-2xl
             font-bold
-            text-white
+            text-[#5a809d97]
             mt-3
             break-words
           "
@@ -109,7 +110,7 @@ const LessonMetadata = ({ lesson }) => {
             text-xl
             md:text-2xl
             font-bold
-            text-white
+            text-[#9af3c597]
             mt-3
           "
         >
@@ -141,7 +142,7 @@ const LessonMetadata = ({ lesson }) => {
             text-xl
             md:text-2xl
             font-bold
-            text-white
+            text-[#9af3c597]
             mt-3
           "
         >
