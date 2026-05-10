@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { FaArrowRight } from "react-icons/fa";
+import { Star } from "lucide-react";
 
 const FeaturedLessons = () => {
   const axiosSecure = useAxiosSecure();
@@ -33,9 +34,81 @@ const FeaturedLessons = () => {
 
         {/* no lessons */}
         {lessons.length === 0 ? (
-          <div className="text-center py-20 bg-base-100 rounded-[30px] shadow-xl">
-            <h2 className="text-3xl font-black">No Featured Lessons Yet</h2>
-          </div>
+          <div
+  className="
+    text-center
+    py-24
+    rounded-[32px]
+    bg-gradient-to-br
+    from-[#111827]
+    to-[#0F172A]
+    border
+    border-white/10
+    shadow-2xl
+  "
+>
+
+  {/* icon */}
+  <div
+    className="
+      w-28
+      h-28
+      mx-auto
+      rounded-full
+      bg-purple-500/10
+      flex
+      items-center
+      justify-center
+      border
+      border-purple-500/20
+    "
+  >
+
+    <Star
+      size={60}
+      className="text-purple-400"
+    />
+
+  </div>
+
+  {/* title */}
+  <h2
+    className="
+      mt-10
+      text-4xl
+      md:text-5xl
+      font-black
+      bg-gradient-to-r
+      from-[#D8B4FE]
+      via-[#A78BFA]
+      to-[#818CF8]
+      bg-clip-text
+      text-transparent
+    "
+  >
+
+    No Featured Lessons Yet
+
+  </h2>
+
+  {/* description */}
+  <p
+    className="
+      mt-5
+      text-gray-400
+      max-w-2xl
+      mx-auto
+      leading-8
+      text-lg
+    "
+  >
+
+    Featured lessons will appear here once
+    they are selected by the admin 🚀
+
+  </p>
+
+</div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {lessons.map((lesson) => (

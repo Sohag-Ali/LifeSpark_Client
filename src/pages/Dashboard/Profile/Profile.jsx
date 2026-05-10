@@ -13,22 +13,7 @@ const Profile = () => {
 
    const [userData] = useUser();
 
-   // all lessons count
-  //  const { data: lessons = [] } = useQuery({
-
-  //     queryKey: ['my-lessons', user?.email],
-
-  //     enabled: !!user?.email,
-
-  //     queryFn: async() => {
-
-  //        const res = await axiosSecure.get(
-  //           `/lessons?email=${user.email}`
-  //        );
-
-  //        return res.data;
-  //     }
-  //  });
+ 
 
    // public lessons
    const { data: publicLessons = [] } = useQuery({

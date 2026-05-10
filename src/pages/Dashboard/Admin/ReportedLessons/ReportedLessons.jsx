@@ -9,8 +9,7 @@ import { AlertTriangle, Eye, ShieldAlert, Trash2, XCircle } from "lucide-react";
 const ReportedLessons = () => {
     const axiosSecure = useAxiosSecure();
 
-   const [selectedReports, setSelectedReports] =
-   useState([]);
+   const [selectedReports, setSelectedReports] = useState([]);
 
    // fetch reported lessons
    const {
@@ -214,202 +213,261 @@ const ReportedLessons = () => {
 
                </thead>
 
-               <tbody>
+              <tbody>
 
-                  {
-                     lessons.map(lesson => (
+   {
+      lessons.length === 0
 
-                        <tr
-                           key={lesson._id}
+      ?
 
-                           className="
-                              border-b
-                              border-white/5
-                              hover:bg-white/[0.03]
-                              transition-all
-                              duration-300
-                           "
-                        >
+      <tr>
 
-                           {/* lesson */}
-                           <td className="py-5">
+         <td
+            colSpan="3"
+            className="
+               text-center
+               py-20
+            "
+         >
 
-                              <div className="flex items-center gap-5">
+            <div className="flex flex-col items-center">
 
-                                 <img
-                                    src={lesson.image}
-                                    className="
-                                       w-20
-                                       h-20
-                                       rounded-2xl
-                                       object-cover
-                                       border
-                                       border-white/10
-                                    "
-                                 />
+               {/* icon */}
+               <AlertTriangle
+                  size={70}
+                  className="text-rose-400"
+               />
 
-                                 <div>
+               {/* title */}
+               <h2
+                  className="
+                     mt-8
+                     text-4xl
+                     font-black
+                     text-white
+                  "
+               >
 
-                                    <h2 className="font-bold text-lg text-white">
+                  No Reports Found
 
-                                       {lesson.title}
+               </h2>
 
-                                    </h2>
+               {/* description */}
+               <p
+                  className="
+                     text-gray-400
+                     mt-4
+                     max-w-md
+                     leading-8
+                  "
+               >
 
-                                    <p className="text-sm bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent  mt-2">
+                  There are currently no
+                  reported lessons available 🚀
 
-                                       {lesson.creatorName}
+               </p>
 
-                                    </p>
+            </div>
 
-                                 </div>
+         </td>
 
-                              </div>
+      </tr>
 
-                           </td>
+      :
 
-                           {/* reports */}
-                           <td className="text-center">
+      lessons.map(lesson => (
 
-                              <div
-                                 className="
-                                    inline-flex
-                                    items-center
-                                    gap-2
-                                    px-5
-                                    py-3
-                                    rounded-full
-                                    bg-rose-500/10
-                                    text-rose-200
-                                    border
-                                    border-rose-500/20
-                                    font-semibold
-                                 "
-                              >
+         <tr
+            key={lesson._id}
 
-                                 <AlertTriangle size={16} />
+            className="
+               border-b
+               border-white/5
+               hover:bg-white/[0.03]
+               transition-all
+               duration-300
+            "
+         >
 
-                                 {lesson.reportCount}
+            {/* lesson */}
+            <td className="py-5">
 
-                                 <span>Reports</span>
+               <div className="flex items-center gap-5">
 
-                              </div>
+                  <img
+                     src={lesson.image}
+                     className="
+                        w-20
+                        h-20
+                        rounded-2xl
+                        object-cover
+                        border
+                        border-white/10
+                     "
+                  />
 
-                           </td>
+                  <div>
 
-                           {/* actions */}
-                           <td className="">
+                     <h2 className="font-bold text-lg text-white">
 
-                              <div className="flex flex-wrap gap-3 items-center justify-center">
+                        {lesson.title}
 
-                                 {/* view */}
-                                 <button
-                                    onClick={() =>
-                                       handleViewReports(
-                                          lesson._id
-                                       )
-                                    }
+                     </h2>
 
-                                    className="
-                                       px-5
-                                       py-3
-                                       rounded-2xl
-                                       bg-indigo-500/10
-                                       text-indigo-200
-                                       border
-                                       border-indigo-500/20
-                                       flex
-                                       items-center
-                                       gap-2
-                                       font-semibold
-                                       hover:bg-indigo-500
-                                       hover:text-white
-                                       transition-all
-                                       duration-300
-                                    "
-                                 >
+                     <p className="text-sm bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent mt-2">
 
-                                    <Eye size={18} />
+                        {lesson.creatorName}
 
-                                    Reasons
+                     </p>
 
-                                 </button>
+                  </div>
 
-                                 {/* ignore */}
-                                 <button
-                                    onClick={() =>
-                                       handleIgnore(
-                                          lesson._id
-                                       )
-                                    }
+               </div>
 
-                                    className="
-                                       px-5
-                                       py-3
-                                       rounded-2xl
-                                       bg-amber-500/10
-                                       text-amber-200
-                                       border
-                                       border-amber-500/20
-                                       flex
-                                       items-center
-                                       gap-2
-                                       font-semibold
-                                       hover:bg-amber-500
-                                       hover:text-white
-                                       transition-all
-                                       duration-300
-                                    "
-                                 >
+            </td>
 
-                                    <XCircle size={18} />
+            {/* reports */}
+            <td className="text-center">
 
-                                    Ignore
+               <div
+                  className="
+                     inline-flex
+                     items-center
+                     gap-2
+                     px-5
+                     py-3
+                     rounded-full
+                     bg-rose-500/10
+                     text-rose-200
+                     border
+                     border-rose-500/20
+                     font-semibold
+                  "
+               >
 
-                                 </button>
+                  <AlertTriangle size={16} />
 
-                                 {/* delete */}
-                                 <button
-                                    onClick={() =>
-                                       handleDelete(
-                                          lesson._id
-                                       )
-                                    }
+                  {lesson.reportCount}
 
-                                    className="
-                                       px-5
-                                       py-3
-                                       rounded-2xl
-                                       bg-rose-500/10
-                                       text-rose-200
-                                       border
-                                       border-rose-500/20
-                                       flex
-                                       items-center
-                                       gap-2
-                                       font-semibold
-                                       hover:bg-rose-500
-                                       hover:text-white
-                                       transition-all
-                                       duration-300
-                                    "
-                                 >
+                  <span>Reports</span>
 
-                                    <Trash2 size={18} />
+               </div>
 
-                                    Delete
+            </td>
 
-                                 </button>
+            {/* actions */}
+            <td>
 
-                              </div>
+               <div className="flex flex-wrap gap-3 items-center justify-center">
 
-                           </td>
+                  {/* view */}
+                  <button
+                     onClick={() =>
+                        handleViewReports(
+                           lesson._id
+                        )
+                     }
 
-                        </tr>
-                     ))
-                  }
+                     className="
+                        px-5
+                        py-3
+                        rounded-2xl
+                        bg-indigo-500/10
+                        text-indigo-200
+                        border
+                        border-indigo-500/20
+                        flex
+                        items-center
+                        gap-2
+                        font-semibold
+                        hover:bg-indigo-500
+                        hover:text-white
+                        transition-all
+                        duration-300
+                     "
+                  >
 
-               </tbody>
+                     <Eye size={18} />
+
+                     Reasons
+
+                  </button>
+
+                  {/* ignore */}
+                  <button
+                     onClick={() =>
+                        handleIgnore(
+                           lesson._id
+                        )
+                     }
+
+                     className="
+                        px-5
+                        py-3
+                        rounded-2xl
+                        bg-amber-500/10
+                        text-amber-200
+                        border
+                        border-amber-500/20
+                        flex
+                        items-center
+                        gap-2
+                        font-semibold
+                        hover:bg-amber-500
+                        hover:text-white
+                        transition-all
+                        duration-300
+                     "
+                  >
+
+                     <XCircle size={18} />
+
+                     Ignore
+
+                  </button>
+
+                  {/* delete */}
+                  <button
+                     onClick={() =>
+                        handleDelete(
+                           lesson._id
+                        )
+                     }
+
+                     className="
+                        px-5
+                        py-3
+                        rounded-2xl
+                        bg-rose-500/10
+                        text-rose-200
+                        border
+                        border-rose-500/20
+                        flex
+                        items-center
+                        gap-2
+                        font-semibold
+                        hover:bg-rose-500
+                        hover:text-white
+                        transition-all
+                        duration-300
+                     "
+                  >
+
+                     <Trash2 size={18} />
+
+                     Delete
+
+                  </button>
+
+               </div>
+
+            </td>
+
+         </tr>
+      ))
+   }
+
+</tbody>
 
             </table>
 

@@ -5,6 +5,7 @@ import useUser from "../../../hooks/useUser";
 import { toast } from "react-toastify";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
+import { BookOpenCheck } from "lucide-react";
 
 const MyLessons = () => {
   const { user } = useAuth();
@@ -187,89 +188,299 @@ const MyLessons = () => {
             </tr>
           </thead>
 
-          <tbody>
-            {lessons.map((lesson, index) => (
-              <tr
-                key={lesson._id}
-                className=" border-b border-white/5 hover:bg-[#1A2335] transition-all duration-300 hover:scale-[1.002]"
-              >
-                <td className="bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent font-semibold">
-                  {index + 1}
-                </td>
+     <tbody>
 
-                <td className=" ">{lesson.title}</td>
+  {
+    lessons.length === 0
 
-                <td className="">{lesson.category}</td>
+    ?
 
-                <td>
-                  <button
-                    onClick={() =>
-                      handlePrivacyChange(lesson._id, lesson.privacy)
-                    }
-                    className={` px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300
-                                  ${
-                                    lesson.privacy === "Public"
-                                      ? "bg-emerald-500/10 text-emerald-300 border-emerald-500/20 hover:bg-emerald-500 hover:text-white"
-                                      : "bg-rose-500/10 text-rose-300 border-rose-500/20 hover:bg-rose-500 hover:text-white"
-                                  }                              
-                        `}
-                  >
-                    {lesson.privacy}
-                  </button>
-                </td>
+    <tr>
 
-                <td className="">
-                  <button
-                    onClick={() =>
-                      handleAccessLevelChange(lesson._id, lesson.accessLevel)
-                    }
-                    className={` px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-30 ${
-                      lesson.accessLevel === "Premium"
-                        ? "bg-amber-500/10 text-amber-300 border-amber-500/20 hover:bg-amber-500 hover:text-black"
-                        : "bg-cyan-500/10 text-cyan-300 border-cyan-500/20 hover:bg-cyan-500 hover:text-white"
-                    }                                       
-                                          `}
-                  >
-                    {lesson.accessLevel}
-                  </button>
-                </td>
+      <td
+        colSpan="9"
+        className="
+          text-center
+          py-24
+        "
+      >
 
-                <td className="text-indigo-200">
-                  {new Date(lesson.createdAt).toLocaleDateString()}
-                </td>
+        <div className="flex flex-col items-center">
 
-                <td>{lesson.reactionsCount || 0}</td>
+          {/* icon */}
+          <div
+            className="
+              w-28
+              h-28
+              rounded-full
+              bg-indigo-500/10
+              flex
+              items-center
+              justify-center
+            "
+          >
 
-                <td>{lesson.favoritesCount || 0}</td>
+            <BookOpenCheck
+              size={60}
+              className="text-indigo-400"
+            />
 
-                <td className="space-x-2">
-                  {/* details */}
-                  <Link
-                    to={`/lesson-details/${lesson._id}`}
-                    className="px-4 py-2 rounded-xl bg-cyan-500/20 text-cyan-300 text-xs font-semibold hover:bg-cyan-500 hover:text-white transition-all duration-300"
-                  >
-                    Details
-                  </Link>
+          </div>
 
-                  {/* update */}
-                  <Link
-                    to={`/dashboard/update-lesson/${lesson._id}`}
-                    className="px-4 py-2 rounded-xl bg-warning/20 text-warning text-xs font-semibold hover:bg-warning hover:text-black transition-all duration-300"
-                  >
-                    Update
-                  </Link>
+          {/* title */}
+          <h2
+            className="
+              mt-8
+              text-4xl
+              font-black
+              text-white
+            "
+          >
 
-                  {/* delete */}
-                  <button
-                    onClick={() => handleDelete(lesson._id)}
-                    className=" px-4 py-2 rounded-xl bg-red-500/20 text-red-400 text-xs font-semibold hover:bg-red-500 hover:text-white transition-all duration-300"
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
+            No Lessons Found
+
+          </h2>
+
+          {/* description */}
+          <p
+            className="
+              text-gray-400
+              mt-4
+              max-w-md
+              leading-8
+            "
+          >
+
+            You have not created any
+            lessons yet 🚀
+
+          </p>
+
+        </div>
+
+      </td>
+
+    </tr>
+
+    :
+
+    lessons.map((lesson, index) => (
+
+      <tr
+        key={lesson._id}
+        className="
+          border-b
+          border-white/5
+          hover:bg-[#1A2335]
+          transition-all
+          duration-300
+          hover:scale-[1.002]
+        "
+      >
+
+        <td className="bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent font-semibold">
+
+          {index + 1}
+
+        </td>
+
+        <td>
+
+          {lesson.title}
+
+        </td>
+
+        <td>
+
+          {lesson.category}
+
+        </td>
+
+        <td>
+
+          <button
+            onClick={() =>
+              handlePrivacyChange(
+                lesson._id,
+                lesson.privacy
+              )
+            }
+
+            className={`
+              px-4
+              py-2
+              rounded-xl
+              text-xs
+              font-semibold
+              border
+              transition-all
+              duration-300
+
+              ${
+                lesson.privacy === "Public"
+
+                ?
+
+                "bg-emerald-500/10 text-emerald-300 border-emerald-500/20 hover:bg-emerald-500 hover:text-white"
+
+                :
+
+                "bg-rose-500/10 text-rose-300 border-rose-500/20 hover:bg-rose-500 hover:text-white"
+              }
+            `}
+          >
+
+            {lesson.privacy}
+
+          </button>
+
+        </td>
+
+        <td>
+
+          <button
+            onClick={() =>
+              handleAccessLevelChange(
+                lesson._id,
+                lesson.accessLevel
+              )
+            }
+
+            className={`
+              px-4
+              py-2
+              rounded-xl
+              text-xs
+              font-semibold
+              border
+              transition-all
+              duration-300
+
+              ${
+                lesson.accessLevel === "Premium"
+
+                ?
+
+                "bg-amber-500/10 text-amber-300 border-amber-500/20 hover:bg-amber-500 hover:text-black"
+
+                :
+
+                "bg-cyan-500/10 text-cyan-300 border-cyan-500/20 hover:bg-cyan-500 hover:text-white"
+              }
+            `}
+          >
+
+            {lesson.accessLevel}
+
+          </button>
+
+        </td>
+
+        <td className="text-indigo-200">
+
+          {
+            new Date(
+              lesson.createdAt
+            ).toLocaleDateString()
+          }
+
+        </td>
+
+        <td>
+
+          {lesson.reactionsCount || 0}
+
+        </td>
+
+        <td>
+
+          {lesson.favoritesCount || 0}
+
+        </td>
+
+        <td className="space-x-2">
+
+          {/* details */}
+          <Link
+            to={`/lesson-details/${lesson._id}`}
+
+            className="
+              px-4
+              py-2
+              rounded-xl
+              bg-cyan-500/20
+              text-cyan-300
+              text-xs
+              font-semibold
+              hover:bg-cyan-500
+              hover:text-white
+              transition-all
+              duration-300
+            "
+          >
+
+            Details
+
+          </Link>
+
+          {/* update */}
+          <Link
+            to={`/dashboard/update-lesson/${lesson._id}`}
+
+            className="
+              px-4
+              py-2
+              rounded-xl
+              bg-warning/20
+              text-warning
+              text-xs
+              font-semibold
+              hover:bg-warning
+              hover:text-black
+              transition-all
+              duration-300
+            "
+          >
+
+            Update
+
+          </Link>
+
+          {/* delete */}
+          <button
+            onClick={() =>
+              handleDelete(
+                lesson._id
+              )
+            }
+
+            className="
+              px-4
+              py-2
+              rounded-xl
+              bg-red-500/20
+              text-red-400
+              text-xs
+              font-semibold
+              hover:bg-red-500
+              hover:text-white
+              transition-all
+              duration-300
+            "
+          >
+
+            Delete
+
+          </button>
+
+        </td>
+
+      </tr>
+    ))
+  }
+
+</tbody>
+          
         </table>
       </div>
     </div>
