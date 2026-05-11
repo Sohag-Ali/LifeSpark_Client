@@ -1,14 +1,16 @@
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
+// import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import useAxiox from "../../../hooks/useAxiox";
 
 const SocialLogin = () => {
   const { signInWithGoogle } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
-  const axiosSecure = useAxiosSecure();
+  // const axiosSecure = useAxiosSecure();
+  const axiosInstance = useAxiox();
 
   // Handle Google Login
   const handleGoogleLogin = () => {
@@ -32,7 +34,7 @@ const SocialLogin = () => {
 
   // check banned user
   const checkUser =
-  await axiosSecure.get(
+  await axiosInstance.get(
 
     `/users/email/${user.email}`
   );
@@ -47,7 +49,7 @@ const SocialLogin = () => {
           email: user.email,
           photo: user.photoURL,
         };
-        axiosSecure
+        axiosInstance
           .post("/users", userInfo)
           .then((res) => {
             console.log("User info saved to database:", res.data);

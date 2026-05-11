@@ -4,10 +4,11 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
 import { Link, useLocation, useNavigate } from "react-router";
 import SocialLogin from "../SocialLogin/SocialLogin";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
+// import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import registerImg from "../../../assets/loginImage.jpeg";
 import { Eye, EyeOff } from "lucide-react";
+import useAxiox from "../../../hooks/useAxiox";
 
 const Register = () => {
   const [show, setShow] = useState(false);
@@ -20,7 +21,8 @@ const Register = () => {
 
   const location = useLocation();
   const navigate = useNavigate();
-  const axiosSecure = useAxiosSecure();
+  // const axiosSecure = useAxiosSecure();
+  const axiosInstance = useAxiox();
 
   // handle registration
   const handleRegister = (data) => {
@@ -50,7 +52,7 @@ localStorage.setItem(
               email: data.email,
               photo: data.photoUrl,
             };
-            axiosSecure
+            axiosInstance
               .post("/users", userInfo)
               .then((res) => {
                 console.log("User info saved to database:", res.data);

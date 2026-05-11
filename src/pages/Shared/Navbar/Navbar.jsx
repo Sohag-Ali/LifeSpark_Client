@@ -124,7 +124,7 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <Link className="text-2xl font-bold bg-gradient-to-r from-violet-300 to-indigo-400 bg-clip-text text-transparent">
+        <Link className="text-lg md:text-2xl font-bold bg-gradient-to-r from-violet-300 to-indigo-400 bg-clip-text text-transparent">
           LifeLessons ✨
         </Link>
       </div>

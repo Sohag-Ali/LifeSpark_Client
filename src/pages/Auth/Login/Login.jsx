@@ -5,7 +5,8 @@ import { Link, useLocation, useNavigate } from "react-router";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import Swal from "sweetalert2";
 import loginImg from "../../../assets/loginImage.jpeg";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
+// import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import useAxiox from "../../../hooks/useAxiox";
 
 const Login = () => {
   const {
@@ -16,7 +17,8 @@ const Login = () => {
   const { loginUser } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
-  const axiosSecure = useAxiosSecure();
+  // const axiosSecure = useAxiosSecure();
+  const axiosInstance = useAxiox();
 
   // Handle Login
   const handleLogin = (data) => {
@@ -41,7 +43,7 @@ const Login = () => {
 
   // check banned user
   const res =
-  await axiosSecure.get(
+  await axiosInstance.get(
 
     `/users/email/${user.email}`
   );
