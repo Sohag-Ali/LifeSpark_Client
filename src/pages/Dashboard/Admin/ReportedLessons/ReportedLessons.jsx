@@ -167,313 +167,303 @@ const ReportedLessons = () => {
          </div>
 
          {/* table */}
-         <div
-            className="
-               overflow-x-auto
-               bg-gradient-to-br
-               from-[#111827]
-               to-[#0F172A]
-               border
-               border-white/10
-               rounded-[32px]
-               shadow-2xl
-            "
-         >
+        <div
+  className="
+    w-full
+    overflow-x-auto
+    bg-gradient-to-br
+    from-[#111827]
+    to-[#0F172A]
+    border
+    border-white/10
+    rounded-[24px]
+    md:rounded-[32px]
+    shadow-2xl
+  "
+>
+  <table className="table min-w-[850px] text-white">
+    <thead>
+      <tr
+        className="
+          border-b
+          border-white/10
+          text-gray-300
+          text-center
+          text-xs
+          md:text-sm
+        "
+      >
+        <th className="py-6">Lesson</th>
 
-            <table className="table text-white ">
+        <th>Reports</th>
 
-               <thead>
+        <th>Actions</th>
+      </tr>
+    </thead>
 
-                  <tr
-                     className="
-                        border-b
-                        border-white/10
-                        text-gray-300
-                        text-center
-                     "
-                  >
-
-                     <th className="py-6">
-
-                        Lesson
-
-                     </th>
-
-                     <th>
-
-                        Reports
-
-                     </th>
-
-                     <th>
-
-                        Actions
-
-                     </th>
-
-                  </tr>
-
-               </thead>
-
-              <tbody>
-
-   {
-      lessons.length === 0
-
-      ?
-
-      <tr>
-
-         <td
+    <tbody>
+      {lessons.length === 0 ? (
+        <tr>
+          <td
             colSpan="3"
             className="
-               text-center
-               py-20
+              text-center
+              py-20
             "
-         >
-
+          >
             <div className="flex flex-col items-center">
+              {/* icon */}
+              <AlertTriangle
+                size={60}
+                className="text-rose-400"
+              />
 
-               {/* icon */}
-               <AlertTriangle
-                  size={70}
-                  className="text-rose-400"
-               />
+              {/* title */}
+              <h2
+                className="
+                  mt-8
+                  text-3xl
+                  md:text-4xl
+                  font-black
+                  text-white
+                "
+              >
+                No Reports Found
+              </h2>
 
-               {/* title */}
-               <h2
-                  className="
-                     mt-8
-                     text-4xl
-                     font-black
-                     text-white
-                  "
-               >
-
-                  No Reports Found
-
-               </h2>
-
-               {/* description */}
-               <p
-                  className="
-                     text-gray-400
-                     mt-4
-                     max-w-md
-                     leading-8
-                  "
-               >
-
-                  There are currently no
-                  reported lessons available 🚀
-
-               </p>
-
+              {/* description */}
+              <p
+                className="
+                  text-gray-400
+                  mt-4
+                  max-w-md
+                  leading-8
+                  text-sm
+                  md:text-base
+                "
+              >
+                There are currently no
+                reported lessons available 🚀
+              </p>
             </div>
-
-         </td>
-
-      </tr>
-
-      :
-
-      lessons.map(lesson => (
-
-         <tr
+          </td>
+        </tr>
+      ) : (
+        lessons.map((lesson) => (
+          <tr
             key={lesson._id}
-
             className="
-               border-b
-               border-white/5
-               hover:bg-white/[0.03]
-               transition-all
-               duration-300
+              border-b
+              border-white/5
+              hover:bg-white/[0.03]
+              transition-all
+              duration-300
             "
-         >
-
+          >
             {/* lesson */}
             <td className="py-5">
+              <div className="flex items-center gap-3 md:gap-5">
+                <img
+                  src={lesson.image}
+                  className="
+                    w-14
+                    h-14
+                    md:w-20
+                    md:h-20
+                    rounded-2xl
+                    object-cover
+                    border
+                    border-white/10
+                  "
+                />
 
-               <div className="flex items-center gap-5">
+                <div>
+                  <h2
+                    className="
+                      font-bold
+                      text-sm
+                      md:text-lg
+                      text-white
+                      line-clamp-1
+                    "
+                  >
+                    {lesson.title}
+                  </h2>
 
-                  <img
-                     src={lesson.image}
-                     className="
-                        w-20
-                        h-20
-                        rounded-2xl
-                        object-cover
-                        border
-                        border-white/10
-                     "
-                  />
-
-                  <div>
-
-                     <h2 className="font-bold text-lg text-white">
-
-                        {lesson.title}
-
-                     </h2>
-
-                     <p className="text-sm bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent mt-2">
-
-                        {lesson.creatorName}
-
-                     </p>
-
-                  </div>
-
-               </div>
-
+                  <p
+                    className="
+                      text-xs
+                      md:text-sm
+                      bg-gradient-to-r
+                      from-[#D8B4FE]
+                      via-[#A78BFA]
+                      to-[#818CF8]
+                      bg-clip-text
+                      text-transparent
+                      mt-2
+                    "
+                  >
+                    {lesson.creatorName}
+                  </p>
+                </div>
+              </div>
             </td>
 
             {/* reports */}
             <td className="text-center">
+              <div
+                className="
+                  inline-flex
+                  items-center
+                  gap-2
+                  px-3
+                  md:px-5
+                  py-2
+                  md:py-3
+                  rounded-full
+                  bg-rose-500/10
+                  text-rose-200
+                  border
+                  border-rose-500/20
+                  font-semibold
+                  text-xs
+                  md:text-sm
+                  whitespace-nowrap
+                "
+              >
+                <AlertTriangle size={14} />
 
-               <div
-                  className="
-                     inline-flex
-                     items-center
-                     gap-2
-                     px-5
-                     py-3
-                     rounded-full
-                     bg-rose-500/10
-                     text-rose-200
-                     border
-                     border-rose-500/20
-                     font-semibold
-                  "
-               >
+                {lesson.reportCount}
 
-                  <AlertTriangle size={16} />
-
-                  {lesson.reportCount}
-
-                  <span>Reports</span>
-
-               </div>
-
+                <span>Reports</span>
+              </div>
             </td>
 
             {/* actions */}
             <td>
+              <div
+                className="
+                  flex
+                  flex-col
+                  md:flex-row
+                  gap-2
+                  md:gap-3
+                  items-center
+                  justify-center
+                "
+              >
+                {/* view */}
+                <button
+                  onClick={() =>
+                    handleViewReports(
+                      lesson._id
+                    )
+                  }
+                  className="
+                    px-3
+                    md:px-5
+                    py-2
+                    md:py-3
+                    rounded-2xl
+                    bg-indigo-500/10
+                    text-indigo-200
+                    border
+                    border-indigo-500/20
+                    flex
+                    items-center
+                    gap-2
+                    text-xs
+                    md:text-sm
+                    font-semibold
+                    hover:bg-indigo-500
+                    hover:text-white
+                    transition-all
+                    duration-300
+                    whitespace-nowrap
+                  "
+                >
+                  <Eye size={16} />
 
-               <div className="flex flex-wrap gap-3 items-center justify-center">
+                  Reasons
+                </button>
 
-                  {/* view */}
-                  <button
-                     onClick={() =>
-                        handleViewReports(
-                           lesson._id
-                        )
-                     }
+                {/* ignore */}
+                <button
+                  onClick={() =>
+                    handleIgnore(
+                      lesson._id
+                    )
+                  }
+                  className="
+                    px-3
+                    md:px-5
+                    py-2
+                    md:py-3
+                    rounded-2xl
+                    bg-amber-500/10
+                    text-amber-200
+                    border
+                    border-amber-500/20
+                    flex
+                    items-center
+                    gap-2
+                    text-xs
+                    md:text-sm
+                    font-semibold
+                    hover:bg-amber-500
+                    hover:text-white
+                    transition-all
+                    duration-300
+                    whitespace-nowrap
+                  "
+                >
+                  <XCircle size={16} />
 
-                     className="
-                        px-5
-                        py-3
-                        rounded-2xl
-                        bg-indigo-500/10
-                        text-indigo-200
-                        border
-                        border-indigo-500/20
-                        flex
-                        items-center
-                        gap-2
-                        font-semibold
-                        hover:bg-indigo-500
-                        hover:text-white
-                        transition-all
-                        duration-300
-                     "
-                  >
+                  Ignore
+                </button>
 
-                     <Eye size={18} />
+                {/* delete */}
+                <button
+                  onClick={() =>
+                    handleDelete(
+                      lesson._id
+                    )
+                  }
+                  className="
+                    px-3
+                    md:px-5
+                    py-2
+                    md:py-3
+                    rounded-2xl
+                    bg-rose-500/10
+                    text-rose-200
+                    border
+                    border-rose-500/20
+                    flex
+                    items-center
+                    gap-2
+                    text-xs
+                    md:text-sm
+                    font-semibold
+                    hover:bg-rose-500
+                    hover:text-white
+                    transition-all
+                    duration-300
+                    whitespace-nowrap
+                  "
+                >
+                  <Trash2 size={16} />
 
-                     Reasons
-
-                  </button>
-
-                  {/* ignore */}
-                  <button
-                     onClick={() =>
-                        handleIgnore(
-                           lesson._id
-                        )
-                     }
-
-                     className="
-                        px-5
-                        py-3
-                        rounded-2xl
-                        bg-amber-500/10
-                        text-amber-200
-                        border
-                        border-amber-500/20
-                        flex
-                        items-center
-                        gap-2
-                        font-semibold
-                        hover:bg-amber-500
-                        hover:text-white
-                        transition-all
-                        duration-300
-                     "
-                  >
-
-                     <XCircle size={18} />
-
-                     Ignore
-
-                  </button>
-
-                  {/* delete */}
-                  <button
-                     onClick={() =>
-                        handleDelete(
-                           lesson._id
-                        )
-                     }
-
-                     className="
-                        px-5
-                        py-3
-                        rounded-2xl
-                        bg-rose-500/10
-                        text-rose-200
-                        border
-                        border-rose-500/20
-                        flex
-                        items-center
-                        gap-2
-                        font-semibold
-                        hover:bg-rose-500
-                        hover:text-white
-                        transition-all
-                        duration-300
-                     "
-                  >
-
-                     <Trash2 size={18} />
-
-                     Delete
-
-                  </button>
-
-               </div>
-
+                  Delete
+                </button>
+              </div>
             </td>
-
-         </tr>
-      ))
-   }
-
-</tbody>
-
-            </table>
-
-         </div>
+          </tr>
+        ))
+      )}
+    </tbody>
+  </table>
+</div>
 
          {/* modal */}
          <dialog

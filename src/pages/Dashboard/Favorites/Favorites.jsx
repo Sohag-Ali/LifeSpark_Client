@@ -337,269 +337,266 @@ const Favorites = () => {
             "
           >
 
-            <table className="table text-[#CBD5E1]">
+          <div className="w-full overflow-x-auto rounded-[24px] md:rounded-[32px]">
+  <table className="table min-w-[900px] text-[#CBD5E1]">
+    {/* head */}
+    <thead className="bg-white/[0.03] text-[#E2E8F0]">
+      <tr
+        className="
+          border-b
+          border-white/10
+          text-xs
+          md:text-sm
+        "
+      >
+        <th className="py-5">Lesson</th>
 
-              {/* head */}
-              <thead className="bg-white/[0.03] text-[#E2E8F0]">
+        <th>Category</th>
 
-                <tr className="border-b border-white/10">
+        <th>Tone</th>
 
-                  <th className="py-5">
-                    Lesson
-                  </th>
+        <th>Access</th>
 
-                  <th>
-                    Category
-                  </th>
+        <th>Actions</th>
+      </tr>
+    </thead>
 
-                  <th>
-                    Tone
-                  </th>
+    {/* body */}
+    <tbody>
+      {favorites.map((lesson) => (
+        <tr
+          key={lesson._id}
+          className="
+            border-b
+            border-white/5
+            hover:bg-white/[0.03]
+            transition-all
+            duration-300
+          "
+        >
+          {/* lesson */}
+          <td className="py-5 md:py-6">
+            <div className="flex items-center gap-3 md:gap-5">
+              {/* image */}
+              <img
+                src={lesson.image}
+                className="
+                  w-14
+                  h-14
+                  md:w-20
+                  md:h-20
+                  rounded-2xl
+                  object-cover
+                  border
+                  border-white/10
+                "
+              />
 
-                  <th>
-                    Access
-                  </th>
+              {/* content */}
+              <div className="max-w-[180px] md:max-w-xs">
+                <h2
+                  className="
+                    font-bold
+                    text-sm
+                    md:text-lg
+                    text-[#F1F5F9]
+                    line-clamp-1
+                  "
+                >
+                  {lesson.title}
+                </h2>
 
-                  <th>
-                    Actions
-                  </th>
+                <p
+                  className="
+                    text-xs
+                    md:text-sm
+                    text-gray-400
+                    mt-2
+                    line-clamp-2
+                    leading-5
+                    md:leading-6
+                  "
+                >
+                  {lesson.description.slice(0, 80)}...
+                </p>
+              </div>
+            </div>
+          </td>
 
-                </tr>
+          {/* category */}
+          <td>
+            <span
+              className={`
+                px-3
+                md:px-4
+                py-2
+                rounded-full
+                text-[10px]
+                md:text-xs
+                font-semibold
+                border
+                whitespace-nowrap
 
-              </thead>
-
-              {/* body */}
-              <tbody>
-
-                {
-                  favorites.map((lesson) => (
-
-                    <tr
-                      key={lesson._id}
-                      className="
-                        border-b
-                        border-white/5
-                        hover:bg-white/[0.03]
-                        transition-all
-                        duration-300
-                      "
-                    >
-
-                      {/* lesson */}
-                      <td className="py-6">
-
-                        <div className="flex items-center gap-5">
-
-                          {/* image */}
-                          <img
-                            src={lesson.image}
-                            className="
-                              w-20
-                              h-20
-                              rounded-2xl
-                              object-cover
-                              border
-                              border-white/10
-                            "
-                          />
-
-                          {/* content */}
-                          <div className="max-w-xs">
-
-                            <h2 className="font-bold text-[#F1F5F9] text-lg line-clamp-1">
-                              {lesson.title}
-                            </h2>
-
-                            <p className="text-sm text-gray-400 mt-2 line-clamp-2 leading-6">
-                              {
-                                lesson.description
-                                  .slice(0, 80)
-                              }
-                              ...
-                            </p>
-
-                          </div>
-
-                        </div>
-
-                      </td>
-
-                      {/* category */}
-                      <td>
-
-                        <span
-                            className={`
-    px-4
-    py-2
-    rounded-full
-    text-xs
-    font-semibold
-    border
-
-    ${
-      lesson.category === "Mindset"
-        ? "bg-violet-500/10 text-violet-200 border-violet-500/20"
-
-      : lesson.category === "Career"
-        ? "bg-sky-500/10 text-sky-200 border-sky-500/20"
-
-      : lesson.category === "Relationships"
-        ? "bg-pink-500/10 text-pink-200 border-pink-500/20"
-
-      : lesson.category === "Education"
-        ? "bg-blue-500/10 text-blue-200 border-blue-500/20"
-
-      : lesson.category === "Health"
-        ? "bg-red-500/10 text-red-200 border-red-500/20"
-
-      : lesson.category === "Mistakes Learned"
-        ? "bg-orange-500/10 text-orange-200 border-orange-500/20"
-
-      : lesson.category === "Personal Growth"
-        ? "bg-emerald-500/10 text-emerald-200 border-emerald-500/20"
-
-      : "bg-gray-500/10 text-gray-200 border-gray-500/20"
-    }
-  `}
-                        >
-                          {lesson.category}
-                        </span>
-
-                      </td>
-
-                      {/* tone */}
-                      <td>
-
-                        <span
-                           className={`
-    px-4
-    py-2
-    rounded-full
-    text-xs
-    font-semibold
-    border
-
-    ${
-      lesson.emotionalTone === "Motivational"
-        ? "bg-yellow-500/10 text-yellow-200 border-yellow-500/20"
-
-      : lesson.emotionalTone === "Sad"
-        ? "bg-blue-500/10 text-blue-200 border-blue-500/20"
-
-      : lesson.emotionalTone === "Happy"
-        ? "bg-green-500/10 text-green-200 border-green-500/20"
-
-      : lesson.emotionalTone === "Inspirational"
-        ? "bg-purple-500/10 text-purple-200 border-purple-500/20"
-
-      : lesson.emotionalTone === "Gratitude"
-        ? "bg-emerald-500/10 text-emerald-200 border-emerald-500/20"
-
-      : lesson.emotionalTone === "Realization"
-        ? "bg-pink-500/10 text-pink-200 border-pink-500/20"
-
-      : "bg-gray-500/10 text-gray-200 border-gray-500/20"
-    }
-  `}
-                        >
-                          {lesson.emotionalTone}
-                        </span>
-
-                      </td>
-
-                      {/* access */}
-                      <td>
-
-                        <span
-                          className={`
-                            px-4
-                            py-2
-                            rounded-full
-                            text-xs
-                            font-semibold
-                            border
-
-                            ${
-                              lesson.accessLevel === "Premium"
-                              ?
-                              "bg-yellow-500/10 text-yellow-200 border-yellow-500/20"
-                              :
-                              "bg-emerald-500/10 text-emerald-200 border-emerald-500/20"
-                            }
-                          `}
-                        >
-                          {lesson.accessLevel}
-                        </span>
-
-                      </td>
-
-                      {/* actions */}
-                      <td>
-
-                        <div className="flex items-center gap-3">
-
-                          {/* details */}
-                          <Link
-                            to={`/lesson-details/${lesson._id}`}
-                            className="
-                              px-5
-                              py-3
-                              rounded-2xl
-                              bg-gradient-to-r
-                              from-[#6366F1]
-                              to-[#A855F7]
-                              text-white
-                              text-sm
-                              font-semibold
-                              hover:shadow-xl
-                              hover:shadow-purple-500/20
-                              transition-all
-                              duration-300
-                            "
-                          >
-                            Details
-                          </Link>
-
-                          {/* remove */}
-                          <button
-                            onClick={() =>
-                              handleRemove(
-                                lesson._id
-                              )
-                            }
-                            className="
-                              w-12
-                              h-12
-                              rounded-2xl
-                              bg-red-500/10
-                              border
-                              border-red-500/20
-                              flex
-                              items-center
-                              justify-center
-                              text-red-300
-                              hover:bg-red-500
-                              hover:text-white
-                              transition-all
-                              duration-300
-                            "
-                          >
-
-                            <Trash2 size={20} />
-
-                          </button>
-
-                        </div>
-
-                      </td>
-
-                    </tr>
-                  ))
+                ${
+                  lesson.category === "Mindset"
+                    ? "bg-violet-500/10 text-violet-200 border-violet-500/20"
+                    : lesson.category === "Career"
+                    ? "bg-sky-500/10 text-sky-200 border-sky-500/20"
+                    : lesson.category === "Relationships"
+                    ? "bg-pink-500/10 text-pink-200 border-pink-500/20"
+                    : lesson.category === "Education"
+                    ? "bg-blue-500/10 text-blue-200 border-blue-500/20"
+                    : lesson.category === "Health"
+                    ? "bg-red-500/10 text-red-200 border-red-500/20"
+                    : lesson.category === "Mistakes Learned"
+                    ? "bg-orange-500/10 text-orange-200 border-orange-500/20"
+                    : lesson.category === "Personal Growth"
+                    ? "bg-emerald-500/10 text-emerald-200 border-emerald-500/20"
+                    : "bg-gray-500/10 text-gray-200 border-gray-500/20"
                 }
+              `}
+            >
+              {lesson.category}
+            </span>
+          </td>
 
-              </tbody>
+          {/* tone */}
+          <td>
+            <span
+              className={`
+                px-3
+                md:px-4
+                py-2
+                rounded-full
+                text-[10px]
+                md:text-xs
+                font-semibold
+                border
+                whitespace-nowrap
 
-            </table>
+                ${
+                  lesson.emotionalTone === "Motivational"
+                    ? "bg-yellow-500/10 text-yellow-200 border-yellow-500/20"
+                    : lesson.emotionalTone === "Sad"
+                    ? "bg-blue-500/10 text-blue-200 border-blue-500/20"
+                    : lesson.emotionalTone === "Happy"
+                    ? "bg-green-500/10 text-green-200 border-green-500/20"
+                    : lesson.emotionalTone === "Inspirational"
+                    ? "bg-purple-500/10 text-purple-200 border-purple-500/20"
+                    : lesson.emotionalTone === "Gratitude"
+                    ? "bg-emerald-500/10 text-emerald-200 border-emerald-500/20"
+                    : lesson.emotionalTone === "Realization"
+                    ? "bg-pink-500/10 text-pink-200 border-pink-500/20"
+                    : "bg-gray-500/10 text-gray-200 border-gray-500/20"
+                }
+              `}
+            >
+              {lesson.emotionalTone}
+            </span>
+          </td>
+
+          {/* access */}
+          <td>
+            <span
+              className={`
+                px-3
+                md:px-4
+                py-2
+                rounded-full
+                text-[10px]
+                md:text-xs
+                font-semibold
+                border
+                whitespace-nowrap
+
+                ${
+                  lesson.accessLevel === "Premium"
+                    ? "bg-yellow-500/10 text-yellow-200 border-yellow-500/20"
+                    : "bg-emerald-500/10 text-emerald-200 border-emerald-500/20"
+                }
+              `}
+            >
+              {lesson.accessLevel}
+            </span>
+          </td>
+
+          {/* actions */}
+          <td>
+            <div
+              className="
+                flex
+                flex-col
+                md:flex-row
+                items-start
+                md:items-center
+                gap-2
+                md:gap-3
+              "
+            >
+              {/* details */}
+              <Link
+                to={`/lesson-details/${lesson._id}`}
+                className="
+                  w-full
+                  md:w-auto
+                  text-center
+                  px-4
+                  md:px-5
+                  py-2
+                  md:py-3
+                  rounded-2xl
+                  bg-gradient-to-r
+                  from-[#6366F1]
+                  to-[#A855F7]
+                  text-white
+                  text-xs
+                  md:text-sm
+                  font-semibold
+                  hover:shadow-xl
+                  hover:shadow-purple-500/20
+                  transition-all
+                  duration-300
+                  whitespace-nowrap
+                "
+              >
+                Details
+              </Link>
+
+              {/* remove */}
+              <button
+                onClick={() =>
+                  handleRemove(
+                    lesson._id
+                  )
+                }
+                className="
+                  w-10
+                  h-10
+                  md:w-12
+                  md:h-12
+                  rounded-2xl
+                  bg-red-500/10
+                  border
+                  border-red-500/20
+                  flex
+                  items-center
+                  justify-center
+                  text-red-300
+                  hover:bg-red-500
+                  hover:text-white
+                  transition-all
+                  duration-300
+                "
+              >
+                <Trash2 size={18} />
+              </button>
+            </div>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
 
           </div>
         )

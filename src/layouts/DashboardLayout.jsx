@@ -30,36 +30,59 @@ const DashboardLayout = () => {
   const [userData] = useUser();
 
   return (
-    <div className="drawer lg:drawer-open bg-[#0F172A] text-white min-h-screen">
+    <div className="drawer md:drawer-open bg-[#0F172A] text-white min-h-screen">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
         {/* Navbar */}
-        <nav className="navbar sticky top-0 z-50 w-full bg-[#111827]/80 backdrop-blur-xl border-b border-white/10 px-6">
-          <label
-            htmlFor="my-drawer-4"
-            aria-label="open sidebar"
-            className="btn btn-square btn-ghost"
-          >
-            {/* Sidebar toggle icon */}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              strokeLinejoin="round"
-              strokeLinecap="round"
-              strokeWidth="2"
-              fill="none"
-              stroke="currentColor"
-              className="my-1.5 inline-block size-4"
-            >
-              <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
-              <path d="M9 4v16"></path>
-              <path d="M14 10l2 2l-2 2"></path>
-            </svg>
-          </label>
-          <div className="px-4 text-xl font-bold bg-gradient-to-r from-violet-300 to-indigo-400 bg-clip-text text-transparent">
-            Dashboard
-          </div>
-        </nav>
+    <nav className="navbar sticky top-0 z-50 w-full bg-[#111827]/80 backdrop-blur-xl border-b border-white/10 px-4 md:px-6">
+
+  <div className="flex items-center gap-4">
+
+    <label
+      htmlFor="my-drawer-4"
+      aria-label="open sidebar"
+      className="btn btn-square btn-ghost md:hidden"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        strokeLinejoin="round"
+        strokeLinecap="round"
+        strokeWidth="2"
+        fill="none"
+        stroke="currentColor"
+        className="size-5"
+      >
+        <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
+        <path d="M9 4v16"></path>
+        <path d="M14 10l2 2l-2 2"></path>
+      </svg>
+    </label>
+
+    <NavLink
+      to="/"
+      className="
+        md:hidden
+        text-lg
+        font-black
+        bg-gradient-to-r
+        from-violet-300
+        to-indigo-400
+        bg-clip-text
+        text-transparent
+      "
+    >
+      LifeLessons ✨
+    </NavLink>
+
+    {/* <div className="text-lg md:text-xl font-bold bg-gradient-to-r from-violet-300 to-indigo-400 bg-clip-text text-transparent">
+      Dashboard
+    </div> */}
+
+    
+
+  </div>
+</nav>
         {/* Page content here */}
 
         <Container>
@@ -78,22 +101,9 @@ const DashboardLayout = () => {
         <div className=" flex min-h-full flex-col items-start bg-[#111827] border-r border-white/10 backdrop-blur-xl is-drawer-close:w-14 is-drawer-open:w-72 transition-all duration-300 is-drawer-close:w-14 is-drawer-open:w-64">
           {/* Sidebar content here */}
           <ul className="menu w-full grow p-4 space-y-2">
-            <li>
+            <li className="hidden md:block">
               <NavLink to="/" className={navLinkClass}>
                 {/* Home icon */}
-                {/* <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  strokeLinejoin="round"
-                  strokeLinecap="round"
-                  strokeWidth="2"
-                  fill="none"
-                  stroke="currentColor"
-                  className="my-1.5 inline-block size-4"
-                >
-                  <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path>
-                  <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                </svg> */}
                 <span className="text-2xl font-bold bg-gradient-to-r from-violet-300 to-indigo-400 bg-clip-text text-transparent">
                   LifeLessons ✨
                 </span>
@@ -102,9 +112,9 @@ const DashboardLayout = () => {
 
             {userData?.role === "user" && (
               <>
-                {/* List item */}
+                {/* Home item */}
 
-                <li>
+                <li className="mt-15 md:mt-0">
                   <NavLink
                     to="/dashboard/user-home"
                     className={navLinkClass}
@@ -149,25 +159,12 @@ const DashboardLayout = () => {
                     data-tip="My Lessons"
                   >
                     {/* My Lessons icon */}
-                    {/* <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      strokeLinejoin="round"
-                      strokeLinecap="round"
-                      strokeWidth="2"
-                      fill="none"
-                      stroke="currentColor"
-                      className="my-1.5 inline-block size-4"
-                    >
-                      <path d="M12 5v14"></path>
-                      <path d="M5 12h14"></path>
-                    </svg> */}
                     <GiNotebook />
                     <span className="is-drawer-close:hidden">My Lessons</span>
                   </NavLink>
                 </li>
 
-                {/* List item */}
+                {/* favorite */}
                 <li>
                   <NavLink
                     to="/dashboard/favorites"
@@ -181,7 +178,7 @@ const DashboardLayout = () => {
                   </NavLink>
                 </li>
 
-                {/* List item */}
+                {/* profile */}
                 <li>
                   <NavLink
                     to="/dashboard/profile"
@@ -273,6 +270,46 @@ const DashboardLayout = () => {
                     <span className="is-drawer-close:hidden">
                       Reported Lessons
                     </span>
+                  </NavLink>
+                </li>
+
+                <li>
+                  <NavLink
+                    to="/dashboard/add-lesson"
+                    className={navLinkClass}
+                    data-tip="Add Lesson"
+                  >
+                    {/* Add Lesson icon */}
+
+                    <BiAddToQueue />
+                    <span className="is-drawer-close:hidden">Add Lesson</span>
+                  </NavLink>
+                </li>
+
+                {/* List item */}
+                <li>
+                  <NavLink
+                    to="/dashboard/my-lessons"
+                    className={navLinkClass}
+                    data-tip="My Lessons"
+                  >
+                    {/* My Lessons icon */}
+                    <GiNotebook />
+                    <span className="is-drawer-close:hidden">My Lessons</span>
+                  </NavLink>
+                </li>
+
+                {/* favorite */}
+                <li>
+                  <NavLink
+                    to="/dashboard/favorites"
+                    className={navLinkClass}
+                    data-tip="Favorites"
+                  >
+                    {/* Favorites icon */}
+
+                    <TbFileLike />
+                    <span className="is-drawer-close:hidden">Favorites</span>
                   </NavLink>
                 </li>
 

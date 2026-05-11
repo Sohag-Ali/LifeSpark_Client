@@ -463,335 +463,385 @@ const ManageUsers = () => {
 
         {/* table */}
         <div
-          className="
-          overflow-x-auto
-          bg-gradient-to-br
-          from-[#111827]
-          to-[#0F172A]
-          border
-          border-white/10
-          rounded-[32px]
-          shadow-2xl
-        "
-        >
-          <table className="table text-white">
-            <thead>
-              <tr className="border-b border-white/10 text-gray-300">
-                <th className="py-6">#</th>
+  className="
+    w-full
+    overflow-x-auto
+    scrollbar-thin
+    bg-gradient-to-br
+    from-[#111827]
+    to-[#0F172A]
+    border
+    border-white/10
+    rounded-[32px]
+    shadow-2xl
+  "
+>
+  <table className="table min-w-[950px] text-white">
+    <thead>
+      <tr className="border-b border-white/10 text-gray-300 text-xs md:text-sm">
+        <th className="py-6">#</th>
 
-                <th>User</th>
+        <th>User</th>
 
-                <th>Role</th>
+        <th>Role</th>
 
-                <th>Lessons</th>
+        <th>Lessons</th>
 
-                <th>Status</th>
+        <th>Status</th>
 
-                <th>Actions</th>
-              </tr>
-            </thead>
+        <th>Actions</th>
+      </tr>
+    </thead>
 
-            <tbody>
-              {filteredUsers.length === 0 ? (
-                <tr>
-                  <td
-                    colSpan="6"
+    <tbody>
+      {filteredUsers.length === 0 ? (
+        <tr>
+          <td
+            colSpan="6"
+            className="
+              text-center
+              py-20
+            "
+          >
+            <div className="flex flex-col items-center">
+              {/* icon */}
+              <Users size={70} className="text-indigo-400" />
+
+              {/* title */}
+              <h2
+                className="
+                  mt-8
+                  text-3xl
+                  md:text-4xl
+                  font-black
+                  text-white
+                "
+              >
+                No Users Found
+              </h2>
+
+              {/* description */}
+              <p
+                className="
+                  text-gray-400
+                  mt-4
+                  max-w-md
+                  leading-8
+                  text-sm
+                  md:text-base
+                "
+              >
+                No matching users available
+              </p>
+            </div>
+          </td>
+        </tr>
+      ) : (
+        filteredUsers.map((user, index) => (
+          <tr
+            key={user._id}
+            className="
+              border-b
+              border-white/5
+              hover:bg-white/[0.03]
+              transition-all
+              duration-300
+            "
+          >
+            {/* serial */}
+            <td className="font-semibold text-gray-400 text-xs md:text-sm">
+              {index + 1}
+            </td>
+
+            {/* user */}
+            <td className="py-5">
+              <div className="flex items-center gap-3 md:gap-5">
+                {/* image */}
+                <div className="relative">
+                  <div className="absolute inset-0 rounded-full bg-primary blur-lg opacity-20"></div>
+
+                  <img
+                    src={
+                      user.photo ||
+                      "https://i.ibb.co/4pDNDk1/avatar.png"
+                    }
                     className="
-          text-center
-          py-20
-        "
+                      relative
+                      w-12
+                      h-12
+                      md:w-16
+                      md:h-16
+                      rounded-full
+                      object-cover
+                      border
+                      border-white/10
+                    "
+                  />
+                </div>
+
+                {/* content */}
+                <div>
+                  <h2
+                    className="
+                      font-bold
+                      text-sm
+                      md:text-lg
+                      bg-gradient-to-r
+                      from-[#D8B4FE]
+                      via-[#A78BFA]
+                      to-[#818CF8]
+                      bg-clip-text
+                      text-transparent
+                    "
                   >
-                    <div className="flex flex-col items-center">
-                      {/* icon */}
-                      <Users size={70} className="text-indigo-400" />
+                    {user.name}
+                  </h2>
 
-                      {/* title */}
-                      <h2
-                        className="
-              mt-8
-              text-4xl
-              font-black
-              text-white
-            "
-                      >
-                        No Users Found
-                      </h2>
+                  <p className="text-xs md:text-sm text-cyan-400 mt-1 break-all">
+                    {user.email}
+                  </p>
+                </div>
+              </div>
+            </td>
 
-                      {/* description */}
-                      <p
-                        className="
-              text-gray-400
-              mt-4
-              max-w-md
-              leading-8
-            "
-                      >
-                        No matching users available
-                      </p>
-                    </div>
-                  </td>
-                </tr>
+            {/* role */}
+            <td>
+              {user.role === "admin" ? (
+                <span
+                  className="
+                    inline-flex
+                    items-center
+                    gap-2
+                    px-3
+                    md:px-4
+                    py-2
+                    rounded-full
+                    bg-amber-500/10
+                    text-amber-200
+                    border
+                    border-amber-500/20
+                    text-[10px]
+                    md:text-xs
+                    font-semibold
+                  "
+                >
+                  <Crown size={14} />
+                  Admin
+                </span>
               ) : (
-                filteredUsers.map((user, index) => (
-                  <tr
-                    key={user._id}
+                <span
+                  className="
+                    inline-flex
+                    items-center
+                    gap-2
+                    px-3
+                    md:px-4
+                    py-2
+                    rounded-full
+                    bg-indigo-500/10
+                    text-indigo-200
+                    border
+                    border-indigo-500/20
+                    text-[10px]
+                    md:text-xs
+                    font-semibold
+                  "
+                >
+                  <Users size={14} />
+                  User
+                </span>
+              )}
+            </td>
+
+            {/* lessons */}
+            <td>
+              <div
+                className="
+                  inline-flex
+                  items-center
+                  gap-2
+                  px-3
+                  md:px-4
+                  py-2
+                  rounded-full
+                  bg-emerald-500/10
+                  text-emerald-200
+                  border
+                  border-emerald-500/20
+                  text-xs
+                  md:text-sm
+                  font-semibold
+                "
+              >
+                {user.totalLessons}
+              </div>
+            </td>
+
+            {/* status */}
+            <td>
+              {user.isBanned ? (
+                <span
+                  className="
+                    inline-flex
+                    items-center
+                    gap-2
+                    px-3
+                    md:px-4
+                    py-2
+                    rounded-full
+                    bg-rose-500/10
+                    text-rose-300
+                    border
+                    border-rose-500/20
+                    text-[10px]
+                    md:text-xs
+                    font-semibold
+                  "
+                >
+                  Banned
+                </span>
+              ) : (
+                <span
+                  className="
+                    inline-flex
+                    items-center
+                    gap-2
+                    px-3
+                    md:px-4
+                    py-2
+                    rounded-full
+                    bg-emerald-500/10
+                    text-emerald-300
+                    border
+                    border-emerald-500/20
+                    text-[10px]
+                    md:text-xs
+                    font-semibold
+                  "
+                >
+                  Active
+                </span>
+              )}
+            </td>
+
+            {/* actions */}
+            <td>
+              <div
+                className="
+                  flex
+                  flex-col
+                  md:flex-row
+                  items-start
+                  md:items-center
+                  gap-2
+                "
+              >
+                {/* make admin */}
+                {user.role !== "admin" && (
+                  <button
+                    onClick={() => handleMakeAdmin(user._id)}
                     className="
-                    border-b
-                    border-white/5
-                    hover:bg-white/[0.03]
+                      px-3
+                      md:px-5
+                      py-2
+                      md:py-3
+                      rounded-2xl
+                      bg-indigo-500/10
+                      text-indigo-200
+                      border
+                      border-indigo-500/20
+                      flex
+                      items-center
+                      gap-2
+                      text-xs
+                      md:text-sm
+                      font-semibold
+                      hover:bg-indigo-500
+                      hover:text-white
+                      transition-all
+                      duration-300
+                    "
+                  >
+                    <Shield size={16} />
+                    Make Admin
+                  </button>
+                )}
+
+                {/* ban/unban */}
+                <button
+                  onClick={() => handleBanToggle(user)}
+                  className={`
+                    px-3
+                    md:px-5
+                    py-2
+                    md:py-3
+                    rounded-2xl
+                    border
+                    flex
+                    items-center
+                    gap-2
+                    text-xs
+                    md:text-sm
+                    font-semibold
+                    transition-all
+                    duration-300
+
+                    ${
+                      user.isBanned
+                        ? `
+                        bg-emerald-500/10
+                        text-emerald-300
+                        border-emerald-500/20
+                        hover:bg-emerald-500
+                        hover:text-white
+                      `
+                        : `
+                        bg-rose-500/10
+                        text-rose-300
+                        border-rose-500/20
+                        hover:bg-rose-500
+                        hover:text-white
+                      `
+                    }
+                  `}
+                >
+                  {user.isBanned ? "Unban" : "Ban"}
+
+                  {user.isBanned ? "" : <FaBan size={16} />}
+                </button>
+
+                {/* delete */}
+                <button
+                  onClick={() => handleDelete(user._id)}
+                  className="
+                    w-10
+                    h-10
+                    md:w-12
+                    md:h-12
+                    rounded-2xl
+                    bg-rose-500/10
+                    text-rose-300
+                    border
+                    border-rose-500/20
+                    flex
+                    items-center
+                    justify-center
+                    hover:bg-rose-500
+                    hover:text-white
                     transition-all
                     duration-300
                   "
-                  >
-                    {/* serial */}
-                    <td className="font-semibold text-gray-400">{index + 1}</td>
-
-                    {/* user */}
-                    <td className="py-5">
-                      <div className="flex items-center gap-5">
-                        {/* image */}
-                        <div className="relative">
-                          <div className="absolute inset-0 rounded-full bg-primary blur-lg opacity-20"></div>
-
-                          <img
-                            src={
-                              user.photo ||
-                              "https://i.ibb.co/4pDNDk1/avatar.png"
-                            }
-                            className="
-                            relative
-                            w-16
-                            h-16
-                            rounded-full
-                            object-cover
-                            border
-                            border-white/10
-                          "
-                          />
-                        </div>
-
-                        {/* content */}
-                        <div>
-                          <h2 className="font-bold text-lg bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent ">
-                            {user.name}
-                          </h2>
-
-                          <p className="text-sm text-cyan-400 mt-1">
-                            {user.email}
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-
-                    {/* role */}
-                    <td>
-                      {user.role === "admin" ? (
-                        <span
-                          className="
-                            inline-flex
-                            items-center
-                            gap-2
-                            px-4
-                            py-2
-                            rounded-full
-                            bg-amber-500/10
-                            text-amber-200
-                            border
-                            border-amber-500/20
-                            text-xs
-                            font-semibold
-                          "
-                        >
-                          <Crown size={14} />
-                          Admin
-                        </span>
-                      ) : (
-                        <span
-                          className="
-                            inline-flex
-                            items-center
-                            gap-2
-                            px-4
-                            py-2
-                            rounded-full
-                            bg-indigo-500/10
-                            text-indigo-200
-                            border
-                            border-indigo-500/20
-                            text-xs
-                            font-semibold
-                          "
-                        >
-                          <Users size={14} />
-                          User
-                        </span>
-                      )}
-                    </td>
-
-                    {/* lessons */}
-                    <td>
-                      <div
-                        className="
-                        inline-flex
-                        items-center
-                        gap-2
-                        px-4
-                        py-2
-                        rounded-full
-                        bg-emerald-500/10
-                        text-emerald-200
-                        border
-                        border-emerald-500/20
-                        text-sm
-                        font-semibold
-                      "
-                      >
-                        {user.totalLessons}
-                      </div>
-                    </td>
-
-                    {/* status */}
-                    <td>
-                      {user.isBanned ? (
-                        <span
-                          className="
-          inline-flex
-          items-center
-          gap-2
-          px-4
-          py-2
-          rounded-full
-          bg-rose-500/10
-          text-rose-300
-          border
-          border-rose-500/20
-          text-xs
-          font-semibold
-        "
-                        >
-                          Banned
-                        </span>
-                      ) : (
-                        <span
-                          className="
-          inline-flex
-          items-center
-          gap-2
-          px-4
-          py-2
-          rounded-full
-          bg-emerald-500/10
-          text-emerald-300
-          border
-          border-emerald-500/20
-          text-xs
-          font-semibold
-        "
-                        >
-                          Active
-                        </span>
-                      )}
-                    </td>
-
-                    {/* actions */}
-                    <td>
-                      <div className="flex items-center gap-3 flex-wrap">
-                        {/* make admin */}
-                        {user.role !== "admin" && (
-                          <button
-                            onClick={() => handleMakeAdmin(user._id)}
-                            className="
-                              px-5
-                              py-3
-                              rounded-2xl
-                              bg-indigo-500/10
-                              text-indigo-200
-                              border
-                              border-indigo-500/20
-                              flex
-                              items-center
-                              gap-2
-                              font-semibold
-                              hover:bg-indigo-500
-                              hover:text-white
-                              transition-all
-                              duration-300
-                            "
-                          >
-                            <Shield size={18} />
-                            Make Admin
-                          </button>
-                        )}
-
-                        {/* BAN / UNBAN */}
-                        <button
-                          onClick={() => handleBanToggle(user)}
-                          className={`
-        px-5
-        py-3
-        rounded-2xl
-        border
-        flex
-        items-center
-        gap-2
-        font-semibold
-        transition-all
-        duration-300
-
-        ${
-          user.isBanned
-            ? `
-          bg-emerald-500/10
-          text-emerald-300
-          border-emerald-500/20
-          hover:bg-emerald-500
-          hover:text-white
-          `
-            : `
-          bg-rose-500/10
-          text-rose-300
-          border-rose-500/20
-          hover:bg-rose-500
-          hover:text-white
-          `
-        }
-      `}
-                        >
-                          {user.isBanned ? "Unban" : "Ban"}
-
-                          {user.isBanned ? "" : <FaBan size={18} />}
-                        </button>
-
-                        {/* delete */}
-                        <button
-                          onClick={() => handleDelete(user._id)}
-                          className="
-                          w-12
-                          h-12
-                          rounded-2xl
-                          bg-rose-500/10
-                          text-rose-300
-                          border
-                          border-rose-500/20
-                          flex
-                          items-center
-                          justify-center
-                          hover:bg-rose-500
-                          hover:text-white
-                          transition-all
-                          duration-300
-                        "
-                        >
-                          <Trash2 size={18} />
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))
-              )}
-            </tbody>
-          </table>
-        </div>
+                >
+                  <Trash2 size={16} />
+                </button>
+              </div>
+            </td>
+          </tr>
+        ))
+      )}
+    </tbody>
+  </table>
+</div>
       </div>
     )
   );

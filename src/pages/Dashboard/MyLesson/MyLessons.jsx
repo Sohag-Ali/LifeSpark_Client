@@ -191,30 +191,26 @@ const MyLessons = () => {
             </tr>
           </thead>
 
-     <tbody>
-
-  {
-    lessons.length === 0
-
-    ?
-
+<tbody>
+  {lessons.length === 0 ? (
     <tr>
-
       <td
         colSpan="9"
         className="
           text-center
-          py-24
+          py-16
+          md:py-24
+          px-4
         "
       >
-
         <div className="flex flex-col items-center">
-
           {/* icon */}
           <div
             className="
-              w-28
-              h-28
+              w-20
+              h-20
+              md:w-28
+              md:h-28
               rounded-full
               bg-indigo-500/10
               flex
@@ -222,26 +218,24 @@ const MyLessons = () => {
               justify-center
             "
           >
-
             <BookOpenCheck
-              size={60}
-              className="text-indigo-400"
+              size={40}
+              className="md:w-[60px] md:h-[60px] text-indigo-400"
             />
-
           </div>
 
           {/* title */}
           <h2
             className="
-              mt-8
-              text-4xl
+              mt-6
+              md:mt-8
+              text-2xl
+              md:text-4xl
               font-black
               text-white
             "
           >
-
             No Lessons Found
-
           </h2>
 
           {/* description */}
@@ -250,25 +244,20 @@ const MyLessons = () => {
               text-gray-400
               mt-4
               max-w-md
-              leading-8
+              leading-7
+              md:leading-8
+              text-sm
+              md:text-base
             "
           >
-
             You have not created any
             lessons yet 🚀
-
           </p>
-
         </div>
-
       </td>
-
     </tr>
-
-    :
-
+  ) : (
     lessons.map((lesson, index) => (
-
       <tr
         key={lesson._id}
         className="
@@ -277,30 +266,64 @@ const MyLessons = () => {
           hover:bg-[#1A2335]
           transition-all
           duration-300
-          hover:scale-[1.002]
         "
       >
-
-        <td className="bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent font-semibold">
-
+        {/* serial */}
+        <td
+          className="
+            bg-gradient-to-r
+            from-[#D8B4FE]
+            via-[#A78BFA]
+            to-[#818CF8]
+            bg-clip-text
+            text-transparent
+            font-semibold
+            text-xs
+            md:text-sm
+          "
+        >
           {index + 1}
-
         </td>
 
-        <td>
-
-          {lesson.title}
-
+        {/* title */}
+        <td
+          className="
+            text-xs
+            md:text-sm
+            font-medium
+            text-white
+            min-w-[180px]
+          "
+        >
+          <div className="line-clamp-2">
+            {lesson.title}
+          </div>
         </td>
 
+        {/* category */}
         <td>
-
-          {lesson.category}
-
+          <span
+            className="
+              px-3
+              md:px-4
+              py-2
+              rounded-xl
+              bg-indigo-500/10
+              text-indigo-300
+              border
+              border-indigo-500/20
+              text-[10px]
+              md:text-xs
+              font-semibold
+              whitespace-nowrap
+            "
+          >
+            {lesson.category}
+          </span>
         </td>
 
+        {/* privacy */}
         <td>
-
           <button
             onClick={() =>
               handlePrivacyChange(
@@ -308,39 +331,32 @@ const MyLessons = () => {
                 lesson.privacy
               )
             }
-
             className={`
-              px-4
+              px-3
+              md:px-4
               py-2
               rounded-xl
-              text-xs
+              text-[10px]
+              md:text-xs
               font-semibold
               border
+              whitespace-nowrap
               transition-all
               duration-300
 
               ${
                 lesson.privacy === "Public"
-
-                ?
-
-                "bg-emerald-500/10 text-emerald-300 border-emerald-500/20 hover:bg-emerald-500 hover:text-white"
-
-                :
-
-                "bg-rose-500/10 text-rose-300 border-rose-500/20 hover:bg-rose-500 hover:text-white"
+                  ? "bg-emerald-500/10 text-emerald-300 border-emerald-500/20 hover:bg-emerald-500 hover:text-white"
+                  : "bg-rose-500/10 text-rose-300 border-rose-500/20 hover:bg-rose-500 hover:text-white"
               }
             `}
           >
-
             {lesson.privacy}
-
           </button>
-
         </td>
 
+        {/* access level */}
         <td>
-
           <button
             onClick={() =>
               handleAccessLevelChange(
@@ -348,140 +364,155 @@ const MyLessons = () => {
                 lesson.accessLevel
               )
             }
-
             className={`
-              px-4
+              px-3
+              md:px-4
               py-2
               rounded-xl
-              text-xs
+              text-[10px]
+              md:text-xs
               font-semibold
               border
+              whitespace-nowrap
               transition-all
               duration-300
 
               ${
                 lesson.accessLevel === "Premium"
-
-                ?
-
-                "bg-amber-500/10 text-amber-300 border-amber-500/20 hover:bg-amber-500 hover:text-black"
-
-                :
-
-                "bg-cyan-500/10 text-cyan-300 border-cyan-500/20 hover:bg-cyan-500 hover:text-white"
+                  ? "bg-amber-500/10 text-amber-300 border-amber-500/20 hover:bg-amber-500 hover:text-black"
+                  : "bg-cyan-500/10 text-cyan-300 border-cyan-500/20 hover:bg-cyan-500 hover:text-white"
               }
             `}
           >
-
             {lesson.accessLevel}
-
           </button>
-
         </td>
 
-        <td className="text-indigo-200">
-
-          {
-            new Date(
-              lesson.createdAt
-            ).toLocaleDateString()
-          }
-
+        {/* date */}
+        <td
+          className="
+            text-indigo-200
+            text-[10px]
+            md:text-sm
+            whitespace-nowrap
+          "
+        >
+          {new Date(
+            lesson.createdAt
+          ).toLocaleDateString()}
         </td>
 
-        <td>
-
+        {/* reactions */}
+        <td
+          className="
+            text-center
+            text-xs
+            md:text-sm
+          "
+        >
           {lesson.reactionsCount || 0}
-
         </td>
 
-        <td>
-
+        {/* favorites */}
+        <td
+          className="
+            text-center
+            text-xs
+            md:text-sm
+          "
+        >
           {lesson.favoritesCount || 0}
-
         </td>
 
-        <td className="space-x-2">
-
-          {/* details */}
-          <Link
-            to={`/lesson-details/${lesson._id}`}
-
+        {/* actions */}
+        <td>
+          <div
             className="
-              px-4
-              py-2
-              rounded-xl
-              bg-cyan-500/20
-              text-cyan-300
-              text-xs
-              font-semibold
-              hover:bg-cyan-500
-              hover:text-white
-              transition-all
-              duration-300
+              flex
+              flex-col
+              md:flex-row
+              gap-2
             "
           >
+            {/* details */}
+            <Link
+              to={`/lesson-details/${lesson._id}`}
+              className="
+                px-3
+                md:px-4
+                py-2
+                rounded-xl
+                bg-cyan-500/20
+                text-cyan-300
+                text-[10px]
+                md:text-xs
+                font-semibold
+                text-center
+                hover:bg-cyan-500
+                hover:text-white
+                transition-all
+                duration-300
+                whitespace-nowrap
+              "
+            >
+              Details
+            </Link>
 
-            Details
+            {/* update */}
+            <Link
+              to={`/dashboard/update-lesson/${lesson._id}`}
+              className="
+                px-3
+                md:px-4
+                py-2
+                rounded-xl
+                bg-warning/20
+                text-warning
+                text-[10px]
+                md:text-xs
+                font-semibold
+                text-center
+                hover:bg-warning
+                hover:text-black
+                transition-all
+                duration-300
+                whitespace-nowrap
+              "
+            >
+              Update
+            </Link>
 
-          </Link>
-
-          {/* update */}
-          <Link
-            to={`/dashboard/update-lesson/${lesson._id}`}
-
-            className="
-              px-4
-              py-2
-              rounded-xl
-              bg-warning/20
-              text-warning
-              text-xs
-              font-semibold
-              hover:bg-warning
-              hover:text-black
-              transition-all
-              duration-300
-            "
-          >
-
-            Update
-
-          </Link>
-
-          {/* delete */}
-          <button
-            onClick={() =>
-              handleDelete(
-                lesson._id
-              )
-            }
-
-            className="
-              px-4
-              py-2
-              rounded-xl
-              bg-red-500/20
-              text-red-400
-              text-xs
-              font-semibold
-              hover:bg-red-500
-              hover:text-white
-              transition-all
-              duration-300
-            "
-          >
-
-            Delete
-
-          </button>
-
+            {/* delete */}
+            <button
+              onClick={() =>
+                handleDelete(
+                  lesson._id
+                )
+              }
+              className="
+                px-3
+                md:px-4
+                py-2
+                rounded-xl
+                bg-red-500/20
+                text-red-400
+                text-[10px]
+                md:text-xs
+                font-semibold
+                hover:bg-red-500
+                hover:text-white
+                transition-all
+                duration-300
+                whitespace-nowrap
+              "
+            >
+              Delete
+            </button>
+          </div>
         </td>
-
       </tr>
     ))
-  }
-
+  )}
 </tbody>
           
         </table>

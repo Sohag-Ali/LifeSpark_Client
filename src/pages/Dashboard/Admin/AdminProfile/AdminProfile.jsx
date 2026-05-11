@@ -248,7 +248,7 @@ const AdminProfile = () => {
           </div>
 
           <div>
-            <h2 className="text-3xl md:text-4xl font-black text-white">
+            <h2 className="text-2xl md:text-4xl font-black text-white">
               <span className="bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent ">
                 Personal Activity
               </span>{" "}
@@ -360,7 +360,7 @@ const AdminProfile = () => {
 
       {/* quick actions */}
       <div className="mt-16">
-        <h2 className="text-3xl md:text-4xl font-black text-white mb-10">
+        <h2 className="text-2xl md:text-4xl font-black text-white mb-10">
           <span className="bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent ">
             Quick Admin Actions
           </span>{" "}
@@ -533,7 +533,7 @@ const AdminProfile = () => {
       <div className="mt-16">
         {/* heading */}
         <div className="mb-10">
-          <h2 className="text-4xl  text-white">
+          <h2 className="text-3xl md:text-4xl  text-white">
             <span className="bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent font-bold">
               My Public Lessons
             </span>{" "}

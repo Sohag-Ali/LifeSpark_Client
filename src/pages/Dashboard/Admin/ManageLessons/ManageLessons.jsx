@@ -345,298 +345,360 @@ const ManageLessons = () => {
       </div>
 
       {/* table */}
-      <div
+     <div
+  className="
+    w-full
+    overflow-x-auto
+    bg-gradient-to-br
+    from-[#111827]
+    to-[#0F172A]
+    border
+    border-white/10
+    rounded-[24px]
+    md:rounded-[32px]
+    shadow-2xl
+  "
+>
+  <table className="table min-w-[850px] text-white">
+    <thead>
+      <tr
         className="
-          overflow-x-auto
-          bg-gradient-to-br
-          from-[#111827]
-          to-[#0F172A]
-          border
+          border-b
+          text-center
           border-white/10
-          rounded-[32px]
-          shadow-2xl
+          text-gray-300
+          text-xs
+          md:text-sm
         "
       >
-        <table className="table">
-          <thead>
-            <tr className="border-b text-center border-white/10 text-gray-300">
-              <th className="py-6">Lesson</th>
+        <th className="py-6">Lesson</th>
 
-              <th>Category</th>
+        <th>Category</th>
 
-              <th>Visibility</th>
+        <th>Visibility</th>
 
-              <th>Status</th>
+        <th>Status</th>
 
-              <th>Actions</th>
-            </tr>
-          </thead>
+        <th>Actions</th>
+      </tr>
+    </thead>
 
-          <tbody>
-            {lessons.length === 0 ? (
-              <tr>
-                <td
-                  colSpan="5"
-                  className="
-               text-center
-               py-20
+    <tbody>
+      {lessons.length === 0 ? (
+        <tr>
+          <td
+            colSpan="5"
+            className="
+              text-center
+              py-20
             "
-                >
-                  <div className="flex flex-col items-center">
-                    {/* icon */}
-                    <BookOpen size={70} className="text-indigo-400" />
+          >
+            <div className="flex flex-col items-center">
+              {/* icon */}
+              <BookOpen size={60} className="text-indigo-400" />
 
-                    {/* title */}
-                    <h2
-                      className="
-                     mt-8
-                     text-4xl
-                     font-black
-                     text-white
-                  "
-                    >
-                      Lessons Not Found
-                    </h2>
+              {/* title */}
+              <h2
+                className="
+                  mt-8
+                  text-3xl
+                  md:text-4xl
+                  font-black
+                  text-white
+                "
+              >
+                Lessons Not Found
+              </h2>
 
-                    {/* description */}
-                    <p
-                      className="
-                     text-gray-400
-                     mt-4
-                     max-w-md
-                     leading-8
-                  "
-                    >
-                      No lessons available right now
-                    </p>
-                  </div>
-                </td>
-              </tr>
-            ) : (
-              lessons.map((lesson) => (
-                <tr
-                  key={lesson._id}
-                  className="
-               border-b
-               border-white/5
-               hover:bg-white/[0.03]
-               transition-all
-               duration-300
+              {/* description */}
+              <p
+                className="
+                  text-gray-400
+                  mt-4
+                  max-w-md
+                  leading-8
+                  text-sm
+                  md:text-base
+                "
+              >
+                No lessons available right now
+              </p>
+            </div>
+          </td>
+        </tr>
+      ) : (
+        lessons.map((lesson) => (
+          <tr
+            key={lesson._id}
+            className="
+              border-b
+              border-white/5
+              hover:bg-white/[0.03]
+              transition-all
+              duration-300
             "
-                >
-                  {/* lesson */}
-                  <td className="py-5">
-                    <div className="flex items-center gap-5">
-                      <img
-                        src={lesson.image}
-                        className="
-                        w-20
-                        h-20
-                        rounded-2xl
-                        object-cover
-                        border
-                        border-white/10
-                     "
-                      />
-
-                      <div>
-                        <h2 className="font-bold text-lg bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent">
-                          {lesson.title}
-                        </h2>
-
-                        <p className="text-sm bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent mt-2">
-                          {lesson.creatorName}
-                        </p>
-                      </div>
-                    </div>
-                  </td>
-
-                  {/* category */}
-                  <td>
-                    <span
-                      className="
-                     px-4
-                     py-2
-                     rounded-full
-                     bg-indigo-500/10
-                     text-indigo-200
-                     border
-                     border-indigo-500/20
-                     text-xs
-                     font-semibold
+          >
+            {/* lesson */}
+            <td className="py-5">
+              <div className="flex items-center gap-3 md:gap-5">
+                <img
+                  src={lesson.image}
+                  className="
+                    w-14
+                    h-14
+                    md:w-20
+                    md:h-20
+                    rounded-2xl
+                    object-cover
+                    border
+                    border-white/10
                   "
-                    >
-                      {lesson.category}
-                    </span>
-                  </td>
+                />
 
-                  {/* visibility */}
-                  <td>
-                    <span
-                      className={`
-                     px-4
-                     py-2
-                     rounded-full
-                     text-xs
-                     font-semibold
-                     border
+                <div>
+                  <h2
+                    className="
+                      font-bold
+                      text-sm
+                      md:text-lg
+                      bg-gradient-to-r
+                      from-[#D8B4FE]
+                      via-[#A78BFA]
+                      to-[#818CF8]
+                      bg-clip-text
+                      text-transparent
+                      line-clamp-1
+                    "
+                  >
+                    {lesson.title}
+                  </h2>
 
-                     ${
-                       lesson.privacy === "Public"
-                         ? "bg-emerald-500/10 text-emerald-200 border-emerald-500/20"
-                         : "bg-amber-500/10 text-amber-200 border-amber-500/20"
-                     }
-                  `}
-                    >
-                      {lesson.privacy}
-                    </span>
-                  </td>
+                  <p
+                    className="
+                      text-xs
+                      md:text-sm
+                      bg-gradient-to-r
+                      from-fuchsia-500
+                      via-purple-600
+                      to-indigo-600
+                      bg-clip-text
+                      text-transparent
+                      mt-2
+                    "
+                  >
+                    {lesson.creatorName}
+                  </p>
+                </div>
+              </div>
+            </td>
 
-                  {/* status */}
-                  <td>
-                    <div className="flex gap-2">
-                      {lesson.isFeatured && (
-                        <span
-                          className="
-                              px-4
-                              py-2
-                              rounded-full
-                              bg-purple-500/10
-                              text-purple-200
-                              border
-                              border-purple-500/20
-                              text-xs
-                              font-semibold
-                           "
-                        >
-                          Featured
-                        </span>
-                      )}
+            {/* category */}
+            <td>
+              <span
+                className="
+                  px-3
+                  md:px-4
+                  py-2
+                  rounded-full
+                  bg-indigo-500/10
+                  text-indigo-200
+                  border
+                  border-indigo-500/20
+                  text-[10px]
+                  md:text-xs
+                  font-semibold
+                  whitespace-nowrap
+                "
+              >
+                {lesson.category}
+              </span>
+            </td>
 
-                      {lesson.isReviewed && (
-                        <span
-                          className="
-                              px-4
-                              py-2
-                              rounded-full
-                              bg-cyan-500/10
-                              text-cyan-200
-                              border
-                              border-cyan-500/20
-                              text-xs
-                              font-semibold
-                           "
-                        >
-                          Reviewed
-                        </span>
-                      )}
+            {/* visibility */}
+            <td>
+              <span
+                className={`
+                  px-3
+                  md:px-4
+                  py-2
+                  rounded-full
+                  text-[10px]
+                  md:text-xs
+                  font-semibold
+                  border
+                  whitespace-nowrap
 
-                      {lesson.reportCount > 0 && (
-                        <span
-                          className="
-                              px-4
-                              py-2
-                              rounded-full
-                              bg-rose-500/10
-                              text-rose-200
-                              border
-                              border-rose-500/20
-                              text-xs
-                              font-semibold
-                           "
-                        >
-                          Flagged
-                        </span>
-                      )}
-                    </div>
-                  </td>
+                  ${
+                    lesson.privacy === "Public"
+                      ? "bg-emerald-500/10 text-emerald-200 border-emerald-500/20"
+                      : "bg-amber-500/10 text-amber-200 border-amber-500/20"
+                  }
+                `}
+              >
+                {lesson.privacy}
+              </span>
+            </td>
 
-                  {/* actions */}
-                  <td>
-                    <div className="flex gap-3">
-                      {/* feature */}
-                      <button
-                        onClick={() =>
-                          handleFeature(lesson._id, lesson.isFeatured)
-                        }
-                        className="
-                        w-11
-                        h-11
-                        rounded-2xl
-                        bg-purple-500/10
-                        text-purple-300
-                        border
-                        border-purple-500/20
-                        flex
-                        items-center
-                        justify-center
-                        hover:scale-105
-                        transition-all
-                        duration-300
-                     "
-                      >
-                        <Star
-                          size={18}
-                          className={lesson.isFeatured ? "fill-purple-300" : ""}
-                        />
-                      </button>
+            {/* status */}
+            <td>
+              <div className="flex flex-col md:flex-row gap-2">
+                {lesson.isFeatured && (
+                  <span
+                    className="
+                      px-3
+                      md:px-4
+                      py-2
+                      rounded-full
+                      bg-purple-500/10
+                      text-purple-200
+                      border
+                      border-purple-500/20
+                      text-[10px]
+                      md:text-xs
+                      font-semibold
+                      whitespace-nowrap
+                    "
+                  >
+                    Featured
+                  </span>
+                )}
 
-                      {/* review */}
-                      <button
-                        onClick={() => handleReview(lesson._id)}
-                        className="
-                        w-11
-                        h-11
-                        rounded-2xl
-                        bg-cyan-500/10
-                        text-cyan-300
-                        border
-                        border-cyan-500/20
-                        flex
-                        items-center
-                        justify-center
-                        hover:scale-105
-                        transition-all
-                        duration-300
-                     "
-                      >
-                        {lesson.isReviewed ? (
-                          <ShieldCheck size={18} />
-                        ) : (
-                          <MdOutlineShield size={18} />
-                        )}
-                      </button>
+                {lesson.isReviewed && (
+                  <span
+                    className="
+                      px-3
+                      md:px-4
+                      py-2
+                      rounded-full
+                      bg-cyan-500/10
+                      text-cyan-200
+                      border
+                      border-cyan-500/20
+                      text-[10px]
+                      md:text-xs
+                      font-semibold
+                      whitespace-nowrap
+                    "
+                  >
+                    Reviewed
+                  </span>
+                )}
 
-                      {/* delete */}
-                      <button
-                        onClick={() => handleDelete(lesson._id)}
-                        className="
-                        w-11
-                        h-11
-                        rounded-2xl
-                        bg-rose-500/10
-                        text-rose-300
-                        border
-                        border-rose-500/20
-                        flex
-                        items-center
-                        justify-center
-                        hover:bg-red-800
-                        hover:scale-105
-                        transition-all
-                        duration-300
-                     "
-                      >
-                        <Trash2 size={18} />
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              ))
-            )}
-          </tbody>
-        </table>
-      </div>
+                {lesson.reportCount > 0 && (
+                  <span
+                    className="
+                      px-3
+                      md:px-4
+                      py-2
+                      rounded-full
+                      bg-rose-500/10
+                      text-rose-200
+                      border
+                      border-rose-500/20
+                      text-[10px]
+                      md:text-xs
+                      font-semibold
+                      whitespace-nowrap
+                    "
+                  >
+                    Flagged
+                  </span>
+                )}
+              </div>
+            </td>
+
+            {/* actions */}
+            <td>
+              <div className="flex gap-2 md:gap-3">
+                {/* feature */}
+                <button
+                  onClick={() =>
+                    handleFeature(lesson._id, lesson.isFeatured)
+                  }
+                  className="
+                    w-9
+                    h-9
+                    md:w-11
+                    md:h-11
+                    rounded-2xl
+                    bg-purple-500/10
+                    text-purple-300
+                    border
+                    border-purple-500/20
+                    flex
+                    items-center
+                    justify-center
+                    hover:scale-105
+                    transition-all
+                    duration-300
+                  "
+                >
+                  <Star
+                    size={16}
+                    className={lesson.isFeatured ? "fill-purple-300" : ""}
+                  />
+                </button>
+
+                {/* review */}
+                <button
+                  onClick={() => handleReview(lesson._id)}
+                  className="
+                    w-9
+                    h-9
+                    md:w-11
+                    md:h-11
+                    rounded-2xl
+                    bg-cyan-500/10
+                    text-cyan-300
+                    border
+                    border-cyan-500/20
+                    flex
+                    items-center
+                    justify-center
+                    hover:scale-105
+                    transition-all
+                    duration-300
+                  "
+                >
+                  {lesson.isReviewed ? (
+                    <ShieldCheck size={16} />
+                  ) : (
+                    <MdOutlineShield size={16} />
+                  )}
+                </button>
+
+                {/* delete */}
+                <button
+                  onClick={() => handleDelete(lesson._id)}
+                  className="
+                    w-9
+                    h-9
+                    md:w-11
+                    md:h-11
+                    rounded-2xl
+                    bg-rose-500/10
+                    text-rose-300
+                    border
+                    border-rose-500/20
+                    flex
+                    items-center
+                    justify-center
+                    hover:bg-red-800
+                    hover:scale-105
+                    transition-all
+                    duration-300
+                  "
+                >
+                  <Trash2 size={16} />
+                </button>
+              </div>
+            </td>
+          </tr>
+        ))
+      )}
+    </tbody>
+  </table>
+</div>
     </div>
   );
 };

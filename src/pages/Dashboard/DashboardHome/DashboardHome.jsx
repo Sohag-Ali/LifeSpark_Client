@@ -300,23 +300,28 @@ const DashboardHome = () => {
           Recently Added Lessons
         </h2>
 
-        <div className="space-y-5">
-          {stats.recentLessons?.length === 0 ? (
-            <div
-              className="
+       <div className="space-y-4 md:space-y-5">
+  {stats.recentLessons?.length === 0 ? (
+    <div
+      className="
         text-center
-        py-20
+        py-14
+        md:py-20
         bg-white/[0.03]
         border
         border-white/10
-        rounded-[32px]
+        rounded-[24px]
+        md:rounded-[32px]
+        px-4
       "
-            >
-              {/* icon */}
-              <div
-                className="
-          w-24
-          h-24
+    >
+      {/* icon */}
+      <div
+        className="
+          w-20
+          h-20
+          md:w-24
+          md:h-24
           mx-auto
           rounded-full
           bg-indigo-500/10
@@ -324,81 +329,120 @@ const DashboardHome = () => {
           items-center
           justify-center
         "
-              >
-                <BookOpen size={50} className="text-indigo-400" />
-              </div>
+      >
+        <BookOpen
+          size={40}
+          className="md:w-[50px] md:h-[50px] text-indigo-400"
+        />
+      </div>
 
-              {/* title */}
-              <h2
-                className="
-          mt-8
-          text-4xl
+      {/* title */}
+      <h2
+        className="
+          mt-6
+          md:mt-8
+          text-2xl
+          md:text-4xl
           font-black
           text-white
         "
-              >
-                No Lessons Found
-              </h2>
+      >
+        No Lessons Found
+      </h2>
 
-              {/* description */}
-              <p
-                className="
+      {/* description */}
+      <p
+        className="
           text-gray-400
           mt-4
           max-w-md
           mx-auto
-          leading-8
+          leading-7
+          md:leading-8
+          text-sm
+          md:text-base
         "
-              >
-                You haven’t created any lessons yet 🚀
-              </p>
-            </div>
-          ) : (
-            stats.recentLessons?.map((lesson) => (
-              <div
-                key={lesson._id}
-                className="
+      >
+        You haven’t created any lessons yet
+      </p>
+    </div>
+  ) : (
+    stats.recentLessons?.map((lesson) => (
+      <div
+        key={lesson._id}
+        className="
           flex
-          items-center
-          justify-between
+          flex-col
+          md:flex-row
+          md:items-center
+          md:justify-between
+          gap-5
           bg-white/[0.03]
           border
           border-white/5
           rounded-2xl
-          p-5
+          p-4
+          md:p-5
           hover:border-primary/20
           transition-all
           duration-300
         "
-              >
-                <div className="flex items-center gap-5">
-                  <div>
-                    <img
-                      src={lesson.image}
-                      className="
-                w-20
-                h-20
+      >
+        {/* left content */}
+        <div className="flex items-center gap-3 md:gap-5">
+          {/* image */}
+          <div className="shrink-0">
+            <img
+              src={lesson.image}
+              className="
+                w-16
+                h-16
+                md:w-20
+                md:h-20
                 rounded-2xl
                 object-cover
                 border
                 border-white/10
               "
-                    />
-                  </div>
+            />
+          </div>
 
-                  <div>
-                    <h3 className="font-bold text-lg text-gray-200">
-                      {lesson.title}
-                    </h3>
+          {/* text */}
+          <div className="min-w-0">
+            <h3
+              className="
+                font-bold
+                text-sm
+                md:text-lg
+                text-gray-200
+                line-clamp-1
+              "
+            >
+              {lesson.title}
+            </h3>
 
-                    <p className="text-cyan-400 mt-2">{lesson.category}</p>
-                  </div>
-                </div>
+            <p
+              className="
+                text-cyan-400
+                mt-2
+                text-xs
+                md:text-sm
+              "
+            >
+              {lesson.category}
+            </p>
+          </div>
+        </div>
 
-                <Link
-                  to={`/lesson-details/${lesson._id}`}
-                  className="
-            px-5
+        {/* button */}
+        <Link
+          to={`/lesson-details/${lesson._id}`}
+          className="
+            w-full
+            md:w-auto
+            text-center
+            px-4
+            md:px-5
             py-3
             rounded-2xl
             bg-gradient-to-r
@@ -412,13 +456,13 @@ const DashboardHome = () => {
             transition-all
             duration-300
           "
-                >
-                  View
-                </Link>
-              </div>
-            ))
-          )}
-        </div>
+        >
+          View
+        </Link>
+      </div>
+    ))
+  )}
+</div>
       </div>
 
       {/* analytics */}
