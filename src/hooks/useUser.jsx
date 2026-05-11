@@ -17,7 +17,7 @@ const useUser = () => {
       queryFn: async() => {
 
          const res = await axiosSecure.get(
-            `/users/${user.email}`
+            `/users/email/${user.email}`
          );
 
          return res.data;

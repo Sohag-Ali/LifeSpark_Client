@@ -44,7 +44,7 @@ localStorage.setItem(
         console.log(user);
 
         // Update user profile with name and photo URL
-        updateUserProfile(data.name, data.photoUrl)
+        await updateUserProfile(data.name, data.photoUrl)
           .then(() => {
             console.log("Profile updated successfully");
             const userInfo = {

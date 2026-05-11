@@ -1,12 +1,15 @@
-import { FiBookmark, FiShare2 } from "react-icons/fi";
+// import { FiBookmark, FiShare2 } from "react-icons/fi";
 import { Link } from "react-router";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { FaArrowRight } from "react-icons/fa";
-import { Star } from "lucide-react";
+import { Bookmark, Heart, Star,Lock  } from "lucide-react";
+import useUser from "../../../hooks/useUser";
+
 
 const FeaturedLessons = () => {
   const axiosSecure = useAxiosSecure();
+  const [userData] = useUser();
 
   const { data: lessons = [] } = useQuery({
     queryKey: ["featured-lessons"],
@@ -111,11 +114,48 @@ const FeaturedLessons = () => {
 </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {lessons.map((lesson) => (
+            {lessons.map((lesson) => {
+               const isPremiumLocked =
+                  lesson.accessLevel === "Premium" &&
+                  !userData?.isPremium;
+                return (
+
+
               <div
                 key={lesson._id}
-                className="bg-[#111827] rounded-[30px] border border-white/10 shadow-lg hover:shadow-purple-500/20 hover:-translate-y-2 transition-all duration-300 overflow-hidden group flex flex-col h-full"
+                 className=" relative group overflow-hidden rounded-[32px] border border-white/10 bg-[#111827] shadow-xl hover:-translate-y-2 hover:shadow-purple-500/20 hover:shadow-2xl transition-all duration-500 flex flex-col h-full"
               >
+
+                {/* premium overlay */}
+                    {isPremiumLocked && (
+
+                      <div className="absolute inset-0 backdrop-blur-md bg-black/50 z-20 flex flex-col items-center justify-center text-white">
+                        
+                        <div className="w-16 h-16 rounded-full bg-warning/20 flex items-center justify-center border border-warning/30">
+
+                          <Lock size={32} className="text-warning" />
+
+                        </div>
+
+                        <h2 className="font-bold text-2xl mt-5">
+                          Premium Lesson
+                        </h2>
+
+                        <p className="text-sm mt-2 text-gray-300">
+                          Upgrade your plan to unlock this lesson
+                        </p>
+
+                        <Link
+                          to="/pricing"
+                          className=" mt-5 px-6 py-3 rounded-full bg-gradient-to-r from-warning to-orange-500 text-black font-semibold hover:scale-105 transition"
+                        >
+                          Upgrade Now ⭐
+                        </Link>
+
+                      </div>
+                    )}
+
+
                 {/* image */}
                 <div className="h-60 overflow-hidden relative">
                   <img
@@ -169,25 +209,93 @@ const FeaturedLessons = () => {
                       className="w-12 h-12 rounded-full object-cover"
                     />
 
-                    <div>
-                      <h4 className="font-semibold text-white">{lesson.creatorName}</h4>
+                    <div className="flex-1">
 
-                      <p className="text-sm text-gray-400">Lesson Creator</p>
-                    </div>
+  <h3
+    className="
+      font-bold
+      bg-gradient-to-r
+      from-fuchsia-500
+      via-purple-600
+      to-indigo-600
+      bg-clip-text
+      text-transparent
+      text-lg
+    "
+  >
+    {lesson.creatorName}
+  </h3>
+
+  <div className="flex items-center justify-between mt-1 w-full">
+
+    <p className="text-sm text-gray-500">
+      Life Lesson Creator
+    </p>
+
+    <p className="text-sm text-gray-400">
+      {new Date(
+        lesson.createdAt
+      ).toLocaleDateString()}
+    </p>
+
+  </div>
+
+</div>
                   </div>
 
                   {/* actions */}
-                  <div className="flex justify-between items-center  mt-8">
-                    <button className="flex items-center gap-2 text-primary font-semibold">
-                      <FiBookmark />
-                      Save
-                    </button>
+                    <div
+                  className="
+    flex
+    items-center
+    justify-between
+    mt-8
+    pt-6
+    border-t
+    border-white/10
+  "
+                >
+                  {/* LEFT */}
+                  <div className="flex items-center gap-5">
+                    {/* likes */}
+                    <div
+                      className=" flex items-center gap-2 text-rose-400  text-sm font-medium"
+                    >
+                      <Heart size={16} className="fill-rose-400" />
 
-                    <button className="flex items-center gap-2 text-gray-500">
-                      <FiShare2 />
-                      Share
-                    </button>
+                      {lesson.likesCount || 0}
+                    </div>
+
+                    {/* saves */}
+                    <div
+                      className="flex items-center gap-2 text-amber-300 fill-amber-300 text-sm font-medium "
+                    >
+                      <Bookmark size={16} className="fill-amber-400" />
+
+                      {lesson.favoritesCount || 0}
+                    </div>
                   </div>
+
+                  {/* RIGHT */}
+                  <span
+                    className={`
+      px-4
+      py-2
+      rounded-full
+      text-xs
+      font-semibold
+      border
+
+      ${
+        lesson.accessLevel === "Premium"
+          ? "bg-amber-500/10 text-amber-200 border-amber-500/20"
+          : "bg-emerald-500/10 text-emerald-200 border-emerald-500/20"
+      }
+    `}
+                  >
+                    {lesson.accessLevel === "Premium" ? "Premium ⭐" : "Free"}
+                  </span>
+                </div>
 
                   {/* button */}
                   <div className="mt-8">
@@ -210,8 +318,11 @@ const FeaturedLessons = () => {
                     </Link>
                   </div>
                 </div>
+
               </div>
-            ))}
+
+);
+})}
           </div>
         )}
 

@@ -1,11 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { Link } from "react-router";
-import { Bookmark, Heart, Sparkles } from "lucide-react";
+import { Bookmark, Heart, Sparkles,Lock  } from "lucide-react";
 import { FaArrowRight } from "react-icons/fa";
+import useUser from "../../hooks/useUser";
 
 const SimilarLesson = ({ lesson }) => {
   const axiosSecure = useAxiosSecure();
+  const [userData] = useUser();
+  
 
   const { data: lessons = [] } = useQuery({
     queryKey: ["similar-lessons", lesson._id],
@@ -42,18 +45,6 @@ const SimilarLesson = ({ lesson }) => {
           <Sparkles size={18} />
           Similar & Recommended For You
         </div>
-
-        {/* <h2
-          className="
-            text-4xl
-            md:text-5xl
-            font-black
-            text-white
-          "
-        >
-          Similar & Recommended Lessons
-        </h2> */}
-
         <p
           className="
             text-gray-400
@@ -115,30 +106,49 @@ const SimilarLesson = ({ lesson }) => {
         </div>
       ) : (
         <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
-          {lessons.map((item) => (
+          {lessons.map((item) => {
+
+             
+
+                  const isPremiumLocked =
+    item.accessLevel === "Premium" &&
+    !userData?.isPremium;
+
+  return (
+
             <div
               key={item._id}
-              className="
-                    group
-    relative
-    overflow-hidden
-    bg-gradient-to-br
-    from-[#111827]
-    to-[#0F172A]
-    border
-    border-white/10
-    rounded-[32px]
-    shadow-2xl
-    hover:-translate-y-2
-    hover:border-primary/30
-    transition-all
-    duration-300
-
-    flex
-    flex-col
-    h-full
-                  "
+              className=" relative group overflow-hidden rounded-[32px] border border-white/10 bg-[#111827] shadow-xl hover:-translate-y-2 hover:shadow-purple-500/20 hover:shadow-2xl transition-all duration-500 flex flex-col h-full"
             >
+
+               {/* premium overlay */}
+                    {isPremiumLocked && (
+
+                      <div className="absolute inset-0 backdrop-blur-md bg-black/50 z-20 flex flex-col items-center justify-center text-white">
+                        
+                        <div className="w-16 h-16 rounded-full bg-warning/20 flex items-center justify-center border border-warning/30">
+
+                          <Lock size={32} className="text-warning" />
+
+                        </div>
+
+                        <h2 className="font-bold text-2xl mt-5">
+                          Premium Lesson
+                        </h2>
+
+                        <p className="text-sm mt-2 text-gray-300">
+                          Upgrade your plan to unlock this lesson
+                        </p>
+
+                        <Link
+                          to="/pricing"
+                          className=" mt-5 px-6 py-3 rounded-full bg-gradient-to-r from-warning to-orange-500 text-black font-semibold hover:scale-105 transition"
+                        >
+                          Upgrade Now ⭐
+                        </Link>
+
+                      </div>
+                    )}
               {/* IMAGE */}
               <div className="relative overflow-hidden">
                 <img
@@ -282,26 +292,38 @@ const SimilarLesson = ({ lesson }) => {
                         "
                   />
 
-                  <div>
-                    <h3
-                      className="
-                            font-bold
-                            text-white
-                          "
-                    >
-                      {item.creatorName}
-                    </h3>
+                 <div className="flex-1">
 
-                    <p
-                      className="
-                            text-sm
-                            text-gray-500
-                            mt-1
-                          "
-                    >
-                      Life Lesson Creator
-                    </p>
-                  </div>
+  <h3
+    className="
+      font-bold
+      bg-gradient-to-r
+      from-fuchsia-500
+      via-purple-600
+      to-indigo-600
+      bg-clip-text
+      text-transparent
+      text-lg
+    "
+  >
+    {item.creatorName}
+  </h3>
+
+  <div className="flex items-center justify-between mt-1 w-full">
+
+    <p className="text-sm text-gray-500">
+      Life Lesson Creator
+    </p>
+
+    <p className="text-sm text-gray-400">
+      {new Date(
+        lesson.createdAt
+      ).toLocaleDateString()}
+    </p>
+
+  </div>
+
+</div>
                 </div>
 
                 {/* STATS */}
@@ -371,7 +393,8 @@ const SimilarLesson = ({ lesson }) => {
                 </div>
               </div>
             </div>
-          ))}
+);
+})}
         </div>
       )}
     </section>

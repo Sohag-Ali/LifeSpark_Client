@@ -9,6 +9,7 @@ import { FaBookMedical } from "react-icons/fa";
 import { MdReport } from "react-icons/md";
 import LoadingDash from "../coponents/LoadingPage/LoadingDash";
 import { Suspense } from "react";
+import logoimg from "../assets/slogo.png";
 
 const navLinkClass = ({ isActive }) =>
   `
@@ -26,8 +27,12 @@ const navLinkClass = ({ isActive }) =>
           : "text-gray-300 font-medium hover:shadow-lg hover:shadow-purple-500/20"
       }
     `;
+
 const DashboardLayout = () => {
-  const [userData] = useUser();
+  const [userData, isLoading] = useUser();
+  if (isLoading) {
+  return <LoadingDash />;
+}
 
   return (
     <div className="drawer md:drawer-open bg-[#0F172A] text-white min-h-screen">
@@ -70,9 +75,13 @@ const DashboardLayout = () => {
         to-indigo-400
         bg-clip-text
         text-transparent
+        flex
+        items-center
+        
       "
     >
-      LifeLessons ✨
+      <img src={logoimg} alt="Logo" className="h-10 w-auto md:h-14 object-contain" />
+      <span>LifeLessons ✨</span>
     </NavLink>
 
     <div className="hidden md:block text-lg md:text-xl font-bold bg-gradient-to-r from-violet-300 to-indigo-400 bg-clip-text text-transparent">
@@ -101,10 +110,11 @@ const DashboardLayout = () => {
         <div className=" flex min-h-full flex-col items-start bg-[#111827] border-r border-white/10 backdrop-blur-xl is-drawer-close:w-14 is-drawer-open:w-72 transition-all duration-300 is-drawer-close:w-14 is-drawer-open:w-64">
           {/* Sidebar content here */}
           <ul className="menu w-full grow p-4 space-y-2">
-            <li className="hidden md:block">
+            <li className="hidden md:block  ">
               <NavLink to="/" className={navLinkClass}>
                 {/* Home icon */}
-                <span className="text-2xl font-bold bg-gradient-to-r from-violet-300 to-indigo-400 bg-clip-text text-transparent">
+                <img src={logoimg} alt="Logo" className="h-8 w-auto  object-contain" />
+                <span className="text-xl font-bold bg-gradient-to-r from-violet-300 to-indigo-400 bg-clip-text text-transparent">
                   LifeLessons ✨
                 </span>
               </NavLink>

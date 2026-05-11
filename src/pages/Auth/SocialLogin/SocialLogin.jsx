@@ -49,7 +49,7 @@ const SocialLogin = () => {
           email: user.email,
           photo: user.photoURL,
         };
-        axiosInstance
+        await axiosInstance
           .post("/users", userInfo)
           .then((res) => {
             console.log("User info saved to database:", res.data);

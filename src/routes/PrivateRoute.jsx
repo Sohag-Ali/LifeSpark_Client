@@ -7,10 +7,10 @@ import Loading from "../coponents/LoadingPage/Loading";
 const PrivateRoute = ({ children }) => {
     const { user, loading } = useAuth();
     const location = useLocation();
-    const [userData] = useUser();
+    const [userData, isLoading] = useUser();
     console.log("PrivateRoute: user =", user, "loading =", loading, "location =", location);
-    
-    if (loading) {
+
+    if (loading || isLoading) {
         return <Loading></Loading>
     }
    

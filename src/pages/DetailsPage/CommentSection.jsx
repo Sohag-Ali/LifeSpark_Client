@@ -12,6 +12,12 @@ const CommentSection = () => {
 const [userData] = useUser();
    const axiosSecure = useAxiosSecure();
    const { id } = useParams();
+   window.scrollTo({
+
+    top: 0,
+
+    behavior: "smooth",
+  });
 
    const { data: lesson = {} } = useQuery({
 

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router";
-import { Lock } from "lucide-react";
+import { Bookmark, Heart, Lock } from "lucide-react";
 import useUser from "../../hooks/useUser";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 
@@ -267,27 +267,58 @@ const PublicLessons = () => {
 
                       </div>
 
-                      {/* access level */}
-                      <div className="mt-5">
+                       <div
+                  className="
+    flex
+    items-center
+    justify-between
+    mt-8
+    pt-6
+    border-t
+    border-white/10
+  "
+                >
+                  {/* LEFT */}
+                  <div className="flex items-center gap-5">
+                    {/* likes */}
+                    <div
+                      className=" flex items-center gap-2 text-rose-400  text-sm font-medium"
+                    >
+                      <Heart size={16} className="fill-rose-400" />
 
-                        <div
-                          className={`
-                            badge
-                            badge-lg
-                            px-4
-                            py-3
-                            text-white
-                            ${
-                              lesson.accessLevel === "Premium"
-                                ? "badge-warning"
-                                : "badge-success"
-                            }
-                          `}
-                        >
-                          {lesson.accessLevel}
-                        </div>
+                      {lesson.likesCount || 0}
+                    </div>
 
-                      </div>
+                    {/* saves */}
+                    <div
+                      className="flex items-center gap-2 text-amber-300 fill-amber-300 text-sm font-medium "
+                    >
+                      <Bookmark size={16} className="fill-amber-400" />
+
+                      {lesson.favoritesCount || 0}
+                    </div>
+                  </div>
+
+                  {/* RIGHT */}
+                  <span
+                    className={`
+      px-4
+      py-2
+      rounded-full
+      text-xs
+      font-semibold
+      border
+
+      ${
+        lesson.accessLevel === "Premium"
+          ? "bg-amber-500/10 text-amber-200 border-amber-500/20"
+          : "bg-emerald-500/10 text-emerald-200 border-emerald-500/20"
+      }
+    `}
+                  >
+                    {lesson.accessLevel === "Premium" ? "Premium ⭐" : "Free"}
+                  </span>
+                </div>
 
                       {/* button */}
                       <div className="mt-auto pt-8">
