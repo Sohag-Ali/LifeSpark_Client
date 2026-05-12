@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-    baseURL: 'https://life-spark-1b54e.web.app',
+    baseURL: 'https://life-spark-server.vercel.app',
     // headers: {
     //     'Content-Type': 'application/json',
     // },

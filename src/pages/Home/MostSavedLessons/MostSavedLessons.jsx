@@ -55,9 +55,7 @@ const MostSavedLessons = () => {
 
 
         {/* cards */}
-        {
-  lessons.length === 0
-  ?
+        { lessons.length === 0 ?
   (
     <div
       className="

@@ -4,7 +4,7 @@ import axios from "axios";
 // import useAuth from "./useAuth";
 
 const axiosSecure = axios.create({
-  baseURL: "https://life-spark-1b54e.web.app",
+  baseURL: "https://life-spark-server.vercel.app",
   // headers: {
   //     'Content-Type': 'application/json',
   // },

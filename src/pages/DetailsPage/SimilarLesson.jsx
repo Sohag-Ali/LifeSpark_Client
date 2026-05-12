@@ -229,7 +229,7 @@ const SimilarLesson = ({ lesson }) => {
 
   {
     Math.ceil(
-      lesson.description?.split(" ").length / 200
+      item.description?.split(" ").length / 200
     )
   }
   {" "}min read
@@ -317,7 +317,7 @@ const SimilarLesson = ({ lesson }) => {
 
     <p className="text-sm text-gray-400">
       {new Date(
-        lesson.createdAt
+        item.createdAt
       ).toLocaleDateString()}
     </p>
 
