@@ -12,7 +12,7 @@ The application is designed as a full-featured educational marketplace where lea
 [Client Demo](https://life-spark-1b54e.web.app)
 [Server Demo](https://life-spark-server.vercel.app/)
 
----
+
 
 ## 📸 Screenshot
 
@@ -21,7 +21,7 @@ Users can securely log into their accounts using email and password authenticati
 ### 📝 Registration Page
 New users can create an account by providing their basic information and credentials.
 
-```md
+
 ![LifeSpark Screenshot](./src/assets/home/login.jpg)
 ![LifeSpark Screenshot](./src/assets/home/register.jpg)
 
@@ -30,7 +30,7 @@ New users can create an account by providing their basic information and credent
   <img src="./src/assets/home/register.jpg" alt="Register Page" width="45%" />
 </p>
 
-```
+
 
 ---
 
