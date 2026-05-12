@@ -16,10 +16,20 @@ The application is designed as a full-featured educational marketplace where lea
 
 ## 📸 Screenshot
 
-(Add your project screenshot here)
+### 🔐 Login Page
+Users can securely log into their accounts using email and password authentication.
+### 📝 Registration Page
+New users can create an account by providing their basic information and credentials.
 
 ```md
-![LifeSpark Screenshot](your-image-link)
+![LifeSpark Screenshot](./src/assets/home/login.jpg)
+![LifeSpark Screenshot](./src/assets/home/register.jpg)
+
+<p align="center">
+  <img src="./src/assets/home/login.jpg" alt="Login Page" width="45%" />
+  <img src="./src/assets/home/register.jpg" alt="Register Page" width="45%" />
+</p>
+
 ```
 
 ---
