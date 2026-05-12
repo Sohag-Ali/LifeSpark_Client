@@ -25,34 +25,34 @@ const Register = () => {
   const axiosInstance = useAxiox();
 
   // handle registration
-  const handleRegister = (data) => {
+  const handleRegister = async(data) => {
     console.log(data);
 
     registerUser(data.email, data.password, data.name, data.photoUrl)
       .then(async(result) => {
         const user = result.user;
         // firebase token
-const token =
-await user.getIdToken();
+        const token =
+        await user.getIdToken();
 
-localStorage.setItem(
+        localStorage.setItem(
 
-   'access-token',
+          'access-token',
 
-   token
-);
+         token
+        );
         console.log(user);
 
         // Update user profile with name and photo URL
         await updateUserProfile(data.name, data.photoUrl)
-          .then(() => {
+          .then(async() => {
             console.log("Profile updated successfully");
             const userInfo = {
               name: data.name,
               email: data.email,
               photo: data.photoUrl,
             };
-            axiosInstance
+            await axiosInstance
               .post("/users", userInfo)
               .then((res) => {
                 console.log("User info saved to database:", res.data);
@@ -61,7 +61,8 @@ localStorage.setItem(
                 console.error("Error saving user info to database:", error);
               });
 
-            navigate(location?.state || "/"); // Redirect to the page they were trying to access or the home page
+            navigate(location?.state || "/");
+            window.location.reload(); // Redirect to the page they were trying to access or the home page
           })
           .catch((error) => {
             console.error("Error updating profile:", error);

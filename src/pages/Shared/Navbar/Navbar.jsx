@@ -3,7 +3,7 @@ import useAuth from "../../../hooks/useAuth";
 import useUser from "../../../hooks/useUser";
 import { HiUser } from "react-icons/hi2";
 import { CgLogOut } from "react-icons/cg";
-import logoimg from "../../../assets/logo.png";
+import logoimg from "../../../assets/logof.png";
 
 const navLinkClass = ({ isActive }) =>
       `

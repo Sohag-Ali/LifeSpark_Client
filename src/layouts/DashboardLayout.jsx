@@ -9,7 +9,7 @@ import { FaBookMedical } from "react-icons/fa";
 import { MdReport } from "react-icons/md";
 import LoadingDash from "../coponents/LoadingPage/LoadingDash";
 import { Suspense } from "react";
-import logoimg from "../assets/slogo.png";
+import logoimg from "../assets/logof.png";
 
 const navLinkClass = ({ isActive }) =>
   `
@@ -120,7 +120,7 @@ const DashboardLayout = () => {
               </NavLink>
             </li>
 
-            {userData?.role === "user" && (
+            {userData && userData?.role === "user" && (
               <>
                 {/* Home item */}
 
@@ -215,7 +215,7 @@ const DashboardLayout = () => {
               </>
             )}
 
-            {userData?.role === "admin" && (
+            {userData && userData?.role === "admin" && (
               <>
                 <li>
                   <NavLink
