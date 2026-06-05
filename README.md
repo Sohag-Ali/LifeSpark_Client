@@ -12,6 +12,18 @@ The application is designed as a full-featured educational marketplace where lea
 [Client Demo](https://life-spark-1b54e.web.app)
 [Server Demo](https://life-spark-server.vercel.app/)
 
+Admin Credentials:
+
+Email: admin@gmail.com
+
+Password: Admin123
+
+User Credentials:
+
+Email: user@gmail.com
+
+Password: User123
+
 
 
 ## 📸 Screenshot
