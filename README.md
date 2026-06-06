@@ -16,13 +16,13 @@ Admin Credentials:
 
 Email: admin@gmail.com
 
-Password: Admin123
+Password: Admin@123
 
 User Credentials:
 
 Email: user@gmail.com
 
-Password: User123
+Password: User@123
 
 
 
