@@ -23,6 +23,7 @@ const Login = () => {
   // Handle Login
   const handleLogin = (data) => {
     console.log(data);
+      console.log("FORM DATA:", data);
     loginUser(data.email, data.password)
       .then(async(result) => {
 
