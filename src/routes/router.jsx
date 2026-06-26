@@ -5,7 +5,7 @@ import AuthLayout from "../layouts/AuthLayout";
 import Login from "../pages/Auth/Login/Login";
 import Register from "../pages/Auth/Register/Register";
 import PublicLessons from "../pages/PublicLessons/PublicLessons";
-import Pricing from "../pages/Pricing/pricing";
+
 import PrivateRoute from "./PrivateRoute";
 import DashboardLayout from "../layouts/DashboardLayout";
 import MyLessons from "../pages/Dashboard/MyLesson/MyLessons";
@@ -28,6 +28,7 @@ import BannedPage from "../coponents/BannedPage/BannedPage";
 import AdminRoute from "./AdminRoute";
 import NotFound from "../coponents/error/NotFound";
 import Unauthorized from "../coponents/error/Unauthorized";
+import Pricing from "../pages/Pricing/Pricing";
 
 export const router = createBrowserRouter([
   {

@@ -9,7 +9,7 @@ The application is designed as a full-featured educational marketplace where lea
 
 ## 🌐 Live Website
 
-[Client Demo](https://life-spark-1b54e.web.app)
+[Client Demo](https://life-spark-sohag.vercel.app/)
 [Server Demo](https://life-spark-server.vercel.app/)
 
 Admin Credentials:
