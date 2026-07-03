@@ -25,7 +25,7 @@ const slides = [
   ];
 
   return (
-    <div className="w-full">
+    <div className="w-full h-[60vh] overflow-hidden bg-slate-950 relative">
       <Carousel
         autoPlay
         infiniteLoop
@@ -35,12 +35,12 @@ const slides = [
         stopOnHover
       >
         {slides.map((slide, index) => (
-          <div key={index} className="relative">
+          <div key={index} className="relative h-[60vh]">
             {/* Image */}
             <img
               src={slide.img}
               alt="banner"
-              className="h-[60vh] md:h-[75vh] lg:h-[85vh] w-full object-cover"
+              className="h-[60vh] w-full object-cover"
             />
 
             {/* Overlay */}

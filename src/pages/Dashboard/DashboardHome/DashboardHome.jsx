@@ -18,6 +18,7 @@ import {
   YAxis,
 } from "recharts";
 import useTitle from "../../../hooks/useTitle";
+import DashboardHomeSkeleton from "../../../coponents/Skeleton/DashboardHomeSkeleton";
 
 const DashboardHome = () => {
   const { user } = useAuth();
@@ -25,7 +26,7 @@ const DashboardHome = () => {
   const axiosSecure = useAxiosSecure();
 
   // fetch stats
-  const { data: stats = {} } = useQuery({
+  const { data: stats = {}, isLoading } = useQuery({
     queryKey: ["dashboard-stats", user?.email],
 
     enabled: !!user?.email,
@@ -64,6 +65,24 @@ const DashboardHome = () => {
       lessons: 4,
     },
   ];
+
+  if (isLoading) {
+    return (
+      <div className="px-4 md:px-8 py-10">
+        {/* heading skeleton */}
+        <div className="mb-12">
+          <div className="flex items-center gap-4">
+            <div className="w-16 h-16 rounded-2xl bg-white/5 animate-pulse" />
+            <div className="flex-grow space-y-2">
+              <div className="w-48 h-8 bg-white/5 rounded animate-pulse" />
+              <div className="w-32 h-4 bg-white/5 rounded animate-pulse" />
+            </div>
+          </div>
+        </div>
+        <DashboardHomeSkeleton />
+      </div>
+    );
+  }
 
   return (
     useTitle("Dashboard Overview"),

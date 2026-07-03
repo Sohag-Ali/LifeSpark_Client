@@ -1,13 +1,13 @@
+import { useEffect } from "react";
 import { Link, useParams } from "react-router";
-
 import LessonBanner from "./LessonBanner";
 
 import SimilarLesson from "./SimilarLesson";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import useUser from "../../hooks/useUser";
-import { useEffect } from "react";
 import useTitle from "../../hooks/useTitle";
+import LessonDetailsSkeleton from "../../coponents/Skeleton/LessonDetailsSkeleton";
 
 
 const LessonDetails = () => {
@@ -27,7 +27,7 @@ const LessonDetails = () => {
 
    const axiosSecure = useAxiosSecure();
 
-   const { data: lesson = {}, refetch } = useQuery({
+   const { data: lesson = {}, refetch, isLoading } = useQuery({
 
       queryKey: ['lesson', id],
 
@@ -40,6 +40,14 @@ const LessonDetails = () => {
          return res.data;
       }
    });
+
+    if (isLoading) {
+      return (
+        <div className="relative">
+          <LessonDetailsSkeleton />
+        </div>
+      );
+    }
 
     const isLocked =
 

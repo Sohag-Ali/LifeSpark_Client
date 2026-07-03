@@ -7,6 +7,7 @@ import { Link } from "react-router";
 import Swal from "sweetalert2";
 import { BookOpenCheck } from "lucide-react";
 // import useTitle from "../../../hooks/useTitle";
+import TableSkeleton from "../../../coponents/Skeleton/TableSkeleton";
 
 const MyLessons = () => {
   const { user } = useAuth();
@@ -142,8 +143,21 @@ const MyLessons = () => {
 
   if (isLoading) {
     return (
-      <div className="flex justify-center items-center min-h-screen">
-        <span className="loading loading-spinner loading-lg"></span>
+      <div className="p-6">
+        {/* heading */}
+        <div className="mb-8">
+          <h1 className="text-4xl md:text-5xl font-black text-white">
+            <span className="bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
+              My Lessons
+            </span>{" "}
+            📚
+          </h1>
+
+          <p className="text-gray-400 text-lg mt-3">
+            Manage all your created lessons.
+          </p>
+        </div>
+        <TableSkeleton rowsCount={5} colsCount={9} />
       </div>
     );
   }

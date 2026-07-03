@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 import { MdOutlineShield } from "react-icons/md";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import useTitle from "../../../../hooks/useTitle";
+import TableSkeleton from "../../../../coponents/Skeleton/TableSkeleton";
 
 const ManageLessons = () => {
   const axiosSecure = useAxiosSecure();
@@ -20,7 +21,7 @@ const ManageLessons = () => {
   const [flagged, setFlagged] = useState("");
 
   // stats
-  const { data: stats = {} } = useQuery({
+  const { data: stats = {}, isLoading: isStatsLoading } = useQuery({
     queryKey: ["lesson-stats"],
 
     queryFn: async () => {
@@ -31,7 +32,7 @@ const ManageLessons = () => {
   });
 
   // lessons cartegory,  flagged
-  const { data: lessons = [], refetch } = useQuery({
+  const { data: lessons = [], refetch, isLoading: isLessonsLoading } = useQuery({
     queryKey: ["admin-lessons", category, privacy, flagged],
 
     queryFn: async () => {
@@ -159,7 +160,11 @@ const ManageLessons = () => {
         >
           <div>
             <h2 className="text-5xl font-black text-emerald-300">
-              {stats.publicLessons || 0}
+              {isStatsLoading ? (
+                <div className="h-12 w-16 bg-white/10 rounded animate-pulse" />
+              ) : (
+                stats.publicLessons || 0
+              )}
             </h2>
 
             <p className="text-gray-400 mt-4">Public Lessons</p>
@@ -200,7 +205,11 @@ const ManageLessons = () => {
         >
           <div>
             <h2 className="text-5xl font-black text-amber-300">
-              {stats.privateLessons || 0}
+              {isStatsLoading ? (
+                <div className="h-12 w-16 bg-white/10 rounded animate-pulse" />
+              ) : (
+                stats.privateLessons || 0
+              )}
             </h2>
 
             <p className="text-gray-400 mt-4">Private Lessons</p>
@@ -241,7 +250,11 @@ const ManageLessons = () => {
         >
           <div>
             <h2 className="text-5xl font-black text-rose-300">
-              {stats.flaggedLessons || 0}
+              {isStatsLoading ? (
+                <div className="h-12 w-16 bg-white/10 rounded animate-pulse" />
+              ) : (
+                stats.flaggedLessons || 0
+              )}
             </h2>
 
             <p className="text-gray-400 mt-4">Flagged Lessons</p>
@@ -345,21 +358,24 @@ const ManageLessons = () => {
       </div>
 
       {/* table */}
-     <div
-  className="
-    w-full
-    overflow-x-auto
-    bg-gradient-to-br
-    from-[#111827]
-    to-[#0F172A]
-    border
-    border-white/10
-    rounded-[24px]
-    md:rounded-[32px]
-    shadow-2xl
-  "
->
-  <table className="table min-w-[850px] text-white">
+      {isLessonsLoading ? (
+        <TableSkeleton rowsCount={5} colsCount={5} />
+      ) : (
+        <div
+          className="
+            w-full
+            overflow-x-auto
+            bg-gradient-to-br
+            from-[#111827]
+            to-[#0F172A]
+            border
+            border-white/10
+            rounded-[24px]
+            md:rounded-[32px]
+            shadow-2xl
+          "
+        >
+          <table className="table min-w-[850px] text-white">
     <thead>
       <tr
         className="
@@ -699,6 +715,7 @@ const ManageLessons = () => {
     </tbody>
   </table>
 </div>
+)}
     </div>
   );
 };

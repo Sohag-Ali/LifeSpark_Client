@@ -16,6 +16,7 @@ import { MdAdminPanelSettings } from "react-icons/md";
 import { FaUsersSlash } from "react-icons/fa";
 import { useState } from "react";
 import useTitle from "../../../../hooks/useTitle";
+import TableSkeleton from "../../../../coponents/Skeleton/TableSkeleton";
 //import { useQueryClient } from "@tanstack/react-query";
 
 const ManageUsers = () => {
@@ -24,7 +25,7 @@ const ManageUsers = () => {
   // const queryClient = useQueryClient();
 
   // fetch users
-  const { data: users = [], refetch } = useQuery({
+  const { data: users = [], refetch, isLoading } = useQuery({
     queryKey: ["users"],
 
     queryFn: async () => {
@@ -462,21 +463,24 @@ const ManageUsers = () => {
         </div>
 
         {/* table */}
-        <div
-  className="
-    w-full
-    overflow-x-auto
-    scrollbar-thin
-    bg-gradient-to-br
-    from-[#111827]
-    to-[#0F172A]
-    border
-    border-white/10
-    rounded-[32px]
-    shadow-2xl
-  "
->
-  <table className="table min-w-[950px] text-white">
+        {isLoading ? (
+          <TableSkeleton rowsCount={5} colsCount={6} />
+        ) : (
+          <div
+            className="
+              w-full
+              overflow-x-auto
+              scrollbar-thin
+              bg-gradient-to-br
+              from-[#111827]
+              to-[#0F172A]
+              border
+              border-white/10
+              rounded-[32px]
+              shadow-2xl
+            "
+          >
+            <table className="table min-w-[950px] text-white">
     <thead>
       <tr className="border-b border-white/10 text-gray-300 text-xs md:text-sm">
         <th className="py-6">#</th>
@@ -842,6 +846,7 @@ const ManageUsers = () => {
     </tbody>
   </table>
 </div>
+)}
       </div>
     )
   );

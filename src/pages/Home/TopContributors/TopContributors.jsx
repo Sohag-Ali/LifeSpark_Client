@@ -8,7 +8,7 @@ import "swiper/css";
 const TopContributors = () => {
   const axiosSecure = useAxiosSecure();
 
-  const { data: contributors = [] } = useQuery({
+  const { data: contributors = [], isLoading } = useQuery({
     queryKey: ["top-contributors"],
 
     queryFn: async () => {
@@ -51,154 +51,140 @@ const TopContributors = () => {
 
         </div>
 
-        {/* swiper */}
-        <Swiper
-          slidesPerView={1}
-  spaceBetween={30}
-  loop={true}
-  freeMode={true}
-  speed={4000}
-  autoplay={{
-    delay: 0,
-    disableOnInteraction: false,
-    pauseOnMouseEnter: true,
-  }}
-  breakpoints={{
-    640: {
-      slidesPerView: 1,
-    },
-
-    768: {
-      slidesPerView: 2,
-    },
-
-    1280: {
-      slidesPerView: 3,
-    },
-  }}
-  modules={[Autoplay]}
-  className="mySwiper"
-        >
-
-          {contributors.map((user, index) => (
-
-            <SwiperSlide key={user._id}>
-
+        {/* loading skeletons / swiper */}
+        {isLoading ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+            {[1, 2, 3].map((item) => (
               <div
-                className="
-                  relative
-                  group
-                  bg-white/5
-                  backdrop-blur-xl
-                  border
-                  border-white/10
-                  rounded-[32px]
-                  p-8
-                  overflow-hidden
-                  hover:-translate-y-2
-                  hover:border-primary/40
-                  hover:shadow-purple-500/20
-                  hover:shadow-2xl
-                  transition-all
-                  duration-300
-                  h-full
-                "
+                key={item}
+                className="relative bg-white/5 border border-white/10 rounded-[32px] p-8 overflow-hidden h-96 flex flex-col justify-between"
               >
-
-                {/* glow */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition duration-300"></div>
-
-                {/* badge */}
-                <div className="absolute top-6 right-6">
-
-                  <div className="badge
-    gap-2
-    py-4
-    px-4
-   
-    border
-    bg-cyan-500/10
-text-cyan-200
-border-cyan-500/20">
-                    <FiAward />
-                    #{index + 1}
-                  </div>
-
+                <div className="w-28 h-28 rounded-full bg-white/10 animate-pulse mx-auto" />
+                <div className="space-y-3 mt-8">
+                  <div className="w-32 h-6 bg-white/10 rounded animate-pulse mx-auto" />
+                  <div className="w-24 h-4 bg-white/10 rounded animate-pulse mx-auto" />
                 </div>
+                <div className="w-full h-20 bg-white/10 rounded-2xl animate-pulse mt-6" />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <Swiper
+            slidesPerView={1}
+            spaceBetween={30}
+            loop={true}
+            freeMode={true}
+            speed={4000}
+            autoplay={{
+              delay: 0,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            breakpoints={{
+              640: {
+                slidesPerView: 1,
+              },
 
-                {/* image */}
-                <div className="relative w-fit mx-auto">
+              768: {
+                slidesPerView: 2,
+              },
 
-                  <div className="absolute inset-0 rounded-full bg-primary blur-xl opacity-40"></div>
-
-                  <img
-                    src={
-                      user.creatorPhoto ||
-                      "https://i.ibb.co/4pDNDk1/avatar.png"
-                    }
-                    alt={user.creatorName}
-                    className="
-                      relative
-                      w-28
-                      h-28
-                      rounded-full
-                      object-cover
-                      border-4
-                      border-primary/40
-                      shadow-xl
-                    "
-                  />
-
-                </div>
-
-                {/* content */}
-                <div className="text-center mt-8">
-
-                  <h2 className="text-2xl font-bold  bg-gradient-to-r
-    from-fuchsia-500
-    via-purple-600
-    to-indigo-600
-    bg-clip-text
-    text-transparent">
-                    {user.creatorName}
-                  </h2>
-
-                  <p className="text-gray-200 mt-2 font-medium">
-                    Top Lesson Creator
-                  </p>
-
-                </div>
-
-                {/* stats */}
+              1280: {
+                slidesPerView: 3,
+              },
+            }}
+            modules={[Autoplay]}
+            className="mySwiper"
+          >
+            {contributors.map((user, index) => (
+              <SwiperSlide key={user._id}>
                 <div
                   className="
-                    mt-8
-                    rounded-2xl
+                    relative
+                    group
                     bg-white/5
+                    backdrop-blur-xl
                     border
                     border-white/10
-                    py-6
-                    text-center
+                    rounded-[32px]
+                    p-8
+                    overflow-hidden
+                    hover:-translate-y-2
+                    hover:border-primary/40
+                    hover:shadow-purple-500/20
+                    hover:shadow-2xl
+                    transition-all
+                    duration-300
+                    h-full
                   "
                 >
+                  {/* glow */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition duration-300"></div>
 
-                  <h3 className="text-5xl font-black bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent">
-                    {user.totalLessons}
-                  </h3>
+                  {/* badge */}
+                  <div className="absolute top-6 right-6">
+                    <div className="badge gap-2 py-4 px-4 border bg-cyan-500/10 text-cyan-200 border-cyan-500/20">
+                      <FiAward />
+                      #{index + 1}
+                    </div>
+                  </div>
 
-                  <p className="text-gray-400 mt-2">
-                    Lessons Shared
-                  </p>
+                  {/* image */}
+                  <div className="relative w-fit mx-auto">
+                    <div className="absolute inset-0 rounded-full bg-primary blur-xl opacity-40"></div>
+                    <img
+                      src={
+                        user.creatorPhoto ||
+                        "https://i.ibb.co/4pDNDk1/avatar.png"
+                      }
+                      alt={user.creatorName}
+                      className="
+                        relative
+                        w-28
+                        h-28
+                        rounded-full
+                        object-cover
+                        border-4
+                        border-primary/40
+                        shadow-xl
+                      "
+                    />
+                  </div>
 
+                  {/* content */}
+                  <div className="text-center mt-8">
+                    <h2 className="text-2xl font-bold bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
+                      {user.creatorName}
+                    </h2>
+                    <p className="text-gray-200 mt-2 font-medium">
+                      Top Lesson Creator
+                    </p>
+                  </div>
+
+                  {/* stats */}
+                  <div
+                    className="
+                      mt-8
+                      rounded-2xl
+                      bg-white/5
+                      border
+                      border-white/10
+                      py-6
+                      text-center
+                    "
+                  >
+                    <h3 className="text-5xl font-black bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent">
+                      {user.totalLessons}
+                    </h3>
+                    <p className="text-gray-400 mt-2">
+                      Lessons Shared
+                    </p>
+                  </div>
                 </div>
-
-              </div>
-
-            </SwiperSlide>
-          ))}
-
-        </Swiper>
-
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        )}
       </div>
     </section>
   );

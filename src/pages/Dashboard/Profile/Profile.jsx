@@ -5,6 +5,7 @@ import useUser from "../../../hooks/useUser";
 import { Link } from "react-router";
 import { Bookmark, BookOpen, Crown, Flag, Sparkles } from "lucide-react";
 import useTitle from "../../../hooks/useTitle";
+import ProfileSkeleton from "../../../coponents/Skeleton/ProfileSkeleton";
 
 
 const Profile = () => {
@@ -17,7 +18,7 @@ const Profile = () => {
  
 
    // public lessons
-   const { data: publicLessons = [] } = useQuery({
+   const { data: publicLessons = [], isLoading: isPublicLoading } = useQuery({
 
       queryKey: ['public-lessons', user?.email],
 
@@ -34,7 +35,7 @@ const Profile = () => {
    });
 
      // fetch stats
-   const { data: stats = {} } = useQuery({
+   const { data: stats = {}, isLoading: isStatsLoading } = useQuery({
 
       queryKey: [
          'dashboard-stats',
@@ -54,6 +55,14 @@ const Profile = () => {
          return res.data;
       }
    });
+
+   if (isPublicLoading || isStatsLoading) {
+      return (
+         <div className="px-4 md:px-8 py-10">
+            <ProfileSkeleton />
+         </div>
+      );
+   }
 
    return (
     useTitle("My Profile"),

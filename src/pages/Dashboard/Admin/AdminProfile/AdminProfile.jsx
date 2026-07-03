@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 import { Bookmark, BookOpen, Crown, Flag, Sparkles, Users } from "lucide-react";
 import { Link } from "react-router";
 import useTitle from "../../../../hooks/useTitle";
+import ProfileSkeleton from "../../../../coponents/Skeleton/ProfileSkeleton";
 
 const AdminProfile = () => {
   const { user, updateUserProfile } = useAuth();
@@ -94,7 +95,7 @@ const AdminProfile = () => {
   };
 
   // Admin Lesson Show Api
-  const { data: publicLessons = [] } = useQuery({
+  const { data: publicLessons = [], isLoading: isLessonsLoading } = useQuery({
     queryKey: ["public-lessons", user?.email],
 
     enabled: !!user?.email,
@@ -107,7 +108,7 @@ const AdminProfile = () => {
   });
 
   // Admin actitity Query Api
-  const { data: activity = {} } = useQuery({
+  const { data: activity = {}, isLoading: isActivityLoading } = useQuery({
     queryKey: ["admin-activity", user?.email],
 
     enabled: !!user?.email,
@@ -124,7 +125,7 @@ const AdminProfile = () => {
   });
 
   //User Summery Api called Query
-  const { data: summary = {} } = useQuery({
+  const { data: summary = {}, isLoading: isSummaryLoading } = useQuery({
     queryKey: ["user-summary", user?.email],
 
     enabled: !!user?.email,
@@ -135,6 +136,16 @@ const AdminProfile = () => {
       return res.data;
     },
   });
+
+  const isLoading = isLessonsLoading || isActivityLoading || isSummaryLoading;
+
+  if (isLoading) {
+    return (
+      <div className="px-4 md:px-8 py-10">
+        <ProfileSkeleton />
+      </div>
+    );
+  }
 
   return (
     useTitle("Admin Profile"),

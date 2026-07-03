@@ -7,6 +7,7 @@ import { Link } from "react-router";
 import { Heart, Trash2 } from "lucide-react";
 import Swal from "sweetalert2";
 import useTitle from "../../../hooks/useTitle";
+import TableSkeleton from "../../../coponents/Skeleton/TableSkeleton";
 
 
 const Favorites = () => {
@@ -24,7 +25,8 @@ const Favorites = () => {
    // fetch favorites
    const {
       data: favorites = [],
-      refetch
+      refetch,
+      isLoading
    } = useQuery({
 
       queryKey: [
@@ -271,6 +273,12 @@ const Favorites = () => {
 
       {/* no favorites */}
       {
+        isLoading
+        ?
+        (
+          <TableSkeleton rowsCount={5} colsCount={5} />
+        )
+        :
         favorites.length === 0
         ?
         (
