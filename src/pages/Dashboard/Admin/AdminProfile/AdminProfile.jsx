@@ -11,6 +11,7 @@ import useTitle from "../../../../hooks/useTitle";
 import ProfileSkeleton from "../../../../coponents/Skeleton/ProfileSkeleton";
 
 const AdminProfile = () => {
+  useTitle("Admin Profile");
   const { user, updateUserProfile } = useAuth();
   const axiosSecure = useAxiosSecure();
 
@@ -148,7 +149,7 @@ const AdminProfile = () => {
   }
 
   return (
-    useTitle("Admin Profile"),
+
     <div className="px-4 md:px-8 py-10">
       {/* profile card for Admin User */}
       <div className=" relative overflow-hidden bg-gradient-to-br from-[#111827] to-[#0F172A] border border-white/10 rounded-[32px] shadow-2xl p-8 md:p-10">

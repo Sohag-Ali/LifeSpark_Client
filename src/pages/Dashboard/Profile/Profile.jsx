@@ -9,63 +9,64 @@ import ProfileSkeleton from "../../../coponents/Skeleton/ProfileSkeleton";
 
 
 const Profile = () => {
-    const { user } = useAuth();
+  useTitle("My Profile");
+  const { user } = useAuth();
 
-   const axiosSecure = useAxiosSecure();
+  const axiosSecure = useAxiosSecure();
 
-   const [userData] = useUser();
+  const [userData] = useUser();
 
- 
 
-   // public lessons
-   const { data: publicLessons = [], isLoading: isPublicLoading } = useQuery({
 
-      queryKey: ['public-lessons', user?.email],
+  // public lessons
+  const { data: publicLessons = [], isLoading: isPublicLoading } = useQuery({
 
-      enabled: !!user?.email,
+    queryKey: ['public-lessons', user?.email],
 
-      queryFn: async() => {
+    enabled: !!user?.email,
 
-         const res = await axiosSecure.get(
-            `/public-lessons/${user.email}`
-         );
+    queryFn: async () => {
 
-         return res.data;
-      }
-   });
-
-     // fetch stats
-   const { data: stats = {}, isLoading: isStatsLoading } = useQuery({
-
-      queryKey: [
-         'dashboard-stats',
-         user?.email
-      ],
-
-      enabled: !!user?.email,
-
-      queryFn: async() => {
-
-         const res =
-         await axiosSecure.get(
-
-            `/dashboard-stats/${user.email}`
-         );
-
-         return res.data;
-      }
-   });
-
-   if (isPublicLoading || isStatsLoading) {
-      return (
-         <div className="px-4 md:px-8 py-10">
-            <ProfileSkeleton />
-         </div>
+      const res = await axiosSecure.get(
+        `/public-lessons/${user.email}`
       );
-   }
 
-   return (
-    useTitle("My Profile"),
+      return res.data;
+    }
+  });
+
+  // fetch stats
+  const { data: stats = {}, isLoading: isStatsLoading } = useQuery({
+
+    queryKey: [
+      'dashboard-stats',
+      user?.email
+    ],
+
+    enabled: !!user?.email,
+
+    queryFn: async () => {
+
+      const res =
+        await axiosSecure.get(
+
+          `/dashboard-stats/${user.email}`
+        );
+
+      return res.data;
+    }
+  });
+
+  if (isPublicLoading || isStatsLoading) {
+    return (
+      <div className="px-4 md:px-8 py-10">
+        <ProfileSkeleton />
+      </div>
+    );
+  }
+
+  return (
+
     <div className="px-4 md:px-8 py-10">
 
       {/* profile card */}
@@ -269,7 +270,7 @@ const Profile = () => {
                   <div>
 
                     <h2 className="text-4xl font-black text-white">
-                      {stats.publicLessons|| 0}
+                      {stats.publicLessons || 0}
                     </h2>
 
                     <p className="text-gray-400 mt-2">
@@ -299,8 +300,8 @@ const Profile = () => {
               </div>
 
               {/* reports */}
-<div
-  className="
+              <div
+                className="
     bg-white/[0.03]
     border
     border-white/10
@@ -310,28 +311,28 @@ const Profile = () => {
     transition-all
     duration-300
   "
->
+              >
 
-  <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between">
 
-    <div>
+                  <div>
 
-      <h2 className="text-4xl font-black text-rose-300">
+                    <h2 className="text-4xl font-black text-rose-300">
 
-        {stats.totalReports || 0}
+                      {stats.totalReports || 0}
 
-      </h2>
+                    </h2>
 
-      <p className="text-gray-400 mt-2">
+                    <p className="text-gray-400 mt-2">
 
-        Total Reports
+                      Total Reports
 
-      </p>
+                    </p>
 
-    </div>
+                  </div>
 
-    <div
-      className="
+                  <div
+                    className="
         w-14
         h-14
         rounded-2xl
@@ -340,15 +341,15 @@ const Profile = () => {
         items-center
         justify-center
       "
-    >
+                  >
 
-      <Flag className="text-rose-300" />
+                    <Flag className="text-rose-300" />
 
-    </div>
+                  </div>
 
-  </div>
+                </div>
 
-</div>
+              </div>
 
             </div>
 
@@ -365,7 +366,7 @@ const Profile = () => {
         <div className="mb-10">
 
           <h2 className="text-4xl  text-white">
-             <span className="bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent font-bold">My Public Lessons</span> 📚
+            <span className="bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent font-bold">My Public Lessons</span> 📚
           </h2>
 
           <p className="text-gray-400 mt-3 text-lg">
@@ -377,10 +378,10 @@ const Profile = () => {
         {/* no lessons */}
         {
           (!stats.publicLessons || stats.publicLessons.length === 0)
-          ?
-          (
-            <div
-              className="
+            ?
+            (
+              <div
+                className="
                 bg-gradient-to-br
                 from-[#111827]
                 to-[#0F172A]
@@ -391,10 +392,10 @@ const Profile = () => {
                 p-16
                 text-center
               "
-            >
+              >
 
-              <div
-                className="
+                <div
+                  className="
                   w-24
                   h-24
                   rounded-full
@@ -407,35 +408,35 @@ const Profile = () => {
                   mx-auto
                   mb-8
                 "
-              >
+                >
 
-                <BookOpen
-                  size={40}
-                  className="text-primary"
-                />
+                  <BookOpen
+                    size={40}
+                    className="text-primary"
+                  />
+
+                </div>
+
+                <h2 className="text-4xl font-black text-white">
+                  No Public Lessons Yet
+                </h2>
+
+                <p className="text-gray-400 mt-4 text-lg">
+                  Start sharing your life experiences with others.
+                </p>
 
               </div>
+            )
+            :
+            (
+              <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
 
-              <h2 className="text-4xl font-black text-white">
-                No Public Lessons Yet
-              </h2>
+                {
+                  publicLessons.map((lesson) => (
 
-              <p className="text-gray-400 mt-4 text-lg">
-                Start sharing your life experiences with others.
-              </p>
-
-            </div>
-          )
-          :
-          (
-            <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
-
-              {
-                publicLessons.map((lesson) => (
-
-                  <div
-                    key={lesson._id}
-                    className="
+                    <div
+                      key={lesson._id}
+                      className="
                       group
                       relative
                       overflow-hidden
@@ -451,15 +452,15 @@ const Profile = () => {
                       transition-all
                       duration-300
                     "
-                  >
+                    >
 
-                    {/* image */}
-                    <div className="relative overflow-hidden">
+                      {/* image */}
+                      <div className="relative overflow-hidden">
 
-                      <img
-                        src={lesson.image}
-                        alt=""
-                        className="
+                        <img
+                          src={lesson.image}
+                          alt=""
+                          className="
                           h-56
                           w-full
                           object-cover
@@ -467,16 +468,16 @@ const Profile = () => {
                           duration-500
                           group-hover:scale-105
                         "
-                      />
+                        />
 
-                      {/* overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] to-transparent"></div>
+                        {/* overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] to-transparent"></div>
 
-                      {/* category */}
-                      <div className="absolute top-5 left-5">
+                        {/* category */}
+                        <div className="absolute top-5 left-5">
 
-                        <span
-                          className="
+                          <span
+                            className="
                             px-4
                             py-2
                             rounded-full
@@ -488,42 +489,42 @@ const Profile = () => {
                             font-semibold
                             backdrop-blur-xl
                           "
-                        >
-                          {lesson.category}
-                        </span>
+                          >
+                            {lesson.category}
+                          </span>
+
+                        </div>
+                        {/* lesson length */}
+                        <div className=" absolute top-4 right-4 px-4 py-2 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-white text-sm font-semibold shadow-lg">
+
+                          {
+                            Math.ceil(
+                              lesson.description?.split(" ").length / 200
+                            )
+                          }
+                          {" "}min read
+
+                        </div>
 
                       </div>
-                      {/* lesson length */}
-                  <div className=" absolute top-4 right-4 px-4 py-2 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-white text-sm font-semibold shadow-lg">
 
-  {
-    Math.ceil(
-      lesson.description?.split(" ").length / 200
-    )
-  }
-  {" "}min read
+                      {/* content */}
+                      <div className="p-7">
 
-                  </div>
+                        <h2 className="text-2xl font-bold bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent  line-clamp-2">
+                          {lesson.title}
+                        </h2>
 
-                    </div>
+                        <p className="text-gray-400 mt-4 leading-7 line-clamp-3">
+                          {lesson.description}
+                        </p>
 
-                    {/* content */}
-                    <div className="p-7">
+                        {/* bottom */}
+                        <div className="mt-8 flex items-center justify-between">
 
-                      <h2 className="text-2xl font-bold bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent  line-clamp-2">
-                        {lesson.title}
-                      </h2>
-
-                      <p className="text-gray-400 mt-4 leading-7 line-clamp-3">
-                        {lesson.description}
-                      </p>
-
-                      {/* bottom */}
-                      <div className="mt-8 flex items-center justify-between">
-
-                        {/* emotional tone */}
-                        <span
-                          className="
+                          {/* emotional tone */}
+                          <span
+                            className="
                             px-4
                             py-2
                             rounded-full
@@ -534,14 +535,14 @@ const Profile = () => {
                             text-xs
                             font-semibold
                           "
-                        >
-                          {lesson.emotionalTone}
-                        </span>
+                          >
+                            {lesson.emotionalTone}
+                          </span>
 
-                        {/* details */}
-                        <Link
-                          to={`/lesson-details/${lesson._id}`}
-                          className="
+                          {/* details */}
+                          <Link
+                            to={`/lesson-details/${lesson._id}`}
+                            className="
                             px-5
                             py-3
                             rounded-2xl
@@ -556,20 +557,20 @@ const Profile = () => {
                             transition-all
                             duration-300
                           "
-                        >
-                          Details
-                        </Link>
+                          >
+                            Details
+                          </Link>
+
+                        </div>
 
                       </div>
 
                     </div>
+                  ))
+                }
 
-                  </div>
-                ))
-              }
-
-            </div>
-          )
+              </div>
+            )
         }
 
       </div>
