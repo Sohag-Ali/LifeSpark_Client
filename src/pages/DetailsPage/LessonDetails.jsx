@@ -11,99 +11,50 @@ import LessonDetailsSkeleton from "../../coponents/Skeleton/LessonDetailsSkeleto
 
 
 const LessonDetails = () => {
-
     const { id } = useParams();
     const [userData] = useUser();
+
     useEffect(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }, [id]);
 
-  window.scrollTo({
+    const axiosSecure = useAxiosSecure();
 
-    top: 0,
+    const { data: lesson = {}, refetch, isLoading } = useQuery({
+        queryKey: ['lesson', id],
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/lessons/${id}`);
+            return res.data;
+        }
+    });
 
-    behavior: "smooth",
-  });
-
-}, [id]);
-
-   const axiosSecure = useAxiosSecure();
-
-   const { data: lesson = {}, refetch, isLoading } = useQuery({
-
-      queryKey: ['lesson', id],
-
-      queryFn: async() => {
-
-         const res = await axiosSecure.get(
-            `/lessons/${id}`
-         );
-
-         return res.data;
-      }
-   });
+    // ✅ Called every render, no matter what — before any conditional return
+    useTitle(lesson?.title || "Lesson Details");
 
     if (isLoading) {
-      return (
-        <div className="relative">
-          <LessonDetailsSkeleton />
-        </div>
-      );
+        return (
+            <div className="relative">
+                <LessonDetailsSkeleton />
+            </div>
+        );
     }
 
-    const isLocked =
-
-    lesson.accessLevel === "Premium"
-    &&
-    !userData?.isPremium;
+    const isLocked = lesson.accessLevel === "Premium" && !userData?.isPremium;
 
     return (
-        useTitle(lesson.title || "Lesson Details"),
         <div className="relative">
-
-            {/* PREMIUM OVERLAY */}
-
-            {
-                isLocked && (
-
-                    <div className="absolute inset-0 z-50 backdrop-blur-md bg-black/40 flex flex-col items-center justify-center text-white">
-
-                        <h2 className="text-4xl font-bold">
-
-                            Premium Lesson
-
-                        </h2>
-
-                        <p className="mt-3">
-
-                            Upgrade to view full content
-
-                        </p>
-
-                        <Link
-                         to="/pricing"
-                         className="btn btn-warning mt-5"
-                        >
-                            Upgrade ⭐
-                        </Link>
-
-                    </div>
-                )
-            }
-
-            {/* LESSON CONTENT */}
+            {isLocked && (
+                <div className="absolute inset-0 z-50 backdrop-blur-md bg-black/40 flex flex-col items-center justify-center text-white">
+                    <h2 className="text-4xl font-bold">Premium Lesson</h2>
+                    <p className="mt-3">Upgrade to view full content</p>
+                    <Link to="/pricing" className="btn btn-warning mt-5">
+                        Upgrade ⭐
+                    </Link>
+                </div>
+            )}
 
             <LessonBanner lesson={lesson} refetch={refetch} />
-
-            {/* <LessonMetadata lesson={lesson} /> */}
-
-            {/* <AuthorSection lesson={lesson} /> */}
-
-            {/* <EngagementSection lesson={lesson} /> */}
-            {/* <InteractionButton lesson={lesson} refetch={refetch} /> */}
-
-            {/* <CommentSection lesson={lesson} /> */}
-
             <SimilarLesson lesson={lesson} />
-
         </div>
     );
 };

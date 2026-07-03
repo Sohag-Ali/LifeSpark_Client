@@ -37,6 +37,7 @@ const DashboardHome = () => {
       return res.data;
     },
   });
+    useTitle("Dashboard Overview");
 
   // fake chart data
   const chartData = [
@@ -85,7 +86,6 @@ const DashboardHome = () => {
   }
 
   return (
-    useTitle("Dashboard Overview"),
     <div className="px-4 md:px-8 py-10">
       {/* heading */}
       <div className="mb-12">
