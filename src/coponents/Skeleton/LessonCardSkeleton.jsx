@@ -8,7 +8,7 @@ import Skeleton from "./Skeleton";
  */
 export const LessonCardSkeleton = () => {
   return (
-    <div className="relative overflow-hidden rounded-[32px] border border-white/10 bg-[#111827] shadow-xl flex flex-col h-full min-h-[500px]">
+    <div className="relative overflow-hidden rounded-[32px] border border-border bg-card shadow-xl flex flex-col h-full min-h-[500px]">
       {/* Image skeleton */}
       <div className="relative h-60 w-full overflow-hidden shrink-0">
         <Skeleton className="w-full h-full" />
@@ -56,7 +56,7 @@ export const LessonCardSkeleton = () => {
         </div>
 
         {/* Divider and Actions skeleton */}
-        <div className="flex items-center justify-between mt-8 pt-6 border-t border-white/10">
+        <div className="flex items-center justify-between mt-8 pt-6 border-t border-border">
           <div className="flex items-center gap-5">
             <Skeleton className="w-12 h-5 rounded" />
             <Skeleton className="w-12 h-5 rounded" />

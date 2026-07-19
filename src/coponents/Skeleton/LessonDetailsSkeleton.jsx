@@ -7,7 +7,7 @@ import Skeleton from "./Skeleton";
  */
 export const LessonDetailsSkeleton = () => {
   return (
-    <div className="bg-[#111827] border border-white/10 shadow-2xl rounded-[32px] overflow-hidden">
+    <div className="bg-card border border-border shadow-2xl rounded-[32px] overflow-hidden">
       {/* Hero Image area */}
       <div className="relative h-[300px] md:h-[500px]">
         <Skeleton className="w-full h-full" />
@@ -38,13 +38,13 @@ export const LessonDetailsSkeleton = () => {
         </div>
 
         {/* Metadata info */}
-        <div className="mt-8 pt-8 border-t border-white/10 flex flex-wrap gap-6">
+        <div className="mt-8 pt-8 border-t border-border flex flex-wrap gap-6">
           <Skeleton className="w-32 h-6" />
           <Skeleton className="w-32 h-6" />
         </div>
 
         {/* Author Section Card */}
-        <div className="mt-10 p-6 bg-white/5 border border-white/10 rounded-2xl flex items-center gap-4">
+        <div className="mt-10 p-6 bg-muted border border-border rounded-2xl flex items-center gap-4">
           <Skeleton className="w-16 h-16 rounded-full shrink-0" variant="circle" />
           <div className="flex-1 flex flex-col gap-2">
             <Skeleton className="w-1/3 h-5" />

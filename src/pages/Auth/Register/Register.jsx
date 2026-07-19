@@ -73,18 +73,18 @@ const Register = () => {
           title: "Welcome Aboard ✨",
           text: "Your account has been created successfully.",
           icon: "success",
-          background: "rgba(255,255,255,0.08)",
-          color: "#fff",
+          background: "var(--color-card)",
+          color: "var(--color-card-foreground)",
           backdrop: ` rgba(15, 23, 42, 0.7) blur(8px)`,
           showConfirmButton: true,
           confirmButtonText: "Continue",
-          confirmButtonColor: "#7C3AED",
+          confirmButtonColor: "var(--color-primary)",
           customClass: {
             popup:
-              "rounded-3xl border border-white/10 backdrop-blur-xl shadow-2xl",
-            title: "text-white",
-            htmlContainer: "text-gray-300",
-            confirmButton: "px-6 py-3 rounded-xl text-white font-semibold",
+              "rounded-3xl border border-border backdrop-blur-xl shadow-2xl",
+            title: "text-base-content",
+            htmlContainer: "text-muted-foreground",
+            confirmButton: "px-6 py-3 rounded-xl text-primary-content font-semibold",
           },
         });
       })
@@ -94,18 +94,18 @@ const Register = () => {
           title: "Registration Failed",
           text: error.message,
           icon: "error",
-          background: "rgba(255,255,255,0.08)",
-          color: "#fff",
+          background: "var(--color-card)",
+          color: "var(--color-card-foreground)",
           backdrop: ` rgba(15, 23, 42, 0.7) blur(8px)`,
           showConfirmButton: true,
           confirmButtonText: "Try Again",
-          confirmButtonColor: "#7C3AED",
+          confirmButtonColor: "var(--color-primary)",
           customClass: {
             popup:
-              "rounded-3xl border border-white/10 backdrop-blur-xl shadow-2xl",
-            title: "text-white",
-            htmlContainer: "text-gray-300",
-            confirmButton: "px-6 py-3 rounded-xl text-white font-semibold",
+              "rounded-3xl border border-border backdrop-blur-xl shadow-2xl",
+            title: "text-base-content",
+            htmlContainer: "text-muted-foreground",
+            confirmButton: "px-6 py-3 rounded-xl text-primary-content font-semibold",
           },
         });
 
@@ -113,17 +113,21 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0F172A] via-[#312E81] to-[#7C3AED] flex items-center justify-center px-4 py-10">
+    <div className="min-h-screen bg-base-100 flex items-center justify-center px-4 py-10 relative overflow-hidden">
+      {/* background blur */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-primary/10 blur-3xl rounded-full"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-secondary/10 blur-3xl rounded-full"></div>
+
       {/* Main Container */}
-      <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 overflow-hidden rounded-3xl shadow-[0_20px_80px_rgba(0,0,0,0.45)] bg-white/10 backdrop-blur-lg border border-white/10">
+      <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 overflow-hidden rounded-3xl shadow-[0_20px_80px_rgba(0,0,0,0.45)] bg-card/70 backdrop-blur-lg border border-border relative z-10">
         {/* LEFT SIDE */}
-        <div className="bg-white/10 backdrop-blur-xl border-r border-white/10 p-8 md:p-14 flex flex-col justify-center">
+        <div className="bg-card/40 backdrop-blur-xl border-r border-border p-8 md:p-14 flex flex-col justify-center">
           {/* Heading */}
           <div className="mb-8">
-            <h2 className="text-4xl font-bold text-white/70 leading-tight">
+            <h2 className="text-4xl font-bold text-base-content leading-tight">
               Create Your Account ✨
             </h2>
-            {/* <p className="text-gray-200 mt-4 text-lg leading-relaxed">
+            {/* <p className="text-muted-foreground mt-4 text-lg leading-relaxed">
               Create your account and preserve your thoughts,
               wisdom and meaningful life experiences.
             </p> */}
@@ -133,7 +137,7 @@ const Register = () => {
           <form className="space-y-5" onSubmit={handleSubmit(handleRegister)}>
             {/* NAME */}
             <div>
-              <label className="block mb-2 font-medium text-gray-200">
+              <label className="block mb-2 font-medium text-base-content/80">
                 Name
               </label>
 
@@ -141,11 +145,11 @@ const Register = () => {
                 type="text"
                 {...register("name", { required: true })}
                 placeholder="Enter your name"
-                className="w-full px-4 py-3 rounded-2xl bg-white/10 border border-white/15 text-gray-100 placeholder:text-gray-400 outline-none focus:border-violet-400 focus:ring-2 focus:ring-violet-400/20 hover:bg-white/15 transition-all duration-300 backdrop-blur-md"
+                className="w-full px-4 py-3 rounded-2xl bg-input border border-border text-base-content placeholder:text-muted-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 hover:bg-hover transition-all duration-300 backdrop-blur-md"
               />
 
               {errors.name && (
-                <span className="text-red-400 text-sm mt-1">
+                <span className="text-error text-sm mt-1">
                   Name is required
                 </span>
               )}
@@ -153,7 +157,7 @@ const Register = () => {
 
             {/* PHOTO URL */}
             <div>
-              <label className="block mb-2 font-medium text-gray-200">
+              <label className="block mb-2 font-medium text-base-content/80">
                 Photo URL
               </label>
 
@@ -161,13 +165,13 @@ const Register = () => {
                 type="text"
                 {...register("photoUrl")}
                 placeholder="Enter your photo URL"
-                className="w-full px-4 py-3 rounded-2xl bg-white/10 border border-white/15 text-gray-100 placeholder:text-gray-400 outline-none focus:border-violet-400 focus:ring-2 focus:ring-violet-400/20 hover:bg-white/15 transition-all duration-300 backdrop-blur-md"
+                className="w-full px-4 py-3 rounded-2xl bg-input border border-border text-base-content placeholder:text-muted-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 hover:bg-hover transition-all duration-300 backdrop-blur-md"
               />
             </div>
 
             {/* EMAIL */}
             <div>
-              <label className="block mb-2 font-medium text-gray-200">
+              <label className="block mb-2 font-medium text-base-content/80">
                 Email
               </label>
 
@@ -175,22 +179,22 @@ const Register = () => {
                 type="email"
                 {...register("email", { required: true })}
                 placeholder="Enter your email"
-                className="w-full px-4 py-3 rounded-2xl bg-white/10 border border-white/15 text-gray-100 placeholder:text-gray-400 outline-none focus:border-violet-400 focus:ring-2 focus:ring-violet-400/20 hover:bg-white/15 transition-all duration-300 backdrop-blur-md"
+                className="w-full px-4 py-3 rounded-2xl bg-input border border-border text-base-content placeholder:text-muted-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 hover:bg-hover transition-all duration-300 backdrop-blur-md"
               />
 
               {errors.email?.type === "required" && (
-                <p className="text-red-400 text-sm mt-1">Email is required</p>
+                <p className="text-error text-sm mt-1">Email is required</p>
               )}
             </div>
 
             {/* PASSWORD */}
             <div>
-              <label className="flex justify-between mb-2 font-medium text-gray-200">
+              <label className="flex justify-between mb-2 font-medium text-base-content/80">
                 <span>Password</span>
 
                 {/* <span
                   onClick={() => setShow(!show)}
-                  className="text-sm cursor-pointer text-violet-300 hover:text-violet-200 transition"
+                  className="text-sm cursor-pointer text-primary hover:text-primary/80 transition"
                 >
                   {show ? "Hide" : "Show"}
                 </span> */}
@@ -212,28 +216,28 @@ const Register = () => {
                     },
                   })}
                   placeholder="Enter your password"
-                  className="w-full px-4 py-3 pr-14 rounded-2xl bg-white/10 border border-white/15 text-gray-100 placeholder:text-gray-400 outline-none focus:border-violet-400 focus:ring-2 focus:ring-violet-400/20 hover:bg-white/15 transition-all duration-300 backdrop-blur-md"
+                  className="w-full px-4 py-3 pr-14 rounded-2xl bg-input border border-border text-base-content placeholder:text-muted-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 hover:bg-hover transition-all duration-300 backdrop-blur-md"
                 />
 
                 {/* Eye Icon */}
                 <button
                   type="button"
                   onClick={() => setShow(!show)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-300 hover:text-white transition"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-base-content transition"
                 >
                   {show ? <Eye size={24} /> : <EyeOff size={24} />}
                 </button>
               </div>
 
               {errors.password && (
-                <p className="text-red-400 text-sm mt-2">
+                <p className="text-error text-sm mt-2">
                   {errors.password.message}
                 </p>
               )}
             </div>
 
             {/* BUTTON */}
-            <button className="w-full py-3 rounded-2xl bg-gradient-to-r from-[#7C3AED] via-[#8B5CF6] to-[#4F46E5] hover:from-[#8B5CF6] hover:via-[#7C3AED] hover:to-[#4338CA] text-white font-semibold text-lg hover:scale-[1.02] hover:shadow-[0_10px_40px_rgba(124,58,237,0.45)] transition-all duration-300">
+            <button className="w-full py-3 rounded-2xl bg-gradient-brand hover:brightness-110 text-primary-content font-semibold text-lg hover:scale-[1.02] hover:shadow-glow transition-all duration-300">
               Create Account
             </button>
           </form>
@@ -244,12 +248,12 @@ const Register = () => {
           </div>
 
           {/* LOGIN LINK */}
-          <p className="text-center mt-6 text-gray-200">
+          <p className="text-center mt-6 text-base-content/80">
             Already have an account?{" "}
             <Link
               state={location.state}
               to="/login"
-              className="text-violet-300 hover:text-violet-200 font-semibold transition"
+              className="text-primary hover:text-primary/80 font-semibold transition"
             >
               Login
             </Link>

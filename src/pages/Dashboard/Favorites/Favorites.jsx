@@ -2,12 +2,13 @@ import { useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 import { Link } from "react-router";
 import { Heart, Trash2 } from "lucide-react";
 import Swal from "sweetalert2";
 import useTitle from "../../../hooks/useTitle";
 import TableSkeleton from "../../../coponents/Skeleton/TableSkeleton";
+import { ACCESS_BADGE_CLASS, CATEGORY_BADGE_CLASS, TONE_BADGE_CLASS, badgeClass } from "../../../utils/badgeStyles";
 
 
 const Favorites = () => {
@@ -62,15 +63,15 @@ const Favorites = () => {
 
     icon: "warning",
 
-    background: "#111827",
+    background: "var(--color-card)",
 
-    color: "#fff",
+    color: "var(--color-card-foreground)",
 
     showCancelButton: true,
 
-    confirmButtonColor: "#F59E0B",
+    confirmButtonColor: "var(--color-warning)",
 
-    cancelButtonColor: "#374151",
+    cancelButtonColor: "var(--color-base-300)",
 
     confirmButtonText: "Yes, Remove",
 
@@ -96,11 +97,11 @@ const Favorites = () => {
 
           icon: "success",
 
-          background: "#111827",
+          background: "var(--color-card)",
 
-          color: "#fff",
+          color: "var(--color-card-foreground)",
 
-          confirmButtonColor: "#8B5CF6",
+          confirmButtonColor: "var(--color-primary)",
 
           timer: 2000,
 
@@ -132,26 +133,26 @@ const Favorites = () => {
               w-16
               h-16
               rounded-2xl
-              bg-pink-500/10
+              bg-secondary/10
               border
-              border-pink-500/20
+              border-secondary/20
               flex
               items-center
               justify-center
             "
           >
 
-            <Heart className="text-pink-300" size={30} />
+            <Heart className="text-secondary" size={30} />
 
           </div>
 
           <div>
 
-            <h1 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-5xl font-black text-gradient-brand">
               My Favorite Lessons
             </h1>
 
-            <p className="text-gray-400 text-lg mt-2">
+            <p className="text-muted-foreground text-lg mt-2">
               Your saved life lessons
             </p>
 
@@ -172,16 +173,16 @@ const Favorites = () => {
           }
           className="
             select
-            bg-[#111827]
+            bg-input
             border
-            border-[#2A3142]
-            text-[#EEF2FF]
+            border-border
+            text-base-content
             rounded-xl
             transition-all
             duration-300
             focus:outline-none
-            focus:border-[#7B61FF]
-            hover:border-[#4B5563]
+            focus:border-primary
+            hover:border-primary/40
             w-full
             md:w-72
           "
@@ -226,16 +227,16 @@ const Favorites = () => {
           }
           className="
             select
-            bg-[#111827]
+            bg-input
             border
-            border-[#2A3142]
-            text-[#EEF2FF]
+            border-border
+            text-base-content
             rounded-xl
             transition-all
             duration-300
             focus:outline-none
-            focus:border-[#7B61FF]
-            hover:border-[#4B5563]
+            focus:border-primary
+            hover:border-primary/40
             w-full
             md:w-72
           "
@@ -284,11 +285,9 @@ const Favorites = () => {
         (
           <div
             className="
-              bg-gradient-to-br
-              from-[#111827]
-              to-[#0F172A]
+              bg-card
               border
-              border-white/10
+              border-border
               rounded-[32px]
               shadow-2xl
               p-16
@@ -301,9 +300,9 @@ const Favorites = () => {
                 w-24
                 h-24
                 rounded-full
-                bg-pink-500/10
+                bg-secondary/10
                 border
-                border-pink-500/20
+                border-secondary/20
                 flex
                 items-center
                 justify-center
@@ -314,16 +313,16 @@ const Favorites = () => {
 
               <Heart
                 size={40}
-                className="text-pink-300"
+                className="text-secondary"
               />
 
             </div>
 
-            <h2 className="text-4xl font-black text-white">
+            <h2 className="text-4xl font-black text-base-content">
               No Favorite Lessons Found
             </h2>
 
-            <p className="text-gray-400 mt-4 text-lg">
+            <p className="text-muted-foreground mt-4 text-lg">
               Save lessons to quickly access them later.
             </p>
 
@@ -334,11 +333,9 @@ const Favorites = () => {
           <div
             className="
               overflow-x-auto
-              bg-gradient-to-br
-              from-[#111827]
-              to-[#0F172A]
+              bg-card
               border
-              border-white/10
+              border-border
               shadow-2xl
               rounded-[32px]
               backdrop-blur-xl
@@ -346,13 +343,13 @@ const Favorites = () => {
           >
 
           <div className="w-full overflow-x-auto rounded-[24px] md:rounded-[32px]">
-  <table className="table min-w-[900px] text-[#CBD5E1]">
+  <table className="table min-w-[900px] text-muted-foreground">
     {/* head */}
-    <thead className="bg-white/[0.03] text-[#E2E8F0]">
+    <thead className="bg-muted text-base-content">
       <tr
         className="
           border-b
-          border-white/10
+          border-border
           text-xs
           md:text-sm
         "
@@ -376,8 +373,8 @@ const Favorites = () => {
           key={lesson._id}
           className="
             border-b
-            border-white/5
-            hover:bg-white/[0.03]
+            border-border
+            hover:bg-hover
             transition-all
             duration-300
           "
@@ -396,7 +393,7 @@ const Favorites = () => {
                   rounded-2xl
                   object-cover
                   border
-                  border-white/10
+                  border-border
                 "
               />
 
@@ -407,7 +404,7 @@ const Favorites = () => {
                     font-bold
                     text-sm
                     md:text-lg
-                    text-[#F1F5F9]
+                    text-base-content
                     line-clamp-1
                   "
                 >
@@ -418,7 +415,7 @@ const Favorites = () => {
                   className="
                     text-xs
                     md:text-sm
-                    text-gray-400
+                    text-muted-foreground
                     mt-2
                     line-clamp-2
                     leading-5
@@ -434,35 +431,10 @@ const Favorites = () => {
           {/* category */}
           <td>
             <span
-              className={`
-                px-3
-                md:px-4
-                py-2
-                rounded-full
-                text-[10px]
-                md:text-xs
-                font-semibold
-                border
-                whitespace-nowrap
-
-                ${
-                  lesson.category === "Mindset"
-                    ? "bg-violet-500/10 text-violet-200 border-violet-500/20"
-                    : lesson.category === "Career"
-                    ? "bg-sky-500/10 text-sky-200 border-sky-500/20"
-                    : lesson.category === "Relationships"
-                    ? "bg-pink-500/10 text-pink-200 border-pink-500/20"
-                    : lesson.category === "Education"
-                    ? "bg-blue-500/10 text-blue-200 border-blue-500/20"
-                    : lesson.category === "Health"
-                    ? "bg-red-500/10 text-red-200 border-red-500/20"
-                    : lesson.category === "Mistakes Learned"
-                    ? "bg-orange-500/10 text-orange-200 border-orange-500/20"
-                    : lesson.category === "Personal Growth"
-                    ? "bg-emerald-500/10 text-emerald-200 border-emerald-500/20"
-                    : "bg-gray-500/10 text-gray-200 border-gray-500/20"
-                }
-              `}
+              className={`px-3 md:px-4 py-2 rounded-full text-[10px] md:text-xs font-semibold border whitespace-nowrap ${badgeClass(
+                CATEGORY_BADGE_CLASS,
+                lesson.category
+              )}`}
             >
               {lesson.category}
             </span>
@@ -471,33 +443,10 @@ const Favorites = () => {
           {/* tone */}
           <td>
             <span
-              className={`
-                px-3
-                md:px-4
-                py-2
-                rounded-full
-                text-[10px]
-                md:text-xs
-                font-semibold
-                border
-                whitespace-nowrap
-
-                ${
-                  lesson.emotionalTone === "Motivational"
-                    ? "bg-yellow-500/10 text-yellow-200 border-yellow-500/20"
-                    : lesson.emotionalTone === "Sad"
-                    ? "bg-blue-500/10 text-blue-200 border-blue-500/20"
-                    : lesson.emotionalTone === "Happy"
-                    ? "bg-green-500/10 text-green-200 border-green-500/20"
-                    : lesson.emotionalTone === "Inspirational"
-                    ? "bg-purple-500/10 text-purple-200 border-purple-500/20"
-                    : lesson.emotionalTone === "Gratitude"
-                    ? "bg-emerald-500/10 text-emerald-200 border-emerald-500/20"
-                    : lesson.emotionalTone === "Realization"
-                    ? "bg-pink-500/10 text-pink-200 border-pink-500/20"
-                    : "bg-gray-500/10 text-gray-200 border-gray-500/20"
-                }
-              `}
+              className={`px-3 md:px-4 py-2 rounded-full text-[10px] md:text-xs font-semibold border whitespace-nowrap ${badgeClass(
+                TONE_BADGE_CLASS,
+                lesson.emotionalTone
+              )}`}
             >
               {lesson.emotionalTone}
             </span>
@@ -506,23 +455,10 @@ const Favorites = () => {
           {/* access */}
           <td>
             <span
-              className={`
-                px-3
-                md:px-4
-                py-2
-                rounded-full
-                text-[10px]
-                md:text-xs
-                font-semibold
-                border
-                whitespace-nowrap
-
-                ${
-                  lesson.accessLevel === "Premium"
-                    ? "bg-yellow-500/10 text-yellow-200 border-yellow-500/20"
-                    : "bg-emerald-500/10 text-emerald-200 border-emerald-500/20"
-                }
-              `}
+              className={`px-3 md:px-4 py-2 rounded-full text-[10px] md:text-xs font-semibold border whitespace-nowrap ${badgeClass(
+                ACCESS_BADGE_CLASS,
+                lesson.accessLevel
+              )}`}
             >
               {lesson.accessLevel}
             </span>
@@ -553,15 +489,13 @@ const Favorites = () => {
                   py-2
                   md:py-3
                   rounded-2xl
-                  bg-gradient-to-r
-                  from-[#6366F1]
-                  to-[#A855F7]
-                  text-white
+                  bg-gradient-brand
+                  text-primary-content
                   text-xs
                   md:text-sm
                   font-semibold
                   hover:shadow-xl
-                  hover:shadow-purple-500/20
+                  hover:shadow-primary/20
                   transition-all
                   duration-300
                   whitespace-nowrap
@@ -583,15 +517,15 @@ const Favorites = () => {
                   md:w-12
                   md:h-12
                   rounded-2xl
-                  bg-red-500/10
+                  bg-error/10
                   border
-                  border-red-500/20
+                  border-error/20
                   flex
                   items-center
                   justify-center
-                  text-red-300
-                  hover:bg-red-500
-                  hover:text-white
+                  text-error
+                  hover:bg-error
+                  hover:text-error-content
                   transition-all
                   duration-300
                 "

@@ -144,15 +144,15 @@ const [userData] = useUser();
 
     icon: "warning",
 
-    background: "#111827",
+    background: "var(--color-card)",
 
-    color: "#fff",
+    color: "var(--color-card-foreground)",
 
     showCancelButton: true,
 
-    confirmButtonColor: "#EF4444",
+    confirmButtonColor: "var(--color-error)",
 
-    cancelButtonColor: "#374151",
+    cancelButtonColor: "var(--color-base-300)",
 
     confirmButtonText: "Yes, Delete",
   });
@@ -174,9 +174,9 @@ const [userData] = useUser();
 
       icon: "success",
 
-      background: "#111827",
+      background: "var(--color-card)",
 
-      color: "#fff",
+      color: "var(--color-card-foreground)",
 
       timer: 2000,
 
@@ -197,9 +197,9 @@ const [userData] = useUser();
 
     <div
       className="
-        bg-[#111827]
+        bg-card
         border
-        border-white/10
+        border-border
         rounded-[32px]
         shadow-2xl
         shadow-black/30
@@ -223,11 +223,10 @@ const [userData] = useUser();
             w-16
             h-16
             rounded-2xl
-            bg-gradient-to-br
-            from-indigo-500/20
-            to-purple-500/20
+            bg-gradient-brand
+            opacity-90
             border
-            border-indigo-500/20
+            border-primary/20
             flex
             items-center
             justify-center
@@ -235,7 +234,7 @@ const [userData] = useUser();
         >
 
           <MessageCircle
-            className="text-indigo-300"
+            className="text-primary-content"
             size={30}
           />
 
@@ -248,7 +247,7 @@ const [userData] = useUser();
               text-3xl
               md:text-4xl
               font-black
-              bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent
+              text-gradient-brand
             "
           >
 
@@ -258,7 +257,7 @@ const [userData] = useUser();
 
           <p
             className="
-              text-gray-400
+              text-muted-foreground
               mt-1
             "
           >
@@ -285,16 +284,16 @@ const [userData] = useUser();
           className="
             w-full
             h-36
-            bg-[#0F172A]
+            bg-input
             border
-            border-white/10
+            border-border
             rounded-3xl
             px-5
             py-4
-            text-white
-            placeholder:text-gray-500
+            text-base-content
+            placeholder:text-muted-foreground
             focus:outline-none
-            focus:border-indigo-500/40
+            focus:border-primary/40
             transition-all
             duration-300
           "
@@ -307,14 +306,10 @@ const [userData] = useUser();
             px-8
             py-3
             rounded-2xl
-            bg-gradient-to-r
-            from-indigo-500
-            via-purple-500
-            to-fuchsia-500
-            text-white
+            bg-gradient-brand
+            text-primary-content
             font-bold
-            shadow-lg
-            shadow-purple-500/20
+            shadow-glow
             hover:scale-105
             transition-all
             duration-300
@@ -353,12 +348,12 @@ const [userData] = useUser();
           key={comment._id}
 
           className="
-            bg-[#0F172A]
+            bg-base-100
             border
-            border-white/5
+            border-border
             rounded-[28px]
             p-5
-            hover:border-indigo-500/20
+            hover:border-primary/20
             transition-all
             duration-300
           "
@@ -387,7 +382,7 @@ const [userData] = useUser();
                 rounded-full
                 object-cover
                 border-2
-                border-indigo-500/20
+                border-primary/20
               "
             />
 
@@ -412,7 +407,7 @@ const [userData] = useUser();
                     className="
                       text-lg
                       font-bold
-                      bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent 
+                      text-gradient-brand
                     "
                   >
 
@@ -423,7 +418,7 @@ const [userData] = useUser();
                   <p
                     className="
                       text-xs
-                      text-gray-500
+                      text-muted-foreground
                       mt-1
                     "
                   >
@@ -447,10 +442,10 @@ const [userData] = useUser();
                       px-4
                       py-2
                       rounded-full
-                      bg-indigo-500/10
+                      bg-secondary/10
                       border
-                      border-indigo-500/20
-                      text-indigo-200
+                      border-secondary/20
+                      text-secondary
                       text-xs
                       font-semibold
                       w-fit
@@ -477,13 +472,13 @@ const [userData] = useUser();
                           px-4
                           py-2
                           rounded-full
-                          bg-red-500/10
+                          bg-error/10
                           border
-                          border-red-500/20
-                          text-red-300
+                          border-error/20
+                          text-error
                           text-xs
                           font-semibold
-                          hover:bg-red-500/20
+                          hover:bg-error/20
                           transition-all
                           duration-300
                         "
@@ -503,7 +498,7 @@ const [userData] = useUser();
               <p
                 className="
                   mt-4
-                  text-gray-300
+                  text-base-content/90
                   leading-8
                 "
               >

@@ -62,8 +62,8 @@ const SocialLogin = () => {
           text: "Login successful!",
           icon: "success",
 
-          background: "rgba(15, 23, 42, 0.75)",
-          color: "#ffffff",
+          background: "var(--color-card)",
+          color: "var(--color-card-foreground)",
 
           backdrop: `rgba(0,0,0,0.5)blur(10px)`,
 
@@ -73,9 +73,9 @@ const SocialLogin = () => {
 
           customClass: {
             popup:
-              "rounded-3xl border border-white/10 backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.45)]",
-            title: "!text-white",
-            htmlContainer: "!text-gray-300",
+              "rounded-3xl border border-border backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.45)]",
+            title: "!text-base-content",
+            htmlContainer: "!text-muted-foreground",
           },
         });
         navigate(location?.state || "/"); // Redirect to the page they were trying to access or the home page
@@ -86,17 +86,17 @@ const SocialLogin = () => {
           title: "Login Failed!",
           text: "There was an error logging in with Google.",
           icon: "error",
-          background: "rgba(15, 23, 42, 0.75)",
-          color: "#ffffff",
+          background: "var(--color-card)",
+          color: "var(--color-card-foreground)",
           backdrop: `rgba(0,0,0,0.5)blur(10px)`,
           showConfirmButton: true,
           confirmButtonText: "Try Again",
-          confirmButtonColor: "#7C3AED",
+          confirmButtonColor: "var(--color-primary)",
           customClass: {
             popup:
-              "rounded-3xl border border-white/10 backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.45)]",
-            title: "!text-white",
-            htmlContainer: "!text-gray-300",
+              "rounded-3xl border border-border backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.45)]",
+            title: "!text-base-content",
+            htmlContainer: "!text-muted-foreground",
             confirmButton: "rounded-xl px-6 py-3 font-semibold",
           },
         });
@@ -109,7 +109,7 @@ const SocialLogin = () => {
 
       {/* Google Login */}
       <button
-        className="btn btn-outline flex items-center w-full py-4 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md  justify-center gap-3 text-white font-medium text-lg hover:bg-white/15 transition-all duration-300"
+        className="btn btn-outline flex items-center w-full py-4 rounded-2xl border border-border bg-input backdrop-blur-md  justify-center gap-3 text-base-content font-medium text-lg hover:bg-hover transition-all duration-300"
         onClick={handleGoogleLogin}
       >
         <FcGoogle size={20} />

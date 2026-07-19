@@ -58,16 +58,16 @@ const Login = () => {
         Swal.fire({
           title: "Login successful!",
           icon: "success",
-          background: "rgba(255,255,255,0.08)",
+          background: "var(--color-card)",
           backdrop: `rgba(0,0,0,0.4)`,
           showConfirmButton: false,
           timer: 1500,
           timerProgressBar: true,
           customClass: {
             popup:
-              "rounded-3xl border border-white/10 backdrop-blur-xl shadow-2xl",
-            title: "text-white",
-            htmlContainer: "text-gray-300",
+              "rounded-3xl border border-border backdrop-blur-xl shadow-2xl",
+            title: "text-base-content",
+            htmlContainer: "text-muted-foreground",
           },
         });
         navigate(location?.state || "/"); // Redirect to the page they were trying to access or the home page
@@ -79,8 +79,8 @@ const Login = () => {
           text: "Please check your email and password.",
           icon: "error",
 
-          background: "rgba(15, 23, 42, 0.75)",
-          color: "#ffffff",
+          background: "var(--color-card)",
+          color: "var(--color-card-foreground)",
 
           backdrop: `
     rgba(0,0,0,0.5)
@@ -89,13 +89,13 @@ const Login = () => {
 
           showConfirmButton: true,
           confirmButtonText: "Try Again",
-          confirmButtonColor: "#7C3AED",
+          confirmButtonColor: "var(--color-primary)",
 
           customClass: {
             popup:
-              "rounded-3xl border border-white/10 backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.45)]",
-            title: "!text-white",
-            htmlContainer: "!text-gray-300",
+              "rounded-3xl border border-border backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.45)]",
+            title: "!text-base-content",
+            htmlContainer: "!text-muted-foreground",
             confirmButton: "rounded-xl px-6 py-3 font-semibold",
           },
         });
@@ -103,17 +103,21 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0F172A] via-[#312E81] to-[#7C3AED] flex items-center justify-center px-4 py-10">
+    <div className="min-h-screen bg-base-100 flex items-center justify-center px-4 py-10 relative overflow-hidden">
+      {/* background blur */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-primary/10 blur-3xl rounded-full"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-secondary/10 blur-3xl rounded-full"></div>
+
       {/* Main Container */}
-      <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 overflow-hidden rounded-3xl shadow-2xl bg-white/10 backdrop-blur-lg border border-white/20">
+      <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 overflow-hidden rounded-3xl shadow-2xl bg-card/70 backdrop-blur-lg border border-border relative z-10">
         {/* LEFT SIDE - LOGIN FORM */}
-        <div className="bg-white/10 backdrop-blur-xl border-r border-white/10 p-8 md:p-14 flex flex-col justify-center">
+        <div className="bg-card/40 backdrop-blur-xl border-r border-border p-8 md:p-14 flex flex-col justify-center">
           <div className="mb-8">
-            <h2 className="text-4xl font-bold text-white/70">
+            <h2 className="text-4xl font-bold text-base-content">
               Sign In To Your Journey ✨
             </h2>
 
-            {/* <p className="text-gray-200 mt-3">
+            {/* <p className="text-muted-foreground mt-3">
               Continue your journey of wisdom, growth and life lessons.
             </p> */}
           </div>
@@ -121,7 +125,7 @@ const Login = () => {
           <form className="space-y-5" onSubmit={handleSubmit(handleLogin)}>
             {/* Email */}
             <div>
-              <label className="block mb-2 font-medium text-gray-200">
+              <label className="block mb-2 font-medium text-base-content/80">
                 Email
               </label>
 
@@ -129,17 +133,17 @@ const Login = () => {
                 type="email"
                 {...register("email", { required: true })}
                 placeholder="Enter your email"
-                className="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/20 text-white placeholder:text-gray-300 outline-none focus:border-violet-400 focus:ring-2 focus:ring-violet-400/30 transition backdrop-blur-md"
+                className="w-full px-4 py-3 rounded-xl bg-input border border-border text-base-content placeholder:text-muted-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/30 transition backdrop-blur-md"
               />
 
               {errors.email?.type === "required" && (
-                <p className="text-red-500 text-sm mt-1">Email is required</p>
+                <p className="text-error text-sm mt-1">Email is required</p>
               )}
             </div>
 
             {/* Password */}
             <div>
-              <label className="block mb-2 font-medium text-gray-200">
+              <label className="block mb-2 font-medium text-base-content/80">
                 Password
               </label>
 
@@ -153,17 +157,17 @@ const Login = () => {
                   },
                 })}
                 placeholder="Enter your password"
-                className="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/20 text-white placeholder:text-gray-300 outline-none focus:border-violet-400 focus:ring-2 focus:ring-violet-400/30 transition backdrop-blur-md"
+                className="w-full px-4 py-3 rounded-xl bg-input border border-border text-base-content placeholder:text-muted-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/30 transition backdrop-blur-md"
               />
 
               {errors.password?.type === "required" && (
-                <p className="text-red-500 text-sm mt-1">
+                <p className="text-error text-sm mt-1">
                   Password is required
                 </p>
               )}
 
               {errors.password?.type === "minLength" && (
-                <p className="text-red-500 text-sm mt-1">
+                <p className="text-error text-sm mt-1">
                   Password must be at least 6 characters
                 </p>
               )}
@@ -171,7 +175,7 @@ const Login = () => {
               <div className="text-right mt-2">
                 <a
                   href="#"
-                  className="text-sm text-violet-300 hover:text-violet-200 hover:underline"
+                  className="text-sm text-primary hover:text-primary/80 hover:underline"
                 >
                   Forgot password?
                 </a>
@@ -179,7 +183,7 @@ const Login = () => {
             </div>
 
             {/* Login Button */}
-            <button className="w-full py-3 rounded-xl bg-gradient-to-r from-[#7C3AED] via-[#8B5CF6] to-[#4F46E5] hover:from-[#8B5CF6] hover:via-[#7C3AED] hover:to-[#4338CA] text-white font-semibold hover:scale-[1.02] transition duration-300 shadow-lg">
+            <button className="w-full py-3 rounded-xl bg-gradient-brand hover:brightness-110 text-primary-content font-semibold hover:scale-[1.02] transition duration-300 shadow-glow">
               Login
             </button>
           </form>
@@ -190,12 +194,12 @@ const Login = () => {
           </div>
 
           {/* Register */}
-          <p className="text-center mt-6 text-gray-200">
+          <p className="text-center mt-6 text-base-content/80">
             Don’t have an account?{" "}
             <Link
               state={location.state}
               to="/register"
-              className="text-violet-300 hover:text-violet-200 font-semibold hover:underline"
+              className="text-primary hover:text-primary/80 font-semibold hover:underline"
             >
               Register
             </Link>

@@ -4,7 +4,7 @@ import React from "react";
  * Base Skeleton Component for rendering generic pulsating loader shapes.
  */
 export const Skeleton = ({ className = "", variant = "rect" }) => {
-  const baseClasses = "animate-pulse bg-white/10";
+  const baseClasses = "animate-pulse bg-muted";
   const variantClasses = {
     rect: "rounded-lg",
     circle: "rounded-full",

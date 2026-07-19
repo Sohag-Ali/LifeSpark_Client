@@ -18,8 +18,8 @@ const RootLayout = () => {
     }, 500);
   }, [location]);
   return (
-    <div className="bg-[#0F172A]">
-      <header className="w-full bg-white/5 backdrop-blur-xl border-b border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.25)] sticky top-0 z-50  px-4 md:px-8">
+    <div className="bg-base-100">
+      <header className="w-full bg-base-200/60 backdrop-blur-xl border-b border-border shadow-elevated sticky top-0 z-50  px-4 md:px-8">
         {/* <Container> */}
         <Navbar />
         {/* </Container> */}
@@ -35,7 +35,7 @@ const RootLayout = () => {
         <Outlet></Outlet>
       </Container>
 
-      <footer className="w-full bg-gradient-to-r from-slate-900 to-gray-900 text-gray-200">
+      <footer className="w-full bg-base-200 text-muted-foreground">
         <Container>
           <Footer />
         </Container>

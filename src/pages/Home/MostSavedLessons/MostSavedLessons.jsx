@@ -26,15 +26,15 @@ const MostSavedLessons = () => {
    });
 
     return (
-    <section className="py-16 md:py-24 bg-[#0F172A] relative overflow-hidden">
-      
-      {/* background blur */}
-      <div className="absolute top-0 left-0 w-72 h-72 bg-purple-500/10 blur-3xl rounded-full"></div>
+    <section className="py-16 md:py-24 bg-base-100 relative overflow-hidden">
 
-      <div className="absolute bottom-0 right-0 w-72 h-72 bg-indigo-500/10 blur-3xl rounded-full"></div>
+      {/* background blur */}
+      <div className="absolute top-0 left-0 w-72 h-72 bg-primary/10 blur-3xl rounded-full"></div>
+
+      <div className="absolute bottom-0 right-0 w-72 h-72 bg-secondary/10 blur-3xl rounded-full"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* heading */}
         <div className="text-center max-w-3xl mx-auto mb-16">
 
@@ -42,11 +42,11 @@ const MostSavedLessons = () => {
             Community Favorites
           </span>
 
-          <h2 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent mt-4">
+          <h2 className="text-4xl md:text-5xl font-black text-gradient-brand mt-4">
             Most Saved Lessons
           </h2>
 
-          <p className="text-gray-400 mt-6 text-lg leading-relaxed">
+          <p className="text-muted-foreground mt-6 text-lg leading-relaxed">
             Explore the lessons that inspired and impacted the most people in our growing community.
           </p>
 
@@ -71,8 +71,8 @@ const MostSavedLessons = () => {
         py-24
         rounded-[32px]
         border
-        border-white/10
-        bg-white/5
+        border-border
+        bg-card/60
         backdrop-blur-xl
         text-center
       "
@@ -87,12 +87,7 @@ const MostSavedLessons = () => {
           text-3xl
           md:text-4xl
           font-black
-          bg-gradient-to-r
-          from-[#D8B4FE]
-          via-[#A78BFA]
-          to-[#818CF8]
-          bg-clip-text
-          text-transparent
+          text-gradient-brand
         "
       >
 
@@ -100,7 +95,7 @@ const MostSavedLessons = () => {
 
       </h2>
 
-      <p className="text-gray-400 mt-4 max-w-md leading-8">
+      <p className="text-muted-foreground mt-4 max-w-md leading-8">
 
         No saved lessons are available right now.
         Please check back later.

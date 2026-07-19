@@ -1,44 +1,45 @@
-import { CheckCircle, Crown,  XCircle } from "lucide-react";
+import { CheckCircle, Crown, XCircle } from "lucide-react";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useTitle from "../../hooks/useTitle";
 
 
 const Pricing = () => {
-    const{user} = useAuth();
-    const axiosSecure = useAxiosSecure();
+  useTitle("Pricing");
+  const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
 
 
-    const handleUpgrade = async () => {
-        try {
-            console.log("button clicked");
-            const res = await axiosSecure.post(
-                "/create-checkout-session",
-                {
-                    email: user?.email
-                }
-            );
-
-            // redirect stripe checkout
-            window.location.replace(res.data.url);
-
-        } catch (error) {
-            console.log(error);
+  const handleUpgrade = async () => {
+    try {
+      console.log("button clicked");
+      const res = await axiosSecure.post(
+        "/create-checkout-session",
+        {
+          email: user?.email
         }
-    };
+      );
+
+      // redirect stripe checkout
+      window.location.replace(res.data.url);
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
 
-   return (
-    useTitle("Pricing"),
-    <div className="min-h-screen bg-[#0F172A]  py-20 px-4 relative overflow-hidden">
-      
+  return (
+
+    <div className="min-h-screen bg-base-100  py-20 px-4 relative overflow-hidden">
+
       {/* background blur */}
-      <div className="absolute top-0 left-0 w-72 h-72 bg-purple-500/10 blur-3xl rounded-full"></div>
+      <div className="absolute top-0 left-0 w-72 h-72 bg-primary/10 blur-3xl rounded-full"></div>
 
-      <div className="absolute bottom-0 right-0 w-72 h-72 bg-indigo-500/10 blur-3xl rounded-full"></div>
+      <div className="absolute bottom-0 right-0 w-72 h-72 bg-secondary/10 blur-3xl rounded-full"></div>
 
-      <div className="bg-[#0F172A]">
-        
+      <div className="bg-base-100">
+
         {/* heading */}
         <div className="text-center max-w-3xl mx-auto mb-20">
 
@@ -46,11 +47,11 @@ const Pricing = () => {
             Pricing Plans
           </span>
 
-          <h1 className="text-4xl md:text-6xl font-black text-white mt-5 leading-tight">
-            Upgrade Your Learning Experience 
+          <h1 className="text-4xl md:text-6xl font-black text-base-content mt-5 leading-tight">
+            Upgrade Your Learning Experience
           </h1>
 
-          <p className="mt-6 text-lg text-gray-400 leading-8">
+          <p className="mt-6 text-lg text-muted-foreground leading-8">
             Unlock premium features, create unlimited lessons,
             and enjoy a more powerful LifeSpark experience.
           </p>
@@ -67,13 +68,13 @@ const Pricing = () => {
               overflow-hidden
               rounded-[32px]
               border
-              border-white/10
-              bg-white/5
+              border-border
+              bg-card/60
               backdrop-blur-xl
               p-10
               hover:-translate-y-2
               hover:border-primary/30
-              hover:shadow-purple-500/20
+              hover:shadow-primary/20
               hover:shadow-2xl
               transition-all
               duration-500
@@ -87,19 +88,19 @@ const Pricing = () => {
 
               <div className="flex items-center gap-3">
 
-                <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center">
+                <div className="w-14 h-14 rounded-2xl bg-base-300 flex items-center justify-center">
 
-                  <Crown className="text-white" />
+                  <Crown className="text-base-content" />
 
                 </div>
 
                 <div>
 
-                  <h2 className="text-3xl font-black text-white">
+                  <h2 className="text-3xl font-black text-base-content">
                     Free Plan
                   </h2>
 
-                  <p className="text-gray-400 mt-1">
+                  <p className="text-muted-foreground mt-1">
                     Perfect for beginners
                   </p>
 
@@ -110,67 +111,67 @@ const Pricing = () => {
               {/* price */}
               <div className="mt-10">
 
-                <h1 className="text-6xl font-black text-white">
+                <h1 className="text-6xl font-black text-base-content">
                   ৳0
                 </h1>
 
-                <p className="text-gray-400 mt-2">
+                <p className="text-muted-foreground mt-2">
                   Forever free access
                 </p>
 
               </div>
 
               {/* divider */}
-              <div className="h-[1px] bg-white/10 my-10"></div>
+              <div className="h-[1px] bg-border my-10"></div>
 
               {/* features */}
               <div className="space-y-5">
 
                 <div className="flex items-center gap-4">
-                  <CheckCircle className="text-green-400" />
-                  <span className="text-gray-300">
+                  <CheckCircle className="text-success" />
+                  <span className="text-base-content/80">
                     Access Public Lessons
                   </span>
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <CheckCircle className="text-green-400" />
-                  <span className="text-gray-300">
+                  <CheckCircle className="text-success" />
+                  <span className="text-base-content/80">
                     Create Limited Lessons
                   </span>
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <CheckCircle className="text-green-400" />
-                  <span className="text-gray-300">
+                  <CheckCircle className="text-success" />
+                  <span className="text-base-content/80">
                     Basic Dashboard Access
                   </span>
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <XCircle className="text-red-400" />
-                  <span className="text-gray-500">
+                  <XCircle className="text-error" />
+                  <span className="text-muted-foreground">
                     Premium Lesson Creation
                   </span>
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <XCircle className="text-red-400" />
-                  <span className="text-gray-500">
+                  <XCircle className="text-error" />
+                  <span className="text-muted-foreground">
                     Priority Lesson Listing
                   </span>
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <XCircle className="text-red-400" />
-                  <span className="text-gray-500">
+                  <XCircle className="text-error" />
+                  <span className="text-muted-foreground">
                     Ad-Free Experience
                   </span>
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <XCircle className="text-red-400" />
-                  <span className="text-gray-500">
+                  <XCircle className="text-error" />
+                  <span className="text-muted-foreground">
                     Premium Badge
                   </span>
                 </div>
@@ -185,10 +186,10 @@ const Pricing = () => {
                   mt-12
                   rounded-full
                   border
-                  border-white/10
-                  bg-white/5
-                  hover:bg-white/10
-                  text-white
+                  border-border
+                  bg-base-200
+                  hover:bg-hover
+                  text-base-content
                 "
               >
                 Current Plan
@@ -206,12 +207,12 @@ const Pricing = () => {
               border
               border-primary/30
               bg-gradient-to-br
-              from-indigo-500/10
-              to-purple-600/10
+              from-primary/10
+              to-secondary/10
               backdrop-blur-xl
               p-10
               hover:-translate-y-2
-              hover:shadow-purple-500/30
+              hover:shadow-primary/30
               hover:shadow-2xl
               transition-all
               duration-500
@@ -227,10 +228,8 @@ const Pricing = () => {
                 px-5
                 py-2
                 rounded-full
-                bg-gradient-to-r
-                from-indigo-500
-                to-purple-600
-                text-white
+                bg-gradient-brand
+                text-primary-content
                 text-sm
                 font-semibold
                 shadow-lg
@@ -240,7 +239,7 @@ const Pricing = () => {
             </div>
 
             {/* glow */}
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-purple-500/5"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/5"></div>
 
             <div className="relative z-10">
 
@@ -268,11 +267,11 @@ const Pricing = () => {
 
                 <div>
 
-                  <h2 className="text-3xl font-black text-white">
+                  <h2 className="text-3xl font-black text-base-content">
                     Premium Plan
                   </h2>
 
-                  <p className="text-gray-300 mt-1">
+                  <p className="text-muted-foreground mt-1">
                     Lifetime premium access
                   </p>
 
@@ -283,7 +282,7 @@ const Pricing = () => {
               {/* price */}
               <div className="mt-10">
 
-                <h1 className="text-6xl font-black text-white">
+                <h1 className="text-6xl font-black text-base-content">
                   ৳1500
                 </h1>
 
@@ -294,56 +293,56 @@ const Pricing = () => {
               </div>
 
               {/* divider */}
-              <div className="h-[1px] bg-white/10 my-10"></div>
+              <div className="h-[1px] bg-border my-10"></div>
 
               {/* features */}
               <div className="space-y-5">
 
                 <div className="flex items-center gap-4">
-                  <CheckCircle className="text-green-400" />
-                  <span className="text-gray-200">
+                  <CheckCircle className="text-success" />
+                  <span className="text-base-content/90">
                     Unlimited Lesson Creation
                   </span>
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <CheckCircle className="text-green-400" />
-                  <span className="text-gray-200">
+                  <CheckCircle className="text-success" />
+                  <span className="text-base-content/90">
                     Create Premium Lessons
                   </span>
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <CheckCircle className="text-green-400" />
-                  <span className="text-gray-200">
+                  <CheckCircle className="text-success" />
+                  <span className="text-base-content/90">
                     Priority Lesson Listing
                   </span>
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <CheckCircle className="text-green-400" />
-                  <span className="text-gray-200">
+                  <CheckCircle className="text-success" />
+                  <span className="text-base-content/90">
                     Ad-Free Experience
                   </span>
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <CheckCircle className="text-green-400" />
-                  <span className="text-gray-200">
+                  <CheckCircle className="text-success" />
+                  <span className="text-base-content/90">
                     Premium Badge
                   </span>
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <CheckCircle className="text-green-400" />
-                  <span className="text-gray-200">
+                  <CheckCircle className="text-success" />
+                  <span className="text-base-content/90">
                     Premium Dashboard Features
                   </span>
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <CheckCircle className="text-green-400" />
-                  <span className="text-gray-200">
+                  <CheckCircle className="text-success" />
+                  <span className="text-base-content/90">
                     Lifetime Access
                   </span>
                 </div>
@@ -356,18 +355,14 @@ const Pricing = () => {
                 className="
                   btn
                   border-0
-                  bg-gradient-to-r
-                  from-indigo-500
-                  to-purple-600
-                  hover:from-purple-600
-                  hover:to-indigo-500
-                  text-white
+                  bg-gradient-brand
+                  hover:brightness-110
+                  text-primary-content
                   w-full
                   rounded-full
                   mt-12
                   text-lg
-                  shadow-xl
-                  shadow-purple-500/20
+                  shadow-glow
                 "
               >
                 Upgrade to Premium ⭐

@@ -47,7 +47,7 @@ const SimilarLesson = ({ lesson }) => {
         </div>
         <p
           className="
-            text-gray-400
+            text-muted-foreground
             mt-5
             text-lg
             max-w-2xl
@@ -73,11 +73,9 @@ const SimilarLesson = ({ lesson }) => {
               max-w-3xl
               mx-auto
               text-center
-              bg-gradient-to-br
-              from-[#111827]
-              to-[#0F172A]
+              bg-card
               border
-              border-white/10
+              border-border
               rounded-[32px]
               shadow-2xl
               p-14
@@ -90,7 +88,7 @@ const SimilarLesson = ({ lesson }) => {
                 text-3xl
                 md:text-4xl
                 font-black
-                text-white
+                text-base-content
               "
           >
             No Similar Lessons Found
@@ -98,7 +96,7 @@ const SimilarLesson = ({ lesson }) => {
 
           <p
             className="
-                text-gray-400
+                text-muted-foreground
                 mt-6
                 text-lg
                 leading-9

@@ -36,11 +36,11 @@ const PaymentSuccess = () => {
 
     return (
       useTitle("Payment Successful"),
-      <div className="min-h-screen bg-linear-to-br from-slate-900 via-gray-900 to-slate-800 flex items-center justify-center px-4 py-8 overflow-hidden">
+      <div className="min-h-screen bg-base-100 flex items-center justify-center px-4 py-8 overflow-hidden">
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-green-500/10 rounded-full blur-3xl animate-float"></div>
-          <div className="absolute bottom-20 right-10 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute top-20 left-10 w-72 h-72 bg-success/10 rounded-full blur-3xl animate-float"></div>
+          <div className="absolute bottom-20 right-10 w-80 h-80 bg-info/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
         </div>
 
         <div className="max-w-md w-full relative z-10">
@@ -48,12 +48,12 @@ const PaymentSuccess = () => {
           <div className="flex justify-center mb-8">
             <div className="relative w-32 h-32">
               {/* Outer pulse ring */}
-              <div className="absolute inset-0 rounded-full bg-green-500/20 animate-ping"></div>
+              <div className="absolute inset-0 rounded-full bg-success/20 animate-ping"></div>
 
               {/* Inner circle */}
-              <div className="absolute inset-0 rounded-full border-4 border-green-500 bg-green-500/10 flex items-center justify-center shadow-2xl">
+              <div className="absolute inset-0 rounded-full border-4 border-success bg-success/10 flex items-center justify-center shadow-2xl">
                 <svg
-                  className="w-16 h-16 text-green-400 animate-scaleIn"
+                  className="w-16 h-16 text-success animate-scaleIn"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -71,37 +71,37 @@ const PaymentSuccess = () => {
 
           {/* Content */}
           <div className="text-center space-y-4 mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold bg-linear-to-r from-green-400 via-emerald-400 to-cyan-400 bg-clip-text text-transparent animate-fadeInDown">
+            <h1 className="text-4xl md:text-5xl font-bold text-success animate-fadeInDown">
               Payment Successful!
             </h1>
 
             <div className="space-y-2">
-              <p className="text-gray-200 text-lg font-semibold animate-fadeInUp">
+              <p className="text-base-content text-lg font-semibold animate-fadeInUp">
                 Welcome to Premium! 🎉
               </p>
-              <p className="text-gray-400 text-base leading-relaxed animate-fadeInUp" style={{ animationDelay: '2s' }}>
+              <p className="text-muted-foreground text-base leading-relaxed animate-fadeInUp" style={{ animationDelay: '2s' }}>
                 Your payment has been processed successfully. You now have access to all premium features and exclusive content.
               </p>
             </div>
 
             {/* Premium Features Preview */}
-            <div className="bg-linear-to-r from-green-500/10 to-emerald-500/10 border border-green-500/30 rounded-lg p-4 mt-6 animate-fadeInUp" style={{ animationDelay: '0.3s' }}>
-              <h3 className="text-green-300 font-semibold mb-3">Your Premium Benefits</h3>
-              <ul className="text-gray-300 text-sm space-y-2">
+            <div className="bg-success/10 border border-success/30 rounded-lg p-4 mt-6 animate-fadeInUp" style={{ animationDelay: '0.3s' }}>
+              <h3 className="text-success font-semibold mb-3">Your Premium Benefits</h3>
+              <ul className="text-base-content/80 text-sm space-y-2">
                 <li className="flex items-center gap-2">
-                  <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-4 h-4 text-success" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span>Unlimited Lesson Access</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-4 h-4 text-success" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span>Ad-Free Experience</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-4 h-4 text-success" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span>Priority Support</span>
@@ -113,7 +113,7 @@ const PaymentSuccess = () => {
           {/* Action Button */}
           <button
             onClick={() => navigate('/')}
-            className="w-full px-6 py-3 bg-linear-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2 shadow-lg animate-fadeInUp"
+            className="w-full px-6 py-3 bg-success hover:brightness-110 text-success-content font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2 shadow-lg animate-fadeInUp"
             // style={{ animationDelay: '3s' }}
           >
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -123,7 +123,7 @@ const PaymentSuccess = () => {
           </button>
 
           {/* Loading Text */}
-          <p className="text-center text-gray-400 text-sm mt-6">
+          <p className="text-center text-muted-foreground text-sm mt-6">
             Your premium access is active. Click the button below when you are ready to continue.
           </p>
 
@@ -132,7 +132,7 @@ const PaymentSuccess = () => {
             {confettiPositions.map((left, i) => (
               <div
                 key={i}
-                className="absolute w-2 h-2 bg-green-400 rounded-full animate-confetti"
+                className="absolute w-2 h-2 bg-success rounded-full animate-confetti"
                 style={{
                   left: `${left}%`,
                   top: '0',

@@ -75,9 +75,9 @@ const UpdateLesson = () => {
                title: "✅ Lesson Updated",
                 text: "Your lesson has been updated successfully.",
                 icon: "success",
-                background: "#111827",
-                color: "#fff",
-                confirmButtonColor: "#8B5CF6",
+                background: "var(--color-card)",
+                color: "var(--color-card-foreground)",
+                confirmButtonColor: "var(--color-primary)",
             });
          }
 
@@ -89,9 +89,9 @@ const UpdateLesson = () => {
             title: "Error",
             text: "Failed to update lesson",
             icon: "error",
-            background: "#111827",
-            color: "#fff",
-            confirmButtonColor: "#8B5CF6",
+            background: "var(--color-card)",
+            color: "var(--color-card-foreground)",
+            confirmButtonColor: "var(--color-primary)",
          });
       }
    };
@@ -101,21 +101,21 @@ const UpdateLesson = () => {
     <div className="max-w-5xl mx-auto px-4 py-10">
       
       <div
-        className=" relative overflow-hidden bg-gradient-to-br from-[#111827] to-[#0F172A] border border-white/10 shadow-2xl rounded-[32px] p-8 md:p-12 backdrop-blur-xl
+        className=" relative overflow-hidden bg-card border border-border shadow-2xl rounded-[32px] p-8 md:p-12 backdrop-blur-xl
         "
       >
 
         {/* background glow */}
-        <div className="absolute top-0 right-0 w-72 h-72 bg-purple-500/10 blur-3xl rounded-full"></div>
+        <div className="absolute top-0 right-0 w-72 h-72 bg-primary/10 blur-3xl rounded-full"></div>
 
         {/* heading */}
         <div className="relative z-10 mb-10">
 
-          <h1 className="text-4xl md:text-5xl  text-white mb-3">
-            <span className="bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent font-bold">Update Lesson</span> ✏️
+          <h1 className="text-4xl md:text-5xl  text-base-content mb-3">
+            <span className="text-gradient-brand font-bold">Update Lesson</span> ✏️
           </h1>
 
-          <p className="text-gray-400 text-lg">
+          <p className="text-muted-foreground text-lg">
             Update your lesson information and keep inspiring others.
           </p>
 
@@ -130,7 +130,7 @@ const UpdateLesson = () => {
           {/* title */}
           <div>
 
-            <label className="block text-[#c4c6ca] font-semibold mb-3">
+            <label className="block text-base-content/80 font-semibold mb-3">
               Lesson Title
             </label>
 
@@ -141,19 +141,19 @@ const UpdateLesson = () => {
               className="
                 input
                 w-full
-                bg-[#0B1120]
+                bg-input
                 border
-                border-[#2A3142]
-                text-[#EEF2FF]
+                border-border
+                text-base-content
                 rounded-xl
                 transition-all
                 duration-300
                 focus:outline-none
-                focus:border-[#7B61FF]
+                focus:border-primary
                 focus:ring-2
-                focus:ring-[#7B61FF]/20
-                hover:border-[#4B5563]
-                placeholder:text-gray-500
+                focus:ring-primary/20
+                hover:border-primary/40
+                placeholder:text-muted-foreground
               "
             />
 
@@ -162,7 +162,7 @@ const UpdateLesson = () => {
           {/* description */}
           <div>
 
-            <label className="block text-[#c4c6ca] font-semibold mb-3">
+            <label className="block text-base-content/80 font-semibold mb-3">
               Description / Story
             </label>
 
@@ -173,19 +173,19 @@ const UpdateLesson = () => {
                 textarea
                 w-full
                 h-44
-                bg-[#0B1120]
+                bg-input
                 border
-                border-[#2A3142]
-                text-[#EEF2FF]
+                border-border
+                text-base-content
                 rounded-xl
                 transition-all
                 duration-300
                 focus:outline-none
-                focus:border-[#7B61FF]
+                focus:border-primary
                 focus:ring-2
-                focus:ring-[#7B61FF]/20
-                hover:border-[#4B5563]
-                placeholder:text-gray-500
+                focus:ring-primary/20
+                hover:border-primary/40
+                placeholder:text-muted-foreground
               "
             ></textarea>
 
@@ -197,7 +197,7 @@ const UpdateLesson = () => {
             {/* category */}
             <div>
 
-              <label className="block text-[#c4c6ca] font-semibold mb-3">
+              <label className="block text-base-content/80 font-semibold mb-3">
                 Category
               </label>
 
@@ -206,18 +206,18 @@ const UpdateLesson = () => {
                 className="
                   select
                   w-full
-                  bg-[#0B1120]
+                  bg-input
                   border
-                  border-[#2A3142]
-                  text-[#EEF2FF]
+                  border-border
+                  text-base-content
                   rounded-xl
                   transition-all
                   duration-300
                   focus:outline-none
-                  focus:border-[#7B61FF]
+                  focus:border-primary
                   focus:ring-2
-                  focus:ring-[#7B61FF]/20
-                  hover:border-[#4B5563]
+                  focus:ring-primary/20
+                  hover:border-primary/40
                 "
               >
 
@@ -250,7 +250,7 @@ const UpdateLesson = () => {
             {/* emotional tone */}
             <div>
 
-              <label className="block text-[#c4c6ca] font-semibold mb-3">
+              <label className="block text-base-content/80 font-semibold mb-3">
                 Emotional Tone
               </label>
 
@@ -259,18 +259,18 @@ const UpdateLesson = () => {
                 className="
                   select
                   w-full
-                  bg-[#0B1120]
+                  bg-input
                   border
-                  border-[#2A3142]
-                  text-[#EEF2FF]
+                  border-border
+                  text-base-content
                   rounded-xl
                   transition-all
                   duration-300
                   focus:outline-none
-                  focus:border-[#7B61FF]
+                  focus:border-primary
                   focus:ring-2
-                  focus:ring-[#7B61FF]/20
-                  hover:border-[#4B5563]
+                  focus:ring-primary/20
+                  hover:border-primary/40
                 "
               >
 
@@ -305,7 +305,7 @@ const UpdateLesson = () => {
           {/* image */}
           <div>
 
-            <label className="block text-[#c4c6ca] font-semibold mb-3">
+            <label className="block text-base-content/80 font-semibold mb-3">
               Image URL
             </label>
 
@@ -316,19 +316,19 @@ const UpdateLesson = () => {
               className="
                 input
                 w-full
-                bg-[#0B1120]
+                bg-input
                 border
-                border-[#2A3142]
-                text-[#EEF2FF]
+                border-border
+                text-base-content
                 rounded-xl
                 transition-all
                 duration-300
                 focus:outline-none
-                focus:border-[#7B61FF]
+                focus:border-primary
                 focus:ring-2
-                focus:ring-[#7B61FF]/20
-                hover:border-[#4B5563]
-                placeholder:text-gray-500
+                focus:ring-primary/20
+                hover:border-primary/40
+                placeholder:text-muted-foreground
               "
             />
 
@@ -340,7 +340,7 @@ const UpdateLesson = () => {
             {/* privacy */}
             <div>
 
-              <label className="block text-[#c4c6ca] font-semibold mb-3">
+              <label className="block text-base-content/80 font-semibold mb-3">
                 Privacy
               </label>
 
@@ -349,18 +349,18 @@ const UpdateLesson = () => {
                 className="
                   select
                   w-full
-                  bg-[#0B1120]
+                  bg-input
                   border
-                  border-[#2A3142]
-                  text-[#EEF2FF]
+                  border-border
+                  text-base-content
                   rounded-xl
                   transition-all
                   duration-300
                   focus:outline-none
-                  focus:border-[#7B61FF]
+                  focus:border-primary
                   focus:ring-2
-                  focus:ring-[#7B61FF]/20
-                  hover:border-[#4B5563]
+                  focus:ring-primary/20
+                  hover:border-primary/40
                 "
               >
 
@@ -379,7 +379,7 @@ const UpdateLesson = () => {
             {/* access level */}
             <div>
 
-              <label className="block text-[#c4c6ca] font-semibold mb-3">
+              <label className="block text-base-content/80 font-semibold mb-3">
                 Access Level
               </label>
 
@@ -389,18 +389,18 @@ const UpdateLesson = () => {
                 className="
                   select
                   w-full
-                  bg-[#0B1120]
+                  bg-input
                   border
-                  border-[#2A3142]
-                  text-[#EEF2FF]
+                  border-border
+                  text-base-content
                   rounded-xl
                   transition-all
                   duration-300
                   focus:outline-none
-                  focus:border-[#7B61FF]
+                  focus:border-primary
                   focus:ring-2
-                  focus:ring-[#7B61FF]/20
-                  hover:border-[#4B5563]
+                  focus:ring-primary/20
+                  hover:border-primary/40
                   disabled:opacity-50
                   disabled:cursor-not-allowed
                 "
@@ -432,10 +432,10 @@ const UpdateLesson = () => {
               className="
                 input
                 w-full
-                bg-[#111827]
+                bg-muted
                 border
-                border-white/10
-                text-[#89c7e6]
+                border-border
+                text-info
                 rounded-xl
               "
             />
@@ -447,10 +447,10 @@ const UpdateLesson = () => {
               className="
                 input
                 w-full
-                bg-[#111827]
+                bg-muted
                 border
-                border-white/10
-                text-[#89c7e6]
+                border-border
+                text-info
                 rounded-xl
               "
             />
@@ -465,16 +465,13 @@ const UpdateLesson = () => {
               w-full
               border-0
               rounded-xl
-              text-white
+              text-primary-content
               text-lg
               font-bold
-              bg-gradient-to-r
-              from-[#6366F1]
-              to-[#A855F7]
-              hover:from-[#7C3AED]
-              hover:to-[#9333EA]
+              bg-gradient-brand
+              hover:brightness-110
               hover:shadow-2xl
-              hover:shadow-purple-500/30
+              hover:shadow-primary/30
               hover:-translate-y-[1px]
               transition-all
               duration-300

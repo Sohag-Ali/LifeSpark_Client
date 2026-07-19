@@ -3,17 +3,42 @@ import EngagementSection from "./EngagementSection";
 import InteractionButton from "./InteractionButton";
 import LessonMetadata from "./LessonMetadata";
 
+// Tailwind's scanner needs complete, static class strings — it can't see
+// through `bg-${token}/10` template interpolation — so each combination is
+// spelled out in full here rather than built dynamically.
+const SOFT_BADGE_CLASS = {
+  primary: "bg-primary/10 text-primary border-primary/20",
+  secondary: "bg-secondary/10 text-secondary border-secondary/20",
+  accent: "bg-accent/10 text-accent border-accent/20",
+  info: "bg-info/10 text-info border-info/20",
+  success: "bg-success/10 text-success border-success/20",
+  warning: "bg-warning/10 text-warning border-warning/20",
+};
 
+const CATEGORY_TOKEN = {
+  Mindset: "primary",
+  Career: "info",
+  Relationships: "secondary",
+  "Personal Growth": "success",
+};
+
+const TONE_TOKEN = {
+  Motivational: "warning",
+  Sad: "info",
+  Happy: "accent",
+  Gratitude: "success",
+  Realization: "secondary",
+};
+
+const softBadgeClass = (token = "accent") => SOFT_BADGE_CLASS[token] || SOFT_BADGE_CLASS.accent;
 
 const LessonBanner = ({ lesson, refetch }) => {
    return (
     <div
       className="
-        bg-gradient-to-br
-        from-[#111827]
-        to-[#0F172A]
+        bg-card
         border
-        border-white/10
+        border-border
         shadow-2xl
         rounded-[32px]
         overflow-hidden
@@ -39,7 +64,7 @@ const LessonBanner = ({ lesson, refetch }) => {
           className="
             absolute inset-0
             bg-gradient-to-t
-            from-[#0F172A]
+            from-card
             via-black/20
             to-transparent
           "
@@ -55,84 +80,27 @@ const LessonBanner = ({ lesson, refetch }) => {
 
           {/* category */}
           <span
-            className={`
-              px-4
-              py-2
-              rounded-full
-              text-xs
-              font-semibold
-              border
-
-              ${
-                lesson.category === "Mindset"
-                  ? "bg-violet-500/10 text-violet-200 border-violet-500/20"
-
-                  : lesson.category === "Career"
-                  ? "bg-sky-500/10 text-sky-200 border-sky-500/20"
-
-                  : lesson.category === "Relationships"
-                  ? "bg-pink-500/10 text-pink-200 border-pink-500/20"
-
-                  : lesson.category === "Personal Growth"
-                  ? "bg-emerald-500/10 text-emerald-200 border-emerald-500/20"
-
-                  : "bg-indigo-500/10 text-indigo-200 border-indigo-500/20"
-              }
-            `}
+            className={`px-4 py-2 rounded-full text-xs font-semibold border ${softBadgeClass(
+              CATEGORY_TOKEN[lesson.category]
+            )}`}
           >
             {lesson.category}
           </span>
 
           {/* emotional tone */}
           <span
-            className={`
-              px-4
-              py-2
-              rounded-full
-              text-xs
-              font-semibold
-              border
-
-              ${
-                lesson.emotionalTone === "Motivational"
-                  ? "bg-yellow-500/10 text-yellow-200 border-yellow-500/20"
-
-                  : lesson.emotionalTone === "Sad"
-                  ? "bg-blue-500/10 text-blue-200 border-blue-500/20"
-
-                  : lesson.emotionalTone === "Happy"
-                  ? "bg-orange-500/10 text-orange-200 border-orange-500/20"
-
-                  : lesson.emotionalTone === "Gratitude"
-                  ? "bg-green-500/10 text-green-200 border-green-500/20"
-
-                  : lesson.emotionalTone === "Realization"
-                  ? "bg-pink-500/10 text-pink-200 border-pink-500/20"
-
-                  : "bg-purple-500/10 text-purple-200 border-purple-500/20"
-              }
-            `}
+            className={`px-4 py-2 rounded-full text-xs font-semibold border ${softBadgeClass(
+              TONE_TOKEN[lesson.emotionalTone] || "primary"
+            )}`}
           >
             {lesson.emotionalTone}
           </span>
 
           {/* access */}
           <span
-            className={`
-              px-4
-              py-2
-              rounded-full
-              text-xs
-              font-semibold
-              border
-
-              ${
-                lesson.accessLevel === "Premium"
-                  ? "bg-amber-500/10 text-amber-200 border-amber-500/20"
-
-                  : "bg-emerald-500/10 text-emerald-200 border-emerald-500/20"
-              }
-            `}
+            className={`px-4 py-2 rounded-full text-xs font-semibold border ${softBadgeClass(
+              lesson.accessLevel === "Premium" ? "warning" : "success"
+            )}`}
           >
             {lesson.accessLevel}
           </span>
@@ -146,7 +114,7 @@ const LessonBanner = ({ lesson, refetch }) => {
             md:text-5xl
             font-black
             leading-tight
-            bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent 
+            text-gradient-brand
           "
         >
           {lesson.title}
@@ -159,7 +127,7 @@ const LessonBanner = ({ lesson, refetch }) => {
             className="
               text-2xl
               font-bold
-              text-cyan-400
+              text-accent
               mb-5
             "
           >
@@ -168,7 +136,7 @@ const LessonBanner = ({ lesson, refetch }) => {
 
           <p
             className="
-              text-gray-300
+              text-base-content/90
               text-lg
               leading-10
               whitespace-pre-line

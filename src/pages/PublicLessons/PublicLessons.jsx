@@ -31,11 +31,11 @@ const PublicLessons = () => {
 
   return (
     useTitle("Public Lessons"),
-    <div className="min-h-screen bg-[#0F172A] py-16 relative overflow-hidden">
+    <div className="min-h-screen bg-base-100 py-16 relative overflow-hidden">
       {/* background blur */}
-      <div className="absolute top-0 left-0 w-72 h-72 bg-purple-500/10 blur-3xl rounded-full"></div>
+      <div className="absolute top-0 left-0 w-72 h-72 bg-primary/10 blur-3xl rounded-full"></div>
 
-      <div className="absolute bottom-0 right-0 w-72 h-72 bg-indigo-500/10 blur-3xl rounded-full"></div>
+      <div className="absolute bottom-0 right-0 w-72 h-72 bg-secondary/10 blur-3xl rounded-full"></div>
 
       <div className=" ">
         {/* heading */}
@@ -44,11 +44,11 @@ const PublicLessons = () => {
             Explore Lessons
           </span>
 
-          <h1 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent mt-4">
-            Public Life Lessons 
+          <h1 className="text-4xl md:text-5xl font-black text-gradient-brand mt-4">
+            Public Life Lessons
           </h1>
 
-          <p className="mt-6 text-lg text-gray-400 leading-relaxed">
+          <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
             Explore powerful real-life experiences shared by people from around
             the world.
           </p>
@@ -60,14 +60,14 @@ const PublicLessons = () => {
               placeholder="Search lessons..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className=" input input-bordered bg-[#111827] border-white/10 text-white w-full md:w-72"
+              className=" input input-bordered bg-input border-border text-base-content w-full md:w-72"
             />
 
             {/* category */}
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className=" select select-bordered bg-[#111827] border-white/10 text-gray-300 w-full md:w-60"
+              className=" select select-bordered bg-input border-border text-base-content w-full md:w-60"
             >
               <option value="">All Categories</option>
 
@@ -87,7 +87,7 @@ const PublicLessons = () => {
             <select
               value={emotionalTone}
               onChange={(e) => setEmotionalTone(e.target.value)}
-              className=" select select-bordered bg-[#111827] border-white/10 text-gray-300 w-full md:w-60"
+              className=" select select-bordered bg-input border-border text-base-content w-full md:w-60"
             >
               <option value="">All Emotions</option>
 
@@ -105,7 +105,7 @@ const PublicLessons = () => {
           
         </div>
 
-        <h2 className=" text-1xl md:text-3xl font-semibold  bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent mb-10">Public Lessons<span className=" text-primary ml-3">
+        <h2 className=" text-1xl md:text-3xl font-semibold  text-gradient-brand mb-10">Public Lessons<span className=" text-primary ml-3">
 
     ({lessons.length})
 
@@ -136,8 +136,8 @@ const PublicLessons = () => {
                 py-24
                 rounded-[32px]
                 border
-                border-white/10
-                bg-white/5
+                border-border
+                bg-card/60
                 backdrop-blur-xl
                 text-center
               "
@@ -147,11 +147,11 @@ const PublicLessons = () => {
                 😔
               </div>
 
-              <h2 className="text-3xl md:text-4xl font-black bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent">
+              <h2 className="text-3xl md:text-4xl font-black text-gradient-brand">
                 No Lessons Found
               </h2>
 
-              <p className="text-gray-400 mt-4 max-w-md leading-8">
+              <p className="text-muted-foreground mt-4 max-w-md leading-8">
                 We couldn’t find any lessons matching your search or filters.
               </p>
 

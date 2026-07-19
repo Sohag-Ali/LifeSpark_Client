@@ -21,7 +21,7 @@ const LessonMetadata = ({ lesson }) => {
         "
       >
 
-        <h3 className="text-gray-400 font-medium text-sm md:text-base">
+        <h3 className="text-muted-foreground font-medium text-sm md:text-base">
 
           Created Date
 
@@ -32,8 +32,8 @@ const LessonMetadata = ({ lesson }) => {
             text-xl
             md:text-2xl
             font-bold
-            
-            text-[#5a9d7e97]
+
+            text-info
             mt-3
             break-words
           "
@@ -59,7 +59,7 @@ const LessonMetadata = ({ lesson }) => {
         "
       >
 
-        <h3 className="text-gray-400 font-medium text-sm md:text-base">
+        <h3 className="text-muted-foreground font-medium text-sm md:text-base">
 
           Last Updated
 
@@ -70,7 +70,7 @@ const LessonMetadata = ({ lesson }) => {
             text-xl
             md:text-2xl
             font-bold
-            text-[#5a809d97]
+            text-secondary
             mt-3
             break-words
           "
@@ -99,7 +99,7 @@ const LessonMetadata = ({ lesson }) => {
         "
       >
 
-        <h3 className="text-gray-400 font-medium text-sm md:text-base">
+        <h3 className="text-muted-foreground font-medium text-sm md:text-base">
 
           Visibility
 
@@ -110,7 +110,7 @@ const LessonMetadata = ({ lesson }) => {
             text-xl
             md:text-2xl
             font-bold
-            text-[#9af3c597]
+            text-success
             mt-3
           "
         >
@@ -131,7 +131,7 @@ const LessonMetadata = ({ lesson }) => {
         "
       >
 
-        <h3 className="text-gray-400 font-medium text-sm md:text-base">
+        <h3 className="text-muted-foreground font-medium text-sm md:text-base">
 
           Reading Time
 
@@ -142,7 +142,7 @@ const LessonMetadata = ({ lesson }) => {
             text-xl
             md:text-2xl
             font-bold
-            text-[#9af3c597]
+            text-accent
             mt-3
           "
         >

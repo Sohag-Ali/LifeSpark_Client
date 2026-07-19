@@ -9,9 +9,9 @@ export const ProfileSkeleton = () => {
   return (
     <div className="px-4 md:px-8 py-10 animate-pulse">
       {/* Profile header card */}
-      <div className="relative bg-gradient-to-br from-[#111827] to-[#0F172A] border border-white/10 rounded-[32px] overflow-hidden shadow-2xl p-8 mb-10">
+      <div className="relative bg-card border border-border rounded-[32px] overflow-hidden shadow-2xl p-8 mb-10">
         <div className="flex flex-col md:flex-row items-center gap-6">
-          <Skeleton className="w-28 h-28 md:w-32 md:h-32 rounded-full border-4 border-white/10 shrink-0" variant="circle" />
+          <Skeleton className="w-28 h-28 md:w-32 md:h-32 rounded-full border-4 border-border shrink-0" variant="circle" />
           <div className="flex-1 flex flex-col items-center md:items-start gap-3 w-full">
             <Skeleton className="w-48 h-8" />
             <Skeleton className="w-64 h-5" />
@@ -24,11 +24,11 @@ export const ProfileSkeleton = () => {
       </div>
 
       {/* Profile contributions section */}
-      <div className="bg-gradient-to-br from-[#111827] to-[#0F172A] border border-white/10 rounded-[32px] p-8 shadow-2xl">
+      <div className="bg-card border border-border rounded-[32px] p-8 shadow-2xl">
         <Skeleton className="w-48 h-8 mb-8" />
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[1, 2, 3].map((i) => (
-            <div key={i} className="border border-white/5 bg-white/[0.02] rounded-2xl p-5 flex flex-col gap-4">
+            <div key={i} className="border border-border bg-muted rounded-2xl p-5 flex flex-col gap-4">
               <Skeleton className="w-full h-40 rounded-xl" />
               <Skeleton className="w-3/4 h-5" />
               <Skeleton className="w-full h-4" />

@@ -1,4 +1,4 @@
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 import useAuth from "../../hooks/useAuth";
 import { Bookmark, Flag, Heart,  MessageCircle,  Share2 } from "lucide-react";
 import {
@@ -80,7 +80,7 @@ const InteractionButton = ({ lesson, refetch }) => {
         icon: "error",
         title: "Not Logged In",
         text: "Please log in to report this lesson",
-        confirmButtonColor: "#EF4444",
+        confirmButtonColor: "var(--color-error)",
       });
       
     }
@@ -96,15 +96,15 @@ const InteractionButton = ({ lesson, refetch }) => {
 
     icon: "warning",
 
-    background: "#111827",
+    background: "var(--color-card)",
 
-    color: "#fff",
+    color: "var(--color-card-foreground)",
 
     showCancelButton: true,
 
-    confirmButtonColor: "#EF4444",
+    confirmButtonColor: "var(--color-error)",
 
-    cancelButtonColor: "#374151",
+    cancelButtonColor: "var(--color-base-300)",
 
     confirmButtonText: "Yes, Report",
 
@@ -141,11 +141,11 @@ const InteractionButton = ({ lesson, refetch }) => {
 
         icon: "success",
 
-        background: "#111827",
+        background: "var(--color-card)",
 
-        color: "#fff",
+        color: "var(--color-card-foreground)",
 
-        confirmButtonColor: "#8B5CF6",
+        confirmButtonColor: "var(--color-primary)",
 
         timer: 2200,
 
@@ -165,9 +165,7 @@ const InteractionButton = ({ lesson, refetch }) => {
     className="
       relative
       overflow-hidden
-      bg-gradient-to-br
-      from-[#111827]
-      to-[#0F172A]
+      bg-card
       rounded-[24px]
       md:rounded-[32px]
       p-4
@@ -176,7 +174,7 @@ const InteractionButton = ({ lesson, refetch }) => {
     "
   >
     {/* glow */}
-    <div className="absolute top-0 right-0 w-52 md:w-72 h-52 md:h-72 bg-violet-500/10 blur-3xl rounded-full"></div>
+    <div className="absolute top-0 right-0 w-52 md:w-72 h-52 md:h-72 bg-primary/10 blur-3xl rounded-full"></div>
 
     {/* CONTENT */}
     <div className="relative z-10">
@@ -220,7 +218,7 @@ const InteractionButton = ({ lesson, refetch }) => {
               bg-rose-500/10
               border
               border-rose-500/20
-              text-rose-300
+              text-rose-500
               hover:bg-rose-500/20
               hover:scale-[1.02]
               transition-all
@@ -235,8 +233,8 @@ const InteractionButton = ({ lesson, refetch }) => {
 
                 ${
                   lesson?.likes?.includes(user?.email)
-                    ? "fill-rose-400 text-rose-400"
-                    : "text-rose-300 group-hover:fill-rose-400"
+                    ? "fill-rose-500 text-rose-500"
+                    : "text-rose-500 group-hover:fill-rose-500"
                 }
               `}
             />
@@ -266,7 +264,7 @@ const InteractionButton = ({ lesson, refetch }) => {
               bg-amber-500/10
               border
               border-amber-500/20
-              text-amber-300
+              text-amber-500
               hover:bg-amber-500/20
               hover:scale-[1.02]
               transition-all
@@ -281,8 +279,8 @@ const InteractionButton = ({ lesson, refetch }) => {
 
                 ${
                   lesson?.favorites?.includes(user?.email)
-                    ? "fill-amber-300 text-amber-300"
-                    : "text-amber-300 group-hover:fill-amber-300"
+                    ? "fill-amber-500 text-amber-500"
+                    : "text-amber-500 group-hover:fill-amber-500"
                 }
               `}
             />
@@ -310,11 +308,11 @@ const InteractionButton = ({ lesson, refetch }) => {
               md:px-5
               py-3
               rounded-2xl
-              bg-indigo-500/10
+              bg-secondary/10
               border
-              border-indigo-500/20
-              text-indigo-300
-              hover:bg-indigo-500/20
+              border-secondary/20
+              text-secondary
+              hover:bg-secondary/20
               hover:scale-[1.02]
               transition-all
               duration-300
@@ -345,7 +343,7 @@ const InteractionButton = ({ lesson, refetch }) => {
               flex
               items-center
               gap-2
-              text-gray-300
+              text-muted-foreground
               mr-1
             "
           >
@@ -371,7 +369,7 @@ const InteractionButton = ({ lesson, refetch }) => {
       </div>
 
       {/* divider */}
-      <div className="border-t border-white/10 my-6 md:my-8"></div>
+      <div className="border-t border-border my-6 md:my-8"></div>
 
       {/* REPORT SECTION */}
       <div>
@@ -380,7 +378,7 @@ const InteractionButton = ({ lesson, refetch }) => {
             text-lg
             md:text-xl
             font-bold
-            text-gray-300
+            text-base-content
             mb-4
             md:mb-5
           "
@@ -408,16 +406,16 @@ const InteractionButton = ({ lesson, refetch }) => {
               md:h-14
               px-4
               md:px-5
-              bg-[#0B1120]
+              bg-input
               border
-              border-white/10
+              border-border
               rounded-2xl
               text-sm
               md:text-base
-              text-gray-300
+              text-base-content
               focus:outline-none
               focus:border-rose-500/40
-              hover:border-white/20
+              hover:border-primary/30
               transition-all
               duration-300
             "
@@ -450,7 +448,7 @@ const InteractionButton = ({ lesson, refetch }) => {
               border
               border-rose-500/30
               bg-rose-500/10
-              text-rose-300
+              text-rose-500
               text-sm
               md:text-base
               font-semibold

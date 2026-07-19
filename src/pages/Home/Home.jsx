@@ -16,7 +16,7 @@ const Home = () => {
       </section> */}
 
       {/* Featured Lessons */}
-      <section className=" bg-[#0F172A]   md:px-6 lg:px-8">
+      <section className=" bg-base-200   md:px-6 lg:px-8">
         <FeaturedLessons></FeaturedLessons>
       </section>
 
@@ -26,7 +26,7 @@ const Home = () => {
       </section>
 
       {/* Top Contributors */}
-      <section className="bg-[#0F172A] ">
+      <section className="bg-base-200 ">
        <TopContributors></TopContributors>
       </section>
 

@@ -75,7 +75,7 @@ const HeroBanner = () => {
 ];
 
   return (
-    <div className="w-full h-[70vh] overflow-hidden bg-slate-950 relative">
+    <div className="w-full h-[70vh] overflow-hidden bg-base-100 relative">
       <Carousel
         autoPlay
         infiniteLoop
@@ -113,7 +113,7 @@ const HeroBanner = () => {
               </p>
 
               {/* CTA Button */}
-              <NavLink to="/public-lessons" className="mt-6 inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-violet-500 to-indigo-600 text-white font-semibold shadow-lg shadow-indigo-500/20 hover:from-violet-600 hover:to-indigo-700 hover:shadow-2xl hover:shadow-violet-500/30 hover:-translate-y-1 transition-all duration-300">
+              <NavLink to="/public-lessons" className="mt-6 inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-gradient-brand text-primary-content font-semibold shadow-glow hover:-translate-y-1 transition-all duration-300">
                 Explore Lessons
               </NavLink>
             </div>

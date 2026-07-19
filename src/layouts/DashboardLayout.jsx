@@ -10,6 +10,7 @@ import { MdReport } from "react-icons/md";
 import LoadingDash from "../coponents/LoadingPage/LoadingDash";
 import { Suspense } from "react";
 import logoimg from "../assets/logof.png";
+import ThemeToggle from "../coponents/ThemeToggle/ThemeToggle";
 
 const navLinkClass = ({ isActive }) =>
   `
@@ -23,8 +24,8 @@ const navLinkClass = ({ isActive }) =>
       duration-300
       ${
         isActive
-          ? "bg-[#2A3142] border-[#4B5563] text-[#0dddcc] font-medium shadow-md"
-          : "text-gray-300 font-medium hover:shadow-lg hover:shadow-purple-500/20"
+          ? "bg-primary/15 border-primary/30 text-primary font-medium shadow-md"
+          : "text-muted-foreground font-medium hover:shadow-lg hover:shadow-primary/20"
       }
     `;
 
@@ -35,13 +36,13 @@ const DashboardLayout = () => {
 }
 
   return (
-    <div className="drawer md:drawer-open bg-[#0F172A] text-white min-h-screen">
+    <div className="drawer md:drawer-open bg-base-100 text-base-content min-h-screen">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
         {/* Navbar */}
-    <nav className="navbar sticky top-0 z-50 w-full bg-[#111827]/80 backdrop-blur-xl border-b border-white/10 px-4 md:px-6">
+    <nav className="navbar sticky top-0 z-50 w-full bg-base-200/80 backdrop-blur-xl border-b border-border px-4 md:px-6">
 
-  <div className="flex items-center gap-4">
+  <div className="flex items-center gap-4 flex-1">
 
     <label
       htmlFor="my-drawer-4"
@@ -70,27 +71,23 @@ const DashboardLayout = () => {
         md:hidden
         text-lg
         font-black
-        bg-gradient-to-r
-        from-violet-300
-        to-indigo-400
-        bg-clip-text
-        text-transparent
+        text-gradient-brand
         flex
         items-center
-        
+
       "
     >
       <img src={logoimg} alt="Logo" className="h-10 w-auto md:h-14 object-contain" />
       <span>LifeLessons ✨</span>
     </NavLink>
 
-    <div className="hidden md:block text-lg md:text-xl font-bold bg-gradient-to-r from-violet-300 to-indigo-400 bg-clip-text text-transparent">
+    <div className="hidden md:block text-lg md:text-xl font-bold text-gradient-brand">
       Dashboard
     </div>
 
-    
-
   </div>
+
+  <ThemeToggle />
 </nav>
         {/* Page content here */}
 
@@ -107,14 +104,14 @@ const DashboardLayout = () => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <div className=" flex min-h-full flex-col items-start bg-[#111827] border-r border-white/10 backdrop-blur-xl is-drawer-close:w-14 is-drawer-open:w-72 transition-all duration-300 is-drawer-close:w-14 is-drawer-open:w-64">
+        <div className=" flex min-h-full flex-col items-start bg-base-200 border-r border-border backdrop-blur-xl is-drawer-close:w-14 is-drawer-open:w-72 transition-all duration-300 is-drawer-close:w-14 is-drawer-open:w-64">
           {/* Sidebar content here */}
           <ul className="menu w-full grow p-4 space-y-2">
             <li className="hidden md:block  ">
               <NavLink to="/" className={navLinkClass}>
                 {/* Home icon */}
                 <img src={logoimg} alt="Logo" className="h-8 w-auto  object-contain" />
-                <span className="text-xl font-bold bg-gradient-to-r from-violet-300 to-indigo-400 bg-clip-text text-transparent">
+                <span className="text-xl font-bold text-gradient-brand">
                   LifeLessons ✨
                 </span>
               </NavLink>

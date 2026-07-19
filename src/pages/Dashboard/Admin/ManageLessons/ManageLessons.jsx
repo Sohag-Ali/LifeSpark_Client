@@ -126,14 +126,14 @@ const ManageLessons = () => {
           </div>
 
           <div>
-            <h1 className="text-4xl md:text-5xl font-black text-white">
-              <span className="bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-5xl font-black text-base-content">
+              <span className="text-gradient-brand">
                 Manage Lessons
               </span>{" "}
               📚
             </h1>
 
-            <p className="text-gray-400 text-lg mt-3">
+            <p className="text-muted-foreground text-lg mt-3">
               Monitor and moderate all lessons
             </p>
           </div>
@@ -145,11 +145,9 @@ const ManageLessons = () => {
         {/* public */}
         <div
           className="
-            bg-gradient-to-br
-            from-[#111827]
-            to-[#0F172A]
+            bg-card
             border
-            border-white/10
+            border-border
             rounded-[30px]
             p-8
             shadow-2xl
@@ -159,15 +157,15 @@ const ManageLessons = () => {
           "
         >
           <div>
-            <h2 className="text-5xl font-black text-emerald-300">
+            <h2 className="text-5xl font-black text-success">
               {isStatsLoading ? (
-                <div className="h-12 w-16 bg-white/10 rounded animate-pulse" />
+                <div className="h-12 w-16 bg-muted rounded animate-pulse" />
               ) : (
                 stats.publicLessons || 0
               )}
             </h2>
 
-            <p className="text-gray-400 mt-4">Public Lessons</p>
+            <p className="text-muted-foreground mt-4">Public Lessons</p>
           </div>
 
           <div
@@ -175,26 +173,24 @@ const ManageLessons = () => {
                 w-20
                 h-20
                 rounded-3xl
-                bg-emerald-500/10
+                bg-success/10
                 border
-                border-emerald-500/20
+                border-success/20
                 flex
                 items-center
                 justify-center
               "
           >
-            <BookOpen size={40} className="text-emerald-300" />
+            <BookOpen size={40} className="text-success" />
           </div>
         </div>
 
         {/* private */}
         <div
           className="
-            bg-gradient-to-br
-            from-[#111827]
-            to-[#0F172A]
+            bg-card
             border
-            border-white/10
+            border-border
             rounded-[30px]
             p-8
             shadow-2xl
@@ -204,15 +200,15 @@ const ManageLessons = () => {
           "
         >
           <div>
-            <h2 className="text-5xl font-black text-amber-300">
+            <h2 className="text-5xl font-black text-warning">
               {isStatsLoading ? (
-                <div className="h-12 w-16 bg-white/10 rounded animate-pulse" />
+                <div className="h-12 w-16 bg-muted rounded animate-pulse" />
               ) : (
                 stats.privateLessons || 0
               )}
             </h2>
 
-            <p className="text-gray-400 mt-4">Private Lessons</p>
+            <p className="text-muted-foreground mt-4">Private Lessons</p>
           </div>
 
           <div
@@ -220,26 +216,24 @@ const ManageLessons = () => {
                 w-20
                 h-20
                 rounded-3xl
-                bg-amber-500/10
+                bg-warning/10
                 border
-                border-amber-500/20
+                border-warning/20
                 flex
                 items-center
                 justify-center
               "
           >
-            <AiOutlineFileProtect size={40} className="text-amber-300" />
+            <AiOutlineFileProtect size={40} className="text-warning" />
           </div>
         </div>
 
         {/* flagged */}
         <div
           className="
-            bg-gradient-to-br
-            from-[#111827]
-            to-[#0F172A]
+            bg-card
             border
-            border-white/10
+            border-border
             rounded-[30px]
             p-8
             shadow-2xl
@@ -249,15 +243,15 @@ const ManageLessons = () => {
           "
         >
           <div>
-            <h2 className="text-5xl font-black text-rose-300">
+            <h2 className="text-5xl font-black text-error">
               {isStatsLoading ? (
-                <div className="h-12 w-16 bg-white/10 rounded animate-pulse" />
+                <div className="h-12 w-16 bg-muted rounded animate-pulse" />
               ) : (
                 stats.flaggedLessons || 0
               )}
             </h2>
 
-            <p className="text-gray-400 mt-4">Flagged Lessons</p>
+            <p className="text-muted-foreground mt-4">Flagged Lessons</p>
           </div>
 
           <div
@@ -265,15 +259,15 @@ const ManageLessons = () => {
                 w-20
                 h-20
                 rounded-3xl
-                bg-rose-500/10
+                bg-error/10
                 border
-                border-rose-500/20
+                border-error/20
                 flex
                 items-center
                 justify-center
               "
           >
-            <MdReportGmailerrorred size={40} className="text-rose-300" />
+            <MdReportGmailerrorred size={40} className="text-error" />
           </div>
         </div>
       </div>
@@ -284,10 +278,10 @@ const ManageLessons = () => {
         <select
           className="
             select
-            bg-[#111827]
+            bg-input
             border
-            border-white/10
-            text-white
+            border-border
+            text-base-content
             rounded-2xl
             focus:outline-none
             focus:border-primary
@@ -314,10 +308,10 @@ const ManageLessons = () => {
         <select
           className="
             select
-            bg-[#111827]
+            bg-input
             border
-            border-white/10
-            text-white
+            border-border
+            text-base-content
             rounded-2xl
             focus:outline-none
             focus:border-primary
@@ -338,10 +332,10 @@ const ManageLessons = () => {
         <select
           className="
             select
-            bg-[#111827]
+            bg-input
             border
-            border-white/10
-            text-white
+            border-border
+            text-base-content
             rounded-2xl
             focus:outline-none
             focus:border-primary
@@ -365,24 +359,22 @@ const ManageLessons = () => {
           className="
             w-full
             overflow-x-auto
-            bg-gradient-to-br
-            from-[#111827]
-            to-[#0F172A]
+            bg-card
             border
-            border-white/10
+            border-border
             rounded-[24px]
             md:rounded-[32px]
             shadow-2xl
           "
         >
-          <table className="table min-w-[850px] text-white">
+          <table className="table min-w-[850px] text-base-content">
     <thead>
       <tr
         className="
           border-b
           text-center
-          border-white/10
-          text-gray-300
+          border-border
+          text-muted-foreground
           text-xs
           md:text-sm
         "
@@ -411,7 +403,7 @@ const ManageLessons = () => {
           >
             <div className="flex flex-col items-center">
               {/* icon */}
-              <BookOpen size={60} className="text-indigo-400" />
+              <BookOpen size={60} className="text-primary" />
 
               {/* title */}
               <h2
@@ -420,7 +412,7 @@ const ManageLessons = () => {
                   text-3xl
                   md:text-4xl
                   font-black
-                  text-white
+                  text-base-content
                 "
               >
                 Lessons Not Found
@@ -429,7 +421,7 @@ const ManageLessons = () => {
               {/* description */}
               <p
                 className="
-                  text-gray-400
+                  text-muted-foreground
                   mt-4
                   max-w-md
                   leading-8
@@ -448,8 +440,8 @@ const ManageLessons = () => {
             key={lesson._id}
             className="
               border-b
-              border-white/5
-              hover:bg-white/[0.03]
+              border-border
+              hover:bg-hover
               transition-all
               duration-300
             "
@@ -467,7 +459,7 @@ const ManageLessons = () => {
                     rounded-2xl
                     object-cover
                     border
-                    border-white/10
+                    border-border
                   "
                 />
 
@@ -477,12 +469,7 @@ const ManageLessons = () => {
                       font-bold
                       text-sm
                       md:text-lg
-                      bg-gradient-to-r
-                      from-[#D8B4FE]
-                      via-[#A78BFA]
-                      to-[#818CF8]
-                      bg-clip-text
-                      text-transparent
+                      text-gradient-brand
                       line-clamp-1
                     "
                   >
@@ -493,12 +480,7 @@ const ManageLessons = () => {
                     className="
                       text-xs
                       md:text-sm
-                      bg-gradient-to-r
-                      from-fuchsia-500
-                      via-purple-600
-                      to-indigo-600
-                      bg-clip-text
-                      text-transparent
+                      text-gradient-brand
                       mt-2
                     "
                   >
@@ -516,10 +498,10 @@ const ManageLessons = () => {
                   md:px-4
                   py-2
                   rounded-full
-                  bg-indigo-500/10
-                  text-indigo-200
+                  bg-primary/10
+                  text-primary
                   border
-                  border-indigo-500/20
+                  border-primary/20
                   text-[10px]
                   md:text-xs
                   font-semibold
@@ -546,8 +528,8 @@ const ManageLessons = () => {
 
                   ${
                     lesson.privacy === "Public"
-                      ? "bg-emerald-500/10 text-emerald-200 border-emerald-500/20"
-                      : "bg-amber-500/10 text-amber-200 border-amber-500/20"
+                      ? "bg-success/10 text-success border-success/20"
+                      : "bg-warning/10 text-warning border-warning/20"
                   }
                 `}
               >
@@ -565,10 +547,10 @@ const ManageLessons = () => {
                       md:px-4
                       py-2
                       rounded-full
-                      bg-purple-500/10
-                      text-purple-200
+                      bg-secondary/10
+                      text-secondary
                       border
-                      border-purple-500/20
+                      border-secondary/20
                       text-[10px]
                       md:text-xs
                       font-semibold
@@ -586,10 +568,10 @@ const ManageLessons = () => {
                       md:px-4
                       py-2
                       rounded-full
-                      bg-cyan-500/10
-                      text-cyan-200
+                      bg-info/10
+                      text-info
                       border
-                      border-cyan-500/20
+                      border-info/20
                       text-[10px]
                       md:text-xs
                       font-semibold
@@ -607,10 +589,10 @@ const ManageLessons = () => {
                       md:px-4
                       py-2
                       rounded-full
-                      bg-rose-500/10
-                      text-rose-200
+                      bg-error/10
+                      text-error
                       border
-                      border-rose-500/20
+                      border-error/20
                       text-[10px]
                       md:text-xs
                       font-semibold
@@ -637,10 +619,10 @@ const ManageLessons = () => {
                     md:w-11
                     md:h-11
                     rounded-2xl
-                    bg-purple-500/10
-                    text-purple-300
+                    bg-secondary/10
+                    text-secondary
                     border
-                    border-purple-500/20
+                    border-secondary/20
                     flex
                     items-center
                     justify-center
@@ -651,7 +633,7 @@ const ManageLessons = () => {
                 >
                   <Star
                     size={16}
-                    className={lesson.isFeatured ? "fill-purple-300" : ""}
+                    className={lesson.isFeatured ? "fill-secondary" : ""}
                   />
                 </button>
 
@@ -664,10 +646,10 @@ const ManageLessons = () => {
                     md:w-11
                     md:h-11
                     rounded-2xl
-                    bg-cyan-500/10
-                    text-cyan-300
+                    bg-info/10
+                    text-info
                     border
-                    border-cyan-500/20
+                    border-info/20
                     flex
                     items-center
                     justify-center
@@ -692,14 +674,15 @@ const ManageLessons = () => {
                     md:w-11
                     md:h-11
                     rounded-2xl
-                    bg-rose-500/10
-                    text-rose-300
+                    bg-error/10
+                    text-error
                     border
-                    border-rose-500/20
+                    border-error/20
                     flex
                     items-center
                     justify-center
-                    hover:bg-red-800
+                    hover:bg-error
+                    hover:text-error-content
                     hover:scale-105
                     transition-all
                     duration-300

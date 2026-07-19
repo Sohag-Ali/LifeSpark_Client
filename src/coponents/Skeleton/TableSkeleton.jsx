@@ -10,12 +10,12 @@ export const TableSkeleton = ({ rowsCount = 5, colsCount = 6 }) => {
   const cols = Array.from({ length: colsCount });
 
   return (
-    <div className="w-full overflow-x-auto bg-gradient-to-br from-[#111827] to-[#0F172A] border border-white/10 rounded-[32px] shadow-2xl p-6">
+    <div className="w-full overflow-x-auto bg-card border border-border rounded-[32px] shadow-2xl p-6">
       <div className="min-w-full inline-block align-middle">
         <div className="overflow-hidden">
-          <table className="table min-w-full text-white">
+          <table className="table min-w-full text-base-content">
             <thead>
-              <tr className="border-b border-white/10 text-gray-400 text-xs md:text-sm">
+              <tr className="border-b border-border text-muted-foreground text-xs md:text-sm">
                 {cols.map((_, index) => (
                   <th key={index} className="py-4 px-4">
                     <Skeleton className="w-16 h-4" />
@@ -27,7 +27,7 @@ export const TableSkeleton = ({ rowsCount = 5, colsCount = 6 }) => {
               {rows.map((_, rowIndex) => (
                 <tr
                   key={rowIndex}
-                  className="border-b border-white/5 hover:bg-white/[0.02] transition-all duration-200"
+                  className="border-b border-border hover:bg-hover transition-all duration-200"
                 >
                   {cols.map((_, colIndex) => {
                     // Make columns look slightly different

@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useUser from "../../../hooks/useUser";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
 import { BookOpenCheck } from "lucide-react";
@@ -41,15 +41,15 @@ const MyLessons = () => {
 
       icon: "warning",
 
-      background: "#111827",
+      background: "var(--color-card)",
 
-      color: "#fff",
+      color: "var(--color-card-foreground)",
 
       showCancelButton: true,
 
-      confirmButtonColor: "#EF4444",
+      confirmButtonColor: "var(--color-error)",
 
-      cancelButtonColor: "#374151",
+      cancelButtonColor: "var(--color-base-300)",
 
       confirmButtonText: "Yes, Delete",
 
@@ -69,11 +69,11 @@ const MyLessons = () => {
 
               icon: "success",
 
-              background: "#111827",
+              background: "var(--color-card)",
 
-              color: "#fff",
+              color: "var(--color-card-foreground)",
 
-              confirmButtonColor: "#8B5CF6",
+              confirmButtonColor: "var(--color-primary)",
 
               timer: 2000,
 
@@ -89,9 +89,9 @@ const MyLessons = () => {
             title: "Error",
             text: "Failed to delete lesson",
             icon: "error",
-            background: "#111827",
-            color: "#fff",
-            confirmButtonColor: "#8B5CF6",
+            background: "var(--color-card)",
+            color: "var(--color-card-foreground)",
+            confirmButtonColor: "var(--color-primary)",
           });
         }
       }
@@ -146,14 +146,14 @@ const MyLessons = () => {
       <div className="p-6">
         {/* heading */}
         <div className="mb-8">
-          <h1 className="text-4xl md:text-5xl font-black text-white">
-            <span className="bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
+          <h1 className="text-4xl md:text-5xl font-black text-base-content">
+            <span className="text-gradient-brand">
               My Lessons
             </span>{" "}
             📚
           </h1>
 
-          <p className="text-gray-400 text-lg mt-3">
+          <p className="text-muted-foreground text-lg mt-3">
             Manage all your created lessons.
           </p>
         </div>
@@ -168,23 +168,23 @@ const MyLessons = () => {
     <div className="p-6">
       {/* heading */}
       <div className="mb-8">
-        <h1 className="text-4xl md:text-5xl font-black text-white">
-          <span className="bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
+        <h1 className="text-4xl md:text-5xl font-black text-base-content">
+          <span className="text-gradient-brand">
             My Lessons
           </span>{" "}
           📚
         </h1>
 
-        <p className="text-gray-400 text-lg mt-3">
+        <p className="text-muted-foreground text-lg mt-3">
           Manage all your created lessons.
         </p>
       </div>
 
       {/* table */}
-      <div className="overflow-x-auto bg-[#111827] border border-white/10 shadow-2xl rounded-[28px] backdrop-blur-xl">
-        <table className="table text-[#CBD5E1] text-center">
-          <thead className="bg-white/5  ">
-            <tr className="border-b border-white/10">
+      <div className="overflow-x-auto bg-card border border-border shadow-2xl rounded-[28px] backdrop-blur-xl">
+        <table className="table text-muted-foreground text-center">
+          <thead className="bg-muted  ">
+            <tr className="border-b border-border">
               <th>#</th>
 
               <th>Title</th>
@@ -226,7 +226,7 @@ const MyLessons = () => {
               md:w-28
               md:h-28
               rounded-full
-              bg-indigo-500/10
+              bg-primary/10
               flex
               items-center
               justify-center
@@ -234,7 +234,7 @@ const MyLessons = () => {
           >
             <BookOpenCheck
               size={40}
-              className="md:w-[60px] md:h-[60px] text-indigo-400"
+              className="md:w-[60px] md:h-[60px] text-primary"
             />
           </div>
 
@@ -246,7 +246,7 @@ const MyLessons = () => {
               text-2xl
               md:text-4xl
               font-black
-              text-white
+              text-base-content
             "
           >
             No Lessons Found
@@ -255,7 +255,7 @@ const MyLessons = () => {
           {/* description */}
           <p
             className="
-              text-gray-400
+              text-muted-foreground
               mt-4
               max-w-md
               leading-7
@@ -276,8 +276,8 @@ const MyLessons = () => {
         key={lesson._id}
         className="
           border-b
-          border-white/5
-          hover:bg-[#1A2335]
+          border-border
+          hover:bg-hover
           transition-all
           duration-300
         "
@@ -285,12 +285,7 @@ const MyLessons = () => {
         {/* serial */}
         <td
           className="
-            bg-gradient-to-r
-            from-[#D8B4FE]
-            via-[#A78BFA]
-            to-[#818CF8]
-            bg-clip-text
-            text-transparent
+            text-gradient-brand
             font-semibold
             text-xs
             md:text-sm
@@ -305,7 +300,7 @@ const MyLessons = () => {
             text-xs
             md:text-sm
             font-medium
-            text-white
+            text-base-content
             min-w-[180px]
           "
         >
@@ -322,10 +317,10 @@ const MyLessons = () => {
               md:px-4
               py-2
               rounded-xl
-              bg-indigo-500/10
-              text-indigo-300
+              bg-primary/10
+              text-primary
               border
-              border-indigo-500/20
+              border-primary/20
               text-[10px]
               md:text-xs
               font-semibold
@@ -360,8 +355,8 @@ const MyLessons = () => {
 
               ${
                 lesson.privacy === "Public"
-                  ? "bg-emerald-500/10 text-emerald-300 border-emerald-500/20 hover:bg-emerald-500 hover:text-white"
-                  : "bg-rose-500/10 text-rose-300 border-rose-500/20 hover:bg-rose-500 hover:text-white"
+                  ? "bg-success/10 text-success border-success/20 hover:bg-success hover:text-success-content"
+                  : "bg-error/10 text-error border-error/20 hover:bg-error hover:text-error-content"
               }
             `}
           >
@@ -393,8 +388,8 @@ const MyLessons = () => {
 
               ${
                 lesson.accessLevel === "Premium"
-                  ? "bg-amber-500/10 text-amber-300 border-amber-500/20 hover:bg-amber-500 hover:text-black"
-                  : "bg-cyan-500/10 text-cyan-300 border-cyan-500/20 hover:bg-cyan-500 hover:text-white"
+                  ? "bg-warning/10 text-warning border-warning/20 hover:bg-warning hover:text-warning-content"
+                  : "bg-info/10 text-info border-info/20 hover:bg-info hover:text-info-content"
               }
             `}
           >
@@ -405,7 +400,7 @@ const MyLessons = () => {
         {/* date */}
         <td
           className="
-            text-indigo-200
+            text-secondary
             text-[10px]
             md:text-sm
             whitespace-nowrap
@@ -456,14 +451,14 @@ const MyLessons = () => {
                 md:px-4
                 py-2
                 rounded-xl
-                bg-cyan-500/20
-                text-cyan-300
+                bg-info/20
+                text-info
                 text-[10px]
                 md:text-xs
                 font-semibold
                 text-center
-                hover:bg-cyan-500
-                hover:text-white
+                hover:bg-info
+                hover:text-info-content
                 transition-all
                 duration-300
                 whitespace-nowrap
@@ -487,7 +482,7 @@ const MyLessons = () => {
                 font-semibold
                 text-center
                 hover:bg-warning
-                hover:text-black
+                hover:text-warning-content
                 transition-all
                 duration-300
                 whitespace-nowrap
@@ -508,13 +503,13 @@ const MyLessons = () => {
                 md:px-4
                 py-2
                 rounded-xl
-                bg-red-500/20
-                text-red-400
+                bg-error/20
+                text-error
                 text-[10px]
                 md:text-xs
                 font-semibold
-                hover:bg-red-500
-                hover:text-white
+                hover:bg-error
+                hover:text-error-content
                 transition-all
                 duration-300
                 whitespace-nowrap

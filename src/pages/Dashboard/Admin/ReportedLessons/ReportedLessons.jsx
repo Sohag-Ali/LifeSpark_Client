@@ -115,9 +115,9 @@ const ReportedLessons = () => {
                      w-16
                      h-16
                      rounded-2xl
-                     bg-rose-500/10
+                     bg-error/10
                      border
-                     border-rose-500/20
+                     border-error/20
                      flex
                      items-center
                      justify-center
@@ -126,23 +126,18 @@ const ReportedLessons = () => {
 
                   <ShieldAlert
                      size={30}
-                     className="text-rose-300"
+                     className="text-error"
                   />
 
                </div>
 
                <div>
 
-                  <h1 className="text-4xl md:text-5xl font-black text-white">
+                  <h1 className="text-4xl md:text-5xl font-black text-base-content">
 
                      <span
                         className="
-                           bg-gradient-to-r
-                           from-rose-400
-                           via-pink-500
-                           to-red-500
-                           bg-clip-text
-                           text-transparent
+                           text-error
                         "
                      >
 
@@ -154,7 +149,7 @@ const ReportedLessons = () => {
 
                   </h1>
 
-                  <p className="text-gray-400 text-lg mt-3">
+                  <p className="text-muted-foreground text-lg mt-3">
 
                      Review and moderate community reported lessons
 
@@ -171,23 +166,21 @@ const ReportedLessons = () => {
   className="
     w-full
     overflow-x-auto
-    bg-gradient-to-br
-    from-[#111827]
-    to-[#0F172A]
+    bg-card
     border
-    border-white/10
+    border-border
     rounded-[24px]
     md:rounded-[32px]
     shadow-2xl
   "
 >
-  <table className="table min-w-[850px] text-white">
+  <table className="table min-w-[850px] text-base-content">
     <thead>
       <tr
         className="
           border-b
-          border-white/10
-          text-gray-300
+          border-border
+          text-muted-foreground
           text-center
           text-xs
           md:text-sm
@@ -215,7 +208,7 @@ const ReportedLessons = () => {
               {/* icon */}
               <AlertTriangle
                 size={60}
-                className="text-rose-400"
+                className="text-error"
               />
 
               {/* title */}
@@ -225,7 +218,7 @@ const ReportedLessons = () => {
                   text-3xl
                   md:text-4xl
                   font-black
-                  text-white
+                  text-base-content
                 "
               >
                 No Reports Found
@@ -234,7 +227,7 @@ const ReportedLessons = () => {
               {/* description */}
               <p
                 className="
-                  text-gray-400
+                  text-muted-foreground
                   mt-4
                   max-w-md
                   leading-8
@@ -254,8 +247,8 @@ const ReportedLessons = () => {
             key={lesson._id}
             className="
               border-b
-              border-white/5
-              hover:bg-white/[0.03]
+              border-border
+              hover:bg-hover
               transition-all
               duration-300
             "
@@ -273,7 +266,7 @@ const ReportedLessons = () => {
                     rounded-2xl
                     object-cover
                     border
-                    border-white/10
+                    border-border
                   "
                 />
 
@@ -283,7 +276,7 @@ const ReportedLessons = () => {
                       font-bold
                       text-sm
                       md:text-lg
-                      text-white
+                      text-base-content
                       line-clamp-1
                     "
                   >
@@ -294,12 +287,7 @@ const ReportedLessons = () => {
                     className="
                       text-xs
                       md:text-sm
-                      bg-gradient-to-r
-                      from-[#D8B4FE]
-                      via-[#A78BFA]
-                      to-[#818CF8]
-                      bg-clip-text
-                      text-transparent
+                      text-gradient-brand
                       mt-2
                     "
                   >
@@ -321,10 +309,10 @@ const ReportedLessons = () => {
                   py-2
                   md:py-3
                   rounded-full
-                  bg-rose-500/10
-                  text-rose-200
+                  bg-error/10
+                  text-error
                   border
-                  border-rose-500/20
+                  border-error/20
                   font-semibold
                   text-xs
                   md:text-sm
@@ -365,18 +353,18 @@ const ReportedLessons = () => {
                     py-2
                     md:py-3
                     rounded-2xl
-                    bg-indigo-500/10
-                    text-indigo-200
+                    bg-info/10
+                    text-info
                     border
-                    border-indigo-500/20
+                    border-info/20
                     flex
                     items-center
                     gap-2
                     text-xs
                     md:text-sm
                     font-semibold
-                    hover:bg-indigo-500
-                    hover:text-white
+                    hover:bg-info
+                    hover:text-info-content
                     transition-all
                     duration-300
                     whitespace-nowrap
@@ -400,18 +388,18 @@ const ReportedLessons = () => {
                     py-2
                     md:py-3
                     rounded-2xl
-                    bg-amber-500/10
-                    text-amber-200
+                    bg-warning/10
+                    text-warning
                     border
-                    border-amber-500/20
+                    border-warning/20
                     flex
                     items-center
                     gap-2
                     text-xs
                     md:text-sm
                     font-semibold
-                    hover:bg-amber-500
-                    hover:text-white
+                    hover:bg-warning
+                    hover:text-warning-content
                     transition-all
                     duration-300
                     whitespace-nowrap
@@ -435,18 +423,18 @@ const ReportedLessons = () => {
                     py-2
                     md:py-3
                     rounded-2xl
-                    bg-rose-500/10
-                    text-rose-200
+                    bg-error/10
+                    text-error
                     border
-                    border-rose-500/20
+                    border-error/20
                     flex
                     items-center
                     gap-2
                     text-xs
                     md:text-sm
                     font-semibold
-                    hover:bg-rose-500
-                    hover:text-white
+                    hover:bg-error
+                    hover:text-error-content
                     transition-all
                     duration-300
                     whitespace-nowrap
@@ -475,24 +463,17 @@ const ReportedLessons = () => {
                className="
                   modal-box
                   max-w-3xl
-                  bg-gradient-to-br
-                  from-[#111827]
-                  to-[#0F172A]
+                  bg-card
                   border
-                  border-white/10
+                  border-border
                   rounded-[32px]
-                  text-white
+                  text-base-content
                "
             >
 
                <h2 className="text-4xl font-black mb-8">
 
-                  <span className="bg-gradient-to-r
-                           from-rose-400
-                           via-pink-500
-                           to-red-500
-                           bg-clip-text
-                           text-transparent">Report Reasons</span> 🚩
+                  <span className="text-error">Report Reasons</span> 🚩
 
                </h2>
 
@@ -505,23 +486,23 @@ const ReportedLessons = () => {
                            key={index}
 
                            className="
-                              bg-white/[0.03]
+                              bg-muted
                               border
-                              border-white/10
+                              border-border
                               rounded-2xl
                               p-6
                            "
                         >
 
-                           <h3 className="font-bold text-lg bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent ">
+                           <h3 className="font-bold text-lg text-gradient-brand ">
 
                               {report.reason}
 
                            </h3>
 
-                           <p className="bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent   mt-3">
+                           <p className="text-gradient-brand   mt-3">
 
-                              <span className="text-gray-400">Reporter :</span>
+                              <span className="text-muted-foreground">Reporter :</span>
                               {" "}
                               {report.reportedUserEmail}
 
@@ -542,11 +523,11 @@ const ReportedLessons = () => {
                            px-6
                            py-3
                            rounded-2xl
-                           bg-white/10
+                           bg-muted
                            border
-                           border-white/10
-                           text-white
-                           hover:bg-white/20
+                           border-border
+                           text-base-content
+                           hover:bg-hover
                            transition-all
                            duration-300
                         "

@@ -50,15 +50,15 @@ const ManageUsers = () => {
 
       icon: "warning",
 
-      background: "#111827",
+      background: "var(--color-card)",
 
-      color: "#fff",
+      color: "var(--color-card-foreground)",
 
       showCancelButton: true,
 
-      confirmButtonColor: "#8B5CF6",
+      confirmButtonColor: "var(--color-primary)",
 
-      cancelButtonColor: "#374151",
+      cancelButtonColor: "var(--color-base-300)",
 
       confirmButtonText: "Yes, Make Admin",
 
@@ -88,11 +88,11 @@ const ManageUsers = () => {
 
           icon: "success",
 
-          background: "#111827",
+          background: "var(--color-card)",
 
-          color: "#fff",
+          color: "var(--color-card-foreground)",
 
-          confirmButtonColor: "#8B5CF6",
+          confirmButtonColor: "var(--color-primary)",
 
           timer: 2200,
 
@@ -116,15 +116,15 @@ const ManageUsers = () => {
 
       icon: "warning",
 
-      background: "#111827",
+      background: "var(--color-card)",
 
-      color: "#fff",
+      color: "var(--color-card-foreground)",
 
       showCancelButton: true,
 
-      confirmButtonColor: "#EF4444",
+      confirmButtonColor: "var(--color-error)",
 
-      cancelButtonColor: "#374151",
+      cancelButtonColor: "var(--color-base-300)",
 
       confirmButtonText: "Yes, Delete",
 
@@ -147,11 +147,11 @@ const ManageUsers = () => {
 
             icon: "success",
 
-            background: "#111827",
+            background: "var(--color-card)",
 
-            color: "#fff",
+            color: "var(--color-card-foreground)",
 
-            confirmButtonColor: "#8B5CF6",
+            confirmButtonColor: "var(--color-primary)",
 
             timer: 2200,
 
@@ -177,15 +177,15 @@ const ManageUsers = () => {
 
       icon: "warning",
 
-      background: "#111827",
+      background: "var(--color-card)",
 
-      color: "#fff",
+      color: "var(--color-card-foreground)",
 
       showCancelButton: true,
 
-      confirmButtonColor: user.isBanned ? "#10B981" : "#EF4444",
+      confirmButtonColor: user.isBanned ? "var(--color-success)" : "var(--color-error)",
 
-      cancelButtonColor: "#374151",
+      cancelButtonColor: "var(--color-base-300)",
 
       confirmButtonText: user.isBanned ? "Yes, Unban" : "Yes, Ban",
     });
@@ -201,9 +201,9 @@ const ManageUsers = () => {
 
           icon: "success",
 
-          background: "#111827",
+          background: "var(--color-card)",
 
-          color: "#fff",
+          color: "var(--color-card-foreground)",
 
           timer: 2000,
 
@@ -229,15 +229,15 @@ const ManageUsers = () => {
             </div>
 
             <div>
-              <h1 className="text-4xl md:text-5xl font-black text-white">
-                <span className="bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent">
+              <h1 className="text-4xl md:text-5xl font-black text-base-content">
+                <span className="text-gradient-brand">
                   {" "}
                   Manage Users
                 </span>{" "}
                 👥
               </h1>
 
-              <p className="text-gray-400 text-lg mt-3">
+              <p className="text-muted-foreground text-lg mt-3">
                 Manage all registered users
               </p>
             </div>
@@ -249,11 +249,9 @@ const ManageUsers = () => {
           {/* total users */}
           <div
             className="
-            bg-gradient-to-br
-            from-[#111827]
-            to-[#0F172A]
+            bg-card
             border
-            border-white/10
+            border-border
             rounded-[30px]
             p-8
             shadow-2xl
@@ -263,37 +261,35 @@ const ManageUsers = () => {
           "
           >
             <div>
-              <h2 className="text-5xl font-black text-indigo-300">
+              <h2 className="text-5xl font-black text-info">
                 {users.length}
               </h2>
 
-              <p className="text-gray-400 mt-4">Total Users</p>
+              <p className="text-muted-foreground mt-4">Total Users</p>
             </div>
             <div
               className="
                 w-20
                 h-20
                 rounded-3xl
-                bg-indigo-500/10
+                bg-info/10
                 border
-                border-indigo-500/20
+                border-info/20
                 flex
                 items-center
                 justify-center
               "
             >
-              <PiUsersThreeFill size={40} className="text-indigo-300" />
+              <PiUsersThreeFill size={40} className="text-info" />
             </div>
           </div>
 
           {/* admins */}
           <div
             className="
-            bg-gradient-to-br
-            from-[#111827]
-            to-[#0F172A]
+            bg-card
             border
-            border-white/10
+            border-border
             rounded-[30px]
             p-8
             shadow-2xl
@@ -303,11 +299,11 @@ const ManageUsers = () => {
           "
           >
             <div>
-              <h2 className="text-5xl font-black text-amber-300">
+              <h2 className="text-5xl font-black text-warning">
                 {users.filter((user) => user.role === "admin").length}
               </h2>
 
-              <p className="text-gray-400 mt-4">Total Admins</p>
+              <p className="text-muted-foreground mt-4">Total Admins</p>
             </div>
 
             <div
@@ -315,26 +311,24 @@ const ManageUsers = () => {
                 w-20
                 h-20
                 rounded-3xl
-                bg-amber-500/10
+                bg-warning/10
                 border
-                border-amber-500/20
+                border-warning/20
                 flex
                 items-center
                 justify-center
               "
             >
-              <MdAdminPanelSettings size={40} className="text-amber-300" />
+              <MdAdminPanelSettings size={40} className="text-warning" />
             </div>
           </div>
 
           {/* creators */}
           <div
             className="
-            bg-gradient-to-br
-            from-[#111827]
-            to-[#0F172A]
+            bg-card
             border
-            border-white/10
+            border-border
             rounded-[30px]
             p-8
             shadow-2xl
@@ -344,11 +338,11 @@ const ManageUsers = () => {
           "
           >
             <div>
-              <h2 className="text-5xl font-black text-emerald-300">
+              <h2 className="text-5xl font-black text-success">
                 {users.filter((user) => user.totalLessons > 0).length}
               </h2>
 
-              <p className="text-gray-400 mt-4">Lessons Creators</p>
+              <p className="text-muted-foreground mt-4">Lessons Creators</p>
             </div>
 
             <div
@@ -356,26 +350,24 @@ const ManageUsers = () => {
                 w-20
                 h-20
                 rounded-3xl
-                bg-emerald-500/10
+                bg-success/10
                 border
-                border-emerald-500/20
+                border-success/20
                 flex
                 items-center
                 justify-center
               "
             >
-              <BookOpen size={40} className="text-emerald-300" />
+              <BookOpen size={40} className="text-success" />
             </div>
           </div>
 
           {/* banned users */}
           <div
             className="
-    bg-gradient-to-br
-    from-[#111827]
-    to-[#0F172A]
+    bg-card
     border
-    border-white/10
+    border-border
     rounded-[30px]
     p-8
     shadow-2xl
@@ -385,11 +377,11 @@ const ManageUsers = () => {
   "
           >
             <div>
-              <h2 className="text-5xl font-black text-rose-300">
+              <h2 className="text-5xl font-black text-error">
                 {users.filter((user) => user.isBanned).length}
               </h2>
 
-              <p className="text-gray-400 mt-4">Banned Users</p>
+              <p className="text-muted-foreground mt-4">Banned Users</p>
             </div>
 
             <div
@@ -397,15 +389,15 @@ const ManageUsers = () => {
       w-20
       h-20
       rounded-3xl
-      bg-rose-500/10
+      bg-error/10
       border
-      border-rose-500/20
+      border-error/20
       flex
       items-center
       justify-center
     "
             >
-              <FaUsersSlash size={40} className="text-rose-300" />
+              <FaUsersSlash size={40} className="text-error" />
             </div>
           </div>
         </div>
@@ -428,14 +420,14 @@ const ManageUsers = () => {
               className="
         text-2xl
         font-black
-        bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent 
+        text-gradient-brand
       "
             >
               Users Directory{" "}
-              <span className="text-gray-400">{filteredUsers.length}</span>
+              <span className="text-muted-foreground">{filteredUsers.length}</span>
             </h2>
 
-            <p className="text-gray-400 mt-2">Search users by name or email</p>
+            <p className="text-muted-foreground mt-2">Search users by name or email</p>
           </div>
 
           {/* search input */}
@@ -447,7 +439,7 @@ const ManageUsers = () => {
         left-5
         top-1/2
         -translate-y-1/2
-        text-gray-400
+        text-muted-foreground
       "
             />
 
@@ -456,7 +448,7 @@ const ManageUsers = () => {
               placeholder="Search users..."
               value={searchText}
               onChange={(e) => setSearchText(e.target.value)}
-              className=" w-full pl-14 pr-5 py-4 rounded-2xl bg-[#111827] border border-white/10 text-white placeholder:text-gray-500 outline-none focus:border-indigo-500/40 focus:ring-2 focus:ring-indigo-500/20 transition-all duration-300
+              className=" w-full pl-14 pr-5 py-4 rounded-2xl bg-input border border-border text-base-content placeholder:text-muted-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300
       "
             />
           </div>
@@ -471,18 +463,16 @@ const ManageUsers = () => {
               w-full
               overflow-x-auto
               scrollbar-thin
-              bg-gradient-to-br
-              from-[#111827]
-              to-[#0F172A]
+              bg-card
               border
-              border-white/10
+              border-border
               rounded-[32px]
               shadow-2xl
             "
           >
-            <table className="table min-w-[950px] text-white">
+            <table className="table min-w-[950px] text-base-content">
     <thead>
-      <tr className="border-b border-white/10 text-gray-300 text-xs md:text-sm">
+      <tr className="border-b border-border text-muted-foreground text-xs md:text-sm">
         <th className="py-6">#</th>
 
         <th>User</th>
@@ -509,7 +499,7 @@ const ManageUsers = () => {
           >
             <div className="flex flex-col items-center">
               {/* icon */}
-              <Users size={70} className="text-indigo-400" />
+              <Users size={70} className="text-primary" />
 
               {/* title */}
               <h2
@@ -518,7 +508,7 @@ const ManageUsers = () => {
                   text-3xl
                   md:text-4xl
                   font-black
-                  text-white
+                  text-base-content
                 "
               >
                 No Users Found
@@ -527,7 +517,7 @@ const ManageUsers = () => {
               {/* description */}
               <p
                 className="
-                  text-gray-400
+                  text-muted-foreground
                   mt-4
                   max-w-md
                   leading-8
@@ -546,14 +536,14 @@ const ManageUsers = () => {
             key={user._id}
             className="
               border-b
-              border-white/5
-              hover:bg-white/[0.03]
+              border-border
+              hover:bg-hover
               transition-all
               duration-300
             "
           >
             {/* serial */}
-            <td className="font-semibold text-gray-400 text-xs md:text-sm">
+            <td className="font-semibold text-muted-foreground text-xs md:text-sm">
               {index + 1}
             </td>
 
@@ -578,7 +568,7 @@ const ManageUsers = () => {
                       rounded-full
                       object-cover
                       border
-                      border-white/10
+                      border-border
                     "
                   />
                 </div>
@@ -590,18 +580,13 @@ const ManageUsers = () => {
                       font-bold
                       text-sm
                       md:text-lg
-                      bg-gradient-to-r
-                      from-[#D8B4FE]
-                      via-[#A78BFA]
-                      to-[#818CF8]
-                      bg-clip-text
-                      text-transparent
+                      text-gradient-brand
                     "
                   >
                     {user.name}
                   </h2>
 
-                  <p className="text-xs md:text-sm text-cyan-400 mt-1 break-all">
+                  <p className="text-xs md:text-sm text-info mt-1 break-all">
                     {user.email}
                   </p>
                 </div>
@@ -620,10 +605,10 @@ const ManageUsers = () => {
                     md:px-4
                     py-2
                     rounded-full
-                    bg-amber-500/10
-                    text-amber-200
+                    bg-warning/10
+                    text-warning
                     border
-                    border-amber-500/20
+                    border-warning/20
                     text-[10px]
                     md:text-xs
                     font-semibold
@@ -642,10 +627,10 @@ const ManageUsers = () => {
                     md:px-4
                     py-2
                     rounded-full
-                    bg-indigo-500/10
-                    text-indigo-200
+                    bg-primary/10
+                    text-primary
                     border
-                    border-indigo-500/20
+                    border-primary/20
                     text-[10px]
                     md:text-xs
                     font-semibold
@@ -668,10 +653,10 @@ const ManageUsers = () => {
                   md:px-4
                   py-2
                   rounded-full
-                  bg-emerald-500/10
-                  text-emerald-200
+                  bg-success/10
+                  text-success
                   border
-                  border-emerald-500/20
+                  border-success/20
                   text-xs
                   md:text-sm
                   font-semibold
@@ -693,10 +678,10 @@ const ManageUsers = () => {
                     md:px-4
                     py-2
                     rounded-full
-                    bg-rose-500/10
-                    text-rose-300
+                    bg-error/10
+                    text-error
                     border
-                    border-rose-500/20
+                    border-error/20
                     text-[10px]
                     md:text-xs
                     font-semibold
@@ -714,10 +699,10 @@ const ManageUsers = () => {
                     md:px-4
                     py-2
                     rounded-full
-                    bg-emerald-500/10
-                    text-emerald-300
+                    bg-success/10
+                    text-success
                     border
-                    border-emerald-500/20
+                    border-success/20
                     text-[10px]
                     md:text-xs
                     font-semibold
@@ -750,18 +735,18 @@ const ManageUsers = () => {
                       py-2
                       md:py-3
                       rounded-2xl
-                      bg-indigo-500/10
-                      text-indigo-200
+                      bg-primary/10
+                      text-primary
                       border
-                      border-indigo-500/20
+                      border-primary/20
                       flex
                       items-center
                       gap-2
                       text-xs
                       md:text-sm
                       font-semibold
-                      hover:bg-indigo-500
-                      hover:text-white
+                      hover:bg-primary
+                      hover:text-primary-content
                       transition-all
                       duration-300
                     "
@@ -793,18 +778,18 @@ const ManageUsers = () => {
                     ${
                       user.isBanned
                         ? `
-                        bg-emerald-500/10
-                        text-emerald-300
-                        border-emerald-500/20
-                        hover:bg-emerald-500
-                        hover:text-white
+                        bg-success/10
+                        text-success
+                        border-success/20
+                        hover:bg-success
+                        hover:text-success-content
                       `
                         : `
-                        bg-rose-500/10
-                        text-rose-300
-                        border-rose-500/20
-                        hover:bg-rose-500
-                        hover:text-white
+                        bg-error/10
+                        text-error
+                        border-error/20
+                        hover:bg-error
+                        hover:text-error-content
                       `
                     }
                   `}
@@ -823,15 +808,15 @@ const ManageUsers = () => {
                     md:w-12
                     md:h-12
                     rounded-2xl
-                    bg-rose-500/10
-                    text-rose-300
+                    bg-error/10
+                    text-error
                     border
-                    border-rose-500/20
+                    border-error/20
                     flex
                     items-center
                     justify-center
-                    hover:bg-rose-500
-                    hover:text-white
+                    hover:bg-error
+                    hover:text-error-content
                     transition-all
                     duration-300
                   "

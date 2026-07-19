@@ -36,14 +36,12 @@ const AuthorSection = ({ lesson }) => {
         className="
           relative
           overflow-hidden
-          bg-gradient-to-br
-          from-[#111827]
-          to-[#0F172A]
+          bg-card
         "
       >
 
         {/* glow */}
-        <div className="absolute top-0 right-0 w-72 h-72 bg-purple-500/10 blur-3xl rounded-full"></div>
+        <div className="absolute top-0 right-0 w-72 h-72 bg-primary/10 blur-3xl rounded-full"></div>
 
         <div
           className="
@@ -63,7 +61,7 @@ const AuthorSection = ({ lesson }) => {
               border-b
               lg:border-b-0
               lg:border-r
-              border-white/10
+              border-border
               flex
               flex-col
               justify-center
@@ -102,7 +100,7 @@ const AuthorSection = ({ lesson }) => {
                 text-3xl
                 md:text-4xl
                 font-black
-                bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent
+                text-gradient-brand
                 mt-8
               "
             >
@@ -112,7 +110,7 @@ const AuthorSection = ({ lesson }) => {
             </h2>
 
             {/* role */}
-            <p className="text-gray-400 mt-3 text-lg">
+            <p className="text-muted-foreground mt-3 text-lg">
 
               Life Lesson Creator
 
@@ -135,11 +133,11 @@ const AuthorSection = ({ lesson }) => {
 
                     ?
 
-                    "bg-amber-500/10 text-amber-200 border-amber-500/20"
+                    "bg-warning/10 text-warning border-warning/20"
 
                     :
 
-                    "bg-emerald-500/10 text-emerald-200 border-emerald-500/20"
+                    "bg-success/10 text-success border-success/20"
                   }
                 `}
               >
@@ -178,7 +176,7 @@ const AuthorSection = ({ lesson }) => {
                   text-3xl
                   md:text-5xl
                   font-black
-                 bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent 
+                 text-gradient-brand
                 "
               >
 
@@ -188,7 +186,7 @@ const AuthorSection = ({ lesson }) => {
 
               <p
                 className="
-                  text-gray-400
+                  text-muted-foreground
                   mt-6
                   leading-9
                   text-lg
@@ -218,9 +216,9 @@ const AuthorSection = ({ lesson }) => {
               {/* total lessons */}
               <div
                 className="
-                  bg-white/[0.03]
+                  bg-muted
                   border
-                  border-white/10
+                  border-border
                   rounded-[28px]
                   p-6
                   text-center
@@ -241,7 +239,7 @@ const AuthorSection = ({ lesson }) => {
 
                 </h2>
 
-                <p className="text-gray-400 mt-3">
+                <p className="text-muted-foreground mt-3">
 
                   Total Lessons Shared
 
@@ -252,9 +250,9 @@ const AuthorSection = ({ lesson }) => {
               {/* creator status */}
               <div
                 className="
-                  bg-white/[0.03]
+                  bg-muted
                   border
-                  border-white/10
+                  border-border
                   rounded-[28px]
                   p-6
                   text-center
@@ -271,9 +269,9 @@ const AuthorSection = ({ lesson }) => {
                     ${
                       lesson.accessLevel === "Premium"
                       ?
-                      "text-amber-300"
+                      "text-warning"
                       :
-                      "text-emerald-300"
+                      "text-success"
                     }
                   `}
                 >
@@ -288,7 +286,7 @@ const AuthorSection = ({ lesson }) => {
 
                 </h2>
 
-                <p className="text-gray-400 mt-3">
+                <p className="text-muted-foreground mt-3">
 
                   Creator Status
 
@@ -310,17 +308,10 @@ const AuthorSection = ({ lesson }) => {
                   px-7
                   py-4
                   rounded-2xl
-                  bg-gradient-to-r
-                  from-violet-500
-                  to-indigo-600
-                  text-white
+                  bg-gradient-brand
+                  text-primary-content
                   font-semibold
-                  shadow-lg
-                  shadow-indigo-500/20
-                  hover:from-violet-600
-                  hover:to-indigo-700
-                  hover:shadow-2xl
-                  hover:shadow-violet-500/30
+                  shadow-glow
                   hover:-translate-y-1
                   transition-all
                   duration-300

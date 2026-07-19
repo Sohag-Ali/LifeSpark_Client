@@ -15,9 +15,7 @@ const EngagementSection = ({ lesson }) => {
       className="
         relative
         overflow-hidden
-        bg-gradient-to-br
-        from-[#111827]
-        to-[#0F172A]
+        bg-card
         rounded-[24px]
         md:rounded-[32px]
         p-5
@@ -45,7 +43,7 @@ const EngagementSection = ({ lesson }) => {
         <div>
           <p
             className="
-              text-gray-400
+              text-muted-foreground
               font-medium
               text-sm
               md:text-base
@@ -59,7 +57,7 @@ const EngagementSection = ({ lesson }) => {
               text-3xl
               md:text-5xl
               font-black
-              text-rose-300
+              text-rose-500
               mt-3
               md:mt-4
             "
@@ -69,7 +67,7 @@ const EngagementSection = ({ lesson }) => {
 
           <p
             className="
-              text-gray-500
+              text-muted-foreground
               mt-2
               md:mt-3
               text-xs
@@ -111,9 +109,7 @@ const EngagementSection = ({ lesson }) => {
       className="
         relative
         overflow-hidden
-        bg-gradient-to-br
-        from-[#111827]
-        to-[#0F172A]
+        bg-card
         rounded-[24px]
         md:rounded-[32px]
         p-5
@@ -141,7 +137,7 @@ const EngagementSection = ({ lesson }) => {
         <div>
           <p
             className="
-              text-gray-400
+              text-muted-foreground
               font-medium
               text-sm
               md:text-base
@@ -155,7 +151,7 @@ const EngagementSection = ({ lesson }) => {
               text-3xl
               md:text-5xl
               font-black
-              text-amber-300
+              text-amber-500
               mt-3
               md:mt-4
             "
@@ -165,7 +161,7 @@ const EngagementSection = ({ lesson }) => {
 
           <p
             className="
-              text-gray-500
+              text-muted-foreground
               mt-2
               md:mt-3
               text-xs
@@ -195,7 +191,7 @@ const EngagementSection = ({ lesson }) => {
           "
         >
           <Bookmark
-            className="text-amber-300"
+            className="text-amber-500"
             size={28}
           />
         </div>
@@ -207,9 +203,7 @@ const EngagementSection = ({ lesson }) => {
       className="
         relative
         overflow-hidden
-        bg-gradient-to-br
-        from-[#111827]
-        to-[#0F172A]
+        bg-card
         rounded-[24px]
         md:rounded-[32px]
         p-5
@@ -237,7 +231,7 @@ const EngagementSection = ({ lesson }) => {
         <div>
           <p
             className="
-              text-gray-400
+              text-muted-foreground
               font-medium
               text-sm
               md:text-base
@@ -251,7 +245,7 @@ const EngagementSection = ({ lesson }) => {
               text-3xl
               md:text-5xl
               font-black
-              text-cyan-300
+              text-cyan-500
               mt-3
               md:mt-4
             "
@@ -261,7 +255,7 @@ const EngagementSection = ({ lesson }) => {
 
           <p
             className="
-              text-gray-500
+              text-muted-foreground
               mt-2
               md:mt-3
               text-xs
@@ -291,7 +285,7 @@ const EngagementSection = ({ lesson }) => {
           "
         >
           <Eye
-            className="text-cyan-300"
+            className="text-cyan-500"
             size={28}
           />
         </div>

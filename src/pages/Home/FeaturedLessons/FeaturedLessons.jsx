@@ -25,11 +25,11 @@ const FeaturedLessons = () => {
       <div className=" px-2">
         {/* title */}
         <div className="text-center mb-12">
-          <h2 className="bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent text-2xl md:text-4xl lg:text-5xl font-bold ">
+          <h2 className="text-gradient-brand text-2xl md:text-4xl lg:text-5xl font-bold ">
             Featured Life Lessons
           </h2>
 
-          <p className="text-gray-500 mt-4">
+          <p className="text-muted-foreground mt-4">
             Learn from real experiences shared by our community
           </p>
         </div>
@@ -42,10 +42,10 @@ const FeaturedLessons = () => {
             <LessonCardSkeleton />
           </div>
         ) : lessons.length === 0 ? (
-          <div className=" text-center py-24 rounded-[32px] bg-gradient-to-br from-[#111827] to-[#0F172A] border border-white/10 shadow-2xl">
+          <div className=" text-center py-24 rounded-[32px] bg-card border border-border shadow-elevated">
             {/* icon */}
-            <div className=" w-28 h-28 mx-auto rounded-full bg-purple-500/10 flex items-center justify-center border border-purple-500/20">
-              <Star size={60} className="text-purple-400" />
+            <div className=" w-28 h-28 mx-auto rounded-full bg-primary/10 flex items-center justify-center border border-primary/20">
+              <Star size={60} className="text-primary" />
             </div>
 
             {/* title */}
@@ -55,12 +55,7 @@ const FeaturedLessons = () => {
       text-4xl
       md:text-5xl
       font-black
-      bg-gradient-to-r
-      from-[#D8B4FE]
-      via-[#A78BFA]
-      to-[#818CF8]
-      bg-clip-text
-      text-transparent
+      text-gradient-brand
     "
             >
               No Featured Lessons Yet
@@ -70,7 +65,7 @@ const FeaturedLessons = () => {
             <p
               className="
       mt-5
-      text-gray-400
+      text-muted-foreground
       max-w-2xl
       mx-auto
       leading-8
@@ -93,7 +88,7 @@ const FeaturedLessons = () => {
         <div className="text-center mt-14">
           <Link
             to="/public-lessons"
-            className="px-8 py-4 rounded-full bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600 text-white font-bold text-lg shadow-lg shadow-purple-500/30 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/40 transition-all duration-300"
+            className="px-8 py-4 rounded-full bg-gradient-brand text-primary-content font-bold text-lg shadow-glow hover:scale-105 hover:shadow-2xl transition-all duration-300"
           >
             View All Lessons
           </Link>

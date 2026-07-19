@@ -92,10 +92,10 @@ const AdminHome = () => {
           <div>
 
             <h1 className="text-4xl md:text-5xl font-black ">
-              <span className="bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent">Admin Dashboard</span> 👑
+              <span className="text-gradient-brand">Admin Dashboard</span> 👑
             </h1>
 
-            <p className="text-gray-400 text-lg mt-3">
+            <p className="text-muted-foreground text-lg mt-3">
               Monitor platform activities and analytics
             </p>
 
@@ -113,11 +113,9 @@ const AdminHome = () => {
           className="
             relative
             overflow-hidden
-            bg-gradient-to-br
-            from-[#111827]
-            to-[#0F172A]
+            bg-card
             border
-            border-white/10
+            border-border
             rounded-[30px]
             shadow-2xl
             p-8
@@ -128,17 +126,17 @@ const AdminHome = () => {
           "
         >
 
-          <div className="absolute top-0 right-0 w-40 h-40 bg-indigo-500/10 blur-3xl rounded-full"></div>
+          <div className="absolute top-0 right-0 w-40 h-40 bg-info/10 blur-3xl rounded-full"></div>
 
           <div className="relative z-10 flex justify-between items-center">
 
             <div>
 
-              <p className="bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent ">
+              <p className="text-gradient-brand ">
                 Total Users
               </p>
 
-              <h2 className="text-5xl font-black text-[#218bc0] mt-5">
+              <h2 className="text-5xl font-black text-info mt-5">
                 {stats.totalUsers || 0}
               </h2>
 
@@ -149,9 +147,9 @@ const AdminHome = () => {
                 w-20
                 h-20
                 rounded-3xl
-                bg-indigo-500/10
+                bg-info/10
                 border
-                border-indigo-500/20
+                border-info/20
                 flex
                 items-center
                 justify-center
@@ -160,7 +158,7 @@ const AdminHome = () => {
 
               <Users
                 size={40}
-                className="text-indigo-300"
+                className="text-info"
               />
 
             </div>
@@ -174,11 +172,9 @@ const AdminHome = () => {
           className="
             relative
             overflow-hidden
-            bg-gradient-to-br
-            from-[#111827]
-            to-[#0F172A]
+            bg-card
             border
-            border-white/10
+            border-border
             rounded-[30px]
             shadow-2xl
             p-8
@@ -189,17 +185,17 @@ const AdminHome = () => {
           "
         >
 
-          <div className="absolute top-0 right-0 w-40 h-40 bg-emerald-500/10 blur-3xl rounded-full"></div>
+          <div className="absolute top-0 right-0 w-40 h-40 bg-success/10 blur-3xl rounded-full"></div>
 
           <div className="relative z-10 flex justify-between items-center">
 
             <div>
 
-              <p className="bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent ">
+              <p className="text-gradient-brand ">
                 Public Lessons
               </p>
 
-              <h2 className="text-5xl font-black text-[#20be8a] mt-5">
+              <h2 className="text-5xl font-black text-success mt-5">
                 {stats.totalLessons || 0}
               </h2>
 
@@ -210,9 +206,9 @@ const AdminHome = () => {
                 w-20
                 h-20
                 rounded-3xl
-                bg-emerald-500/10
+                bg-success/10
                 border
-                border-emerald-500/20
+                border-success/20
                 flex
                 items-center
                 justify-center
@@ -221,7 +217,7 @@ const AdminHome = () => {
 
               <BookOpen
                 size={40}
-                className="text-emerald-300"
+                className="text-success"
               />
 
             </div>
@@ -235,11 +231,9 @@ const AdminHome = () => {
           className="
             relative
             overflow-hidden
-            bg-gradient-to-br
-            from-[#111827]
-            to-[#0F172A]
+            bg-card
             border
-            border-white/10
+            border-border
             rounded-[30px]
             shadow-2xl
             p-8
@@ -250,17 +244,17 @@ const AdminHome = () => {
           "
         >
 
-          <div className="absolute top-0 right-0 w-40 h-40 bg-rose-500/10 blur-3xl rounded-full"></div>
+          <div className="absolute top-0 right-0 w-40 h-40 bg-error/10 blur-3xl rounded-full"></div>
 
           <div className="relative z-10 flex justify-between items-center">
 
             <div>
 
-              <p className="bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent ">
+              <p className="text-gradient-brand ">
                 Reports
               </p>
 
-              <h2 className="text-5xl font-black text-[#a42e51d5] mt-5">
+              <h2 className="text-5xl font-black text-error mt-5">
                 {stats.totalReports || 0}
               </h2>
 
@@ -271,9 +265,9 @@ const AdminHome = () => {
                 w-20
                 h-20
                 rounded-3xl
-                bg-rose-500/10
+                bg-error/10
                 border
-                border-rose-500/20
+                border-error/20
                 flex
                 items-center
                 justify-center
@@ -282,7 +276,7 @@ const AdminHome = () => {
 
               <Flag
                 size={40}
-                className="text-rose-300"
+                className="text-error"
               />
 
             </div>
@@ -296,11 +290,9 @@ const AdminHome = () => {
           className="
             relative
             overflow-hidden
-            bg-gradient-to-br
-            from-[#111827]
-            to-[#0F172A]
+            bg-card
             border
-            border-white/10
+            border-border
             rounded-[30px]
             shadow-2xl
             p-8
@@ -311,17 +303,17 @@ const AdminHome = () => {
           "
         >
 
-          <div className="absolute top-0 right-0 w-40 h-40 bg-amber-500/10 blur-3xl rounded-full"></div>
+          <div className="absolute top-0 right-0 w-40 h-40 bg-warning/10 blur-3xl rounded-full"></div>
 
           <div className="relative z-10 flex justify-between items-center">
 
             <div>
 
-              <p className="bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent ">
+              <p className="text-gradient-brand ">
                 Today's Lessons
               </p>
 
-              <h2 className="text-5xl font-black text-[#a4962e] mt-5">
+              <h2 className="text-5xl font-black text-warning mt-5">
                 {stats.todaysLessons || 0}
               </h2>
 
@@ -332,9 +324,9 @@ const AdminHome = () => {
                 w-20
                 h-20
                 rounded-3xl
-                bg-amber-500/10
+                bg-warning/10
                 border
-                border-amber-500/20
+                border-warning/20
                 flex
                 items-center
                 justify-center
@@ -343,7 +335,7 @@ const AdminHome = () => {
 
               <Activity
                 size={40}
-                className="text-amber-300"
+                className="text-warning"
               />
 
             </div>
@@ -360,11 +352,9 @@ const AdminHome = () => {
         {/* lesson growth */}
         <div
           className="
-            bg-gradient-to-br
-            from-[#111827]
-            to-[#0F172A]
+            bg-card
             border
-            border-white/10
+            border-border
             rounded-[32px]
             shadow-2xl
             p-8
@@ -375,7 +365,7 @@ const AdminHome = () => {
 
             <TrendingUp className="text-primary" />
 
-            <h2 className="text-3xl font-black bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent ">
+            <h2 className="text-3xl font-black text-gradient-brand ">
               Lesson Growth
             </h2>
 
@@ -392,17 +382,24 @@ const AdminHome = () => {
 
                 <XAxis
                   dataKey="month"
-                  stroke="#94A3B8"
+                  stroke="var(--color-muted-foreground)"
                 />
 
-                <YAxis stroke="#94A3B8" />
+                <YAxis stroke="var(--color-muted-foreground)" />
 
-                <Tooltip />
+                <Tooltip
+                  contentStyle={{
+                    background: "var(--color-card)",
+                    border: "1px solid var(--color-border)",
+                    borderRadius: "0.75rem",
+                    color: "var(--color-card-foreground)",
+                  }}
+                />
 
                 <Bar
                   dataKey="lessons"
                   radius={[12, 12, 0, 0]}
-                  fill="#8B5CF6"
+                  fill="var(--color-primary)"
                 />
 
               </BarChart>
@@ -416,11 +413,9 @@ const AdminHome = () => {
         {/* user growth */}
         <div
           className="
-            bg-gradient-to-br
-            from-[#111827]
-            to-[#0F172A]
+            bg-card
             border
-            border-white/10
+            border-border
             rounded-[32px]
             shadow-2xl
             p-8
@@ -431,7 +426,7 @@ const AdminHome = () => {
 
             <Users className="text-primary" />
 
-            <h2 className="text-3xl font-black bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent ">
+            <h2 className="text-3xl font-black text-gradient-brand ">
               User Growth
             </h2>
 
@@ -448,17 +443,24 @@ const AdminHome = () => {
 
                 <XAxis
                   dataKey="month"
-                  stroke="#94A3B8"
+                  stroke="var(--color-muted-foreground)"
                 />
 
-                <YAxis stroke="#94A3B8" />
+                <YAxis stroke="var(--color-muted-foreground)" />
 
-                <Tooltip />
+                <Tooltip
+                  contentStyle={{
+                    background: "var(--color-card)",
+                    border: "1px solid var(--color-border)",
+                    borderRadius: "0.75rem",
+                    color: "var(--color-card-foreground)",
+                  }}
+                />
 
                 <Line
                   type="monotone"
                   dataKey="users"
-                  stroke="#A855F7"
+                  stroke="var(--color-secondary)"
                   strokeWidth={4}
                 />
 
@@ -475,11 +477,9 @@ const AdminHome = () => {
       {/* contributors */}
       <div
         className="
-          bg-gradient-to-br
-          from-[#111827]
-          to-[#0F172A]
+          bg-card
           border
-          border-white/10
+          border-border
           rounded-[32px]
           shadow-2xl
           p-8
@@ -487,7 +487,7 @@ const AdminHome = () => {
         "
       >
 
-        <h2 className="text-3xl font-black bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent  mb-10">
+        <h2 className="text-3xl font-black text-gradient-brand  mb-10">
           Most Active Contributors 🔥
         </h2>
 
@@ -499,9 +499,9 @@ const AdminHome = () => {
               <div
                 key={user._id}
                 className="
-                  bg-white/[0.03]
+                  bg-muted
                   border
-                  border-white/10
+                  border-border
                   rounded-[28px]
                   p-6
                   text-center
@@ -536,7 +536,7 @@ const AdminHome = () => {
 
                 </div>
 
-                <h2 className="text-xl font-bold bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent mt-5">
+                <h2 className="text-xl font-bold text-gradient-brand mt-5">
                   {user.creatorName}
                 </h2>
 

@@ -34,7 +34,7 @@ const LoadingDash = ({ children }) => {
             mt-6
             text-xl
             font-bold
-            text-white
+            text-base-content
           "
         >
 

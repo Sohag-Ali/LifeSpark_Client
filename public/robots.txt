@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /unauthorized
+Disallow: /banned
+
+Sitemap: https://life-spark-sohag.vercel.app/sitemap.xml

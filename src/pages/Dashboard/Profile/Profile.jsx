@@ -74,11 +74,9 @@ const Profile = () => {
         className="
           relative
           overflow-hidden
-          bg-gradient-to-br
-          from-[#111827]
-          to-[#0F172A]
+          bg-card
           border
-          border-white/10
+          border-border
           rounded-[32px]
           shadow-2xl
           p-8 md:p-10
@@ -86,7 +84,7 @@ const Profile = () => {
       >
 
         {/* glow */}
-        <div className="absolute top-0 right-0 w-72 h-72 bg-purple-500/10 blur-3xl rounded-full"></div>
+        <div className="absolute top-0 right-0 w-72 h-72 bg-primary/10 blur-3xl rounded-full"></div>
 
         <div className="relative z-10 flex flex-col lg:flex-row gap-10 lg:items-center">
 
@@ -115,11 +113,11 @@ const Profile = () => {
           {/* info */}
           <div className="flex-1">
 
-            <h1 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-5xl font-black text-gradient-brand">
               {user?.displayName}
             </h1>
 
-            <p className="text-gray-400 text-lg mt-4">
+            <p className="text-muted-foreground text-lg mt-4">
               {user?.email}
             </p>
 
@@ -136,10 +134,10 @@ const Profile = () => {
                     px-5
                     py-3
                     rounded-2xl
-                    bg-amber-500/10
-                    text-amber-200
+                    bg-warning/10
+                    text-warning
                     border
-                    border-amber-500/20
+                    border-warning/20
                     font-semibold
                   "
                 >
@@ -158,9 +156,9 @@ const Profile = () => {
               {/* total lessons */}
               <div
                 className="
-                  bg-white/[0.03]
+                  bg-muted
                   border
-                  border-white/10
+                  border-border
                   rounded-2xl
                   p-6
                   hover:border-primary/30
@@ -173,11 +171,11 @@ const Profile = () => {
 
                   <div>
 
-                    <h2 className="text-4xl font-black text-blue-300">
+                    <h2 className="text-4xl font-black text-info">
                       {stats.totalLessons || 0}
                     </h2>
 
-                    <p className="text-gray-400 mt-2">
+                    <p className="text-muted-foreground mt-2">
                       Total Lessons
                     </p>
 
@@ -188,14 +186,14 @@ const Profile = () => {
                       w-14
                       h-14
                       rounded-2xl
-                      bg-indigo-500/10
+                      bg-info/10
                       flex
                       items-center
                       justify-center
                     "
                   >
 
-                    <BookOpen className="text-indigo-300" />
+                    <BookOpen className="text-info" />
 
                   </div>
 
@@ -206,9 +204,9 @@ const Profile = () => {
               {/* saved lessons */}
               <div
                 className="
-                  bg-white/[0.03]
+                  bg-muted
                   border
-                  border-white/10
+                  border-border
                   rounded-2xl
                   p-6
                   hover:border-primary/30
@@ -221,11 +219,11 @@ const Profile = () => {
 
                   <div>
 
-                    <h2 className="text-4xl font-black text-amber-300">
+                    <h2 className="text-4xl font-black text-warning">
                       {stats.totalFavorites || 0}
                     </h2>
 
-                    <p className="text-gray-400 mt-2">
+                    <p className="text-muted-foreground mt-2">
                       Saved Lessons
                     </p>
 
@@ -236,14 +234,14 @@ const Profile = () => {
                       w-14
                       h-14
                       rounded-2xl
-                      bg-pink-500/10
+                      bg-warning/10
                       flex
                       items-center
                       justify-center
                     "
                   >
 
-                    <Bookmark className="text-amber-300" />
+                    <Bookmark className="text-warning" />
 
                   </div>
 
@@ -254,9 +252,9 @@ const Profile = () => {
               {/* public lessons */}
               <div
                 className="
-                  bg-white/[0.03]
+                  bg-muted
                   border
-                  border-white/10
+                  border-border
                   rounded-2xl
                   p-6
                   hover:border-primary/30
@@ -269,11 +267,11 @@ const Profile = () => {
 
                   <div>
 
-                    <h2 className="text-4xl font-black text-white">
+                    <h2 className="text-4xl font-black text-success">
                       {stats.publicLessons || 0}
                     </h2>
 
-                    <p className="text-gray-400 mt-2">
+                    <p className="text-muted-foreground mt-2">
                       Public Lessons
                     </p>
 
@@ -284,14 +282,14 @@ const Profile = () => {
                       w-14
                       h-14
                       rounded-2xl
-                      bg-emerald-500/10
+                      bg-success/10
                       flex
                       items-center
                       justify-center
                     "
                   >
 
-                    <Sparkles className="text-emerald-300" />
+                    <Sparkles className="text-success" />
 
                   </div>
 
@@ -302,9 +300,9 @@ const Profile = () => {
               {/* reports */}
               <div
                 className="
-    bg-white/[0.03]
+    bg-muted
     border
-    border-white/10
+    border-border
     rounded-2xl
     p-6
     hover:border-primary/30
@@ -317,13 +315,13 @@ const Profile = () => {
 
                   <div>
 
-                    <h2 className="text-4xl font-black text-rose-300">
+                    <h2 className="text-4xl font-black text-error">
 
                       {stats.totalReports || 0}
 
                     </h2>
 
-                    <p className="text-gray-400 mt-2">
+                    <p className="text-muted-foreground mt-2">
 
                       Total Reports
 
@@ -336,14 +334,14 @@ const Profile = () => {
         w-14
         h-14
         rounded-2xl
-        bg-rose-500/10
+        bg-error/10
         flex
         items-center
         justify-center
       "
                   >
 
-                    <Flag className="text-rose-300" />
+                    <Flag className="text-error" />
 
                   </div>
 
@@ -365,11 +363,11 @@ const Profile = () => {
         {/* heading */}
         <div className="mb-10">
 
-          <h2 className="text-4xl  text-white">
-            <span className="bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent font-bold">My Public Lessons</span> 📚
+          <h2 className="text-4xl  text-base-content">
+            <span className="text-gradient-brand font-bold">My Public Lessons</span> 📚
           </h2>
 
-          <p className="text-gray-400 mt-3 text-lg">
+          <p className="text-muted-foreground mt-3 text-lg">
             Lessons you shared with the community
           </p>
 
@@ -382,11 +380,9 @@ const Profile = () => {
             (
               <div
                 className="
-                bg-gradient-to-br
-                from-[#111827]
-                to-[#0F172A]
+                bg-card
                 border
-                border-white/10
+                border-border
                 rounded-[32px]
                 shadow-2xl
                 p-16
@@ -417,11 +413,11 @@ const Profile = () => {
 
                 </div>
 
-                <h2 className="text-4xl font-black text-white">
+                <h2 className="text-4xl font-black text-base-content">
                   No Public Lessons Yet
                 </h2>
 
-                <p className="text-gray-400 mt-4 text-lg">
+                <p className="text-muted-foreground mt-4 text-lg">
                   Start sharing your life experiences with others.
                 </p>
 
@@ -440,11 +436,9 @@ const Profile = () => {
                       group
                       relative
                       overflow-hidden
-                      bg-gradient-to-br
-                      from-[#111827]
-                      to-[#0F172A]
+                      bg-card
                       border
-                      border-white/10
+                      border-border
                       rounded-[30px]
                       shadow-2xl
                       hover:-translate-y-2
@@ -471,7 +465,7 @@ const Profile = () => {
                         />
 
                         {/* overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] to-transparent"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent"></div>
 
                         {/* category */}
                         <div className="absolute top-5 left-5">
@@ -511,11 +505,11 @@ const Profile = () => {
                       {/* content */}
                       <div className="p-7">
 
-                        <h2 className="text-2xl font-bold bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent  line-clamp-2">
+                        <h2 className="text-2xl font-bold text-gradient-brand  line-clamp-2">
                           {lesson.title}
                         </h2>
 
-                        <p className="text-gray-400 mt-4 leading-7 line-clamp-3">
+                        <p className="text-muted-foreground mt-4 leading-7 line-clamp-3">
                           {lesson.description}
                         </p>
 
@@ -528,10 +522,10 @@ const Profile = () => {
                             px-4
                             py-2
                             rounded-full
-                            bg-pink-500/10
-                            text-pink-200
+                            bg-secondary/10
+                            text-secondary
                             border
-                            border-pink-500/20
+                            border-secondary/20
                             text-xs
                             font-semibold
                           "
@@ -546,14 +540,12 @@ const Profile = () => {
                             px-5
                             py-3
                             rounded-2xl
-                            bg-gradient-to-r
-                            from-[#6366F1]
-                            to-[#A855F7]
-                            text-white
+                            bg-gradient-brand
+                            text-primary-content
                             text-sm
                             font-semibold
                             hover:shadow-xl
-                            hover:shadow-purple-500/20
+                            hover:shadow-primary/20
                             transition-all
                             duration-300
                           "

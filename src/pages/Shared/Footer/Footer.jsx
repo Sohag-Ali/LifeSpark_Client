@@ -2,11 +2,9 @@ const Footer = () => {
  return (
   <footer
     className="
-      bg-gradient-to-br
-      from-[#0F172A]
-      to-[#111827]
+      bg-base-200
       border-t
-      border-white/10
+      border-border
       mt-16
     "
   >
@@ -30,7 +28,7 @@ const Footer = () => {
           lg:grid-cols-4
           gap-10
           border-b
-          border-white/10
+          border-border
           pb-10
         "
       >
@@ -43,18 +41,14 @@ const Footer = () => {
                 w-14
                 h-14
                 rounded-2xl
-                bg-gradient-to-br
-                from-indigo-500
-                via-violet-500
-                to-pink-500
+                bg-gradient-brand
                 flex
                 items-center
                 justify-center
-                text-white
+                text-primary-content
                 text-lg
                 font-black
-                shadow-lg
-                shadow-violet-500/20
+                shadow-glow
                 shrink-0
               "
             >
@@ -67,17 +61,13 @@ const Footer = () => {
                   text-xl
                   md:text-2xl
                   font-black
-                  bg-gradient-to-r
-                  from-violet-300
-                  to-indigo-400
-                  bg-clip-text
-                  text-transparent
+                  text-gradient-brand
                 "
               >
                 LifeSpark
               </h3>
 
-              <p className="text-xs md:text-sm text-gray-400 mt-1">
+              <p className="text-xs md:text-sm text-muted-foreground mt-1">
                 Learning resources & community
               </p>
             </div>
@@ -88,7 +78,7 @@ const Footer = () => {
             className="
               text-sm
               md:text-base
-              text-gray-400
+              text-muted-foreground
               leading-7
             "
           >
@@ -98,11 +88,11 @@ const Footer = () => {
 
           {/* contact */}
           <div className="space-y-2">
-            <p className="text-sm text-gray-400 break-all">
+            <p className="text-sm text-muted-foreground break-all">
               support@lifespark.com
             </p>
 
-            <p className="text-sm text-gray-400">
+            <p className="text-sm text-muted-foreground">
               +8801728918054
             </p>
           </div>
@@ -114,7 +104,7 @@ const Footer = () => {
             className="
               text-lg
               font-bold
-              text-white
+              text-base-content
             "
           >
             Company
@@ -124,8 +114,8 @@ const Footer = () => {
             <li>
               <a
                 className="
-                  text-gray-400
-                  hover:text-white
+                  text-muted-foreground
+                  hover:text-base-content
                   transition-all
                   duration-300
                 "
@@ -138,8 +128,8 @@ const Footer = () => {
             <li>
               <a
                 className="
-                  text-gray-400
-                  hover:text-white
+                  text-muted-foreground
+                  hover:text-base-content
                   transition-all
                   duration-300
                 "
@@ -152,8 +142,8 @@ const Footer = () => {
             <li>
               <a
                 className="
-                  text-gray-400
-                  hover:text-white
+                  text-muted-foreground
+                  hover:text-base-content
                   transition-all
                   duration-300
                 "
@@ -166,8 +156,8 @@ const Footer = () => {
             <li>
               <a
                 className="
-                  text-gray-400
-                  hover:text-white
+                  text-muted-foreground
+                  hover:text-base-content
                   transition-all
                   duration-300
                 "
@@ -185,7 +175,7 @@ const Footer = () => {
             className="
               text-lg
               font-bold
-              text-white
+              text-base-content
             "
           >
             Resources
@@ -195,8 +185,8 @@ const Footer = () => {
             <li>
               <a
                 className="
-                  text-gray-400
-                  hover:text-white
+                  text-muted-foreground
+                  hover:text-base-content
                   transition-all
                   duration-300
                 "
@@ -209,8 +199,8 @@ const Footer = () => {
             <li>
               <a
                 className="
-                  text-gray-400
-                  hover:text-white
+                  text-muted-foreground
+                  hover:text-base-content
                   transition-all
                   duration-300
                 "
@@ -223,8 +213,8 @@ const Footer = () => {
             <li>
               <a
                 className="
-                  text-gray-400
-                  hover:text-white
+                  text-muted-foreground
+                  hover:text-base-content
                   transition-all
                   duration-300
                 "
@@ -237,8 +227,8 @@ const Footer = () => {
             <li>
               <a
                 className="
-                  text-gray-400
-                  hover:text-white
+                  text-muted-foreground
+                  hover:text-base-content
                   transition-all
                   duration-300
                 "
@@ -256,7 +246,7 @@ const Footer = () => {
             className="
               text-lg
               font-bold
-              text-white
+              text-base-content
             "
           >
             Stay up to date
@@ -266,7 +256,7 @@ const Footer = () => {
             className="
               text-sm
               md:text-base
-              text-gray-400
+              text-muted-foreground
               leading-7
             "
           >
@@ -300,13 +290,13 @@ const Footer = () => {
                 w-full
                 px-4
                 rounded-2xl
-                bg-[#1E293B]
+                bg-input
                 border
-                border-white/10
-                text-gray-100
-                placeholder:text-gray-500
+                border-border
+                text-base-content
+                placeholder:text-muted-foreground
                 focus:outline-none
-                focus:border-violet-500/40
+                focus:border-primary/40
               "
             />
 
@@ -315,10 +305,8 @@ const Footer = () => {
                 h-12
                 px-6
                 rounded-2xl
-                bg-gradient-to-r
-                from-violet-500
-                to-indigo-500
-                text-white
+                bg-gradient-brand
+                text-primary-content
                 font-semibold
                 hover:scale-[1.02]
                 transition-all
@@ -350,13 +338,13 @@ const Footer = () => {
                   w-11
                   h-11
                   rounded-2xl
-                  bg-white/[0.03]
+                  bg-base-300/40
                   border
-                  border-white/10
+                  border-border
                   flex
                   items-center
                   justify-center
-                  hover:bg-white/[0.08]
+                  hover:bg-hover
                   hover:scale-105
                   transition-all
                   duration-300
@@ -368,7 +356,7 @@ const Footer = () => {
                   height="20"
                   viewBox="0 0 24 24"
                   fill="currentColor"
-                  className="text-gray-300"
+                  className="text-muted-foreground"
                 >
                   <path d="M19 0h-14C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zM7.12 20.45H3.56V9h3.56v11.45zM5.34 7.43c-1.14 0-2.06-.93-2.06-2.07 0-1.14.92-2.06 2.06-2.06 1.14 0 2.07.92 2.07 2.06 0 1.14-.93 2.07-2.07 2.07zM20.45 20.45h-3.56v-5.57c0-1.33-.03-3.05-1.86-3.05-1.86 0-2.15 1.45-2.15 2.95v5.67h-3.56V9h3.42v1.56h.05c.48-.9 1.63-1.86 3.35-1.86 3.58 0 4.24 2.36 4.24 5.43v6.32z" />
                 </svg>
@@ -383,13 +371,13 @@ const Footer = () => {
                   w-11
                   h-11
                   rounded-2xl
-                  bg-white/[0.03]
+                  bg-base-300/40
                   border
-                  border-white/10
+                  border-border
                   flex
                   items-center
                   justify-center
-                  hover:bg-white/[0.08]
+                  hover:bg-hover
                   hover:scale-105
                   transition-all
                   duration-300
@@ -401,7 +389,7 @@ const Footer = () => {
                   height="20"
                   viewBox="0 0 24 24"
                   fill="currentColor"
-                  className="text-gray-300"
+                  className="text-muted-foreground"
                 >
                   <path d="M22 12.07C22 6.48 17.52 2 11.93 2S2 6.48 2 12.07C2 17.1 5.66 21.2 10.44 22v-7.03H7.9v-2.9h2.54V9.41c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.23.2 2.23.2v2.45h-1.25c-1.23 0-1.61.76-1.61 1.54v1.84h2.74l-.44 2.9h-2.3V22C18.34 21.2 22 17.1 22 12.07z" />
                 </svg>
@@ -416,13 +404,13 @@ const Footer = () => {
                   w-11
                   h-11
                   rounded-2xl
-                  bg-white/[0.03]
+                  bg-base-300/40
                   border
-                  border-white/10
+                  border-border
                   flex
                   items-center
                   justify-center
-                  hover:bg-white/[0.08]
+                  hover:bg-hover
                   hover:scale-105
                   transition-all
                   duration-300
@@ -435,7 +423,7 @@ const Footer = () => {
                   height="20"
                   viewBox="0 0 24 24"
                   fill="currentColor"
-                  className="text-gray-300"
+                  className="text-muted-foreground"
                 >
                   <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.847h-7.406l-5.8-7.584-6.64 7.584H.474l8.6-9.83L0 1.153h7.594l5.243 6.932L18.901 1.153Zm-1.29 19.493h2.039L6.486 3.24H4.298l13.313 17.406Z" />
                 </svg>
@@ -450,13 +438,13 @@ const Footer = () => {
                   w-11
                   h-11
                   rounded-2xl
-                  bg-white/[0.03]
+                  bg-base-300/40
                   border
-                  border-white/10
+                  border-border
                   flex
                   items-center
                   justify-center
-                  hover:bg-white/[0.08]
+                  hover:bg-hover
                   hover:scale-105
                   transition-all
                   duration-300
@@ -468,7 +456,7 @@ const Footer = () => {
                   height="20"
                   viewBox="0 0 24 24"
                   fill="none"
-                  className="text-gray-300"
+                  className="text-muted-foreground"
                 >
                   <path
                     d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z"
@@ -498,13 +486,13 @@ const Footer = () => {
                   w-11
                   h-11
                   rounded-2xl
-                  bg-white/[0.03]
+                  bg-base-300/40
                   border
-                  border-white/10
+                  border-border
                   flex
                   items-center
                   justify-center
-                  hover:bg-white/[0.08]
+                  hover:bg-hover
                   hover:scale-105
                   transition-all
                   duration-300
@@ -516,7 +504,7 @@ const Footer = () => {
                   height="20"
                   viewBox="0 0 24 24"
                   fill="currentColor"
-                  className="text-gray-300"
+                  className="text-muted-foreground"
                 >
                   <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.38 7.86 10.9.58.1.79-.25.79-.56v-2.02c-3.2.7-3.87-1.38-3.87-1.38-.53-1.36-1.3-1.72-1.3-1.72-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.73 1.27 3.4.97.1-.76.41-1.27.75-1.56-2.56-.29-5.26-1.28-5.26-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a11 11 0 012.9-.39c.98 0 1.97.13 2.9.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.77.11 3.06.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.41-5.28 5.69.42.36.8 1.08.8 2.18v3.24c0 .31.21.67.8.56A11.52 11.52 0 0023.5 12C23.5 5.73 18.27.5 12 .5z" />
                 </svg>
@@ -537,7 +525,7 @@ const Footer = () => {
           justify-between
           gap-5
           text-sm
-          text-gray-400
+          text-muted-foreground
         "
       >
         <p className="text-center lg:text-left leading-7">
@@ -558,7 +546,7 @@ const Footer = () => {
           <a
             href="#"
             className="
-              hover:text-white
+              hover:text-base-content
               transition-all
               duration-300
             "
@@ -569,7 +557,7 @@ const Footer = () => {
           <a
             href="#"
             className="
-              hover:text-white
+              hover:text-base-content
               transition-all
               duration-300
             "
@@ -580,7 +568,7 @@ const Footer = () => {
           <a
             href="#"
             className="
-              hover:text-white
+              hover:text-base-content
               transition-all
               duration-300
             "

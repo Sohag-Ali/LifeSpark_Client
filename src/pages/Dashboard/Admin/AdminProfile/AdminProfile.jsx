@@ -152,9 +152,9 @@ const AdminProfile = () => {
 
     <div className="px-4 md:px-8 py-10">
       {/* profile card for Admin User */}
-      <div className=" relative overflow-hidden bg-gradient-to-br from-[#111827] to-[#0F172A] border border-white/10 rounded-[32px] shadow-2xl p-8 md:p-10">
+      <div className=" relative overflow-hidden bg-card border border-border rounded-[32px] shadow-2xl p-8 md:p-10">
         {/* glow */}
-        <div className="absolute top-0 right-0 w-72 h-72 bg-purple-500/10 blur-3xl rounded-full"></div>
+        <div className="absolute top-0 right-0 w-72 h-72 bg-primary/10 blur-3xl rounded-full"></div>
 
         <div className="relative z-10 flex flex-col xl:flex-row gap-10 xl:items-center">
           {/* image Admin User*/}
@@ -178,7 +178,7 @@ const AdminProfile = () => {
             {/* badge */}
             <div className="absolute -bottom-3 left-1/2 -translate-x-1/2">
               <div
-                className=" inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-amber-500/10 text-amber-200 border border-amber-500/20 font-semibold backdrop-blur-xl
+                className=" inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-warning/10 text-warning border border-warning/20 font-semibold backdrop-blur-xl
                 "
               >
                 <Crown size={18} />
@@ -189,15 +189,15 @@ const AdminProfile = () => {
 
           {/* info Admin User Show in Profile page  */}
           <div className="flex-1 text-center xl:text-left">
-            <h1 className="text-4xl md:text-5xl font-semibold bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-5xl font-semibold text-gradient-brand">
               {user?.displayName}
             </h1>
 
-            <p className="bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent text-lg mt-4">
+            <p className="text-gradient-brand text-lg mt-4">
               {user?.email}
             </p>
 
-            <p className="text-gray-400 leading-8 mt-6 max-w-3xl">
+            <p className="text-muted-foreground leading-8 mt-6 max-w-3xl">
               Platform administrator responsible for monitoring lessons,
               managing users, reviewing reports, and maintaining overall
               community quality.
@@ -212,13 +212,11 @@ const AdminProfile = () => {
                   px-6
                   py-4
                   rounded-2xl
-                  bg-gradient-to-r
-                  from-[#6366F1]
-                  to-[#A855F7]
-                  text-white
+                  bg-gradient-brand
+                  text-primary-content
                   font-semibold
                   hover:shadow-xl
-                  hover:shadow-purple-500/20
+                  hover:shadow-primary/20
                   transition-all
                   duration-300
                 "
@@ -233,10 +231,10 @@ const AdminProfile = () => {
                   px-6
                   py-4
                   rounded-2xl
-                  bg-white/[0.03]
+                  bg-muted
                   border
-                  border-white/10
-                  text-[#EEF2FF]
+                  border-border
+                  text-base-content
                   font-semibold
                   hover:border-primary/30
                   hover:bg-primary/5
@@ -260,14 +258,14 @@ const AdminProfile = () => {
           </div>
 
           <div>
-            <h2 className="text-2xl md:text-4xl font-black text-white">
-              <span className="bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent ">
+            <h2 className="text-2xl md:text-4xl font-black text-base-content">
+              <span className="text-gradient-brand ">
                 Personal Activity
               </span>{" "}
               📈
             </h2>
 
-            <p className="text-gray-400 mt-2">
+            <p className="text-muted-foreground mt-2">
               Your platform contribution summary
             </p>
           </div>
@@ -276,28 +274,26 @@ const AdminProfile = () => {
         {/* cards for summary show in Admin Profile page */}
         <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
           {/* total lessons */}
-          <div className=" bg-gradient-to-br from-[#111827] to-[#0F172A] border border-white/10 rounded-[30px] p-8 shadow-2xl">
+          <div className=" bg-card border border-border rounded-[30px] p-8 shadow-2xl">
             <div className="flex justify-between items-center">
               <div>
-                <p className="text-gray-400">Total Lessons</p>
+                <p className="text-muted-foreground">Total Lessons</p>
 
-                <h2 className="text-5xl font-black text-indigo-300 mt-5">
+                <h2 className="text-5xl font-black text-info mt-5">
                   {summary.totalLessons || 0}
                 </h2>
               </div>
 
-              <BookOpen size={45} className="text-indigo-300" />
+              <BookOpen size={45} className="text-info" />
             </div>
           </div>
 
           {/* public lessons */}
           <div
             className="
-        bg-gradient-to-br
-        from-[#111827]
-        to-[#0F172A]
+        bg-card
         border
-        border-white/10
+        border-border
         rounded-[30px]
         p-8
         shadow-2xl
@@ -305,25 +301,23 @@ const AdminProfile = () => {
           >
             <div className="flex justify-between items-center">
               <div>
-                <p className="text-gray-400">Public Lessons</p>
+                <p className="text-muted-foreground">Public Lessons</p>
 
-                <h2 className="text-5xl font-black text-emerald-300 mt-5">
+                <h2 className="text-5xl font-black text-success mt-5">
                   {summary.publicLessons || 0}
                 </h2>
               </div>
 
-              <Users size={45} className="text-emerald-300" />
+              <Users size={45} className="text-success" />
             </div>
           </div>
 
           {/* saved */}
           <div
             className="
-        bg-gradient-to-br
-        from-[#111827]
-        to-[#0F172A]
+        bg-card
         border
-        border-white/10
+        border-border
         rounded-[30px]
         p-8
         shadow-2xl
@@ -331,25 +325,23 @@ const AdminProfile = () => {
           >
             <div className="flex justify-between items-center">
               <div>
-                <p className="text-gray-400">Saved Lessons</p>
+                <p className="text-muted-foreground">Saved Lessons</p>
 
-                <h2 className="text-5xl font-black text-amber-300 mt-5">
+                <h2 className="text-5xl font-black text-warning mt-5">
                   {summary.totalSaved || 0}
                 </h2>
               </div>
 
-              <Bookmark size={45} className="text-amber-300" />
+              <Bookmark size={45} className="text-warning" />
             </div>
           </div>
 
           {/* reports */}
           <div
             className="
-        bg-gradient-to-br
-        from-[#111827]
-        to-[#0F172A]
+        bg-card
         border
-        border-white/10
+        border-border
         rounded-[30px]
         p-8
         shadow-2xl
@@ -357,14 +349,14 @@ const AdminProfile = () => {
           >
             <div className="flex justify-between items-center">
               <div>
-                <p className="text-gray-400">Reports Submitted</p>
+                <p className="text-muted-foreground">Reports Submitted</p>
 
-                <h2 className="text-5xl font-black text-rose-300 mt-5">
+                <h2 className="text-5xl font-black text-error mt-5">
                   {summary.totalReports || 0}
                 </h2>
               </div>
 
-              <Flag size={45} className="text-rose-300" />
+              <Flag size={45} className="text-error" />
             </div>
           </div>
         </div>
@@ -372,8 +364,8 @@ const AdminProfile = () => {
 
       {/* quick actions */}
       <div className="mt-16">
-        <h2 className="text-2xl md:text-4xl font-black text-white mb-10">
-          <span className="bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent ">
+        <h2 className="text-2xl md:text-4xl font-black text-base-content mb-10">
+          <span className="text-gradient-brand ">
             Quick Admin Actions
           </span>{" "}
           ⚡
@@ -383,11 +375,9 @@ const AdminProfile = () => {
           {/* total */}
           <div
             className="
-              bg-gradient-to-br
-              from-[#111827]
-              to-[#0F172A]
+              bg-card
               border
-              border-white/10
+              border-border
               rounded-[30px]
               p-8
               text-center
@@ -398,145 +388,133 @@ const AdminProfile = () => {
               {activity.totalActions || 0}
             </h2>
 
-            <p className="text-gray-400 mt-4">Total Actions</p>
+            <p className="text-muted-foreground mt-4">Total Actions</p>
           </div>
 
           {/* deleted lessons */}
           <div
             className="
-              bg-gradient-to-br
-              from-[#111827]
-              to-[#0F172A]
+              bg-card
               border
-              border-white/10
+              border-border
               rounded-[30px]
               p-8
               text-center
               shadow-2xl
             "
           >
-            <h2 className="text-5xl font-black text-rose-300">
+            <h2 className="text-5xl font-black text-error">
               {activity.deletedLessons || 0}
             </h2>
 
-            <p className="text-gray-400 mt-4">Deleted Lessons</p>
+            <p className="text-muted-foreground mt-4">Deleted Lessons</p>
           </div>
 
           {/* reviewed */}
           <div
-            className=" bg-gradient-to-br from-[#111827] to-[#0F172A] border border-white/10 rounded-[30px] p-8 text-center shadow-2xl
+            className=" bg-card border border-border rounded-[30px] p-8 text-center shadow-2xl
             "
           >
-            <h2 className="text-5xl font-black text-purple-300">
+            <h2 className="text-5xl font-black text-secondary">
               {activity.reviewedLessons || 0}
             </h2>
 
-            <p className="text-gray-400 mt-4">Reviewed Lessons</p>
+            <p className="text-muted-foreground mt-4">Reviewed Lessons</p>
           </div>
 
           {/* deleted users */}
           <div
             className="
-              bg-gradient-to-br
-              from-[#111827]
-              to-[#0F172A]
+              bg-card
               border
-              border-white/10
+              border-border
               rounded-[30px]
               p-8
               text-center
               shadow-2xl
             "
           >
-            <h2 className="text-5xl font-black text-red-500">
+            <h2 className="text-5xl font-black text-error">
               {activity.deletedUsers || 0}
             </h2>
 
-            <p className="text-gray-400 mt-4">Deleted Users</p>
+            <p className="text-muted-foreground mt-4">Deleted Users</p>
           </div>
 
           {/* banned users */}
           <div
             className="
-    bg-gradient-to-br
-    from-[#111827]
-    to-[#0F172A]
+    bg-card
     border
-    border-white/10
+    border-border
     rounded-[30px]
     p-8
     text-center
     shadow-2xl
   "
           >
-            <h2 className="text-5xl font-black text-pink-600">
+            <h2 className="text-5xl font-black text-error">
               {activity.bannedUsers || 0}
             </h2>
 
-            <p className="text-gray-400 mt-4">Banned Users</p>
+            <p className="text-muted-foreground mt-4">Banned Users</p>
           </div>
 
           {/* Unban User */}
           <div
             className="
-    bg-gradient-to-br
-    from-[#111827]
-    to-[#0F172A]
+    bg-card
     border
-    border-white/10
+    border-border
     rounded-[30px]
     p-8
     text-center
     shadow-2xl
   "
           >
-            <h2 className="text-5xl font-black text-emerald-300">
+            <h2 className="text-5xl font-black text-success">
               {activity.unbannedUsers || 0}
             </h2>
 
-            <p className="text-gray-400 mt-4">Unbanned Users</p>
+            <p className="text-muted-foreground mt-4">Unbanned Users</p>
           </div>
 
           {/* ignored */}
           <div
             className="
-              bg-gradient-to-br
-              from-[#111827]
-              to-[#0F172A]
+              bg-card
               border
-              border-white/10
+              border-border
               rounded-[30px]
               p-8
               text-center
               shadow-2xl
             "
           >
-            <h2 className="text-5xl font-black text-cyan-300">
+            <h2 className="text-5xl font-black text-info">
               {activity.ignoredReports || 0}
             </h2>
 
-            <p className="text-gray-400 mt-4">Ignored Reports</p>
+            <p className="text-muted-foreground mt-4">Ignored Reports</p>
           </div>
 
           {/* Admin user */}
           <div
             className="
-    bg-gradient-to-br
-    from-[#111827]
-    to-[#0F172A]
+    bg-card
     border
-    border-white/10
+    border-border
     rounded-[30px]
     p-8
     text-center
     shadow-2xl
   "
           >
-            <h2 className="text-5xl font-black text-amber-300">
+            <h2 className="text-5xl font-black text-warning">
               {activity.madeAdmins || 0}
             </h2>
 
-            <p className="text-gray-400 mt-4">Made Admins</p>
+            <p className="text-muted-foreground mt-4">Made Admins</p>
           </div>
         </div>
       </div>
@@ -545,14 +523,14 @@ const AdminProfile = () => {
       <div className="mt-16">
         {/* heading */}
         <div className="mb-10">
-          <h2 className="text-3xl md:text-4xl  text-white">
-            <span className="bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent font-bold">
+          <h2 className="text-3xl md:text-4xl  text-base-content">
+            <span className="text-gradient-brand font-bold">
               My Public Lessons
             </span>{" "}
             📚
           </h2>
 
-          <p className="text-gray-400 mt-3 text-lg">
+          <p className="text-muted-foreground mt-3 text-lg">
             Lessons you shared with the community
           </p>
         </div>
@@ -561,11 +539,9 @@ const AdminProfile = () => {
         {!publicLessons || publicLessons === 0 ? (
           <div
             className="
-                bg-gradient-to-br
-                from-[#111827]
-                to-[#0F172A]
+                bg-card
                 border
-                border-white/10
+                border-border
                 rounded-[32px]
                 shadow-2xl
                 p-16
@@ -590,11 +566,11 @@ const AdminProfile = () => {
               <BookOpen size={40} className="text-primary" />
             </div>
 
-            <h2 className="text-4xl font-black text-white">
+            <h2 className="text-4xl font-black text-base-content">
               No Public Lessons Yet
             </h2>
 
-            <p className="text-gray-400 mt-4 text-lg">
+            <p className="text-muted-foreground mt-4 text-lg">
               Start sharing your life experiences with others.
             </p>
           </div>
@@ -607,11 +583,9 @@ const AdminProfile = () => {
                       group
                       relative
                       overflow-hidden
-                      bg-gradient-to-br
-                      from-[#111827]
-                      to-[#0F172A]
+                      bg-card
                       border
-                      border-white/10
+                      border-border
                       rounded-[30px]
                       shadow-2xl
                       hover:-translate-y-2
@@ -636,7 +610,7 @@ const AdminProfile = () => {
                   />
 
                   {/* overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent"></div>
 
                   {/* category */}
                   <div className="absolute top-5 left-5">
@@ -666,11 +640,11 @@ const AdminProfile = () => {
 
                 {/* content */}
                 <div className="p-7">
-                  <h2 className="text-2xl font-bold bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent  line-clamp-2">
+                  <h2 className="text-2xl font-bold text-gradient-brand  line-clamp-2">
                     {lesson.title}
                   </h2>
 
-                  <p className="text-gray-400 mt-4 leading-7 line-clamp-3">
+                  <p className="text-muted-foreground mt-4 leading-7 line-clamp-3">
                     {lesson.description}
                   </p>
 
@@ -682,10 +656,10 @@ const AdminProfile = () => {
                             px-4
                             py-2
                             rounded-full
-                            bg-pink-500/10
-                            text-pink-200
+                            bg-secondary/10
+                            text-secondary
                             border
-                            border-pink-500/20
+                            border-secondary/20
                             text-xs
                             font-semibold
                           "
@@ -700,14 +674,12 @@ const AdminProfile = () => {
                             px-5
                             py-3
                             rounded-2xl
-                            bg-gradient-to-r
-                            from-[#6366F1]
-                            to-[#A855F7]
-                            text-white
+                            bg-gradient-brand
+                            text-primary-content
                             text-sm
                             font-semibold
                             hover:shadow-xl
-                            hover:shadow-purple-500/20
+                            hover:shadow-primary/20
                             transition-all
                             duration-300
                           "

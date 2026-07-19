@@ -73,10 +73,10 @@ const DashboardHome = () => {
         {/* heading skeleton */}
         <div className="mb-12">
           <div className="flex items-center gap-4">
-            <div className="w-16 h-16 rounded-2xl bg-white/5 animate-pulse" />
+            <div className="w-16 h-16 rounded-2xl bg-muted animate-pulse" />
             <div className="flex-grow space-y-2">
-              <div className="w-48 h-8 bg-white/5 rounded animate-pulse" />
-              <div className="w-32 h-4 bg-white/5 rounded animate-pulse" />
+              <div className="w-48 h-8 bg-muted rounded animate-pulse" />
+              <div className="w-32 h-4 bg-muted rounded animate-pulse" />
             </div>
           </div>
         </div>
@@ -107,13 +107,13 @@ const DashboardHome = () => {
           </div>
 
           <div>
-            <h1 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-5xl font-black text-gradient-brand">
               Dashboard Overview
             </h1>
 
-            <p className="text-gray-400 text-lg mt-3">
+            <p className="text-muted-foreground text-lg mt-3">
               Welcome back,{" "}
-              <span className="font-semibold bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent ">
+              <span className="font-semibold text-gradient-brand ">
                 {" "}
                 {user?.displayName}
               </span>
@@ -129,11 +129,9 @@ const DashboardHome = () => {
           className="
             relative
             overflow-hidden
-            bg-gradient-to-br
-            from-[#111827]
-            to-[#0F172A]
+            bg-card
             border
-            border-white/10
+            border-border
             rounded-[30px]
             shadow-2xl
             p-8
@@ -143,13 +141,13 @@ const DashboardHome = () => {
             duration-300
           "
         >
-          <div className="absolute top-0 right-0 w-40 h-40 bg-indigo-500/10 blur-3xl rounded-full"></div>
+          <div className="absolute top-0 right-0 w-40 h-40 bg-primary/10 blur-3xl rounded-full"></div>
 
           <div className="relative z-10 flex justify-between items-center">
             <div>
-              <p className="text-gray-400">Total Lessons</p>
+              <p className="text-muted-foreground">Total Lessons</p>
 
-              <h2 className="text-5xl font-black text-green-400 mt-5">
+              <h2 className="text-5xl font-black text-success mt-5">
                 {stats.totalLessons || 0}
               </h2>
             </div>
@@ -159,15 +157,15 @@ const DashboardHome = () => {
                 w-20
                 h-20
                 rounded-3xl
-                bg-indigo-500/10
+                bg-primary/10
                 border
-                border-indigo-500/20
+                border-primary/20
                 flex
                 items-center
                 justify-center
               "
             >
-              <BookOpen className="text-indigo-300" size={40} />
+              <BookOpen className="text-primary" size={40} />
             </div>
           </div>
         </div>
@@ -177,11 +175,9 @@ const DashboardHome = () => {
           className="
             relative
             overflow-hidden
-            bg-gradient-to-br
-            from-[#111827]
-            to-[#0F172A]
+            bg-card
             border
-            border-white/10
+            border-border
             rounded-[30px]
             shadow-2xl
             p-8
@@ -191,13 +187,13 @@ const DashboardHome = () => {
             duration-300
           "
         >
-          <div className="absolute top-0 right-0 w-40 h-40 bg-pink-500/10 blur-3xl rounded-full"></div>
+          <div className="absolute top-0 right-0 w-40 h-40 bg-secondary/10 blur-3xl rounded-full"></div>
 
           <div className="relative z-10 flex justify-between items-center">
             <div>
-              <p className="text-gray-400">Saved Lessons</p>
+              <p className="text-muted-foreground">Saved Lessons</p>
 
-              <h2 className="text-5xl font-black text-amber-400 mt-5">
+              <h2 className="text-5xl font-black text-warning mt-5">
                 {stats.totalFavorites || 0}
               </h2>
             </div>
@@ -207,15 +203,15 @@ const DashboardHome = () => {
                 w-20
                 h-20
                 rounded-3xl
-                bg-amber-500/10
+                bg-warning/10
                 border
-                border-amber-500/20
+                border-warning/20
                 flex
                 items-center
                 justify-center
               "
             >
-              <Bookmark className="text-amber-300" size={40} />
+              <Bookmark className="text-warning" size={40} />
             </div>
           </div>
         </div>
@@ -223,17 +219,15 @@ const DashboardHome = () => {
         {/* quick actions */}
         <div
           className="
-            bg-gradient-to-br
-            from-[#111827]
-            to-[#0F172A]
+            bg-card
             border
-            border-white/10
+            border-border
             rounded-[30px]
             shadow-2xl
             p-8
           "
         >
-          <h2 className="text-2xl font-black bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent  mb-8">
+          <h2 className="text-2xl font-black text-gradient-brand  mb-8">
             Quick Actions
           </h2>
 
@@ -247,15 +241,13 @@ const DashboardHome = () => {
                 justify-between
                 w-full
                 rounded-2xl
-                bg-gradient-to-r
-                from-[#6366F1]
-                to-[#A855F7]
+                bg-gradient-brand
                 px-5
                 py-4
-                text-gray-200
+                text-primary-content
                 font-semibold
                 hover:shadow-xl
-                hover:shadow-purple-500/20
+                hover:shadow-primary/20
                 transition-all
                 duration-300
               "
@@ -277,12 +269,12 @@ const DashboardHome = () => {
                 justify-between
                 w-full
                 rounded-2xl
-                bg-white/[0.03]
+                bg-muted
                 border
-                border-white/10
+                border-border
                 px-5
                 py-4
-                text-[#9aaadd]
+                text-secondary
                 font-semibold
                 hover:border-primary/30
                 hover:bg-primary/5
@@ -304,18 +296,16 @@ const DashboardHome = () => {
       {/* recent lessons */}
       <div
         className="
-          bg-gradient-to-br
-          from-[#111827]
-          to-[#0F172A]
+          bg-card
           border
-          border-white/10
+          border-border
           rounded-[32px]
           shadow-2xl
           p-8
           mt-12
         "
       >
-        <h2 className="text-3xl font-black bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent  mb-10">
+        <h2 className="text-3xl font-black text-gradient-brand  mb-10">
           Recently Added Lessons
         </h2>
 
@@ -326,9 +316,9 @@ const DashboardHome = () => {
         text-center
         py-14
         md:py-20
-        bg-white/[0.03]
+        bg-muted
         border
-        border-white/10
+        border-border
         rounded-[24px]
         md:rounded-[32px]
         px-4
@@ -343,7 +333,7 @@ const DashboardHome = () => {
           md:h-24
           mx-auto
           rounded-full
-          bg-indigo-500/10
+          bg-primary/10
           flex
           items-center
           justify-center
@@ -351,7 +341,7 @@ const DashboardHome = () => {
       >
         <BookOpen
           size={40}
-          className="md:w-[50px] md:h-[50px] text-indigo-400"
+          className="md:w-[50px] md:h-[50px] text-primary"
         />
       </div>
 
@@ -363,7 +353,7 @@ const DashboardHome = () => {
           text-2xl
           md:text-4xl
           font-black
-          text-white
+          text-base-content
         "
       >
         No Lessons Found
@@ -372,7 +362,7 @@ const DashboardHome = () => {
       {/* description */}
       <p
         className="
-          text-gray-400
+          text-muted-foreground
           mt-4
           max-w-md
           mx-auto
@@ -396,9 +386,9 @@ const DashboardHome = () => {
           md:items-center
           md:justify-between
           gap-5
-          bg-white/[0.03]
+          bg-muted
           border
-          border-white/5
+          border-border
           rounded-2xl
           p-4
           md:p-5
@@ -421,7 +411,7 @@ const DashboardHome = () => {
                 rounded-2xl
                 object-cover
                 border
-                border-white/10
+                border-border
               "
             />
           </div>
@@ -433,7 +423,7 @@ const DashboardHome = () => {
                 font-bold
                 text-sm
                 md:text-lg
-                text-gray-200
+                text-base-content
                 line-clamp-1
               "
             >
@@ -442,7 +432,7 @@ const DashboardHome = () => {
 
             <p
               className="
-                text-cyan-400
+                text-accent
                 mt-2
                 text-xs
                 md:text-sm
@@ -464,14 +454,12 @@ const DashboardHome = () => {
             md:px-5
             py-3
             rounded-2xl
-            bg-gradient-to-r
-            from-[#6366F1]
-            to-[#A855F7]
-            text-white
+            bg-gradient-brand
+            text-primary-content
             text-sm
             font-semibold
             hover:shadow-xl
-            hover:shadow-purple-500/20
+            hover:shadow-primary/20
             transition-all
             duration-300
           "
@@ -487,11 +475,9 @@ const DashboardHome = () => {
       {/* analytics */}
       <div
         className="
-          bg-gradient-to-br
-          from-[#111827]
-          to-[#0F172A]
+          bg-card
           border
-          border-white/10
+          border-border
           rounded-[32px]
           shadow-2xl
           p-8
@@ -499,23 +485,30 @@ const DashboardHome = () => {
         "
       >
         <div className="mb-10">
-          <h2 className="text-3xl font-black bg-gradient-to-r from-[#D8B4FE] via-[#A78BFA] to-[#818CF8] bg-clip-text text-transparent ">
+          <h2 className="text-3xl font-black text-gradient-brand ">
             Monthly Contributions
           </h2>
 
-          <p className="text-gray-400 mt-3">Your lesson activity overview</p>
+          <p className="text-muted-foreground mt-3">Your lesson activity overview</p>
         </div>
 
         <div className="h-[350px]">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={chartData}>
-              <XAxis dataKey="month" stroke="#94A3B8" />
+              <XAxis dataKey="month" stroke="var(--color-muted-foreground)" />
 
-              <YAxis stroke="#94A3B8" />
+              <YAxis stroke="var(--color-muted-foreground)" />
 
-              <Tooltip />
+              <Tooltip
+                contentStyle={{
+                  background: "var(--color-card)",
+                  border: "1px solid var(--color-border)",
+                  borderRadius: "0.75rem",
+                  color: "var(--color-card-foreground)",
+                }}
+              />
 
-              <Bar dataKey="lessons" radius={[12, 12, 0, 0]} fill="#7C3AED" />
+              <Bar dataKey="lessons" radius={[12, 12, 0, 0]} fill="var(--color-primary)" />
             </BarChart>
           </ResponsiveContainer>
         </div>

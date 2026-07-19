@@ -4,13 +4,14 @@ import useUser from "../../../hooks/useUser";
 import { HiUser } from "react-icons/hi2";
 import { CgLogOut } from "react-icons/cg";
 import logoimg from "../../../assets/logof.png";
+import ThemeToggle from "../../../coponents/ThemeToggle/ThemeToggle";
 
 const navLinkClass = ({ isActive }) =>
       `
       pb-1 border-b-2 transition-all duration-300 ${
               isActive
-                ? "bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent font-extrabold "
-                : "text-gray-200 font-semibold border-transparent hover:text-violet-300 hover:border-violet-300"
+                ? "text-gradient-brand font-extrabold "
+                : "text-base-content/70 font-semibold border-transparent hover:text-primary hover:border-primary/50"
       }
     `
     ;
@@ -125,7 +126,7 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <Link className="flex items-center text-lg md:text-2xl font-bold bg-gradient-to-r from-violet-300 to-indigo-400 bg-clip-text text-transparent">
+        <Link className="flex items-center text-lg md:text-2xl font-bold text-gradient-brand">
           <img  className="hidden md:block h-10 w-auto md:h-14 object-contain" src={logoimg} alt="Logo" />
           <span className="">LifeLessons ✨</span>
         </Link>
@@ -135,7 +136,8 @@ const Navbar = () => {
           {links}
         </ul>
       </div>
-      <div className="navbar-end">
+      <div className="navbar-end gap-2">
+        <ThemeToggle />
         {/* IF USER LOGGED IN */}
         {user ? (
           <div className="dropdown dropdown-end">
@@ -145,7 +147,7 @@ const Navbar = () => {
               role="button"
               className="btn btn-ghost btn-circle avatar"
             >
-              <div className="w-10 rounded-full ring-2 ring-violet-400/40 hover:ring-violet-400 transition">
+              <div className="w-10 rounded-full ring-2 ring-primary/40 hover:ring-primary transition">
                 <img
                   src={
                     user?.photoURL
@@ -161,11 +163,11 @@ const Navbar = () => {
             {/* Dropdown */}
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-4 z-[999] p-3 shadow-[0_20px_60px_rgba(0,0,0,0.35)] bg-[#1E1B4B]/90 backdrop-blur-xl border border-white/10 rounded-2xl w-60 text-white"
+              className="menu menu-sm dropdown-content mt-4 z-[999] p-3 shadow-elevated bg-card/95 backdrop-blur-xl border border-border rounded-2xl w-60 text-card-foreground"
             >
-              <li className="mb-2 border-b border-white/10 pb-3">
+              <li className="mb-2 border-b border-border pb-3">
                 <div className="flex flex-col">
-                  <span className="font-semibold text-[16px] text-violet-300">
+                  <span className="font-semibold text-[16px] text-primary">
                     {user.displayName || "User"}
                   </span>
                 </div>
@@ -178,7 +180,7 @@ const Navbar = () => {
                       ? "/dashboard/admin/admin-profile"
                       : "/dashboard/profile"
                   }
-                  className="hover:bg-white/10 rounded-xl transition-all duration-300"
+                  className="hover:bg-hover rounded-xl transition-all duration-300"
                 >
                   <HiUser /> Profile
                 </Link>
@@ -186,12 +188,12 @@ const Navbar = () => {
 
               <li>
                 <Link to="/dashboard"
-                 className="hover:bg-white/10 rounded-xl transition-all duration-300"
+                 className="hover:bg-hover rounded-xl transition-all duration-300"
                  >📊 Dashboard</Link>
               </li>
 
-              <li className="mt-2 border-t border-white/10 pt-2">
-                <button onClick={handleLogout} className="text-red-400 hover:bg-red-500/10 rounded-xl transition-all duration-300">
+              <li className="mt-2 border-t border-border pt-2">
+                <button onClick={handleLogout} className="text-error hover:bg-error/10 rounded-xl transition-all duration-300">
                   <CgLogOut /> Logout
                 </button>
               </li>
@@ -202,13 +204,13 @@ const Navbar = () => {
           <div className="flex gap-2">
             <Link
               to="/login"
-              className="btn btn-outline px-5 py-2 rounded-xl border border-white/20 bg-white/5 text-white hover:bg-white/10 transition backdrop-blur-md"
+              className="btn btn-outline px-5 py-2 rounded-xl border border-border bg-base-200/50 text-base-content hover:bg-hover transition backdrop-blur-md"
             >
               Login
             </Link>
             <Link
               to="/register"
-              className="btn btn-primary px-5 py-2 rounded-xl bg-gradient-to-r from-[#7C3AED] via-[#8B5CF6] to-[#4F46E5] text-white hover:scale-[1.03] transition-all duration-300 shadow-[0_10px_30px_rgba(124,58,237,0.35)]"
+              className="btn btn-primary px-5 py-2 rounded-xl bg-gradient-brand text-primary-content hover:scale-[1.03] transition-all duration-300 shadow-glow"
             >
               Signup
             </Link>
